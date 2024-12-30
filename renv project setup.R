@@ -1,0 +1,34 @@
+# renv project setup.R
+
+# In this instance we ticked the option “Use renv with this project” 
+# when creating the initial R Project. 
+
+# This created the renv folder and renv.lock file
+library(renv)
+
+# By selecting "Use renv with this project" the renv::init() has been run
+
+# 1. Initialize environment for this specific project 
+# Call renv::init() to start using renv in the current project. This will 
+## Setup project infrastructure
+## Discover packages and install them into a project library
+## Create a lockfile that records the state of the project
+
+# So then I only need to install in this environment the libraries I need; 
+# {here,janitor,readxl,tidyverse}
+# Tidyverse packages: {ggplot2, dplyr,tidyr,readr,purrr,tibble,stringer,forcats}
+renv::install('here')
+renv::install('janitor')
+renv::install('readxl')
+renv::install('tidyverse') # Including ggplot2, dplyr, readr. among others.
+renv::install('naniar')  # Adhoc package to replace missing values.
+
+# 3 Check status of your lockfile using renv::status() function:
+## status() reports issues caused by inconsistencies across the project lockfile
+
+renv::status()
+
+# 4 After we have confirmed the code works as expected, we use renv::snapshot()
+## To record the packages and their sourecs in the lockfile
+
+renv::snapshot()
