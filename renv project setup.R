@@ -6,10 +6,13 @@
 # This created the renv folder and renv.lock file
 library(renv)
 
+
 # By selecting "Use renv with this project" the renv::init() has been run
 
 # 1. Initialize environment for this specific project 
 # Call renv::init() to start using renv in the current project. This will 
+renv::init()
+
 ## Setup project infrastructure
 ## Discover packages and install them into a project library
 ## Create a lockfile that records the state of the project
