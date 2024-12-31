@@ -25,6 +25,7 @@ renv::install('here')
 renv::install('janitor')
 renv::install('readxl')
 renv::install('tidyverse') # Including ggplot2, dplyr, readr. among others.
+renv::install('lubridate') # create dates in script "01 Eurostat Unemp csv file into R long format.R"
 renv::install('naniar')  # Adhoc package to replace missing values.
 
 # 3 Check status of your lockfile using renv::status() function:
