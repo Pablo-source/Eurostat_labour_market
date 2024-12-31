@@ -13,10 +13,10 @@ library(tidyverse)
 library(janitor)
 library(readxl)
 
-# 1. Get files from \data sub-folder
+# Get files from \data sub-folder
 list.files(path = "./data", pattern = "xlsx$")
 
-# Import temporary employment indicator into R
+# 1. Import temporary employment indicator into R
 # Part-time employment and temporary contracts – annual data - Online data code:[lfsi_pt_a]
 # File: lfsi_pt_a__custom_14323356_page_spreadsheet_long.xlsx
 
@@ -28,5 +28,14 @@ IMPORTED_DATA  <-read_excel(here("data", "lfsi_pt_a__custom_14323356_page_spread
 
 IMPORTED_DATA
 
-# Imported data clean
+# 2. Clean imported data 
+# Remove columns with footnotes (those not starting with x20)
+# Keeping time and x20.. columns
 
+IMPORTED_DATA_clean <- IMPORTED_DATA %>% 
+                          select(
+                            starts_with("time"),
+                            starts_with("x20")
+                          )
+
+IMPORTED_DATA_clean
