@@ -107,9 +107,54 @@ EU_UNEMP <- date_time_fmtd3
 
 # In the imported data from the Excel file there are ":" symbols on emtpy rows
 # I will use {naniar} library to replace these symbols by NA values
+# replace_with_na() Function: use a list for each column with the Symbol ":" to be replaced by NA on each column
 # We use replace_with_na() function from {naniar} library 
 #     with each column where we want to replace : by specific NA values.
+library(naniar)
+
+EU_UNEMP_CLEAN <- EU_UNEMP %>% 
+  replace_with_na(replace = list(european_union_27_countries_from_2020 = ':')) %>% 
+  replace_with_na(replace = list(euro_area_20_countries_from_2023 = ':')) %>% 
+  replace_with_na(replace = list(belgium = ':')) %>%
+  replace_with_na(replace = list(bulgaria = ':')) %>%
+  replace_with_na(replace = list(czechia = ':')) %>%
+  replace_with_na(replace = list(denmark = ':')) %>%
+  replace_with_na(replace = list(germany = ':')) %>%
+  replace_with_na(replace = list(estonia = ':')) %>%
+  replace_with_na(replace = list(ireland = ':')) %>%
+  replace_with_na(replace = list(greece = ':')) %>%
+  replace_with_na(replace = list(spain = ':')) %>%
+  replace_with_na(replace = list(france = ':')) %>%
+  replace_with_na(replace = list(croatia = ':')) %>%
+  replace_with_na(replace = list(italy = ':')) %>%
+  replace_with_na(replace = list(cyprus = ':')) %>%
+  replace_with_na(replace = list(latvia = ':')) %>%
+  replace_with_na(replace = list(lithuania = ':')) %>%
+  replace_with_na(replace = list(luxembourg = ':')) %>%
+  replace_with_na(replace = list(hungary = ':')) %>%
+  replace_with_na(replace = list(malta = ':')) %>%
+  replace_with_na(replace = list(netherlands = ':')) %>%
+  replace_with_na(replace = list(austria = ':')) %>%
+  replace_with_na(replace = list(poland = ':')) %>%
+  replace_with_na(replace = list(portugal = ':')) %>%
+  replace_with_na(replace = list(romania = ':')) %>%
+  replace_with_na(replace = list(slovenia = ':')) %>%
+  replace_with_na(replace = list(slovakia = ':')) %>%
+  replace_with_na(replace = list(finland = ':')) %>%
+  replace_with_na(replace = list(sweden = ':')) %>%
+  replace_with_na(replace = list(iceland = ':')) %>%
+  replace_with_na(replace = list(norway = ':')) %>%
+  replace_with_na(replace = list(switzerland = ':')) %>%
+  replace_with_na(replace = list(bosnia_and_herzegovina = ':')) %>%
+  replace_with_na(replace = list(montenegro = ':')) %>%
+  replace_with_na(replace = list(north_macedonia = ':')) %>%
+  replace_with_na(replace = list(serbia = ':')) %>%
+  replace_with_na(replace = list(turkiye = ':')) 
+EU_UNEMP_CLEAN
+
+# save output file as "EU_UNEMP_DATA.csv"
+write.csv(EU_UNEMP_CLEAN,here("data","EU_UNEMP_CLEAN_une_rt_a_WIDE.csv"), row.names = TRUE)
 
 
-
+# 7. Then re-shape wide data frame into Long format data frame
 
