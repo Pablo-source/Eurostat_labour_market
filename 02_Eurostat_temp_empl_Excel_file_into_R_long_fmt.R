@@ -216,5 +216,4 @@ EU_TEMP_CLEANSED_LONG
 str(EU_TEMP_CLEANSED_LONG)
 
 # 9.save output file as "EU_UNEMP_DATA.csv" in a NEW folder called data_cleansed
-if(!dir.exists("data_cleansed")){dir.create("data_cleansed")}
 write.csv(EU_TEMP_CLEANSED_LONG,here("data_cleansed","EU_TEMP_CLEANSED_lfsi_pt_a_LONG.csv"), row.names = TRUE)
