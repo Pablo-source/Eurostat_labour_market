@@ -105,4 +105,11 @@ EU_UNEMP <- date_time_fmtd3
 # 6. Final cleansing process removing last set of rows wirth NA values from final dataset
 # Exclude NA from original dataset using DPLYR verb na.omit() across all dataset
 
+# In the imported data from the Excel file there are ":" symbols on emtpy rows
+# I will use {naniar} library to replace these symbols by NA values
+# We use replace_with_na() function from {naniar} library 
+#     with each column where we want to replace : by specific NA values.
+
+
+
 
