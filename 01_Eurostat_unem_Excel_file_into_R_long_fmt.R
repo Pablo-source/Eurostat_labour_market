@@ -157,4 +157,93 @@ write.csv(EU_UNEMP_CLEAN,here("data","EU_UNEMP_CLEAN_une_rt_a_WIDE.csv"), row.na
 
 
 # 7. Then re-shape wide data frame into Long format data frame
+# using pivot_longer() function from {DPLYR}
+# First column is date, so we are only interested in pivoting the remaining columns
+library(tidyverse)
 
+
+names(EU_UNEMP_CLEAN)
+
+# Pivot wide countries. 
+
+# Batch 01-03 Countries:( belgium,bulgaria,czechia,denmark,germany, estonia,ireland,greece,spain) 
+
+# Countries 01-10 ()
+Euro_countries_02_11 <-  EU_UNEMP_CLEAN %>%  select(date = geo_labels,
+                                                    euro_area_20_countries_from_2023,
+                                                    belgium,                              
+                                                    bulgaria,czechia,   
+                                                    denmark,germany,                              
+                                                    estonia,ireland,
+                                                    greece,spain)
+
+EU_UNEM_CLEAN_LONG_02_11  <- Euro_countries_02_11 %>% 
+                                pivot_longer( cols = 2:11,
+                                                  names_to = "country",
+                                              values_to = "unemp_rate")
+# Batch 02-03 Country:(France)
+# date country unemp_raet
+EU_UNEM_CLEAN_LONG_12 <-  EU_UNEMP_CLEAN %>%  
+                                          select(date = geo_labels,france) %>% 
+                                          pivot_longer( cols = 2,
+                                                        names_to = "country",
+                                                        values_to = "unemp_rate")
+
+# Batch 03-03 Countries:(croatia, italy,cyprus, latvia,  
+# lithuania,luxembourg, hungary,  malta, netherlands, 
+# austria,  poland,  portugal , romania,  slovenia, 
+# slovakia, finland,  sweden,  iceland,norway,
+# switzerland,bosnia_and_herzegovina, montenegro,north_macedonia,serbia,turkiye)
+
+Euro_countries_13_37  <- EU_UNEMP_CLEAN %>% 
+  select(date = geo_labels,croatia, italy,cyprus, latvia,  
+         lithuania,luxembourg, hungary,  malta, netherlands, 
+         austria,  poland,  portugal , romania,  slovenia, 
+         slovakia, finland,  sweden,  iceland,norway,
+         switzerland,bosnia_and_herzegovina, montenegro,north_macedonia,serbia,turkiye)   
+
+EU_UNEM_CLEAN_LONG_13_37 <-  Euro_countries_13_37 %>% 
+  pivot_longer( cols = 2:26,
+                names_to = "country",
+                values_to = "unemp_rate")
+
+# 8. Finally UNION all three pivoted long datasets 
+# DPLYR using "bind_rows" function 
+# EU_UNEM_CLEAN_LONG_02_11
+# EU_UNEM_CLEAN_LONG_12
+# EU_UNEM_CLEAN_LONG_13_37
+str(EU_UNEM_CLEAN_LONG_02_11)
+str(EU_UNEM_CLEAN_LONG_12)
+str(EU_UNEM_CLEAN_LONG_13_37)
+
+# 8.1 Convert unemp_rate as Numeric across all dataframes prior to unioning them
+EU_UNEM_CLEAN_LONG_02_11$unemp_rate <- as.numeric(EU_UNEM_CLEAN_LONG_02_11$unemp_rate)
+str(EU_UNEM_CLEAN_LONG_02_11)
+
+EU_UNEM_CLEAN_LONG_12$unemp_rate <- as.numeric(EU_UNEM_CLEAN_LONG_12$unemp_rate)
+str(EU_UNEM_CLEAN_LONG_02_11)
+
+EU_UNEM_CLEAN_LONG_13_37$unemp_rate <- as.numeric(EU_UNEM_CLEAN_LONG_13_37$unemp_rate)
+str(EU_UNEM_CLEAN_LONG_13_37)
+
+
+view(EU_UNEM_CLEAN_LONG_02_11)
+view(EU_UNEM_CLEAN_LONG_12)
+view(EU_UNEM_CLEAN_LONG_13_37)
+
+# 8.2 Union them all 
+library(dplyr)
+
+EU_UNEMP_CLEANSED_LONG <- bind_rows(EU_UNEM_CLEAN_LONG_02_11,
+                                    EU_UNEM_CLEAN_LONG_12,
+                                    EU_UNEM_CLEAN_LONG_13_37)
+EU_UNEMP_CLEANSED_LONG
+
+str(EU_UNEMP_CLEANSED_LONG)
+
+# 9.save output file as "EU_UNEMP_DATA.csv" in a NEW folder called data_cleansed
+if(!dir.exists("data_cleansed")){dir.create("data_cleansed")}
+write.csv(EU_UNEMP_CLEANSED_LONG,here("data_cleansed","EU_UNEMP_CLEAN_une_rt_a_LONG.csv"), row.names = TRUE)
+
+# Clean workspace, leaving just processed dataset
+rm(list=ls()[! ls() %in% c("EU_UNEMP_CLEANSED_LONG")])
