@@ -65,6 +65,44 @@ new_dates <- my_data_period %>%
                     x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16,    
                     x17,x18,x19,x20,x21,x22,x23,x24,x25,x26,x27,x28,
                     x29,x30,x31,x32,x33,x34,x35,x36,x37,x38) %>% 
-             mutate(day = "01",month = "01")
+             mutate(day = "01",month = "01") 
+new_dates
+
+# Using {lubridate} package to create final date variable
+# We use make_daet() function to create a date variable from existing day, month, year variables
+library(lubridate)
+
+data_time_fmtd <- new_dates %>% 
+             mutate(date = make_date(year,month,day))
+
+# Subset variables and re-arange columns order
+date_time_fmtd2 <- data_time_fmtd %>% 
+                   select(date,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16,    
+                          x17,x18,x19,x20,x21,x22,x23,x24,x25,x26,x27,x28,
+                          x29,x30,x31,x32,x33,x34,x35,x36,x37,x38)
+
+# 5. Assign meaningful column names 
+# Previouly we created a list containing column names
+my_col_names <- names(COL_NAMES)
+length(my_col_names)
+# [1] 38
+
+# Its length matches the list of columns from our main dataframe date_time_fmtd2
+names(date_time_fmtd2)
+length(date_time_fmtd2)
+# [1] 38
+
+# So I can use names() function with a list created out of "my_col_names" object
+# I will replace existing column names from main dataframe by items from my "my_col_names" list
+date_time_fmtd3 <- date_time_fmtd2
+
+# Assign column names to date_time_fmtd3 dataframe from my_col_names vector
+names(date_time_fmtd3) = c(my_col_names)
+
+# Rename dataframe as EU_UNEMP
+EU_UNEMP <- date_time_fmtd3
+
+# 6. Final cleansing process removing last set of rows wirth NA values from final dataset
+# Exclude NA from original dataset using DPLYR verb na.omit() across all dataset
 
 
