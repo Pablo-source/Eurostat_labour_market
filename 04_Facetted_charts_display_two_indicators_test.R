@@ -65,6 +65,8 @@ head(temporary_data_check)
 Sample_chart <- bind_rows(unemp_data_check,temporary_data_check)
 view(Sample_chart)
 
+
+# 3.4 Turn previous Factor date into a proper Date variable
 Sample_chart_dates <- Sample_chart %>% 
                       mutate(datef = as.Date(date))
 Sample_chart_dates

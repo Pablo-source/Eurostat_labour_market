@@ -45,6 +45,7 @@ unemp_data_check <- unemp_data %>%
                            value = unemp_rate) %>% 
                     mutate(indicator = "unemployment_rate")
 unemp_data_check
+str(unemp_data_check)
 
 temporary_data_check <- temporary_data %>% 
                         filter(country %in% Subset) %>% 
@@ -61,4 +62,51 @@ head(unemp_data_check)
 head(temporary_data_check)
 
 # 3.3 Then we union them to create chart displaying both indicators combined
+Sample_chart <- bind_rows(unemp_data_check,temporary_data_check)
+view(Sample_chart)
+
+Sample_chart_dates <- Sample_chart %>% 
+                      mutate(datef = as.Date(date))
+Sample_chart_dates
+
+str(Sample_chart_dates)
+
+# 3 Charts.
+
+# 3.1 Box chart from combined indicators
+# Split lines by indicator (unemployment_rate, temporary_rate)
+names(Sample_chart)
+
+# [1] "date"      "country"   "value"     "indicator"
+
+box_plot_test <- Sample_chart %>% 
+                 ggplot(aes(date,value, fill = indicator)) +
+                 geom_boxplot() +
+        labs(title = "Temporary Employment and unemployment in selected countries - 2003-2923 period. Yearly data",
+        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+       y = NULL,colour = NULL, fill = NULL) +
+  theme_light() 
+box_plot_test
+
+ggsave("plots_output/01_Unemp_temp_rate_all_selected_countries_01.png", width = 6, height = 4)
+
+# 3.2 Display line charts facets by country displaying each indicator as individual line for each country 
+line_chart_test <- Sample_chart %>% 
+  ggplot() +
+  geom_line(aes(date,value, fill = indicator,colour = indicator, group = indicator)) +
+  facet_wrap(~ country, scales = "free_y", nrow = 2) +
+  labs(title = "Temporary Employment and unemployment in selected countries - 2003-2923 period. Yearly data",
+       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+    y = NULL,colour = NULL, fill = NULL) +
+#  theme (axis.ticks = element_blank()) 
+  theme_light() +
+  theme(plot.title.position = "plot")
+line_chart_test
+  
+# Extra formatting to this initial line chart
+# scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+
+
+  
+  
 
