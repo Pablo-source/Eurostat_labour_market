@@ -101,11 +101,12 @@ line_chart_test <- Sample_chart_dates %>%
 line_chart_test
   
 # 3.3 Extra formatting to this initial line chart
-#   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+#  scale_x_date(date_labels="%Y",date_breaks  ="1 year")
+#  Removed "scales = "free_y" to display SAME y axis scale across all three charts  
 line_chart_test02 <- Sample_chart %>% 
   ggplot() +
   geom_line(aes(date,value,colour = indicator, group = indicator)) +
-  facet_wrap(~ country, scales = "free_y", nrow = 2) +
+  facet_wrap(~ country, nrow = 2) +
   labs(title = "Temporary Employment and unemployment in selected countries - 2003-2923 period. Yearly data",
        subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
        y = NULL,colour = NULL, fill = NULL) +
@@ -113,6 +114,7 @@ line_chart_test02 <- Sample_chart %>%
   theme_light() 
 line_chart_test02
 
-  
+ggsave("plots_output/03_Unemp_temp_rate_line_chart_same_scale_across_nrows_02.png", width = 6, height = 4)
+
   
 
