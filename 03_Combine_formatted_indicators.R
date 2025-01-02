@@ -124,7 +124,7 @@ line_chart_test <- Sample_chart_dates %>%
   geom_line(aes(datef,value,colour = indicator, group = indicator)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title = "Temporary Employment and unemployment in selected countries - 2003-2923 period. Yearly data",
-       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+       subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
     y = NULL,colour = NULL, fill = NULL) +
 #  theme (axis.ticks = element_blank()) 
   theme_light() +

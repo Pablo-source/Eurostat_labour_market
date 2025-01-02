@@ -85,7 +85,7 @@ line_chart_batch_01 <- Subset_01_plot_data %>%
   geom_line(aes(datef,value,colour = indicator, group = indicator)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title = "Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data",
-       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+       subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() +
   theme(plot.title.position = "plot",
@@ -116,7 +116,7 @@ line_chart_batch_02 <- Subset_02_plot_data %>%
   geom_line(aes(datef,value,colour = indicator, group = indicator)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title = "Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data",
-       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+       subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() +
   theme(plot.title.position = "plot",
