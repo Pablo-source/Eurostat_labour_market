@@ -29,17 +29,56 @@ temporary_data <- read.table(here("data_cleansed", "EU_TEMP_CLEANSED_lfsi_pt_a_L
 head(temporary_data)
 
 
-# 2. Test first on a small sample of countries. 
-#    Combine both indicators together
 
+# 2. Plotting first batch of countries
+# Out of the 36 different countries in the imported data set,  I will chart 
+# 36/2=18
+
+> countries
+country
+1  euro_area_20_countries_from_2023
+2                           belgium
+3                          bulgaria
+4                           czechia
+5                           denmark
+6                           germany
+7                           estonia
+8                           ireland
+9                            greece
+10                            spain
+11                           france
+12                          croatia
+13                            italy
+14                           cyprus
+15                           latvia
+16                        lithuania
+17                       luxembourg
+18                          hungary
+
+
+names(temporary_data)
+
+countries <- temporary_data %>% select(country) %>% 
+             distinct()
+countries
+nrow(countries)
+# [1] 36
+
+
+
+# 
+
+# 2.1 
 # 2.1 Subset data just for three countries (spain,greece,france)
 
 # spain,greece, france
+
+
 Subset <-c("spain","greece","france")
 
 # 2.2 Then create a new column to split each line chart by Indicator
 # Also change each indicator original column name to a generic value as we are going to union them
-unemp_data_check <- unemp_data %>% 
+unemp_data <- unemp_data %>% 
                     filter(country %in% Subset) %>% 
                     select(date,country,
                            value = unemp_rate) %>% 
@@ -47,7 +86,7 @@ unemp_data_check <- unemp_data %>%
 unemp_data_check
 str(unemp_data_check)
 
-temporary_data_check <- temporary_data %>% 
+temporary_data <- temporary_data %>% 
                         filter(country %in% Subset) %>% 
                         select(date,country,
                                value = temporary_rate) %>% 
