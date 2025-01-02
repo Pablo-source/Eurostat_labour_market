@@ -95,3 +95,7 @@ line_chart_batch_01
 ggsave("plots_output/04_Unemp_temp_rate_line_chart_batch_01_selectec_countries_2003_2023.png", width = 6, height = 4)
 
 # 4.2 Plotting second batch of countries
+
+Subset_countries_02 <-c("euro_area_20_countries_from_2023","belgium","bulgaria","czechia","denmark","germany","estonia",
+                        "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
+                        "hungary")
