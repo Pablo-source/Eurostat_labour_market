@@ -18,3 +18,8 @@ Parameterized reporting project using Eurostat labour market statistics
 - Downloaded file:  lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx
 - URL: Part-time employment and temporary contracts – annual data - Online data code:[lfsi_pt_a]
   <https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_a__custom_14828862/default/table?lang=en>
+
+
+## Plot 01-02. Facetted line charts selected countries Indicator
+- Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data
+![04_Unemp_temp_rate_line_chart_batch_01_selectec_countries_2003_2023](https://github.com/user-attachments/assets/ce74d116-39d3-45e0-8fdc-465554e43796)
