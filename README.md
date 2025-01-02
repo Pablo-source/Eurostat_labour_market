@@ -30,4 +30,5 @@ Parameterized reporting project using Eurostat labour market statistics
 - Set of countries: euro_area_20_countries_from_2023,malta,netherlands,austria,poland,portugal,romania,slovenia,
   slovakia,finland,sweden,iceland,norway,switzerland,bosnia_and_herzegovina,montenegro,north_macedonia,serbia,turkiye
 -  Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data
-Eurostat_labour_market_subset_02_02](https://github.com/user-attachments/assets/c8c548a8-4a28-4c4d-80b7-2acfaa9aec4e)
+![Eurostat_labour_market_subset_02_02](https://github.com/user-attachments/assets/fdfcd11d-6fc6-4226-8b1f-bfcb3e6c591f)
+
