@@ -24,11 +24,12 @@ Parameterized reporting project using Eurostat labour market statistics
 - Set of countries:euro_area_20_countries_from_2023,belgium,bulgaria,czechia,denmark,germany,estonia,
   ireland,greece,spain,france,croatia,italy,cyprus,latvia,lithuania,luxembourg,hungary
 - Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data
-![Eurostat_labour_market_subset_01_02](https://github.com/user-attachments/assets/37fd888d-029e-40d6-92d9-548781e142b3)
+![Eurostat_labour_market_subset_01_02](https://github.com/user-attachments/assets/e453461d-d913-412d-8036-cf91a4fedf45)
+
 
 ## Plot 02-02. Faceted line-graph selected countries Indicator
 - Set of countries: euro_area_20_countries_from_2023,malta,netherlands,austria,poland,portugal,romania,slovenia,
   slovakia,finland,sweden,iceland,norway,switzerland,bosnia_and_herzegovina,montenegro,north_macedonia,serbia,turkiye
 -  Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data
-![Eurostat_labour_market_subset_02_02](https://github.com/user-attachments/assets/fdfcd11d-6fc6-4226-8b1f-bfcb3e6c591f)
+![Eurostat_labour_market_subset_02_02](https://github.com/user-attachments/assets/3dee307d-ed46-4347-a8a6-0295965eac75)
 
