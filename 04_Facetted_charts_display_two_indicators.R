@@ -78,6 +78,7 @@ Subset_01_plot_data <- all_indicators_datef %>%
   filter(country %in% Subset_countries_01) 
 Subset_01_plot_data
 
+# First batch of countries
 # Display line charts facets by country displaying each indicator as individual line for each country 
 line_chart_batch_01 <- Subset_01_plot_data %>% 
   ggplot( fill = indicator) +
@@ -96,21 +97,31 @@ ggsave("plots_output/04_Unemp_temp_rate_line_chart_batch_01_selectec_countries_2
 
 # 4.2 Plotting second batch of countries
 
-Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands",
-                        "austria",
-                        "poland",
-                        "portugal",
-                        "romania",
-                        "slovenia",
-                        "slovakia",
-                        "finland",
-                        "sweden",
-                        "iceland",
-                        "norway",
-                        "switzerland",
-                        "bosnia_and_herzegovina",
-                        "montenegro",
-                        "north_macedonia",
-                        "serbia",
-                        "turkiye"
+# Second batch of countries
+Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands","austria",
+                        "poland","portugal","romania","slovenia","slovakia","finland","sweden",
+                        "iceland","norway","switzerland","bosnia_and_herzegovina","montenegro",
+                        "north_macedonia","serbia","turkiye"
                         )
+
+Subset_02_plot_data <- all_indicators_datef %>% 
+  select(date,datef,country,value,indicator) %>% 
+  filter(country %in% Subset_countries_02) 
+Subset_02_plot_data
+
+# Second batch of countries
+# Display line charts facets by country displaying each indicator as individual line for each country 
+line_chart_batch_02 <- Subset_02_plot_data %>% 
+  ggplot( fill = indicator) +
+  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
+  facet_wrap(~ country, nrow = 2) +
+  labs(title = "Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data",
+       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
+       y = NULL,colour = NULL, fill = NULL) +
+  theme_light() +
+  theme(plot.title.position = "plot",
+        legend.position = "bottom") # Place legent at the bottom
+
+line_chart_batch_02
+ggsave("plots_output/05_Unemp_temp_rate_line_chart_batch_02_selectec_countries_2003_2023.png", width = 6, height = 4)
+
