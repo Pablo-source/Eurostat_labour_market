@@ -96,6 +96,21 @@ ggsave("plots_output/04_Unemp_temp_rate_line_chart_batch_01_selectec_countries_2
 
 # 4.2 Plotting second batch of countries
 
-Subset_countries_02 <-c("euro_area_20_countries_from_2023","belgium","bulgaria","czechia","denmark","germany","estonia",
-                        "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
-                        "hungary")
+Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands",
+                        "austria",
+                        "poland",
+                        "portugal",
+                        "romania",
+                        "slovenia",
+                        "slovakia",
+                        "finland",
+                        "sweden",
+                        "iceland",
+                        "norway",
+                        "switzerland",
+                        "bosnia_and_herzegovina",
+                        "montenegro",
+                        "north_macedonia",
+                        "serbia",
+                        "turkiye"
+                        )
