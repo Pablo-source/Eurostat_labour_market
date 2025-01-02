@@ -22,4 +22,5 @@ Parameterized reporting project using Eurostat labour market statistics
 
 ## Plot 01-02. Facetted line charts selected countries Indicator
 - Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data
-![04_Unemp_temp_rate_line_chart_batch_01_selectec_countries_2003_2023](https://github.com/user-attachments/assets/ce74d116-39d3-45e0-8fdc-465554e43796)
+![Eurostat_labour_market_subset_01_02](https://github.com/user-attachments/assets/37fd888d-029e-40d6-92d9-548781e142b3)
+
