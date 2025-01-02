@@ -1,5 +1,7 @@
 # 05_Faceted_charts_custom_line_colour.R
 
+# AIM: change default R colours (blue and red to each line charts data series)
+
 # 1 Plotting first batch of countries
 
 Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria","czechia","denmark","germany","estonia",
