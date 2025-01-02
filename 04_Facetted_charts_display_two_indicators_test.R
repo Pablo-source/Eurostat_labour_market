@@ -29,92 +29,87 @@ temporary_data <- read.table(here("data_cleansed", "EU_TEMP_CLEANSED_lfsi_pt_a_L
 head(temporary_data)
 
 
-# 2. Test first on a small sample of countries. 
-#    Combine both indicators together
-
-# 2.1 Subset data just for three countries (spain,greece,france)
-
-# spain,greece, france
-Subset <-c("spain","greece","france")
-
-# 2.2 Then create a new column to split each line chart by Indicator
+# 2 Then create a new column to split each line chart by Indicator
 # Also change each indicator original column name to a generic value as we are going to union them
-unemp_data_check <- unemp_data %>% 
-                    filter(country %in% Subset) %>% 
-                    select(date,country,
-                           value = unemp_rate) %>% 
-                    mutate(indicator = "unemployment_rate")
-unemp_data_check
-str(unemp_data_check)
+unemp_data_label <- unemp_data %>% 
+  select(date,country,
+         value = unemp_rate) %>% 
+  mutate(indicator = "unemployment_rate")
 
-temporary_data_check <- temporary_data %>% 
-                        filter(country %in% Subset) %>% 
-                        select(date,country,
-                               value = temporary_rate) %>% 
-                        mutate(indicator = "temporary_rate")
-temporary_data_check
+str(unemp_data_label)
 
+temporary_data_label <- temporary_data %>% 
+  select(date,country,
+         value = temporary_rate) %>% 
+  mutate(indicator = "temporary_rate")
 
-names(unemp_data_check)
-names(temporary_data_check)
-
-head(unemp_data_check)
-head(temporary_data_check)
-
-# 3.3 Then we union them to create chart displaying both indicators combined
-Sample_chart <- bind_rows(unemp_data_check,temporary_data_check)
-view(Sample_chart)
+str(temporary_data_label)
 
 
-# 3.4 Turn previous Factor date into a proper Date variable
-Sample_chart_dates <- Sample_chart %>% 
-                      mutate(datef = as.Date(date))
-Sample_chart_dates
+# 3. Then we union them to create chart displaying both indicators combined
+all_indicators_data <- bind_rows(unemp_data_label,temporary_data_label)
+View(all_indicators_data)
 
-str(Sample_chart_dates)
+# Create new formatted date variable
+all_indicators_datef <- all_indicators_data %>% 
+  mutate(datef = as.Date(date))
+all_indicators_datef
 
-# 3 Charts.
-
-# 3.1 Box chart from combined indicators
-# Split lines by indicator (unemployment_rate, temporary_rate)
-names(Sample_chart)
-
-# [1] "date"      "country"   "value"     "indicator"
-
-box_plot_test <- Sample_chart_dates %>% 
-                 ggplot(aes(datef,value, fill = indicator)) +
-                 geom_boxplot()
-box_plot_test
-  
-# 3.2 Display line charts facets by country displaying each indicator as individual line for each country 
-line_chart_test <- Sample_chart_dates %>% 
-  ggplot() +
-  geom_line(aes(datef,value, fill = indicator,colour = indicator, group = indicator)) +
-  facet_wrap(~ country, scales = "free_y", nrow = 2) +
-  labs(title = "Temporary Employment and unemployment in selected countries - 2003-2923 period. Yearly data",
-       subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
-    y = NULL,colour = NULL, fill = NULL) +
-#  theme (axis.ticks = element_blank()) 
-  theme_light()
+str(all_indicators_datef)
 
 
-line_chart_test
-  
-# 3.3 Extra formatting to this initial line chart
-#  scale_x_date(date_labels="%Y",date_breaks  ="1 year")
-#  Removed "scales = "free_y" to display SAME y axis scale across all three charts  
-line_chart_test02 <- Sample_chart %>% 
-  ggplot() +
-  geom_line(aes(date,value,colour = indicator, group = indicator)) +
+# 4. Plot countries in two set of small multiples line charts displaying both indicators (unemployment rate and temporary
+#    employment rate by country by year)
+# filter(country %in% Subset) %>% 
+
+countries <- all_indicators_data %>% select(country) %>% 
+  distinct()
+nrow(countries)
+# [1] 36
+# # 36/2=18
+
+# 4.1 Plotting first batch of countries
+
+# Out of the 36 different countries in the imported data set,  I will chart first set of 18 countries from initial list
+# (euro_area_20_countries_from_2023,belgium,bulgaria,czechia,denmark,germany,estonia,ireland,greece,spain,france,croatia,
+#  italy,cyprus,latvia,lithuania,luxembourg,hungary)
+
+Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria","czechia","denmark","germany","estonia",
+                        "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
+                        "hungary")
+
+Subset_01_plot_data <- all_indicators_datef %>% 
+                       select(date,datef,country,value,indicator) %>% 
+                       filter(country %in% Subset_countries_01) 
+Subset_01_plot_data
+
+
+# Display line charts facets by country displaying each indicator as individual line for each country 
+line_chart_batch_01 <- Subset_01_plot_data %>% 
+  ggplot( fill = indicator) +
+  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
   facet_wrap(~ country, nrow = 2) +
-  labs(title = "Temporary Employment and unemployment in selected countries - 2003-2923 period. Yearly data",
+  labs(title = "Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data",
        subtitle ="Source: https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/",
        y = NULL,colour = NULL, fill = NULL) +
-  #  theme (axis.ticks = element_blank()) 
-  theme_light() 
-line_chart_test02
+  theme_light() +
+  theme(plot.title.position = "plot",
+        legend.position = "bottom") # Place legent at the bottom
 
-ggsave("plots_output/03_Unemp_temp_rate_line_chart_same_scale_across_nrows_02.png", width = 6, height = 4)
+line_chart_batch_01
+
+ggsave("plots_output/04_Unemp_temp_rate_line_chart_batch_01_selectec_countries_2003_2023.png", width = 6, height = 4)
+
+
+# 4.2 Plotting second batch of countries
+
+Subset_countries_02 <-c("euro_area_20_countries_from_2023","belgium","bulgaria","czechia","denmark","germany","estonia",
+                        "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
+                        "hungary")
+
+
 
   
-
+# Annex
+# Change legend position within theme
+# theme(legend.position = "bottom") # ("top","bottom","right","left")
