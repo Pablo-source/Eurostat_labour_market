@@ -90,6 +90,6 @@ ggsave("plots_output/08_Unemp_temp_rate_line_chart_batch_01_custom_legend_colour
 
 # 3 Plotting temporary employment and unemployment rates for second batch of Eu countries
 
-
+Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta",)
 
 
