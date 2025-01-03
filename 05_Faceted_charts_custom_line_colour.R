@@ -62,7 +62,7 @@ Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria",
 Subset_01_plot_data <- all_indicators_datef %>% 
   select(date,datef,country,value,indicator) %>% 
   filter(country %in% Subset_countries_01) 
-Subset_01_plot_data
+
 
 # First batch of countries
 # Display line charts facets by country displaying each indicator as individual line for each country 
@@ -95,4 +95,8 @@ Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands"
                         "iceland","norway","switzerland","bosnia_and_herzegovina","montenegro",
                         "north_macedonia","serbia","turkiye")
 
+Subset_02_plot_data <- all_indicators_datef %>% 
+  select(date,datef,country,value,indicator) %>% 
+  filter(country %in% Subset_countries_02)
 
+# second batch of countries to be plotted with custom labels
