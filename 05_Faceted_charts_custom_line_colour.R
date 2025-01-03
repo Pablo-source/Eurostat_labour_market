@@ -82,3 +82,8 @@ line_chart_batch_01 <- Subset_01_plot_data %>%
 line_chart_batch_01
 
 ggsave("plots_output/08_Unemp_temp_rate_line_chart_batch_01_custom_legend_colour.png", width = 6, height = 4)
+
+# Online Resources with interesting GGPLOT2 tips
+# Using the ggplot theme function to customize facet labels and your legend (CC067)
+# Author: Riffomonas Project
+# URL: https://www.youtube.com/watch?v=-4NQgIReefQ
