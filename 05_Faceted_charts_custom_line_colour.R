@@ -75,7 +75,7 @@ line_chart_batch_01 <- Subset_01_plot_data %>%
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() +
   theme(plot.title.position = "plot",
-        legend.position = "bottom") + # Place legent at the bottom
+        legend.position = "bottom") + # Place legend at the bottom
   # Apply legend format here - change default colours to black and blue
   scale_colour_manual(values = c("blue", "black"),
                       labels = c("Temporary contracts rate (%)","Unemployment rate (%)"))
@@ -109,7 +109,8 @@ line_chart_batch_02 <- Subset_02_plot_data %>%
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() +
   theme(plot.title.position = "plot",
-        legend.position = "bottom") # Place legent at the bottom
+        legend.position = "bottom") # Place legend at the bottom
+# Apply legend format here - change default colours to black and blue
 
 line_chart_batch_02
 ggsave("plots_output/09_Unemp_temp_rate_line_chart_batch_02_custom_legend_colour.png", width = 6, height = 4)
