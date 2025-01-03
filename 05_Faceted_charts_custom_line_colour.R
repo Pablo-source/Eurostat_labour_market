@@ -53,7 +53,7 @@ line_chart_test_02
 ggsave("plots_output/07_Unemp_temp_rate_line_Ireland_Spain_custom_legeng_colour_01.png", width = 6, height = 4)
   
 
-# 2 Plotting first batch of countries
+# 2 Plotting temporary employment and unemployment rates for first batch of EU countries
 
 Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria","czechia","denmark","germany","estonia",
                         "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
@@ -87,3 +87,9 @@ ggsave("plots_output/08_Unemp_temp_rate_line_chart_batch_01_custom_legend_colour
 # Using the ggplot theme function to customize facet labels and your legend (CC067)
 # Author: Riffomonas Project
 # URL: https://www.youtube.com/watch?v=-4NQgIReefQ
+
+# 3 Plotting temporary employment and unemployment rates for second batch of Eu countries
+
+
+
+
