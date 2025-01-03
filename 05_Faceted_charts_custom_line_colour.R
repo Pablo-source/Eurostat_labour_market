@@ -100,3 +100,16 @@ Subset_02_plot_data <- all_indicators_datef %>%
   filter(country %in% Subset_countries_02)
 
 # second batch of countries to be plotted with custom labels
+line_chart_batch_02 <- Subset_02_plot_data %>% 
+  ggplot( fill = indicator) +
+  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
+  facet_wrap(~ country, nrow = 2) +
+  labs(title = "Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data",
+       subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+       y = NULL,colour = NULL, fill = NULL) +
+  theme_light() +
+  theme(plot.title.position = "plot",
+        legend.position = "bottom") # Place legent at the bottom
+
+line_chart_batch_02
+ggsave("plots_output/09_Unemp_temp_rate_line_chart_batch_02_custom_legend_colour.png", width = 6, height = 4)
