@@ -37,9 +37,11 @@ unemp_greece_max <- unemp_greece %>%
 
 # 3.2. Flag for the latest year
 str(unemp_greece_max)
+
 unemp_greece_latest <- unemp_greece_max %>% 
-  mutate(Latest_date = max(Date)) %>% 
-  mutate(Max_date = ifelse(Date == Latest_date,TRUE,FALSE) )
+  mutate(
+      Latest_date = max(Date),
+      Max_date = ifelse(Date == Latest_date,TRUE,FALSE))
 
 
 # 4. Create a basic bar plot
