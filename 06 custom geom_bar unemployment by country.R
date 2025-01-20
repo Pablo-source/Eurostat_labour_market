@@ -34,7 +34,6 @@ unemp_greece_max <- unemp_greece %>%
   ) %>% 
   select(Date,country,unemp_rate,max_unemp,Max_unemp_flag)
 
-
 # 3.2. Flag for the latest year
 str(unemp_greece_max)
 
@@ -48,3 +47,17 @@ unemp_greece_latest <- unemp_greece_max %>%
 Plot01 <- unemp_greece %>% 
   ggplot(aes(x = date, y = unemp_rate)) +
   geom_col(fill = "#BAD1D6")
+
+# 4.1 Introduce titles and flag for year with max unemployment value 
+
+Plot02 <- unemp_greece_latest %>% 
+  ggplot(aes(x = date, y = unemp_rate)) +
+  geom_col(fill = "#BAD1D6")
+  labs(title = "Unemployment in Greece.2003-2023 period",
+       caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
+  theme_classic() +
+  
+  ggsave("plots_output/10_True_false_colour_defined_by_max_unemp_value.png", width = 6.38, height = 5.80)
+  
+  
+  
