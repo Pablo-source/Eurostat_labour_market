@@ -87,3 +87,27 @@ head(unemp_greece_latest)
 ```{r display new columns created, echo=TRUE}
 names(unemp_greece_latest)
 ```
+
+## 4. Plot basig bar plot using ggplot 
+
+This is going to be the starting point of formatting a standard ggplot2 bar plot. It only contains the basic element and a single geom() to plot a simple bar plot.
+
+```{r Basic ggplot2 bar plot, echo=TRUE}
+# Create a basic bar plot
+str(unemp_greece)
+Plot01 <- unemp_greece %>% 
+  ggplot(aes(x = date, y = unemp_rate)) +
+  geom_col(fill = "#BAD1D6")
+
+Plot02 <- unemp_greece %>% 
+  ggplot(aes(x = date, y = unemp_rate)) +
+  geom_col(fill = "#BAD1D6") +
+labs(title = "Unemployment in Greece.2003-2023 period",
+     caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
+  theme_classic() 
+
+Plot02
+ggsave("plots_output/10_Greece_unemployment_value.png", width = 6.38, height = 5.80)
+
+```
+
