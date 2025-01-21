@@ -99,7 +99,7 @@ Subset_02_plot_data <- all_indicators_datef %>%
   select(date,datef,country,value,indicator) %>% 
   filter(country %in% Subset_countries_02)
 
-# second batch of countries to be plotted with custom labels
+# second batch of countries to be plotted with custom labels.
 line_chart_batch_02 <- Subset_02_plot_data %>% 
   ggplot( fill = indicator) +
   geom_line(aes(datef,value,colour = indicator, group = indicator)) +
