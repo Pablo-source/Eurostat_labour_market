@@ -49,4 +49,5 @@ Parameterized reporting project using Eurostat labour market statistics
 - Used `annotate('curve')` to include straight line annotation to specific plot value
 - Included `geom_richtext()` function to add annotation buble to the chart
 
-![17_Bar_chart_annotation_segment_text_bubble_colour_highest_value](https://github.com/user-attachments/assets/7de94345-47ee-4ad7-bc79-e57f1a637696)
+![17_Bar_chart_annotation_segment_text_bubble_colour_highest_value](https://github.com/user-attachments/assets/6ee84592-5bac-4804-ab5f-68ae3d9b0b27)
+
