@@ -143,6 +143,7 @@ ggsave("plots_output/04_Bar_chart_including_annotation_segment_text_bubble.png",
 
 
 # 4. Include color and straight line using annotate function to flag year with highest unemployment value
+library(ggtext)
 
 Plot05_colour <- unemp_greece_flags %>% 
   ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
@@ -170,14 +171,7 @@ Plot05_colour <- unemp_greece_flags %>%
   annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2011-12-01"),y = 26,yend = 28,linewidth = 0.9, 
            curvature = 0.0) +
   # Include now annotation bubble next to the LINE drawn using annotate('curve')
-  geom_richtext(geom = "textbox", label = "Year 2013<br>highest value", 
-                x = as.Date("2011-11-25"), y = 27,
-                hjust = 1,  
-                fill = NA,
-                color = "black",
-                label.colour = NA,
-                show.legend = FALSE) +
-
-
+  geom_richtext(geom = "textbox", label = "Highest value<br>Year 2013",x = as.Date("2011-11-25"), y = 27,
+                hjust = 1,fill = NA,color = "black",label.colour = NA,show.legend = FALSE) 
 Plot05_colour
 ggsave("plots_output/17_Bar_chart_annotation_segment_text_bubble_colour_highest_value.png", width = 6.38, height = 5.80)
