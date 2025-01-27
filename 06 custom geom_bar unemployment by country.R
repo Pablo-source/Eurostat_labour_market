@@ -2,7 +2,7 @@
 # AIM 06 custom geom_bar unmployment metric for each country
 
 
-# 1. Import previous files 
+# 1. Import previous files.
 library(here)
 library(tidyverse)
 

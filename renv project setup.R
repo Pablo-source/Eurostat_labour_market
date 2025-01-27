@@ -27,8 +27,13 @@ renv::install('readxl')
 renv::install('tidyverse') # Including ggplot2, dplyr, readr. among others.
 renv::install('lubridate') # create dates in script "01 Eurostat Unemp csv file into R long format.R"
 renv::install('naniar')  # Adhoc package to replace missing values.
+<<<<<<< HEAD
 renv::install('ggtext') 
  # Script 06 custom_geom_bar_unemployment by country.R
+=======
+renv::install('markdown') # Installed Markdown for Formatting unemployment rate bar plot.qmd file
+
+>>>>>>> 8a9152639d1f5480ae5aa978af221b947c56da03
 # 3 Check status of your lockfile using renv::status() function:
 ## status() reports issues caused by inconsistencies across the project lockfile
 

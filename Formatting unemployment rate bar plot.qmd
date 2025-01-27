@@ -1,0 +1,113 @@
+---
+title: "Formatting custom geom bar unemployment plot"
+title-block-banner: true
+title-block-banner-color: azure
+author: "Pablo Leon"
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true
+    toc-location: left
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+```{r markdown custom style, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      dpi = 180, fig.width = 8, fig.height = 5)
+library(tidyverse) 
+```
+
+## Turning out of the box ggplot2 chart into a custom plot
+
+This is a Quarto document describing the steps required to format a standard ggplot2 bar plot adding some theme options and annotation bubble with specific highlighting and color settings.
+
+## 1.Load unemployment data
+
+```{r Import unemployment data, echo=TRUE}
+# 1. Import previous files.
+library(here)
+library(tidyverse)
+
+# 1. Import unemployment indicator data 
+unemp_data <- read.table(here("data_cleansed", "EU_UNEMP_CLEAN_une_rt_a_LONG.csv"),
+                         header =TRUE, sep =',',stringsAsFactors =TRUE)
+head(unemp_data)
+```
+
+## 2.Subset initial dataset to keep just Greece data
+
+You can add options to executable code like this
+
+```{r}
+# 2. Subset data for Greece
+str(unemp_data)
+head(unemp_data)
+
+unemp_greece <- unemp_data %>% 
+  filter(country %in% c("greece")) %>%  
+  select(-c(X))
+unemp_greece
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+## 3.Create two flags to highlight years in plot
+
+We will create two specific flags, one of them to display in a different color the year with highest unemployment rate, and a second flag to highlight the most recent year of data.
+
+```{r Create Flag variables, echo=TRUE}
+# 3. Create two flags
+# 3.1. Flag for highest unemployment year
+str(unemp_greece)
+
+unemp_greece_max <- unemp_greece %>% 
+  mutate(
+    Date = as.Date(date),
+    unemp_round = round(unemp_rate,0),
+    max_unemp = max(unemp_rate, na.rm = TRUE),
+    Max_unemp_flag = ifelse(unemp_rate == max_unemp,TRUE,FALSE) 
+  ) %>% 
+  select(date,Date,country,unemp_rate,max_unemp,Max_unemp_flag)
+
+str(unemp_greece_max)
+
+unemp_greece_latest <- unemp_greece_max %>% 
+  mutate(
+      Latest_date = max(Date),
+      Max_date_flag = ifelse(Date == Latest_date,TRUE,FALSE))
+```
+
+Check first rows including now the new flag variables created
+
+```{r Check new flags, echo=TRUE}
+head(unemp_greece_latest)
+```
+
+```{r display new columns created, echo=TRUE}
+names(unemp_greece_latest)
+```
+
+## 4. Plot basic bar plot using ggplot 
+
+This is going to be the starting point of formatting a standard ggplot2 bar plot. It only contains the basic element and a single geom() to plot a simple bar plot.
+
+```{r Basic ggplot2 bar plot, echo=TRUE}
+# Create a basic bar plot
+str(unemp_greece)
+Plot01 <- unemp_greece %>% 
+  ggplot(aes(x = date, y = unemp_rate)) +
+  geom_col(fill = "#BAD1D6")
+
+Plot02 <- unemp_greece %>% 
+  ggplot(aes(x = date, y = unemp_rate)) +
+  geom_col(fill = "#BAD1D6") +
+labs(title = "Unemployment in Greece.2003-2023 period",
+     caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
+  theme_classic() 
+
+Plot02
+ggsave("plots_output/10_Greece_unemployment_value.png", width = 6.38, height = 5.80)
+
+```
+
