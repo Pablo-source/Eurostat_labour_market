@@ -4,9 +4,7 @@
 
 # Replicate this example
 # https://r-graphics.org/recipe-annotate-segment
-install.packages("gcookbook",dependencies = TRUE)
 library(gcookbook)
-
 library(tidyverse)
 
 # Create new output folder for plots
