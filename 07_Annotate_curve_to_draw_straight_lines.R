@@ -1,10 +1,9 @@
 # 1. Annotate segment example
 
-# R Script: 02_Annotate_curve_to_draw_straight_lines.R
+# R Script: 07_Annotate_curve_draw_straight_lines.R
 
 # Replicate this example
 # https://r-graphics.org/recipe-annotate-segment
-
 install.packages("gcookbook",dependencies = TRUE)
 library(gcookbook)
 
