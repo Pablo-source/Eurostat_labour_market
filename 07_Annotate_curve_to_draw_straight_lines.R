@@ -142,7 +142,7 @@ Plot04_segment
 ggsave("plots_output/04_Bar_chart_including_annotation_segment_text_bubble.png", width = 6.38, height = 5.80)
 
 
-# 4. Include color and straight line using annotate function to flag year with highest unemployment value
+# 4. Include color and straight line using annotate function to flag year with highest unemployment value. 
 library(ggtext)
 
 Plot05_colour <- unemp_greece_flags %>% 
