@@ -153,6 +153,7 @@ Plot05_colour <- unemp_greece_flags %>%
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
   labs(title = "Unemployment in Greece.2009-2023 period",
+       subtitle = "Unemployment rate has more than halved since 2013",
        x = "Period", 
        y = "Total unemployment rate (%)",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
