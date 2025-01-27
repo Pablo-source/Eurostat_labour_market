@@ -78,6 +78,8 @@ ggsave("plots_output/11_True_false_colour_defined_by_max_unemp_value.png", width
 
 # 4.2 Introduce custom colour in the plot
 #    geom_col(show.legend = FALSE) +
+# colours: FALSE values for "is_2024" variable: Aquamarine "#BAD1D6"
+#          TRUE values for "is_2024" variable: Last year is 2024. DARK BLUE "#539CBA"
 #    scale_fill_manual(breaks = c(FALSE,TRUE),
 #                   values = c("#BAD1D6","#539CBA"))
   
