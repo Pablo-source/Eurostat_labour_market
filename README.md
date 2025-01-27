@@ -42,3 +42,11 @@ Parameterized reporting project using Eurostat labour market statistics
 ![Eurostat_batch_01_custom_legends](https://github.com/user-attachments/assets/3ca93c83-c58b-4c76-8d5c-e49386e8120e)
 
 ![EUCOUNTRIES_UNEMP_TEMP_EMP_batch02](https://github.com/user-attachments/assets/80d25fac-c223-4631-a154-e461a49ab839)
+
+## Plot 03. Bar plot including annotations
+
+- See script "**07_Annotate_curve_draw_straight_lines.R**" for details:
+- Used `annotate('curve')` to include straight line annotation to specific plot value
+- Included `geom_richtext()` function to add annotation buble to the chart
+
+![17_Bar_chart_annotation_segment_text_bubble_colour_highest_value](https://github.com/user-attachments/assets/7de94345-47ee-4ad7-bc79-e57f1a637696)
