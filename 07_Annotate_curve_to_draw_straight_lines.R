@@ -162,7 +162,7 @@ Plot05_colour <- unemp_greece_flags %>%
   # Include labels over bars
   geom_text(aes(label = unemp_rate), position = position_dodge(width = 0.9),
             vjust = +1.50) +
-  
+  # Introduce 45 angle to Y axis labels
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   # Add straight lines to flag year with highest unemployment value
   annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2012-06-01"),y = 27,yend = 27,linewidth = 0.9, 
