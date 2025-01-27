@@ -6,6 +6,7 @@
 # https://r-graphics.org/recipe-annotate-segment
 library(gcookbook)
 library(tidyverse)
+library(ggtext)
 
 # Create new output folder for plots
 if(!dir.exists("Plots")){dir.create("Plots")}
@@ -106,9 +107,7 @@ str(unemp_greece)
 head(unemp_greece)
 
 # Outcome, Segments didn't work, using annotate('curve') to create a segment
-#
 # USING  annotate('curve') to draw a segment. This seems to work
-#
 # install.packages("ggtext",dependencies = TRUE)
 library(ggtext)
 
