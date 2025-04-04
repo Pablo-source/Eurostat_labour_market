@@ -24,14 +24,15 @@ Parameterized reporting project using Eurostat labour market statistics
 - Set of countries:euro_area_20_countries_from_2023,belgium,bulgaria,czechia,denmark,germany,estonia,
   ireland,greece,spain,france,croatia,italy,cyprus,latvia,lithuania,luxembourg,hungary
 - Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data
-![Eurostat_labour_market_subset_01_02](https://github.com/user-attachments/assets/e453461d-d913-412d-8036-cf91a4fedf45)
+![04_plot_countries_batch_01_two_indicators](https://github.com/user-attachments/assets/a8c122ce-481e-482a-a9ce-4cf178fd28f2)
 
 
 ## Plot 02-02. Faceted line-graph selected countries Indicator
 - Set of countries: euro_area_20_countries_from_2023,malta,netherlands,austria,poland,portugal,romania,slovenia,
   slovakia,finland,sweden,iceland,norway,switzerland,bosnia_and_herzegovina,montenegro,north_macedonia,serbia,turkiye
 -  Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data
-![Eurostat_labour_market_subset_02_02](https://github.com/user-attachments/assets/3dee307d-ed46-4347-a8a6-0295965eac75)
+![05_unem_temp_batch_02_formatted](https://github.com/user-attachments/assets/63c6ee5d-a487-4c05-84e8-ea2c03ea99d2)
+
 
 ## Plot 03. Faceted line-graph selected countries applying custom legend and colours  
 - As we can see in script "05_Faceted_charts_custom_line_colour.R, we can apply custom legend text and colours
