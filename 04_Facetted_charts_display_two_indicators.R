@@ -83,6 +83,8 @@ Plots_data <- all_indicators_datef %>%
               select(date = datef, country, value, indicator) %>% 
               filter(country %in% Subset_countries_01) 
 Plots_data
+
+str(Plots_data)
 # Just check the two indicators we are going to plot
 indicators_list <- all_indicators_data %>% select(indicator) %>% distinct()
 indicators_list
@@ -105,6 +107,8 @@ line_chart_batch_01
 ggsave("plots_output/04_Unemp_temp_rate_line_chart_batch_01_selectec_countries_2003_2023.png", width = 6, height = 4)
 
 # 4.2 Plotting second batch of countries
+str(all_indicators_datef)
+
 
 # Second batch of countries
 Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands","austria",
@@ -114,13 +118,17 @@ Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands"
                         )
 
 Subset_02_plot_data <- all_indicators_datef %>% 
-  select(date,datef,country,value,indicator) %>% 
+  select(datef,country,value,indicator) %>% 
   filter(country %in% Subset_countries_02) 
 Subset_02_plot_data
 
 # Second batch of countries
 # Display line charts facets by country displaying each indicator as individual line for each country 
-line_chart_batch_02 <- Plots_data %>% 
+str(Subset_02_plot_data)
+
+Subset_02_plot_data_fmtd <- Subset_02_plot_data %>% select(date = datef,country,value,indicator)
+
+line_chart_batch_02 <- Subset_02_plot_data_fmtd %>% 
   ggplot( fill = indicator) +
   geom_line(aes(date,value,colour = indicator, group = indicator)) +
   facet_wrap(~ country, nrow = 2) +
