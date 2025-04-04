@@ -74,10 +74,18 @@ Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria",
                         "hungary")
 
 Subset_01_plot_data <- all_indicators_datef %>% 
-  select(date,datef,country,value,indicator) %>% 
+  select(datef,country,value,indicator) %>% 
   filter(country %in% Subset_countries_01) 
 Subset_01_plot_data
 
+# Rename datef variable as date
+Plots_data <- all_indicators_datef %>% 
+              select(date = datef, country, value, indicator) %>% 
+              filter(country %in% Subset_countries_01) 
+Plots_data
+# Just check the two indicators we are going to plot
+indicators_list <- all_indicators_data %>% select(indicator) %>% distinct()
+indicators_list
 # First batch of countries
 # Display line charts facets by country displaying each indicator as individual line for each country 
 line_chart_batch_01 <- Subset_01_plot_data %>% 

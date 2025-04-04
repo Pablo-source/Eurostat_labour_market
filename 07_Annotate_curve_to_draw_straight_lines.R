@@ -8,9 +8,6 @@ library(gcookbook)
 library(tidyverse)
 library(ggtext)
 
-# Create new output folder for plots
-if(!dir.exists("plots_output")){dir.create("Plots")}
-
 line_plot <- ggplot(filter(climate,Source == "Berkeley"), aes(x = Year, y = Anomaly10y)) +
   geom_line()
 line_plot
