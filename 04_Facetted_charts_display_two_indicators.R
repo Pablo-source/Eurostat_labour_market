@@ -86,11 +86,12 @@ Plots_data
 # Just check the two indicators we are going to plot
 indicators_list <- all_indicators_data %>% select(indicator) %>% distinct()
 indicators_list
+
 # First batch of countries
 # Display line charts facets by country displaying each indicator as individual line for each country 
-line_chart_batch_01 <- Subset_01_plot_data %>% 
+line_chart_batch_01 <- Plots_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
+  geom_line(aes(date,value,colour = indicator, group = indicator)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title = "Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
@@ -119,9 +120,9 @@ Subset_02_plot_data
 
 # Second batch of countries
 # Display line charts facets by country displaying each indicator as individual line for each country 
-line_chart_batch_02 <- Subset_02_plot_data %>% 
+line_chart_batch_02 <- Plots_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
+  geom_line(aes(date,value,colour = indicator, group = indicator)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title = "Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
