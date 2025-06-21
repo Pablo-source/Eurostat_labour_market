@@ -1,0 +1,3 @@
+- Demography indcators related to Labour market
+- Aim; This folder will include several Demographic indicators for European countries and also the UK, to put in context Labour statistics with wider demographic trends such as international migration. Over the last 10 years.
+- It will use official statistics from the Spanish National Statistics Institute (INE), Office of National Statistics (ONS) for the UK, and European Eurostat portal.
