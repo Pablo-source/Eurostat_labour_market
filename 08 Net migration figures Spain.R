@@ -179,4 +179,4 @@ net_migration_plot_bool
 
 ggsave("plots_output/20_Spain_net_migration_boolean_fill_colour.png", width = 6, height = 4)
 
-  
+# 05. geom_col() bar plot in ggplot2 using custom bar colours for negative and positive values
