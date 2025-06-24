@@ -189,6 +189,7 @@ net_migration_bool_neg_values <- neg_values_flag %>%
   geom_col(show.legend = FALSE) +
   theme_light() +
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
+  scale_y_continuous(breaks = seq(-100000,850000,by = 100000)) +
   labs(title = "Spain Net migration. 2014-2023 period",
        subtitle = "Evolution of net external migration in Spain",
        caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
