@@ -117,10 +117,10 @@ net_migration_plot
 # 4.3 Remove X and Y axis labels
 # theme(axis.title.x = element_blank(),
 #      axis.title.y = element_blank())
-      
+# Also add fill colour to bars using fill() parameter inside aes() function  
 net_migration_plot <- spain_net_migration %>% 
   select(year, net_migration = net_external_migration) %>% 
-  ggplot(aes(x=year, y = net_migration)) +
+  ggplot(aes(x=year, y = net_migration, fill = "cornflowerblue")) +
   geom_col(show.legend = FALSE) +
   theme_light() +
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
@@ -133,6 +133,32 @@ net_migration_plot
 
 ggsave("plots_output/18_Spain_net_migration_plain.png", width = 6, height = 4)
 
-      
 
+
+# 4.4 Add colour to geom_col() function
+# Using fill() function inside the geom_col() function.
+net_migration_plot <- spain_net_migration %>% 
+  select(year, net_migration = net_external_migration) %>% 
+  ggplot(aes(x=year, y = net_migration)) +
+  geom_col(show.legend = FALSE,fill = "cornflowerblue") +
+  theme_light() +
+  scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
+  labs(title = "Spain Net migration. 2014-2023 period",
+       subtitle = "Evolution of net external migration in Spain",
+       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+net_migration_plot
+
+ggsave("plots_output/19_Spain_net_migration_plain.png", width = 6, height = 4)
+
+
+
+# 4.5 Create flag for negative values
+#   mutate(
+Date = as.Date(date),
+unemp_round = round(unemp_rate,0),
+max_unemp = max(unemp_rate, na.rm = TRUE),
+Max_unemp_flag = ifelse(unemp_rate == max_unemp,TRUE,FALSE) 
+) %>% 
   
