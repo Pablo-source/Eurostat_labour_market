@@ -16,7 +16,7 @@ Path
 # 01 Check files available in the data folder
 list.files (path = "./Demography" ,pattern = "xls$")
 
-[1] "INE Net external migration Spain 2014 2023.xls"
+# [1] "INE Net external migration Spain 2014 2023.xls"
 
 # 02 List tabs from above Excel file to know which tab to import
 excel_sheets("./Demography/INE Net external migration Spain 2014 2023.xls")
