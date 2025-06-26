@@ -1,7 +1,9 @@
 # File: 09 Total population by nationality Spain 2004 2025
 # Total population by nationality - Spain
 ## Input file:  INE total and foreign population figures Spain.xlsx
+
 ## Source: INE (Instituto Nacional de Estadistica): Spanish equivalent to the Office for National Statistics
+
 ## Import third tab from Excel file called "INE_Total_foreign_population"
 
 # 1. Load required libraries
@@ -39,7 +41,7 @@ total_foreign_population_data
 head(total_foreign_population_data)
 names(total_foreign_population_data)
 
-# 04 We can also omit footntes importing data just up to row 22
+# 04 We can also omit footnotes importing data just up to row 22
 # To avoid all footnotes present in the original Excel file 
 # # n_max = 22  - Import just numeric information from source
 total_foreign_population_data <- read_excel(
@@ -48,7 +50,7 @@ total_foreign_population_data <- read_excel(
   clean_names()
 total_foreign_population_data
 
-# 05 Subset initial columns to keep relevant ones
+# 05 Rename columns
 # Also use select() statement from DPLYR to rename certain columns 
 names(total_foreign_population_data)
 
@@ -62,6 +64,20 @@ foreign_pop <- total_foreign_population_data
 # Rename columns
 # (date = todas_las_edades, Total_population = total,  )
 foreign_pop <- foreign_pop %>% 
-               select (date = todas_las_edades, Total_population = total)
+               select (date = todas_las_edades, total_population = total,
+                       foreign_population, percent_foreign_population = percent_foreign_nationals_total_population,
+                       total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
+                       foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
 foreign_pop
 
+foreign_pop
+
+# 06 Subset columns to replicate existing calculations
+# We are going to replicate existing calculations following this script I did in Python (jut to do a small exercise of comparing both coding languages side by side)
+# https://github.com/Pablo-source/ML-using-Python/blob/main/Seaborn_gallery/05_percent_stacked_barplot_population_nationality_v1.ipynb
+# The aim is to obtain the same staked bar plot for Spanish population by nationality 
+
+# I will call this new datraset "INE_population_subset"
+
+INE_population_subset = foreign_pop %>% select(date,total_population,foreign_population)
+INE_population_subset
