@@ -77,7 +77,7 @@ foreign_pop
 # https://github.com/Pablo-source/ML-using-Python/blob/main/Seaborn_gallery/05_percent_stacked_barplot_population_nationality_v1.ipynb
 # The aim is to obtain the same staked bar plot for Spanish population by nationality 
 
-# I will call this new dataset "INE_population_subset"
+# I will call this new dataset "INE_population_subset" 
 
 INE_population_subset = foreign_pop %>% select(date,total_population,foreign_population)
 INE_population_subset
