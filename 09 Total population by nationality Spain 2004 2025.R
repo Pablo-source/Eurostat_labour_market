@@ -81,3 +81,13 @@ foreign_pop
 
 INE_population_subset = foreign_pop %>% select(date,total_population,foreign_population)
 INE_population_subset
+
+# 07 Create new calculated fields
+
+# 7.1 New column for year variable 
+# Using substring() function 
+length(INE_population_subset$date)
+
+INE_population_subset <- INE_population_subset %>% 
+                         mutate(Year = substring(date, 15, 25))
+INE_population_subset
