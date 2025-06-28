@@ -108,3 +108,41 @@ INE_pop_nationality_long <- INE_population_nationality %>%
                             pivot_longer(cols = total_population:Spanish_nationals,
                                          names_to = "nationality", values_to = "population")
 INE_pop_nationality_long
+
+# 08 Build stacked barplot using geom_bar(position="stack")
+INE_population_stacked <- INE_pop_nationality_long %>% 
+                          select(Year,nationality,population) %>% 
+                          filter(nationality == c("foreign_population",
+                                                  "Spanish_nationals"))
+INE_population_stacked
+# Then plot this subset of data
+Spain_pop_natiolaity <- ggplot(INE_population_stacked, aes(fill = nationality, 
+                                                           y = population, x = Year)) +
+                        geom_bar(position="stack", stat = "identity")
+Spain_pop_natiolaity
+
+ggsave("plots_output/22_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
+
+# 09 Theme previous chart changing default legend text 
+options(scipen=999)
+      
+Spain_pop_nationality <- ggplot(INE_population_stacked, aes(fill = nationality, 
+                                                           y = population, x = Year)) +
+                        geom_bar(position="stack", stat = "identity") +
+                        labs(title = "Spanish population by nationality",
+                           subtitle ="2005-2025 period",
+                           # Change X and Y axis labels
+                           x = "Period", 
+                           y = "Population") +
+                        theme_light() +
+  # Change legend default text
+  scale_fill_discrete(labels=c('National', 'Foreign')) +
+  # Place legend at the bottom of the chart
+  theme(plot.title.position = "plot",
+     legend.position = "bottom")  +
+  # Change default colour for stacked bars (in both chart and legend)
+  scale_fill_manual(values = c("cornflowerblue","coral")) 
+Spain_pop_nationality
+ggsave("plots_output/23_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
+
+
