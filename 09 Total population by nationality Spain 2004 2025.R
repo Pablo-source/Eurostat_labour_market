@@ -91,3 +91,12 @@ length(INE_population_subset$date)
 INE_population_subset <- INE_population_subset %>% 
                          mutate(Year = substring(date, 15, 25))
 INE_population_subset
+
+# 7.2 New Column for Spanish Nationals
+# Substracting foreign population from Total population
+# Also sort data in ascending order by date
+INE_population_nationality = INE_population_subset %>% 
+                            select(Year,total_population, foreign_population) %>% 
+                            mutate(Spanish_nationals = total_population - foreign_population) %>% 
+                            arrange(Year)
+INE_population_nationality
