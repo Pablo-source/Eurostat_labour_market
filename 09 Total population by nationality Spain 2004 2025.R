@@ -95,8 +95,16 @@ INE_population_subset
 # 7.2 New Column for Spanish Nationals
 # Substracting foreign population from Total population
 # Also sort data in ascending order by date
-INE_population_nationality = INE_population_subset %>% 
+INE_population_nationality <-  INE_population_subset %>% 
                             select(Year,total_population, foreign_population) %>% 
                             mutate(Spanish_nationals = total_population - foreign_population) %>% 
                             arrange(Year)
 INE_population_nationality
+
+# 07 Reshape data from wide to long format
+# pivot_longer function from {tidyr}
+library(tidyr)
+INE_pop_nationality_long <- INE_population_nationality %>% 
+                            pivot_longer(cols = total_population:Spanish_nationals,
+                                         names_to = "nationality", values_to = "population")
+INE_pop_nationality_long
