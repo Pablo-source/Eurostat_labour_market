@@ -44,11 +44,23 @@ Parameterized reporting project using Eurostat labour market statistics
 
 ![EUCOUNTRIES_UNEMP_TEMP_EMP_batch02](https://github.com/user-attachments/assets/80d25fac-c223-4631-a154-e461a49ab839)
 
-## Plot 03. Bar plot including annotations
+## Plot 04. Bar plot including annotations
 
 - See script "**07_Annotate_curve_draw_straight_lines.R**" for details:
 - Used `annotate('curve')` to include straight line annotation to specific plot value
 - Included `geom_richtext()` function to add annotation buble to the chart
+
+## Plot 05. Stacked barplot population by nationality
+
+- See script "**09 Total population by nationality Spain 2004 2025.R**" for details:
+- Used `geom_bar()` in conjuntion with `position="stack"` to create a stacked bar plot
+- Also used  `scale_fill_discrete(labels=c())` to populate labels with custom text and `scale_fill_manual()` to populate legend with custom colour
+- In a future Quarto document, I will explore the relationship between Immigration and Labour market conditions in some European countries and also in the UK
+
+![23_Spain_population_by_nationality_2005_2025](https://github.com/user-attachments/assets/899f3ef8-bec9-4215-a4ee-6cd587a8fb8c)
+
+
+
 
 ![17_Bar_chart_annotation_segment_text_bubble_colour_highest_value](https://github.com/user-attachments/assets/6ee84592-5bac-4804-ab5f-68ae3d9b0b27)
 
