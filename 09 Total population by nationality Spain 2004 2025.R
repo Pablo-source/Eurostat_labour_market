@@ -145,7 +145,7 @@ Spain_pop_nationality <- ggplot(INE_population_stacked, aes(fill = nationality,
 Spain_pop_nationality
 ggsave("plots_output/23_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
 
-# 10 Include labels on bar charts
+# 10 Include labels on bar charts 
 options(scipen=999)
 
 Spain_pop_nationality_data_labels <- ggplot(INE_population_stacked, aes(fill = nationality, 
