@@ -145,4 +145,26 @@ Spain_pop_nationality <- ggplot(INE_population_stacked, aes(fill = nationality,
 Spain_pop_nationality
 ggsave("plots_output/23_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
 
+# 10 Include labels on bar charts
+options(scipen=999)
 
+Spain_pop_nationality_data_labels <- ggplot(INE_population_stacked, aes(fill = nationality, 
+                                                            y = population, x = Year)) +
+  geom_bar(position="stack", stat = "identity") +
+  labs(title = "Spanish population by nationality",
+       subtitle ="2005-2025 period",
+       # Change X and Y axis labels
+       x = "Period", 
+       y = "Population") +
+  theme_light() +
+  # Change legend default text
+  scale_fill_discrete(labels=c('National', 'Foreign')) +
+  # Place legend at the bottom of the chart
+  theme(plot.title.position = "plot",
+        legend.position = "bottom")  +
+  # Change default colour for stacked bars (in both chart and legend)
+  scale_fill_manual(values = c("cornflowerblue","coral")) +
+  # Include data labels on bars
+  geom_text(aes(label = population),position = position_dodge(width = 0.1),vjust = +0.20,hjust = 0.25)
+Spain_pop_nationality_data_labels
+ggsave("plots_output/24_Spain_population_by_nationality_2005_2025_data_labels.png", width = 6, height = 4)
