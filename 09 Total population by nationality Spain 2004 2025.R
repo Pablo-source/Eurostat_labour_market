@@ -174,3 +174,20 @@ ggsave("plots_output/24_Spain_population_by_nationality_2005_2025_data_labels.pn
 Foreign_pop <- INE_population_stacked %>% 
                filter(nationality == 'foreign_population')
 Foreign_pop
+
+# Initial barplot 
+options(scipen=999)
+
+Foreign_pop_plot <- Foreign_pop %>% 
+                    ggplot(aes(x = Year, y = population)) +  
+  geom_bar(stat = "identity",fill = "cornflowerblue") +
+  labs(title = "Foreign population in Spain.2005-2025 period",
+       subtitle ="Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  # Include data labels on bars
+  geom_text(aes(label = population),position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  # Remove x axis gap
+coord_cartesian( ylim=c(0,7500000), expand = FALSE )
+Foreign_pop_plot
+
+ggsave("plots_output/25_Spain_Foreign_population_2005_2025_data_labels.png", width = 6, height = 4)
