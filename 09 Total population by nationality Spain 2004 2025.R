@@ -168,3 +168,9 @@ Spain_pop_nationality_data_labels <- ggplot(INE_population_stacked, aes(fill = n
   geom_text(aes(label = population),position = position_dodge(width = 0.1),vjust = +0.20,hjust = 0.25)
 Spain_pop_nationality_data_labels
 ggsave("plots_output/24_Spain_population_by_nationality_2005_2025_data_labels.png", width = 6, height = 4)
+
+# 11 Bar chart Foreign population 
+
+Foreign_pop <- INE_population_stacked %>% 
+               filter(nationality == 'foreign_population')
+Foreign_pop
