@@ -145,7 +145,7 @@ Spain_pop_nationality <- ggplot(INE_population_stacked, aes(fill = nationality,
 Spain_pop_nationality
 ggsave("plots_output/23_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
 
-# 10 Include labels on bar charts 
+# 10 Include labels on "Spanish population by nationality" Stacked bar chart 
 options(scipen=999)
 
 Spain_pop_nationality_data_labels <- ggplot(INE_population_stacked, aes(fill = nationality, 
@@ -169,7 +169,7 @@ Spain_pop_nationality_data_labels <- ggplot(INE_population_stacked, aes(fill = n
 Spain_pop_nationality_data_labels
 ggsave("plots_output/24_Spain_population_by_nationality_2005_2025_data_labels.png", width = 6, height = 4)
 
-# 11 Bar chart Foreign population 
+# 11 Foreign population Bar chart
 
 Foreign_pop <- INE_population_stacked %>% 
                filter(nationality == 'foreign_population')
@@ -191,3 +191,5 @@ coord_cartesian( ylim=c(0,7500000), expand = FALSE )
 Foreign_pop_plot
 
 ggsave("plots_output/25_Spain_Foreign_population_2005_2025_data_labels.png", width = 6, height = 4)
+
+# 12 New Spanish population Bar chart 
