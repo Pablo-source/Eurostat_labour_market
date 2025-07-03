@@ -268,4 +268,4 @@ Percentage_foreign_pop <- Spain_nationality_percentage %>%
 Percentage_foreign_pop
 ggsave("plots_output/28_Spain_proportion_foreign_pop_over_total_population_2005_2025.png", width = 6, height = 4)
 
-# All required plots describing national and foreign population in Spain completed.
+# All required plots describing national and foreign population in Spain completed. 
