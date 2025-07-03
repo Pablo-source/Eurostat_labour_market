@@ -1,4 +1,4 @@
-# File: 09 Total population by nationality Spain 2004 2025
+# File: 09 Total population by nationality Spain 2004 2025.R
 # Total population by nationality - Spain
 ## Input file:  INE total and foreign population figures Spain.xlsx
 
@@ -145,7 +145,7 @@ Spain_pop_nationality <- ggplot(INE_population_stacked, aes(fill = nationality,
 Spain_pop_nationality
 ggsave("plots_output/23_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
 
-# 10 Include labels on bar charts 
+# 10 Include labels on "Spanish population by nationality" Stacked bar chart 
 options(scipen=999)
 
 Spain_pop_nationality_data_labels <- ggplot(INE_population_stacked, aes(fill = nationality, 
@@ -169,7 +169,7 @@ Spain_pop_nationality_data_labels <- ggplot(INE_population_stacked, aes(fill = n
 Spain_pop_nationality_data_labels
 ggsave("plots_output/24_Spain_population_by_nationality_2005_2025_data_labels.png", width = 6, height = 4)
 
-# 11 Bar chart Foreign population 
+# 11 Foreign population Bar chart
 
 Foreign_pop <- INE_population_stacked %>% 
                filter(nationality == 'foreign_population')
@@ -191,3 +191,81 @@ coord_cartesian( ylim=c(0,7500000), expand = FALSE )
 Foreign_pop_plot
 
 ggsave("plots_output/25_Spain_Foreign_population_2005_2025_data_labels.png", width = 6, height = 4)
+
+# 12 New Spanish population Bar chart 
+# Subset Spanish_nationals from INE_population_stacked dataframe:
+
+# > INE_population_stacked
+# A tibble: 22 × 3
+# Year  nationality        population
+# <chr> <chr>                   <dbl>
+#  1 2005  foreign_population    3430204
+# 2 2005  Spanish_nationals    39866131
+
+Spanish_nationals_population <- INE_population_stacked %>% 
+                                filter(nationality == 'Spanish_nationals')
+Spanish_nationals_population
+
+Spanish_population_plot <- Spanish_nationals_population %>% 
+                            ggplot(aes(x= Year, y = population)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "Spanish nationals population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  geom_text(aes(label = population),position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,50000000), expand = FALSE )
+
+Spanish_population_plot
+
+ggsave("plots_output/26_Spain_nationals_population_2005_2025_data_labels.png", width = 6, height = 4)
+
+# Including thousands separator in data labels displayed in bar plot using format() function
+# label = format(population, big.mark = ",")
+Spanish_population_plot_fmtd <- Spanish_nationals_population %>% 
+  ggplot(aes(x= Year, y = population)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "Spanish nationals population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  geom_text(aes(
+                label = format(population, big.mark = ",")
+                
+                ),position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,50000000), expand = FALSE )
+
+Spanish_population_plot_fmtd
+ggsave("plots_output/27_Spain_nationals_population_2005_2025_data_labels_fmtd.png", width = 6, height = 4)
+
+# 13 Create percentage of foreign population from total population in Spain bar chart
+# I will use mutate() to create several calculations from the original INE_population_subset data
+Spain_nationality_percentage <-  INE_population_subset %>% 
+  select(Year,total_population, foreign_population) %>% 
+  mutate(Spanish_nationals = total_population - foreign_population) %>% 
+  arrange(Year)
+Spain_nationality_percentage
+
+# Then I will compute the share of foreign_population over Total population 
+Spain_nationality_percentage <-  INE_population_subset %>% 
+  select(Year,total_population, foreign_population) %>% 
+  mutate(Spanish_nationals = total_population - foreign_population) %>% 
+  arrange(Year) %>% 
+  # new calculation to obtain share of foreign population over total population
+  mutate(
+    foreign_percent_total = round(foreign_population/total_population*100)
+      )
+Spain_nationality_percentage
+## Plot chart of percentage of foreign population of total population
+Percentage_foreign_pop <- Spain_nationality_percentage %>% 
+  ggplot(aes(x= Year, y = foreign_percent_total)) +
+  geom_bar(stat = "identity", fill = "darkturquoise") +
+  labs(title = "Spain. Percent of foreign nationals from total population. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  geom_text(aes(
+    label = format(foreign_percent_total, big.mark = ",")),
+    position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,20), expand = FALSE )
+Percentage_foreign_pop
+ggsave("plots_output/28_Spain_proportion_foreign_pop_over_total_population_2005_2025.png", width = 6, height = 4)
+
+# All required plots describing national and foreign population in Spain completed. 
