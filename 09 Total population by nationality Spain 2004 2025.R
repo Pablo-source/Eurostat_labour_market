@@ -1,4 +1,4 @@
-# File: 09 Total population by nationality Spain 2004 2025
+# File: 09 Total population by nationality Spain 2004 2025.R
 # Total population by nationality - Spain
 ## Input file:  INE total and foreign population figures Spain.xlsx
 
@@ -193,3 +193,13 @@ Foreign_pop_plot
 ggsave("plots_output/25_Spain_Foreign_population_2005_2025_data_labels.png", width = 6, height = 4)
 
 # 12 New Spanish population Bar chart 
+# Subset Spanish_nationals from INE_population_stacked dataframe:
+
+# > INE_population_stacked
+# A tibble: 22 × 3
+# Year  nationality        population
+# <chr> <chr>                   <dbl>
+#  1 2005  foreign_population    3430204
+# 2 2005  Spanish_nationals    39866131
+
+
