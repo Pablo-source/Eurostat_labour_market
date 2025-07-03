@@ -234,5 +234,26 @@ Spanish_population_plot_fmtd <- Spanish_nationals_population %>%
   coord_cartesian( ylim=c(0,50000000), expand = FALSE )
 
 Spanish_population_plot_fmtd
+ggsave("plots_output/27_Spain_nationals_population_2005_2025_data_labels_fmtd.png", width = 6, height = 4)
 
-# 13 
+# 13 Create percentage of foreign population from total population in Spain bar chart
+# I will use mutate() to create several calculations from the original INE_population_subset data
+Spain_nationality_percentage <-  INE_population_subset %>% 
+  select(Year,total_population, foreign_population) %>% 
+  mutate(Spanish_nationals = total_population - foreign_population) %>% 
+  arrange(Year)
+Spain_nationality_percentage
+
+# Then I will compute the share of foreign_population over Total population 
+Spain_nationality_percentage <-  INE_population_subset %>% 
+  select(Year,total_population, foreign_population) %>% 
+  mutate(Spanish_nationals = total_population - foreign_population) %>% 
+  arrange(Year) %>% 
+  # new calculation to obtain share of foreign population over total population
+  mutate(
+    foreign_percent_total = round(foreign_population/total_population*100)
+      )
+Spain_nationality_percentage
+
+
+
