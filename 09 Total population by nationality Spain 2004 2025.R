@@ -202,4 +202,37 @@ ggsave("plots_output/25_Spain_Foreign_population_2005_2025_data_labels.png", wid
 #  1 2005  foreign_population    3430204
 # 2 2005  Spanish_nationals    39866131
 
+Spanish_nationals_population <- INE_population_stacked %>% 
+                                filter(nationality == 'Spanish_nationals')
+Spanish_nationals_population
 
+Spanish_population_plot <- Spanish_nationals_population %>% 
+                            ggplot(aes(x= Year, y = population)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "Spanish nationals population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  geom_text(aes(label = population),position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,50000000), expand = FALSE )
+
+Spanish_population_plot
+
+ggsave("plots_output/26_Spain_nationals_population_2005_2025_data_labels.png", width = 6, height = 4)
+
+# Including thousands separator in data labels displayed in bar plot using format() function
+# label = format(population, big.mark = ",")
+Spanish_population_plot_fmtd <- Spanish_nationals_population %>% 
+  ggplot(aes(x= Year, y = population)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "Spanish nationals population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  geom_text(aes(
+                label = format(population, big.mark = ",")
+                
+                ),position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,50000000), expand = FALSE )
+
+Spanish_population_plot_fmtd
+
+# 13 
