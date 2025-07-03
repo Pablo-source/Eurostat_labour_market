@@ -254,6 +254,17 @@ Spain_nationality_percentage <-  INE_population_subset %>%
     foreign_percent_total = round(foreign_population/total_population*100)
       )
 Spain_nationality_percentage
-
-
+## Plot chart of percentage of foreign population of total population
+Percentage_foreign_pop <- Spain_nationality_percentage %>% 
+  ggplot(aes(x= Year, y = foreign_percent_total)) +
+  geom_bar(stat = "identity", fill = "darkturquoise") +
+  labs(title = "Spain. Percent of foreign nationals from total population. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  geom_text(aes(
+    label = format(foreign_percent_total, big.mark = ",")),
+    position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,20), expand = FALSE )
+Percentage_foreign_pop
+ggsave("plots_output/28_Spain_proportion_foreign_pop_over_total_population_2005_2025.png", width = 6, height = 4)
 
