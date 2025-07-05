@@ -1,0 +1,91 @@
+---
+title: "Recent Spain population trends"
+author: "PLR"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readxl)
+library(here)
+library(dplyr)
+library(janitor)
+library(ggplot2)
+library(gt)
+library(lubridate)
+```
+
+## Latest date this report was produced
+
+Today's date is **`r format(today(),"%d %B %Y")`**. This report was published on the week starting on  **`r format(today()-2,"%d %B %Y")`**. 
+
+
+## 1. Load Spanish population data
+
+We load latest Spanish Population Figures released by the Spanish National Institute: <https://www.ine.es/consul/serie.do?d=true&s=ECP320>
+
+In the third tab from Excel file **"INE total and foreign population figures Spain.xlsx"** we load the table describing Total, foreign and nationals population figures in Spain, based on Spanish nationality for the 2004 2025 period.
+
+```{r Load spanish population data, echo=FALSE}
+list.files (path = "./data" ,pattern = "xlsx$")
+excel_sheets("./data/INE total and foreign population figures Spain.xlsx")
+```
+
+
+```{r read Excek into R, echo=TRUE}
+population_data <- read_excel(
+  here("data", "INE total and foreign population figures Spain.xlsx"), 
+  sheet = "INE_Total_foreign_population", skip =2, n_max = 22,
+  col_types = c("guess", "numeric", "numeric", "guess","guess","guess","guess","guess")) %>% 
+  clean_names() %>% 
+               select (date = todas_las_edades, total_population = total,
+                       foreign_population, percent_foreign_population = percent_foreign_nationals_total_population,
+                       total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
+                       foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
+population_data
+
+head(population_data)
+names(population_data)
+```
+
+
+## 2. Cleanse Spain populations figures data
+
+From the newly on boarded data, we create a new Year variable from initial date column. As we only want to display Year values.
+
+```{r cleansing_inpported data, echo=TRUE}
+INE_population_subset <- population_data %>%
+                         select(date,total_population,foreign_population) %>% 
+                         mutate(Year = substring(date, 15, 25)) 
+INE_population_subset
+```
+```{r creating_first_calculations, echo=TRUE}
+INE_calc_fields <- INE_population_subset %>%                          
+                         select(Year,total_population,foreign_population) %>% 
+                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
+                         arrange(Year)
+INE_calc_fields
+```
+
+## 3.  Spain population figures Overveiw details 
+
+In this section we highlight a couple of trends observed in both Total and foreign population in Spain from 2004 until 2025 period.
+
+```{r Population figures overview, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
+# Total population figures overview
+
+Max_total_population <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == max(INE_calc_fields$Year))
+Max_total_population
+
+
+Min_total_population <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == min(INE_calc_fields$Year))
+Min_total_population
+
+
+```
+
+- As of 1st of January **`r (Max_total_population$Year)`**., the year for the latest available population figures, Total population in Spain was  **`r prettyNum(Max_total_population$total_population, big.mark=",")`**. Up by 458,253 from previous year.
+
+- This is a population increase of () from the initial figure of **`r prettyNum(Min_total_population$total_population, big.mark=",")`**, in **`r (Min_total_population$Year)`**.
+
+
