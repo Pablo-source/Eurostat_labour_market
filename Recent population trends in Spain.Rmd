@@ -95,6 +95,14 @@ foreign_pop_last_year <- INE_calc_fields  %>% select (Year,foreign_population) %
 
 - At the end of the series on 1st January **`r (foreign_pop_last_year$Year)`**, latest foreign population figures in Spain was **`r prettyNum(foreign_pop_last_year$foreign_population, big.mark=",")`**. We will describe these population changes in absolute figures and percent change in the next section below.
 
+### 3.1 Share of foreign population over total population in Spain
+
+Next, we describe the foreign population percent share of the total population in Spain in the 2004-2025 period.
+
+
+## 4. Year on year increase in total and forein population in Spain
+
+In this section we will include several calculations to describe the year on year change in Total, national and foreign population in Spain. And also we will include population change for the entire period considered 2004-2025.
 
 - This is a population increase of () from the initial figure of **`r prettyNum(Min_total_population$total_population, big.mark=",")`**, in **`r (Min_total_population$Year)`**.
 
