@@ -34,7 +34,7 @@ excel_sheets("./data/INE total and foreign population figures Spain.xlsx")
 
 ```{r read Excek into R, echo=TRUE}
 population_data <- read_excel(
-  here("data", "INE total and foreign population figures Spain.xlsx"), 
+  here("data_demography", "INE total and foreign population figures Spain.xlsx"), 
   sheet = "INE_Total_foreign_population", skip =2, n_max = 22,
   col_types = c("guess", "numeric", "numeric", "guess","guess","guess","guess","guess")) %>% 
   clean_names() %>% 
