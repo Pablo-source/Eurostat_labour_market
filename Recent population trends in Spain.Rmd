@@ -91,7 +91,7 @@ foreign_pop_last_year <- INE_calc_fields  %>% select (Year,foreign_population) %
 
 - In contrast, on the year **`r (Min_total_population$Year)`**, the first year on this series, total population in Spain was **`r prettyNum(Min_total_population$total_population, big.mark=",")`**. 
 
-- In terms of foreign population, there was a foreign population of **`r prettyNum(foreign_pop_first_year$foreign_population, big.mark=",")`** on that same initial year **`r (foreign_pop_first_year$Year)`**.
+- In terms of foreign population, on the following year **`r (foreign_pop_first_year$Year)`**.there was a foreign population of **`r prettyNum(foreign_pop_first_year$foreign_population, big.mark=",")`** 
 
 - At the end of the series on 1st January **`r (foreign_pop_last_year$Year)`**, latest foreign population figures in Spain was **`r prettyNum(foreign_pop_last_year$foreign_population, big.mark=",")`**. We will describe these population changes in absolute figures and percent change in the next section below.
 
