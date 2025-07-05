@@ -97,7 +97,7 @@ foreign_pop_last_year <- INE_calc_fields  %>% select (Year,foreign_population) %
 
 ### 3.1 Share of foreign population over total population in Spain
 
-Next, we describe the foreign population percent share of the total population in Spain in the 2004-2025 period.
+Next, we describe the foreign population percent share of the total population in Spain for the 2004-2025 period.
 
 
 ## 4. Year on year increase in total and forein population in Spain
