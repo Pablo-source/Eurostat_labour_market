@@ -20,15 +20,15 @@ library(lubridate)
 Today's date is **`r format(today(),"%d %B %Y")`**. This report was published on the week starting on  **`r format(today()-2,"%d %B %Y")`**. 
 
 
-## 1. Load Spanish population data
+## 1. Load Spain population data
 
 We load latest Spanish Population Figures released by the Spanish National Institute: <https://www.ine.es/consul/serie.do?d=true&s=ECP320>
 
 In the third tab from Excel file **"INE total and foreign population figures Spain.xlsx"** we load the table describing Total, foreign and nationals population figures in Spain, based on Spanish nationality for the 2004 2025 period.
 
 ```{r Load spanish population data, echo=FALSE}
-list.files (path = "./data" ,pattern = "xlsx$")
-excel_sheets("./data/INE total and foreign population figures Spain.xlsx")
+list.files (path = "./data_demography" ,pattern = "xlsx$")
+excel_sheets("./data_demography/INE total and foreign population figures Spain.xlsx")
 ```
 
 
@@ -82,18 +82,19 @@ Min_total_population <- INE_calc_fields  %>% select (Year,total_population) %>% 
 Min_total_population
 
 # Foreign population figures overview
-foreign_pop_first_year <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == min(INE_calc_fields$Year))
-Min_total_population
+foreign_pop_first_year <- INE_calc_fields  %>% select (Year,foreign_population) %>% filter(Year == 2005)
 
-foreign_pop_last_year <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == max(INE_calc_fields$Year))
-
+foreign_pop_last_year <- INE_calc_fields  %>% select (Year,foreign_population) %>% filter(Year == 2025)
 ```
 
 - As of 1st of January **`r (Max_total_population$Year)`**., the year for the latest available population figures, Total population in Spain was  **`r prettyNum(Max_total_population$total_population, big.mark=",")`**. Up by 458,253 from previous year.
 
 - In contrast, on the year **`r (Min_total_population$Year)`**, the first year on this series, total population in Spain was **`r prettyNum(Min_total_population$total_population, big.mark=",")`**. 
 
-- In terms of foreign population, 
+- In terms of foreign population, there was a foreign population of **`r prettyNum(foreign_pop_first_year$foreign_population, big.mark=",")`** on that same initial year **`r (foreign_pop_first_year$Year)`**.
+
+- At the end of the series on 1st January **`r (foreign_pop_last_year$Year)`**, latest foreign population figures in Spain was **`r prettyNum(foreign_pop_last_year$foreign_population, big.mark=",")`**. We will describe these population changes in absolute figures and percent change in the next section below.
+
 
 - This is a population increase of () from the initial figure of **`r prettyNum(Min_total_population$total_population, big.mark=",")`**, in **`r (Min_total_population$Year)`**.
 
