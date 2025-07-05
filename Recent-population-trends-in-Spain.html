@@ -362,8 +362,8 @@ display: none;
 <p>Today’s date is <strong>05 July 2025</strong>. This report was
 published on the week starting on <strong>03 July 2025</strong>.</p>
 </div>
-<div id="load-spanish-population-data" class="section level2">
-<h2>1. Load Spanish population data</h2>
+<div id="load-spain-population-data" class="section level2">
+<h2>1. Load Spain population data</h2>
 <p>We load latest Spanish Population Figures released by the Spanish
 National Institute: <a href="https://www.ine.es/consul/serie.do?d=true&amp;s=ECP320" class="uri">https://www.ine.es/consul/serie.do?d=true&amp;s=ECP320</a></p>
 <p>In the third tab from Excel file <strong>“INE total and foreign
@@ -374,7 +374,7 @@ Spanish nationality for the 2004 2025 period.</p>
 <pre><code>## [1] &quot;INE_Foreign_population&quot;       &quot;INE_Total_population&quot;        
 ## [3] &quot;INE_Total_foreign_population&quot;</code></pre>
 <pre class="r"><code>population_data &lt;- read_excel(
-  here(&quot;data&quot;, &quot;INE total and foreign population figures Spain.xlsx&quot;), 
+  here(&quot;data_demography&quot;, &quot;INE total and foreign population figures Spain.xlsx&quot;), 
   sheet = &quot;INE_Total_foreign_population&quot;, skip =2, n_max = 22,
   col_types = c(&quot;guess&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;guess&quot;,&quot;guess&quot;,&quot;guess&quot;,&quot;guess&quot;,&quot;guess&quot;)) %&gt;% 
   clean_names() %&gt;% 
@@ -471,6 +471,16 @@ Total and foreign population in Spain from 2004 until 2025 period.</p>
 <li><p>As of 1st of January <strong>2025</strong>., the year for the
 latest available population figures, Total population in Spain was
 <strong>49,077,984</strong>. Up by 458,253 from previous year.</p></li>
+<li><p>In contrast, on the year <strong>2004</strong>, the first year on
+this series, total population in Spain was
+<strong>42,547,454</strong>.</p></li>
+<li><p>In terms of foreign population, there was a foreign population of
+<strong>3,430,204</strong> on that same initial year
+<strong>2005</strong>.</p></li>
+<li><p>At the end of the series on 1st January <strong>2025</strong>,
+latest foreign population figures in Spain are
+<strong>6,852,348</strong>. We will describe these population changes in
+absolute figures and percent change in the next section below.</p></li>
 <li><p>This is a population increase of () from the initial figure of
 <strong>42,547,454</strong>, in <strong>2004</strong>.</p></li>
 </ul>

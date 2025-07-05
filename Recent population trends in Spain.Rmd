@@ -81,10 +81,19 @@ Max_total_population
 Min_total_population <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == min(INE_calc_fields$Year))
 Min_total_population
 
+# Foreign population figures overview
+foreign_pop_first_year <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == min(INE_calc_fields$Year))
+Min_total_population
+
+foreign_pop_last_year <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == max(INE_calc_fields$Year))
 
 ```
 
 - As of 1st of January **`r (Max_total_population$Year)`**., the year for the latest available population figures, Total population in Spain was  **`r prettyNum(Max_total_population$total_population, big.mark=",")`**. Up by 458,253 from previous year.
+
+- In contrast, on the year **`r (Min_total_population$Year)`**, the first year on this series, total population in Spain was **`r prettyNum(Min_total_population$total_population, big.mark=",")`**. 
+
+- In terms of foreign population, 
 
 - This is a population increase of () from the initial figure of **`r prettyNum(Min_total_population$total_population, big.mark=",")`**, in **`r (Min_total_population$Year)`**.
 
