@@ -85,21 +85,39 @@ Spanish_population_plot <- INE_calc_fields %>%
 
 Spanish_population_plot
 ```
+
 Then this is the foreign population in Spain for the same time period.
-```{r Spain total population bar plot, echo=TRUE}
-INE_calc_fields <- INE_population_subset %>%                          
-                         select(Year,total_population,foreign_population) %>% 
-                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
-                         arrange(Year)
-INE_calc_fields
+
+```{r Spain foreign population bar plot, echo=TRUE}
+options(scipen=999)
+
+forign_population_plot <- INE_calc_fields %>% 
+                            ggplot(aes(x= Year, y = foreign_population)) +
+  geom_bar(stat = "identity", fill = "cornflowerblue") +
+  labs(title = "Foreign population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
+  geom_text(aes(label = foreign_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,7500000), expand = FALSE )
+
+forign_population_plot
 ```
 This last plot displays national population in Spain for the 2005-2025 period
-```{r Spain total population bar plot, echo=TRUE}
-INE_calc_fields <- INE_population_subset %>%                          
-                         select(Year,total_population,foreign_population) %>% 
-                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
-                         arrange(Year)
-INE_calc_fields
+```{r Spain national population bar plot, echo=TRUE}
+options(scipen=999)
+
+national_population_plot <- INE_calc_fields %>% 
+                            ggplot(aes(x= Year, y = Spanish_nationals)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "Spanish nationals population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
+  geom_text(aes(label = Spanish_nationals),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,46000000), expand = FALSE )
+
+national_population_plot
 ```
 
 
