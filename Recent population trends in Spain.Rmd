@@ -67,6 +67,34 @@ INE_calc_fields <- INE_population_subset %>%
 INE_calc_fields
 ```
 
+These charts below describe the evolution of Total, foreign and spanish nationals population for the 2005-2025 period:
+
+- Spain total population
+```{r Spain total population bar plot, echo=TRUE}
+INE_calc_fields <- INE_population_subset %>%                          
+                         select(Year,total_population,foreign_population) %>% 
+                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
+                         arrange(Year)
+INE_calc_fields
+```
+Then this is the foreign population in Spain for the same time period.
+```{r Spain total population bar plot, echo=TRUE}
+INE_calc_fields <- INE_population_subset %>%                          
+                         select(Year,total_population,foreign_population) %>% 
+                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
+                         arrange(Year)
+INE_calc_fields
+```
+This last plot displays national population in Spain for the 2005-2025 period
+```{r Spain total population bar plot, echo=TRUE}
+INE_calc_fields <- INE_population_subset %>%                          
+                         select(Year,total_population,foreign_population) %>% 
+                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
+                         arrange(Year)
+INE_calc_fields
+```
+
+
 ## 3.  Spain population figures Overveiw details 
 
 In this section we highlight a couple of trends observed in both Total and foreign population in Spain from 2004 until 2025 period.
