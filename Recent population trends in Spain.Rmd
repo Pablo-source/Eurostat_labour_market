@@ -71,11 +71,19 @@ These charts below describe the evolution of Total, foreign and spanish national
 
 - Spain total population
 ```{r Spain total population bar plot, echo=TRUE}
-INE_calc_fields <- INE_population_subset %>%                          
-                         select(Year,total_population,foreign_population) %>% 
-                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
-                         arrange(Year)
-INE_calc_fields
+options(scipen=999)
+
+Spanish_population_plot <- INE_calc_fields %>% 
+                            ggplot(aes(x= Year, y = total_population)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "Total population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+
+  geom_text(aes(label = total_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,55000000), expand = FALSE )
+
+Spanish_population_plot
 ```
 Then this is the foreign population in Spain for the same time period.
 ```{r Spain total population bar plot, echo=TRUE}
