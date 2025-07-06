@@ -75,11 +75,11 @@ options(scipen=999)
 
 Spanish_population_plot <- INE_calc_fields %>% 
                             ggplot(aes(x= Year, y = total_population)) +
-  geom_bar(stat = "identity", fill = "coral") +
-  labs(title = "Total population in Spain. 2005-2025 period",
+  geom_bar(stat = "identity", fill = "darkolivegreen2") +
+  labs(title = "Spain total poulation. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
   theme_light() +
-
+  theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
   geom_text(aes(label = total_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,55000000), expand = FALSE )
 
