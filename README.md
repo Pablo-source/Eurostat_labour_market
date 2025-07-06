@@ -1,6 +1,21 @@
 # Eurostat_labour_market
 Parameterized reporting project using Eurostat labour market statistics
 
+- This project will combine different statistical sources from several European countries (Spain, Greece, France, Germany) as well as statistics from the UK to compare social conditions of the population across different topics such as employment, migration and social conditions.
+
+- First section will provide general **ggplot2** charts with **customised formatting** and **small multiples** statistics to easy comparison of metrics across several countries and once.
+- Then I will create a **markdown document** to show how different charts can be combined to feed a **markdown report template**
+- Following this **markdown reports** y will create several **Quarto reports** to display information about Immigration changes over last 10 years across different countries and social conditions such as changes in the **Active** and **Inactive** rates across countries and job market conditions (temporary contracts and unmemployment).
+- Finally I will provide an example on how to design and replicate a **Parameterized** report populated with the above set of indicators. This Parametrized report will allow to tweak several parameters to produce different reports for several countries based on a single set of **parameters**, that will be fed to the **quarto** report everytime it runs.
+- It is an example on how to apply **RAP** (Reproducible Analytical Pipelines)  and **DRY** (Don't Repeat Yoursefl) principles, in a work environment that would need to automate any reporting.
+- For further details on how to turn this project into a **pipeline** plese this this other repo I created some months ago: <https://github.com/Pablo-source/targets-test>. Using {targets} package with several **pipelines examples** ready to be cloned from the repo and run them locally. Details for {Targets} pacakge from its GitHub repo: <https://github.com/ropensci/targets>
+
+
+## Parameterized report
+- A **parameterized report** is a report that accepts input values, called parameters, which are used to customize the report’s output.
+- This will allow me to create a single template to generate multiple reports from a single script, by varying the parameter values. 
+
+
 ## Small multiples. Temporary employment and unemployment in the EU by conuntry
 
 ## Indicator: Unemployment rate
