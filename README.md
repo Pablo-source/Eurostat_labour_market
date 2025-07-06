@@ -16,7 +16,7 @@ Parameterized reporting project using Eurostat labour market statistics
 - This will allow me to create a single template to generate multiple reports from a single script, by varying the parameter values. 
 
 
-## Small multiples. Temporary employment and unemployment in the EU by conuntry
+## Section 01. Small multiples. Temporary employment and unemployment in the EU by conuntry
 
 ## Indicator: Unemployment rate
 - Unemployment by sex and age – annual data – Online data code: une_rt_a
