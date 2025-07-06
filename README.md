@@ -1,7 +1,7 @@
 # Eurostat_labour_market
 Parameterized reporting project using Eurostat labour market statistics
 
-- This project will combine different statistical sources from several European countries (Spain, Greece, France, Germany) as well as statistics from the UK to compare social conditions of the population across different topics such as employment, migration and social conditions.
+- This project will combine different statistical sources from several European countries (**Spain, Greece, France, Germany, Italy, Greece**) as well as statistics from the **UK** to compare **social conditions of the population** across different topics such as **employment**, **migration** and **social determinants of health**.
 
 - First section will provide general **ggplot2** charts with **customised formatting** and **small multiples** statistics to easy comparison of metrics across several countries and once.
 - Then I will create a **markdown document** to show how different charts can be combined to feed a **markdown report template**
