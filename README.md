@@ -1,5 +1,5 @@
 # Eurostat_labour_market
-Parameterized reporting project using Eurostat labour market statistics
+**Parameterized reporting project** using Eurostat, ONS, INE, and OCDE official statistics
 
 - This project will combine different statistical sources from several European countries (**Spain, Greece, France, Germany, Italy, Greece**) as well as statistics from the **UK** to compare **social conditions of the population** across different topics such as **employment**, **migration** and **social determinants of health**.
 
