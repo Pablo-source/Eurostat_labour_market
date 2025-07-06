@@ -7,7 +7,7 @@ Parameterized reporting project using Eurostat labour market statistics
 - Then I will create a **markdown document** to show how different charts can be combined to feed a **markdown report template**
 - Following this **markdown reports** y will create several **Quarto reports** to display information about Immigration changes over last 10 years across different countries and social conditions such as changes in the **Active** and **Inactive** rates across countries and job market conditions (temporary contracts and unmemployment).
 - Finally I will provide an example on how to design and replicate a **Parameterized** report populated with the above set of indicators. This Parametrized report will allow to tweak several parameters to produce different reports for several countries based on a single set of **parameters**, that will be fed to the **quarto** report everytime it runs.
-- It is an example on how to apply **RAP** (Reproducible Analytical Pipelines)  and **DRY** (Don't Repeat Yoursefl) principles, in a work environment that would need to automate any reporting.
+- This project intends to be an example on how to apply **RAP** (Reproducible Analytical Pipelines)  and **DRY** (Don't Repeat Yoursefl) principles, in a work environment that would need to automate any reporting.
 - For further details on how to turn this project into a **pipeline** plese this this other repo I created some months ago: <https://github.com/Pablo-source/targets-test>. Using {targets} package with several **pipelines examples** ready to be cloned from the repo and run them locally. Details for {Targets} pacakge from its GitHub repo: <https://github.com/ropensci/targets>
 
 
