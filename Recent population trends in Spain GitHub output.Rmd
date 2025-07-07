@@ -42,7 +42,6 @@ population_data <- read_excel(
                        foreign_population, percent_foreign_population = percent_foreign_nationals_total_population,
                        total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
                        foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
-population_data
 
 head(population_data)
 names(population_data)
@@ -103,8 +102,11 @@ forign_population_plot <- INE_calc_fields %>%
 
 forign_population_plot
 ```
+
+
 This last plot displays national population in Spain for the 2005-2025 period
-```{r Spain national population bar plot, echo=TRUE}
+
+```{r Spain national population bar plot, echo=TRUE, warning=FALSE}
 options(scipen=999)
 
 national_population_plot <- INE_calc_fields %>% 
