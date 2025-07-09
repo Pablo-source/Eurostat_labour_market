@@ -32,7 +32,7 @@ excel_sheets("./data_demography/INE total and foreign population figures Spain.x
 ```
 
 
-```{r read Excek into R, echo=TRUE}
+```{r read Excek into R, echo=TRUE,warning=FALSE,message=FALSE}
 population_data <- read_excel(
   here("data_demography", "INE total and foreign population figures Spain.xlsx"), 
   sheet = "INE_Total_foreign_population", skip =2, n_max = 22,
@@ -53,13 +53,13 @@ names(population_data)
 
 From the newly on boarded data, we create a new Year variable from initial date column. As we only want to display Year values.
 
-```{r cleansing_inpported data, echo=TRUE}
+```{r cleansing_inpported data, echo=TRUE,warning=FALSE,message=FALSE}
 INE_population_subset <- population_data %>%
                          select(date,total_population,foreign_population) %>% 
                          mutate(Year = substring(date, 15, 25)) 
 INE_population_subset
 ```
-```{r creating_first_calculations, echo=TRUE}
+```{r creating_first_calculations, echo=TRUE,warning=FALSE,message=FALSE}
 INE_calc_fields <- INE_population_subset %>%                          
                          select(Year,total_population,foreign_population) %>% 
                          mutate(Spanish_nationals = total_population - foreign_population) %>% 
@@ -70,7 +70,7 @@ INE_calc_fields
 These charts below describe the evolution of Total, foreign and spanish nationals population for the 2005-2025 period:
 
 - Spain total population
-```{r Spain total population bar plot, echo=TRUE}
+```{r Spain total population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
 options(scipen=999)
 
 Spanish_population_plot <- INE_calc_fields %>% 
@@ -88,7 +88,7 @@ Spanish_population_plot
 
 Then this is the foreign population in Spain for the same time period.
 
-```{r Spain foreign population bar plot, echo=TRUE}
+```{r Spain foreign population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
 options(scipen=999)
 
 forign_population_plot <- INE_calc_fields %>% 
@@ -104,7 +104,7 @@ forign_population_plot <- INE_calc_fields %>%
 forign_population_plot
 ```
 This last plot displays national population in Spain for the 2005-2025 period
-```{r Spain national population bar plot, echo=TRUE}
+```{r Spain national population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
 options(scipen=999)
 
 national_population_plot <- INE_calc_fields %>% 
