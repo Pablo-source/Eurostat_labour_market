@@ -32,54 +32,58 @@ head(temporary_data)
 # 1.3 Combine above two existing dataframes “unem_data” and “temporary_data” 
 # 13/07/2025 > into a single dataframe called EU_UNEMP_TEMP_INDICATORS
 
+head(unemp_data)
+head(temporary_data)
+
+unemp_data_long <- unemp_data %>% mutate(metric_name = 'unemp_rate') %>% 
+                        select(date,country,metric_name,metric_value = unemp_rate )
+tail(unemp_data_long)
+
+temporary_data_long <- temporary_data %>% mutate(metric_name = 'temporary_rate') %>% 
+                        select(date,country,metric_name,metric_value = temporary_rate )
+
+tail(unemp_data_long)
+tail(temporary_data_long)
+
+# Now I have all two initial dataframes in long format to combine them using bind_rows() function
 
 
-# 2. Test first on a small sample of countries. 
-#    Combine both indicators together
+EU_TEMP_UNEMP_COMBINED <- bind_rows(unemp_data_long,temporary_data_long)
+nrow(unemp_data_long)
+nrow(temporary_data_long)
+nrow(EU_TEMP_UNEMP_COMBINED)
 
+head(EU_TEMP_UNEMP_COMBINED)
+
+# Sort unioned dataframe by date,metric_name_country using arrange() function from DPLYR
+EU_TEMP_UNEMP_COMBINED_sorted <- EU_TEMP_UNEMP_COMBINED %>% 
+                                 arrange(metric_name,date,country)
+
+EU_TEMP_UNEMP_COMBINED_sorted_country <-EU_TEMP_UNEMP_COMBINED_sorted %>% 
+  select(date,country,metric_name,metric_value) %>% 
+                                        arrange(metric_name,country,date)
+
+head(EU_TEMP_UNEMP_COMBINED_sorted_country)
+
+# Then write output as .csv fie to \data_cleansed folder; 
+EU_TEMP_UNEMP_COMBINED_SORTED <- EU_TEMP_UNEMP_COMBINED_sorted_country
+write.csv(EU_TEMP_UNEMP_COMBINED_SORTED,here("data_cleansed","EU_TEMP_UNEMP_COMBINED_SORTED.csv"), row.names = TRUE)
+
+# 2. Test first on a small sample of countries (Spain, Greece, France)
+
+#  Using newly created combined data frame combining both indicators together
 # 2.1 Subset data just for three countries (spain,greece,france)
-
 # spain,greece, france
 Subset <-c("spain","greece","france")
 
-# 2.2 Then create a new column to split each line chart by Indicator
-# Also change each indicator original column name to a generic value as we are going to union them
-unemp_data_check <- unemp_data %>% 
-                    filter(country %in% Subset) %>% 
-                    select(date,country,
-                           value = unemp_rate) %>% 
-                    mutate(indicator = "unemployment_rate")
-unemp_data_check
-str(unemp_data_check)
+unemp_data_check <- EU_TEMP_UNEMP_COMBINED_SORTED %>% 
+                    filter(country %in% Subset &
+                           metric_name == 'unemp_rate')
 
-temporary_data_check <- temporary_data %>% 
-                        filter(country %in% Subset) %>% 
-                        select(date,country,
-                               value = temporary_rate) %>% 
-                        mutate(indicator = "temporary_rate")
-temporary_data_check
+temporary_data_check <- EU_TEMP_UNEMP_COMBINED_SORTED %>% 
+  filter(country %in% Subset &
+           metric_name == 'temporary_rate')
 
-
-names(unemp_data_check)
-names(temporary_data_check)
-
-head(unemp_data_check)
-head(temporary_data_check)
-
-# 2.3 Then we union them to create chart displaying both indicators combined
-Sample_chart <- bind_rows(unemp_data_check,temporary_data_check)
-View(Sample_chart)
-
-Sample_chart_fmtd <- Sample_chart %>% 
-                      mutate(datef = as.Date(date))
-Sample_chart_fmtd
-
-str(Sample_chart_fmtd)
-
-Sample_chart_dates <- Sample_chart_fmtd %>% select(datef, country, value, indicator)
-
-str(Sample_chart)
-str(Sample_chart_dates)
 
 # 3 Charts.
 
