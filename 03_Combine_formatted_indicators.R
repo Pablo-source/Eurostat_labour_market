@@ -91,34 +91,48 @@ temporary_data_check <- EU_TEMP_UNEMP_COMBINED_SORTED %>%
 # Split lines by indicator (unemployment_rate, temporary_rate)
 # [1] "date"      "country"   "value"     "indicator"
 
+head(EU_TEMP_UNEMP_COMBINED_sorted_country)
 
 # 3.1.1 Boxplot using date as factor
 # data frame: Sample_chart
 # date variable: date
-box_plot_test <- Sample_chart %>% 
-                 ggplot(aes(date,value, fill = indicator)) +
+
+str(EU_TEMP_UNEMP_COMBINED_sorted_country)
+
+box_plot_test <- EU_TEMP_UNEMP_COMBINED_sorted_country %>% 
+                 ggplot(aes(date,metric_value, fill = metric_name)) +
                  geom_boxplot() +
         labs(title = "Temporary Employment and unemployment in selected countries - 2003-2923 period. Yearly data",
         subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
        y = NULL,colour = NULL, fill = NULL) +
-  theme_light() 
+  theme_light() +
+  # Rotate x axis labels 45 degrees
+  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5)) 
 box_plot_test
 
 ggsave("plots_output/01_Unemp_temp_boxplot_sel_countries_dfactor_01.png", width = 6, height = 4)
 
 
 # 3.1.2 Boxplot using date as date
-# data frame: Sample_chart_dates
+# data frame: EU_TEMP_UNEMP_COMBINED_DATE_FMTD
+# Introduced new calculation to turn factor date into 
+# mutate(datef = as.Date(date))
 # date variable: datef
 
-box_plot_test2 <- Sample_chart_dates %>% 
-  ggplot(aes(datef,value, fill = indicator)) +
+EU_TEMP_UNEMP_COMBINED_DATE_FMTD <- EU_TEMP_UNEMP_COMBINED_sorted_country %>% 
+  mutate(datef = as.Date(date)) %>% 
+  select(datef,country,metric_name,metric_value)
+
+str(EU_TEMP_UNEMP_COMBINED_DATE_FMTD)
+
+box_plot_metrics_date_fmtd <- EU_TEMP_UNEMP_COMBINED_DATE_FMTD %>% 
+  ggplot(aes(datef,metric_value, fill = metric_name)) +
   geom_boxplot() +
   labs(title = "Temporary Employment and unemployment  rates - Average values - 2003-2923 period",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() 
-box_plot_test2
+box_plot_metrics_date_fmtd
 
 ggsave("plots_output/02_Unemp_temp_boxplot_sel_countries_ddate_02.png", width = 6, height = 4)
 
@@ -127,24 +141,24 @@ ggsave("plots_output/02_Unemp_temp_boxplot_sel_countries_ddate_02.png", width = 
 # date variable: datef
 #  Removed "scales = "free_y" to display SAME y axis scale across all three charts  
 
-line_chart_test <- Sample_chart_dates %>% 
-  ggplot( fill = indicator) +
-  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
+head(EU_TEMP_UNEMP_COMBINED_DATE_FMTD)
+
+line_chart_test <- EU_TEMP_UNEMP_COMBINED_DATE_FMTD %>% 
+  ggplot( fill = metric_name) +
+  geom_line(aes(datef,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title = "Temporary Employment and unemployment in selected countries - 2003-2923 period. Yearly data",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
     y = NULL,colour = NULL, fill = NULL) +
 #  theme (axis.ticks = element_blank()) 
   theme_light() +
-  theme(plot.title.position = "plot")
+  theme(plot.title.position = "plot") +
+  # Rotate x axis labels 45 degrees
+  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5)) 
 line_chart_test
 
 ggsave("plots_output/03_Unemp_temp_rate_selected_countries_line_chart_03.png", width = 6, height = 4)
 
-# Extra formatting to this initial line chart
-# scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
 
-
-  
   
 
