@@ -1,0 +1,17 @@
+# Parameterized reports
+- This project aims to show how to create parameterized reports in R
+
+# Description
+- Parameterized reporting project using Eurostat, ONS, INE, and OCDE official statistics
+
+# Project plan 
+
+-This project will combine different statistical sources from several European countries (Spain, Greece, France, Germany, Italy, Greece) as well as statistics from the UK to compare social conditions of the population across different topics such as employment, migration and social determinants of health.
+
+-First section will provide general ggplot2 charts with customised formatting and small multiples statistics to easy comparison of metrics across several countries and once.
+
+-Then I will create a markdown document to show how different charts can be combined to feed a markdown report template
+
+-Following this markdown reports y will create several Quarto reports to display information about Immigration changes over last 10 years across different countries and social conditions such as changes in the Active and Inactive rates across countries and job market conditions (temporary contracts and unmemployment).
+
+-Finally I will provide an example on how to design and replicate a Parameterized report populated with the above set of indicators. This Parametrized report will allow to tweak several parameters to produce different reports for several countries based on a single set of parameters, that will be fed to the quarto report everytime it runs.
