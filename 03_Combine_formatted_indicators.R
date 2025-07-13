@@ -29,6 +29,10 @@ temporary_data <- read.table(here("data_cleansed", "EU_TEMP_CLEANSED_lfsi_pt_a_L
                          header =TRUE, sep =',',stringsAsFactors =TRUE)
 head(temporary_data)
 
+# 1.3 Combine above two existing dataframes “unem_data” and “temporary_data” 
+# 13/07/2025 > into a single dataframe called EU_UNEMP_TEMP_INDICATORS
+
+
 
 # 2. Test first on a small sample of countries. 
 #    Combine both indicators together
