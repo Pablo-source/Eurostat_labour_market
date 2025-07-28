@@ -87,6 +87,9 @@ for(i in 1:NFILES) {
 rm(combined_DATA.csv)
 
 # 3. Then we combine them using list.files and map_df functions
+# mad_df: Apply a function to each element of a vector or list (details):
+https://www.rdocumentation.org/packages/tidytable/versions/0.10.2/topics/map_df.
+
 combined_DATA <- list.files(path = "data/SINGLEF/",
                             pattern="*.csv", 
                             full.names = T) %>%
