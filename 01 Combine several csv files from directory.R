@@ -30,7 +30,7 @@ write_csv(Peng3,here("data/SINGLEF","penguins3.csv"))
 combined_DATA <- list.files(path = "data/SINGLEF/",
                             pattern="*.csv", 
                             full.names = T) %>%
-  map_df(~read_csv(.))
+                map_df(~read_csv(.))
 
 # This would be the content of the whole function
 
@@ -93,7 +93,10 @@ https://www.rdocumentation.org/packages/tidytable/versions/0.10.2/topics/map_df.
 combined_DATA <- list.files(path = "data/SINGLEF/",
                             pattern="*.csv", 
                             full.names = T) %>%
-  map_df(~read_csv(.))
+                  map_df(~read_csv(.))  
+
+# Finally write combined file as a single .csv output file
 write_csv(combined_DATA,here("data/SINGLEF","combined_DATA.csv"))
+
 # JUST FOR TESTING PURPOSES. (REMOVE APPENDEN FILE)
 file.remove('data/SINGLEF/combined_DATA.csv')
