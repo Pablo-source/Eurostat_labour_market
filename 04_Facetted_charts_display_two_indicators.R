@@ -57,11 +57,13 @@ indicators_list
 
 # First batch of countries
 # Display line charts facets by country displaying each indicator as individual line for each country 
+library(ggplot2)
+
 line_chart_batch_01 <- Plots_data %>% 
-  ggplot( fill = indicator) +
-  geom_line(aes(date,value,colour = indicator, group = indicator)) +
+  ggplot( fill = metric_name) +
+  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
-  labs(title = "Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data",
+  labs(title = "Temporary Employment and unemployment in EU countries - 2003-2023 period",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() +
