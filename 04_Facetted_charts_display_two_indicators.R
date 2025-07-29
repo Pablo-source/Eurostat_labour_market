@@ -12,32 +12,17 @@ combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORT
                          header =TRUE, sep =',',stringsAsFactors =TRUE)
 head(combined_indic)
 
-# 2 Then create a new column to split each line chart by Indicator
-# Also change each indicator original column name to a generic value as we are going to union them
-unemp_data_label <- unemp_data %>% 
-  select(date,country,
-         value = unemp_rate) %>% 
-  mutate(indicator = "unemployment_rate")
+# 2 Split initial combuined indicators into unemployment and temporary rate data sets 
+unemp_data  <- combined_indic %>% 
+  select(date,country,metric_name,metric_value) %>% 
+  filter(metric_name == "unemp_rate")
 
-str(unemp_data_label)
+temp_rate_data  <- combined_indic %>% 
+  select(date,country,metric_name,metric_value) %>% 
+  filter(metric_name == "temporary_rate")
 
-temporary_data_label <- temporary_data %>% 
-  select(date,country,
-         value = temporary_rate) %>% 
-  mutate(indicator = "temporary_rate")
 
-str(temporary_data_label)
 
-# 3. Then we union them to create chart displaying both indicators combined
-all_indicators_data <- bind_rows(unemp_data_label,temporary_data_label)
-View(all_indicators_data)
-
-# Create new formatted date variable
-all_indicators_datef <- all_indicators_data %>% 
-  mutate(datef = as.Date(date))
-all_indicators_datef
-
-str(all_indicators_datef)
 
 # 4. Plot countries in two set of small multiples line charts displaying both indicators (unemployment rate and temporary
 #    employment rate by country by year)
