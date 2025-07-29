@@ -12,7 +12,8 @@ combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORT
                          header =TRUE, sep =',',stringsAsFactors =TRUE)
 head(combined_indic)
 
-# 2 Split initial combuined indicators into unemployment and temporary rate data sets 
+# 2 Jut to check overall values 
+# Split initial combined indicators into unemployment and temporary rate data sets 
 unemp_data  <- combined_indic %>% 
   select(date,country,metric_name,metric_value) %>% 
   filter(metric_name == "unemp_rate")
@@ -22,17 +23,7 @@ temp_rate_data  <- combined_indic %>%
   filter(metric_name == "temporary_rate")
 
 
-
-
-# 4. Plot countries in two set of small multiples line charts displaying both indicators (unemployment rate and temporary
-#    employment rate by country by year)
-# filter(country %in% Subset) %>% 
-
-countries <- all_indicators_data %>% select(country) %>% 
-  distinct()
-nrow(countries)
-
-# 4.1 Plotting first batch of countries
+# 3. Plot indicators by countries -First subset of countries (01_18)
 
 # Out of the 36 different countries in the imported data set,  I will chart first set of 18 countries from initial list
 # (euro_area_20_countries_from_2023,belgium,bulgaria,czechia,denmark,germany,estonia,ireland,greece,spain,france,croatia,
@@ -42,10 +33,19 @@ Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria",
                         "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
                         "hungary")
 
-Subset_01_plot_data <- all_indicators_datef %>% 
-  select(datef,country,value,indicator) %>% 
+Subset_01_plot_data <- combined_indic %>% 
+  select(date,country,metric_name,metric_value) %>% 
   filter(country %in% Subset_countries_01) 
-Subset_01_plot_data
+
+# Turn date into a date formatted column 
+# mutate(datef = as.Date(date))
+
+Date_fmtd_plots <- Subset_01_plot_data %>% 
+                   mutate(datef = as.Date(date)) %>% 
+                   select(date = datef,country,metric_name,metric_value)
+
+
+str(Date_fmtd_plots)
 
 # Rename datef variable as date
 Plots_data <- all_indicators_datef %>% 
