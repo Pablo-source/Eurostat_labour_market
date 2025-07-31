@@ -22,6 +22,11 @@ temp_rate_data  <- combined_indic %>%
   select(date,country,metric_name,metric_value) %>% 
   filter(metric_name == "temporary_rate")
 
+combined_indic_datefmt <- combined_indic %>% 
+  mutate(datef = as.Date(date)) %>% 
+  select(date = datef,country,metric_name,metric_value)
+
+str(combined_indic_datefmt)
 
 # 3. Data wrangling for plots
 
@@ -33,22 +38,14 @@ Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria",
                         "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
                         "hungary")
 
-Subset_01_plot_data <- combined_indic %>% 
+Subset_01_plot_data <- combined_indic_datefmt %>% 
   select(date,country,metric_name,metric_value) %>% 
   filter(country %in% Subset_countries_01) 
 
-# Turn date into a date formatted column 
-# mutate(datef = as.Date(date))
-Date_fmtd_plots <- Subset_01_plot_data %>% 
-                   mutate(datef = as.Date(date)) %>% 
-                   select(date = datef,country,metric_name,metric_value)
-str(Date_fmtd_plots)
-
 # Rename datef variable as date
-Plots_01_data <- Date_fmtd_plots %>% 
+Plots_01_data <- Subset_01_plot_data %>% 
               select(date, country, metric_value, metric_name) 
 
-str(Plots_data)
 # Just check the two indicators we are going to plot
 indicators_list <- Date_fmtd_plots %>% select(metric_name) %>% distinct()
 indicators_list
@@ -59,7 +56,7 @@ indicators_list
 # Display line charts facets by country displaying each indicator as individual line for each country 
 library(ggplot2)
 
-line_chart_batch_01 <- Plots_data %>% 
+line_chart_batch_01 <- Plots_01_data %>% 
   ggplot( fill = metric_name) +
   geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
@@ -75,18 +72,14 @@ line_chart_batch_01
 ggsave("plots_output/04_Unemp_temp_rate_line_chart_batch_01_selectec_countries_2003_2023.png", width = 6, height = 4)
 
 # 4.2 Plotting second batch of countries
-str(all_indicators_datef)
-
-
 # Second batch of countries
 Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands","austria",
                         "poland","portugal","romania","slovenia","slovakia","finland","sweden",
                         "iceland","norway","switzerland","bosnia_and_herzegovina","montenegro",
-                        "north_macedonia","serbia","turkiye"
-                        )
+                        "north_macedonia","serbia","turkiye")
 
-Subset_02_plot_data <- all_indicators_datef %>% 
-  select(datef,country,value,indicator) %>% 
+Subset_02_plot_data <- combined_indic_datefmt  %>% 
+  select(date,country,metric_name,metric_value) %>% 
   filter(country %in% Subset_countries_02) 
 Subset_02_plot_data
 
@@ -94,11 +87,11 @@ Subset_02_plot_data
 # Display line charts facets by country displaying each indicator as individual line for each country 
 str(Subset_02_plot_data)
 
-Subset_02_plot_data_fmtd <- Plots_data %>% select(date = datef,country,value,indicator)
+Subset_02_plot_data_fmtd <- Subset_02_plot_data %>% select(date,country,metric_name,metric_value)
 
 line_chart_batch_02 <- Subset_02_plot_data_fmtd %>% 
-  ggplot( fill = indicator) +
-  geom_line(aes(date,value,colour = indicator, group = indicator)) +
+  ggplot( fill = metric_name) +
+  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title = "Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
