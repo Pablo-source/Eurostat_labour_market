@@ -45,7 +45,7 @@ Date_fmtd_plots <- Subset_01_plot_data %>%
 str(Date_fmtd_plots)
 
 # Rename datef variable as date
-Plots_data <- Date_fmtd_plots %>% 
+Plots_01_data <- Date_fmtd_plots %>% 
               select(date, country, metric_value, metric_name) 
 
 str(Plots_data)
@@ -94,7 +94,7 @@ Subset_02_plot_data
 # Display line charts facets by country displaying each indicator as individual line for each country 
 str(Subset_02_plot_data)
 
-Subset_02_plot_data_fmtd <- Subset_02_plot_data %>% select(date = datef,country,value,indicator)
+Subset_02_plot_data_fmtd <- Plots_data %>% select(date = datef,country,value,indicator)
 
 line_chart_batch_02 <- Subset_02_plot_data_fmtd %>% 
   ggplot( fill = indicator) +
