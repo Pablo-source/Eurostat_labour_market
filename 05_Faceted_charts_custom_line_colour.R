@@ -2,9 +2,22 @@
 
 # AIM: change default R colours (blue and red to each line charts data series)
 
+# 1. Import previous files 
+library(here)
+library(dplyr)
 
-# 1. Test changing line color just for two countries (spain, ireland)
+# 1. Import combined indicators  
+combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
+                              header =TRUE, sep =',',stringsAsFactors =TRUE)
+head(combined_indic)
+
+
+# 2. Test changing line color just for two countries (spain, ireland)
 Subset_test <-c("ireland","spain")
+
+# 2.1 We load combined_indic dataframe and now we will change default line colours for chart including two indicators
+
+# 
 
 test_01_plot_data <- all_indicators_datef %>% 
   select(date,datef,country,value,indicator) %>% 
