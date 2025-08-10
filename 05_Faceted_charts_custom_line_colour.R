@@ -76,8 +76,8 @@ Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria",
                         "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
                         "hungary")
 
-Subset_01_plot_data <- all_indicators_datef %>% 
-  select(date,datef,country,value,indicator) %>% 
+Subset_01_plot_data <- combined_indic %>% 
+  select(date,country,metric_name,metric_value) %>% 
   filter(country %in% Subset_countries_01) 
 
 
@@ -85,17 +85,22 @@ Subset_01_plot_data <- all_indicators_datef %>%
 # Display line charts facets by country displaying each indicator as individual line for each country 
 line_chart_batch_01 <- Subset_01_plot_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
+  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
-  labs(title = "Temporary Employment and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data",
+  labs(title ="Part Time employment rate and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+       caption = "Eurostat tables: Unemployment rate:[une_rt_a]:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en,
+       ,Part-time employment [ lfsi_pt_a]:https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_a/default/table?lang=en",
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() +
   theme(plot.title.position = "plot",
-        legend.position = "bottom") + # Place legend at the bottom
+        legend.position = "bottom",   # Place legend at the bottom
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), # Rotate X axis labels 90 degrees
+        plot.title = element_text(face = "bold")) + # Display main plot Title bold
   # Apply legend format here - change default colours to black and blue
   scale_colour_manual(values = c("blue", "black"),
-                      labels = c("Temporary contracts rate (%)","Unemployment rate (%)"))
+                      labels = c("Part Time employment rate (%)","Unemployment rate (%)"))
+
 line_chart_batch_01
 
 ggsave("plots_output/08_Unemp_temp_rate_line_chart_batch_01_custom_legend_colour.png", width = 6, height = 4)
@@ -112,23 +117,28 @@ Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands"
                         "iceland","norway","switzerland","bosnia_and_herzegovina","montenegro",
                         "north_macedonia","serbia","turkiye")
 
-Subset_02_plot_data <- all_indicators_datef %>% 
-  select(date,datef,country,value,indicator) %>% 
-  filter(country %in% Subset_countries_02)
+Subset_02_plot_data <- combined_indic %>% 
+  select(date,country,metric_name,metric_value) %>% 
+  filter(country %in% Subset_countries_01) 
 
 # second batch of countries to be plotted with custom labels.
 line_chart_batch_02 <- Subset_02_plot_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
+  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
-  labs(title = "Temporary Employment and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data",
+  labs(title ="Part Time employment rate and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+       caption = "Eurostat tables: Unemployment rate:[une_rt_a]:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en,
+       ,Part-time employment [ lfsi_pt_a]:https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_a/default/table?lang=en",
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() +
   theme(plot.title.position = "plot",
-        legend.position = "bottom") + # Place legend at the bottom
-# Apply legend format here - change default colours to black and blue
-scale_colour_manual(values = c("blue", "black"),
-                    labels = c("Temporary contracts rate (%)","Unemployment rate (%)"))
+        legend.position = "bottom",   # Place legend at the bottom
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), # Rotate X axis labels 90 degrees
+        plot.title = element_text(face = "bold")) + # Display main plot Title bold
+  # Apply legend format here - change default colours to black and blue
+  scale_colour_manual(values = c("blue", "black"),
+                      labels = c("Part Time employment rate (%)","Unemployment rate (%)"))
 line_chart_batch_02
+
 ggsave("plots_output/09_Unemp_temp_rate_line_chart_batch_02_custom_legend_colour.png", width = 6, height = 4)
