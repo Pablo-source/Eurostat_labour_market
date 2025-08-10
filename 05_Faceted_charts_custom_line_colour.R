@@ -95,7 +95,7 @@ line_chart_batch_01 <- Subset_01_plot_data %>%
   theme_light() +
   theme(plot.title.position = "plot",
         legend.position = "bottom",   # Place legend at the bottom
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), # Rotate X axis labels 90 degrees
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), # Rotate X axis labels 90 degrees 
         plot.title = element_text(face = "bold")) + # Display main plot Title bold
   # Apply legend format here - change default colours to black and blue
   scale_colour_manual(values = c("blue", "black"),
