@@ -26,18 +26,22 @@ test_01_plot_data
 
 line_chart_test_01 <- test_01_plot_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(datef,value,colour = indicator, group = indicator)) +
+  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
-  labs(title = "Temporary Employment and unemployment in EU countries - Spain and Ireland - 2003-2023 period. Yearly data",
+  labs(title = "Part Time Employment and unemployment in EU countries - Spain and Ireland - 2003-2023 period. Yearly data",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+       caption = "Eurostat tables: Unemployment rate:[une_rt_a]:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en,
+       ,Part-time employment [ lfsi_pt_a]:https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_a/default/table?lang=en",
        y = NULL,colour = NULL, fill = NULL) +
   theme_light() +
   theme(plot.title.position = "plot",
-        legend.position = "bottom") # Place legent at the bottom
+        legend.position = "bottom",   # Place legend at the bottom
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), # Rotate X axis labels 90 degrees
+        plot.title = element_text(face = "bold")) # Display main plot Title bold
 
 line_chart_test_01
 
-ggsave("plots_output/06_Unemp_temp_rate_line_Ireland_Spain_dafault_legeng_colour_01.png", width = 6, height = 4)
+ggsave("plots_output/06_Unemp_temp_rate_line_Ireland_Spain_dafault_legeng_colour_01.png",  width = 12, height = 9.22)
 
 # 1.1 Changing legend using scale_colour_manual() function 
 
