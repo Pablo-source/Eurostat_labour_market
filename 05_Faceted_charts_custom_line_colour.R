@@ -5,6 +5,7 @@
 # 1. Import previous files  b
 library(here)
 library(dplyr)
+library(ggplot2)
 
 # 1. Import combined indicators  
 combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
