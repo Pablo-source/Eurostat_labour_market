@@ -6,6 +6,7 @@
 # 1. Import previous files 
 library(here)
 library(dplyr)
+library(ggplot2)
 
 # 1.1 Import combined indicators  
 combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
@@ -54,7 +55,7 @@ indicators_list
 
 # First batch of countries
 # Display line charts facets by country displaying each indicator as individual line for each country 
-library(ggplot2)
+
 
 line_chart_batch_01 <- Plots_01_data %>% 
   ggplot( fill = metric_name) +
