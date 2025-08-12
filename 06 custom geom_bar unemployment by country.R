@@ -33,24 +33,25 @@ unemployment_subset <- combined_indic_date_fmtd %>%
 # 2. Subset data for Greece
 unemp_greece <- unemployment_subset %>% 
   filter(country %in% c("greece")) 
-  
-  select(-c(X))
-unemp_greece
 
 # 3. Create two flags
 # 3.1. Flag for highest unemployment year
+# Max_unemp_flag = ifelse(unemp_round == max_unemp,TRUE,FALSE) 
 str(unemp_greece)
+
+library(tidyr)
 
 unemp_greece_max <- unemp_greece %>% 
   mutate(
-    Date = as.Date(date),
-    unemp_round = round(unemp_rate,0),
-    max_unemp = max(unemp_rate, na.rm = TRUE),
-    Max_unemp_flag = ifelse(unemp_rate == max_unemp,TRUE,FALSE) 
+    unemp_round = round(metric_value,0),
+    max_unemp = max(metric_value, na.rm = TRUE),
+    Max_unemp_flag = ifelse(unemp_round == max_unemp,TRUE,FALSE) 
   ) %>% 
-  select(date,Date,country,unemp_rate,max_unemp,Max_unemp_flag)
+  select(datef,country,unemp_round,max_unemp,Max_unemp_flag) %>% 
+  drop_na() # Remove empty rows with na() values
 
 # 3.2. Flag for the latest year
+#  Max_date = ifelse(Date == Latest_date,TRUE,FALSE))
 str(unemp_greece_max)
 
 unemp_greece_latest <- unemp_greece_max %>% 
