@@ -30,17 +30,17 @@ Subset_test <-c("ireland","spain")
 # 2.1 We load combined_indic dataframe and now we will change default line colours for chart including two indicators
 # This is the DEFAULT colour assigned by R to each indicator: 
 
-test_01_plot_data <- combined_indic %>% 
-  select(date,country,metric_name,metric_value) %>% 
+test_01_plot_data <- combined_indic_date_fmtd %>% 
+  select(datef,country,metric_name,metric_value) %>% 
   filter(country %in% Subset_test) 
 test_01_plot_data
 
 line_chart_test_01 <- test_01_plot_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
+  geom_line(aes(datef,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
-  labs(title = "Part Time Employment and unemployment in EU countries - Spain and Ireland - 2003-2023 period. Yearly data",
-       subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+  labs(title = "Part Time Employment and unemployment in EU countries - Spain and Ireland - 2003-2023 period",
+       subtitle ="Part time employment and unemployment rates (%)",
        caption = "Eurostat tables: Unemployment rate:[une_rt_a]:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en,
        ,Part-time employment [ lfsi_pt_a]:https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_a/default/table?lang=en",
        y = NULL,colour = NULL, fill = NULL) +
