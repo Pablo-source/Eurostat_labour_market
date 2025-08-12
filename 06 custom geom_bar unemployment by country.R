@@ -1,5 +1,5 @@
-# Script:  06 custom geom_bar unrmployment by county.R
-# AIM 06 custom geom_bar unmployment metric for each country
+# Script:  06 custom geom_bar unemployment by county.R
+# AIM 06 custom geom_bar unemployment metric for each country
 
 
 # 1. Import previous files.
