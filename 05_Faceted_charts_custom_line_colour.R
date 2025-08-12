@@ -99,7 +99,7 @@ line_chart_batch_01 <- Subset_01_plot_data %>%
   geom_line(aes(datef,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title ="Part Time employment rate and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data",
-       subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+       subtitle ="Part time employment and unemployment rates (%)",
        caption = "Eurostat tables: Unemployment rate:[une_rt_a]:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en,
        ,Part-time employment [ lfsi_pt_a]:https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_a/default/table?lang=en",
        y = NULL,colour = NULL, fill = NULL) +
@@ -135,10 +135,10 @@ Subset_02_plot_data <- combined_indic_date_fmtd %>%
 # second batch of countries to be plotted with custom labels.
 line_chart_batch_02 <- Subset_02_plot_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
+  geom_line(aes(datef,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title ="Part Time employment rate and unemployment in EU countries - Subset 02 02- 2003-2023 period. Yearly data",
-       subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+       subtitle ="Part time employment and unemployment rates (%)",
        caption = "Eurostat tables: Unemployment rate:[une_rt_a]:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en,
        ,Part-time employment [ lfsi_pt_a]:https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_a/default/table?lang=en",
        y = NULL,colour = NULL, fill = NULL) +
@@ -152,4 +152,6 @@ line_chart_batch_02 <- Subset_02_plot_data %>%
                       labels = c("Part Time employment rate (%)","Unemployment rate (%)"))
 line_chart_batch_02
 
-ggsave("plots_output/09_Unemp_temp_rate_line_chart_batch_02_custom_legend_colour.png", width = 6, height = 4)
+ggsave("plots_output/09_Unemp_temp_rate_line_chart_batch_02_custom_legend_colour.png", width = 6, height = 4) 
+
+# re-factored all charts on this script.
