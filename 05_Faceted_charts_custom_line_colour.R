@@ -61,10 +61,10 @@ ggsave("plots_output/06_Unemp_temp_rate_line_Ireland_Spain_dafault_legeng_colour
 
 line_chart_test_02 <- test_01_plot_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
+  geom_line(aes(datef,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title = "Part Time Employment and unemployment in EU countries - Spain and Ireland - 2003-2023 period. Yearly data",
-       subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
+       subtitle ="Part time employment and unemployment rates (%)",
        caption = "Eurostat tables: Unemployment rate:[une_rt_a]:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en,
        ,Part-time employment [ lfsi_pt_a]:https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_a/default/table?lang=en",
        y = NULL,colour = NULL, fill = NULL) +
@@ -87,8 +87,8 @@ Subset_countries_01 <-c("euro_area_20_countries_from_2023","belgium","bulgaria",
                         "ireland","greece","spain","france","croatia","italy","cyprus","latvia","lithuania","luxembourg",
                         "hungary")
 
-Subset_01_plot_data <- combined_indic %>% 
-  select(date,country,metric_name,metric_value) %>% 
+Subset_01_plot_data <- combined_indic_date_fmtd %>% 
+  select(datef,country,metric_name,metric_value) %>% 
   filter(country %in% Subset_countries_01) 
 
 
@@ -96,7 +96,7 @@ Subset_01_plot_data <- combined_indic %>%
 # Display line charts facets by country displaying each indicator as individual line for each country 
 line_chart_batch_01 <- Subset_01_plot_data %>% 
   ggplot( fill = indicator) +
-  geom_line(aes(date,metric_value,colour = metric_name, group = metric_name)) +
+  geom_line(aes(datef,metric_value,colour = metric_name, group = metric_name)) +
   facet_wrap(~ country, nrow = 2) +
   labs(title ="Part Time employment rate and unemployment in EU countries - Subset 01 02- 2003-2023 period. Yearly data",
        subtitle ="Source:https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table?lang=en&category=labour.employ.lfsi.une",
@@ -128,9 +128,9 @@ Subset_countries_02 <-c("euro_area_20_countries_from_2023","malta","netherlands"
                         "iceland","norway","switzerland","bosnia_and_herzegovina","montenegro",
                         "north_macedonia","serbia","turkiye")
 
-Subset_02_plot_data <- combined_indic %>% 
-  select(date,country,metric_name,metric_value) %>% 
-  filter(country %in% Subset_countries_01) 
+Subset_02_plot_data <- combined_indic_date_fmtd %>% 
+  select(datef,country,metric_name,metric_value) %>% 
+  filter(country %in% Subset_countries_02) 
 
 # second batch of countries to be plotted with custom labels.
 line_chart_batch_02 <- Subset_02_plot_data %>% 
