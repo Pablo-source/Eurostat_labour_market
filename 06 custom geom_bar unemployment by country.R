@@ -44,8 +44,10 @@ library(tidyr)
 unemp_greece_max <- unemp_greece %>% 
   mutate(
     unemp_round = round(metric_value,0),
-    max_unemp = max(metric_value, na.rm = TRUE),
-    Max_unemp_flag = ifelse(unemp_round == max_unemp,TRUE,FALSE) 
+    max_unemp = max(metric_value, na.rm = TRUE))
+
+unemp_greece_max_flag <- unemp_greece_max %>% 
+  mutate(Max_unemp_flag = ifelse(metric_value == max_unemp,TRUE,FALSE) 
   ) %>% 
   select(datef,country,unemp_round,max_unemp,Max_unemp_flag) %>% 
   drop_na() # Remove empty rows with na() values
@@ -54,20 +56,21 @@ unemp_greece_max <- unemp_greece %>%
 #  Max_date = ifelse(Date == Latest_date,TRUE,FALSE))
 str(unemp_greece_max)
 
-unemp_greece_latest <- unemp_greece_max %>% 
+unemp_greece_latest <- unemp_greece_max_flag %>% 
   mutate(
-      Latest_date = max(Date),
-      Max_date = ifelse(Date == Latest_date,TRUE,FALSE))
+      Latest_date = max(datef),
+      Max_date = ifelse(datef == Latest_date,TRUE,FALSE))
 
+head(unemp_greece_latest)
 
 # 4. Create a basic bar plot
 str(unemp_greece)
-Plot01 <- unemp_greece %>% 
-  ggplot(aes(x = date, y = unemp_rate)) +
+Plot01 <- unemp_greece_latest %>% 
+  ggplot(aes(x = datef, y = unemp_round)) +
   geom_col(fill = "#BAD1D6")
 
-Plot02 <- unemp_greece %>% 
-  ggplot(aes(x = date, y = unemp_rate)) +
+Plot02 <- unemp_greece_latest %>% 
+  ggplot(aes(x = datef, y = unemp_round)) +
   geom_col(fill = "#BAD1D6") +
 labs(title = "Unemployment in Greece.2003-2023 period",
      caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
@@ -83,7 +86,7 @@ str(unemp_greece_latest)
 # To highlight specific date, it must be defined as a FACTOR
 
 Plot03 <- unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col() +
