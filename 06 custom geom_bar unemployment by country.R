@@ -7,19 +7,35 @@ library(here)
 library(tidyverse)
 
 # 1. Import unemployment indicator data 
-unemp_data <- read.table(here("data_cleansed", "EU_UNEMP_CLEAN_une_rt_a_LONG.csv"),
-                         header =TRUE, sep =',',stringsAsFactors =TRUE)
-head(unemp_data)
+combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
+                              header =TRUE, sep =',',stringsAsFactors =TRUE)
+head(combined_indic)
+
+str(combined_indic)
+
+## 1.1 Apply date format to "date" column
+#  mutate(datef = as.Date(date)) %>% 
+# select(date = datef,country,metric_name,metric_value)
+
+combined_indic_date_fmtd <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
+                                       header =TRUE, sep =',',stringsAsFactors =TRUE) %>% 
+                            mutate(datef = as.Date(date)) %>% 
+                            select(datef, country,metric_name,metric_value)
+str(combined_indic_date_fmtd)
+head(combined_indic_date_fmtd)
+
+metrics_list <- combined_indic_date_fmtd %>% select(metric_name) %>% distinct()
+metrics_list
+
+unemployment_subset <- combined_indic_date_fmtd %>% 
+                       filter(metric_name == 'unemp_rate')
 
 # 2. Subset data for Greece
-str(unemp_data)
-head(unemp_data)
-
-unemp_greece <- unemp_data %>% 
-  filter(country %in% c("greece")) %>%  
+unemp_greece <- unemployment_subset %>% 
+  filter(country %in% c("greece")) 
+  
   select(-c(X))
 unemp_greece
-
 
 # 3. Create two flags
 # 3.1. Flag for highest unemployment year
