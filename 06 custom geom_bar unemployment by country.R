@@ -95,6 +95,7 @@ Plot03
 
 ggsave("plots_output/11_True_false_colour_defined_by_max_unemp_value.png", width = 6.38, height = 5.80)
 
+# WIP ! 
 
 # 4.2 Introduce custom colour in the plot
 #    geom_col(show.legend = FALSE) +
