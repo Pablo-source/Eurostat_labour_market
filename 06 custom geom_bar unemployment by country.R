@@ -131,7 +131,7 @@ Plot05 <-  unemp_greece_latest %>%
   theme_classic() 
 Plot05
 
-ggsave("plots_output/13_Cutom_theme_color_bars_based_flag_max_value.png", width = 6.38, height = 5.80)
+ggsave("plots_output/13_Custom_theme_color_bars_based_flag_max_value.png", width = 6.38, height = 5.80)
 
 
 # 4.4 Remove expansion around the whole perimeter
