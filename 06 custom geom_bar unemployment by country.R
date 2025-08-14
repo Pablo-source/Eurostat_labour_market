@@ -192,7 +192,7 @@ ggsave("plots_output/15_Cutom_plot_bold_title.png", width = 6.38, height = 5.80)
 
 # 4.7 Create annotation bubble
 # Annotation buble position needs to be adjusted for each chart
-library(ggtext)
+
 
 # Format caption
 
@@ -203,15 +203,40 @@ library(ggtext)
 # Introduce rectangle figure with annotate('rect',xmin = 07, xmax = 12,ymin = 25, ymax = 30, 
 #                           alpha = .1 , fill = 'grey',col = 'black')
 
+str(unemp_greece_latest)
+
+# Building new plot with annotations: 
+# I need to load ggtext to include tne new annotation bubble: 
+library(ggtext)
+
 Plot09 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
-  # annotate('segment',xmin = as.Date("2010-01-01"), xmax = as.Date("2010-01-02"),ymin = 15, ymax = 20) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
+  labs(title = "Unemployment in Greece.2003-2023 period",
+       caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
+  geom_col(show.legend = FALSE) +
+  scale_fill_manual(breaks = c(FALSE,TRUE),
+                    values = c("#BAD1D6","#539CBA")) +
+  scale_y_continuous(n.breaks=10) +
+  coord_cartesian(expand = FALSE) +
+  theme_classic()  +
+  theme(
+    plot.title = element_text(face = "bold"),
+    #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
+    plot.caption.position = "plot", # Caption and title left aligned
+    plot.title.position = "plot"
+  ) +
+# Include annotation buble 
+  # Include now annotation bubble next to the LINE drawn using annotate('curve')
+  geom_richtext(label = "Highest value<br>Year 2013",x = as.Date("2011-11-25"), y = 27,
+                hjust = 1,fill = NA,color = "black",label.colour = NA,show.legend = FALSE) 
+
+
+
+
+Plot09 <-  unemp_greece_latest %>% 
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
  annotate('rect',xmin = 10, xmax = 12,ymin = 25, ymax = 30, 
            alpha = .1 , fill = 'grey',col = 'black') +
-  
-#  annotate('segment',x = 05, xend =16 ,y = 10, yend =  20, 
-#          alpha = .1 , fill = 'blue',col = 'black') +
-
     labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
