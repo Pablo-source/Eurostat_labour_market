@@ -225,11 +225,11 @@ Plot09 <-  unemp_greece_latest %>%
     plot.caption.position = "plot", # Caption and title left aligned
     plot.title.position = "plot"
   ) +
-# Include annotation buble 
-  # Include now annotation bubble next to the LINE drawn using annotate('curve')
+# Include annotation text 
+# Include now annotation bubble next to the LINE drawn using annotate('curve')
   geom_richtext(label = "Highest value<br>Year 2013",x = as.Date("2011-11-25"), y = 27,
                 hjust = 1,fill = NA,color = "black",label.colour = NA,show.legend = FALSE) +
-# Add straight lines to flag year with highest unemployment value
+  # Add vertical and horizontal lines to match annotation to reference bar 
 annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2012-06-01"),y = 27,yend = 27,linewidth = 0.9, 
          curvature = 0.0) +
   annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2011-12-01"),y = 26,yend = 28,linewidth = 0.9, 
