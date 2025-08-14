@@ -119,6 +119,11 @@ ggsave("plots_output/12_Cutom_color_bars_based_flag_max_value.png", width = 6.38
 
 # 4.3 Introduce theme_classic() to the plot 
 # Also include "coord_cartesian(expand = FALSE) to remove gat on the X axis at the bottom of the chart.
+
+# Remove expansion around the whole perimeter using coord_cartesian(expand = FALSE)
+# Always remove this expansion for geom_col()
+# coord_cartesian(expand = FALSE) +
+
 Plot05 <-  unemp_greece_latest %>% 
   ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
@@ -134,24 +139,7 @@ Plot05
 ggsave("plots_output/13_Custom_theme_color_bars_based_flag_max_value.png", width = 6.38, height = 5.80)
 
 
-# 4.4 Remove expansion around the whole perimeter
-# Always remove this expansion for geom_col()
-# coord_cartesian(expand = FALSE) +
-
-Plot06 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
-  labs(title = "Unemployment in Greece.2003-2023 period",
-       caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
-  geom_col(show.legend = FALSE) +
-  scale_fill_manual(breaks = c(FALSE,TRUE),
-                    values = c("#BAD1D6","#539CBA")) +
-  coord_cartesian(expand = FALSE) +
-  theme_classic() 
-Plot06
-
-ggsave("plots_output/14_Cutom_theme_color_bars_based_no_gap.png", width = 6.38, height = 5.80)
-
-# 4.5 Include Title and caption
+# 4.4 Include Title and caption
 #theme(
 #  #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
 #  plot.caption.position = "plot", # Caption and title left aligned
@@ -161,14 +149,15 @@ ggsave("plots_output/14_Cutom_theme_color_bars_based_no_gap.png", width = 6.38, 
 library(ggtext)
 
 Plot07 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
+  scale_y_continuous(n.breaks=10) +
   coord_cartesian(expand = FALSE) +
-  theme_classic() +
+  theme_classic()  +
   theme(
   #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
     plot.caption.position = "plot", # Caption and title left aligned
@@ -182,14 +171,15 @@ Plot07
 library(ggtext)
 
 Plot08 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
+  scale_y_continuous(n.breaks=10) +
   coord_cartesian(expand = FALSE) +
-  theme_classic() +
+  theme_classic()  +
   theme(
     plot.title = element_text(face = "bold"),
     #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
