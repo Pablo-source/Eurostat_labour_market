@@ -28,6 +28,8 @@ renv::install('tidyverse') # Including ggplot2, dplyr, readr. among others.
 renv::install('lubridate') # create dates in script "01 Eurostat Unemp csv file into R long format.R"
 renv::install('naniar')  # Adhoc package to replace missing values.
 renv::install('ggtext') 
+renv::install('dplyr') 
+renv::install('ggplot2') 
  # Script 06 custom_geom_bar_unemployment by country.R
 renv::install('markdown') # Installed Markdown for Formatting unemployment rate bar plot.qmd file
 renv::install('gcookbook') # Used in script 

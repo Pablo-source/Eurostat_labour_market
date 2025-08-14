@@ -1,5 +1,5 @@
-# Script:  06 custom geom_bar unrmployment by county.R
-# AIM 06 custom geom_bar unmployment metric for each country
+# Script:  06 custom geom_bar unemployment by county.R
+# AIM 06 custom geom_bar unemployment metric for each country
 
 
 # 1. Import previous files.
@@ -7,50 +7,70 @@ library(here)
 library(tidyverse)
 
 # 1. Import unemployment indicator data 
-unemp_data <- read.table(here("data_cleansed", "EU_UNEMP_CLEAN_une_rt_a_LONG.csv"),
-                         header =TRUE, sep =',',stringsAsFactors =TRUE)
-head(unemp_data)
+combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
+                              header =TRUE, sep =',',stringsAsFactors =TRUE)
+head(combined_indic)
+
+str(combined_indic)
+
+## 1.1 Apply date format to "date" column
+#  mutate(datef = as.Date(date)) %>% 
+# select(date = datef,country,metric_name,metric_value)
+
+combined_indic_date_fmtd <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
+                                       header =TRUE, sep =',',stringsAsFactors =TRUE) %>% 
+                            mutate(datef = as.Date(date)) %>% 
+                            select(datef, country,metric_name,metric_value)
+str(combined_indic_date_fmtd)
+head(combined_indic_date_fmtd)
+
+metrics_list <- combined_indic_date_fmtd %>% select(metric_name) %>% distinct()
+metrics_list
+
+unemployment_subset <- combined_indic_date_fmtd %>% 
+                       filter(metric_name == 'unemp_rate')
 
 # 2. Subset data for Greece
-str(unemp_data)
-head(unemp_data)
-
-unemp_greece <- unemp_data %>% 
-  filter(country %in% c("greece")) %>%  
-  select(-c(X))
-unemp_greece
-
+unemp_greece <- unemployment_subset %>% 
+  filter(country %in% c("greece")) 
 
 # 3. Create two flags
 # 3.1. Flag for highest unemployment year
+# Max_unemp_flag = ifelse(unemp_round == max_unemp,TRUE,FALSE) 
 str(unemp_greece)
+
+library(tidyr)
 
 unemp_greece_max <- unemp_greece %>% 
   mutate(
-    Date = as.Date(date),
-    unemp_round = round(unemp_rate,0),
-    max_unemp = max(unemp_rate, na.rm = TRUE),
-    Max_unemp_flag = ifelse(unemp_rate == max_unemp,TRUE,FALSE) 
+    unemp_round = round(metric_value,0),
+    max_unemp = max(metric_value, na.rm = TRUE))
+
+unemp_greece_max_flag <- unemp_greece_max %>% 
+  mutate(Max_unemp_flag = ifelse(metric_value == max_unemp,TRUE,FALSE) 
   ) %>% 
-  select(date,Date,country,unemp_rate,max_unemp,Max_unemp_flag)
+  select(datef,country,unemp_round,max_unemp,Max_unemp_flag) %>% 
+  drop_na() # Remove empty rows with na() values
 
 # 3.2. Flag for the latest year
+#  Max_date = ifelse(Date == Latest_date,TRUE,FALSE))
 str(unemp_greece_max)
 
-unemp_greece_latest <- unemp_greece_max %>% 
+unemp_greece_latest <- unemp_greece_max_flag %>% 
   mutate(
-      Latest_date = max(Date),
-      Max_date = ifelse(Date == Latest_date,TRUE,FALSE))
+      Latest_date = max(datef),
+      Max_date = ifelse(datef == Latest_date,TRUE,FALSE))
 
+head(unemp_greece_latest)
 
 # 4. Create a basic bar plot
 str(unemp_greece)
-Plot01 <- unemp_greece %>% 
-  ggplot(aes(x = date, y = unemp_rate)) +
+Plot01 <- unemp_greece_latest %>% 
+  ggplot(aes(x = datef, y = unemp_round)) +
   geom_col(fill = "#BAD1D6")
 
-Plot02 <- unemp_greece %>% 
-  ggplot(aes(x = date, y = unemp_rate)) +
+Plot02 <- unemp_greece_latest %>% 
+  ggplot(aes(x = datef, y = unemp_round)) +
   geom_col(fill = "#BAD1D6") +
 labs(title = "Unemployment in Greece.2003-2023 period",
      caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
@@ -66,7 +86,7 @@ str(unemp_greece_latest)
 # To highlight specific date, it must be defined as a FACTOR
 
 Plot03 <- unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col() +
@@ -84,51 +104,42 @@ ggsave("plots_output/11_True_false_colour_defined_by_max_unemp_value.png", width
 #                   values = c("#BAD1D6","#539CBA"))
   
 Plot04 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
-  coord_cartesian(expand = FALSE) 
+  scale_y_continuous(n.breaks=10) +
+  coord_cartesian(expand = TRUE) 
 Plot04
 
 ggsave("plots_output/12_Cutom_color_bars_based_flag_max_value.png", width = 6.38, height = 5.80)
 
 
 # 4.3 Introduce theme_classic() to the plot 
+# Also include "coord_cartesian(expand = FALSE) to remove gat on the X axis at the bottom of the chart.
+
+# Remove expansion around the whole perimeter using coord_cartesian(expand = FALSE)
+# Always remove this expansion for geom_col()
+# coord_cartesian(expand = FALSE) +
+
 Plot05 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
+  scale_y_continuous(n.breaks=10) +
   coord_cartesian(expand = FALSE) +
   theme_classic() 
 Plot05
 
-ggsave("plots_output/13_Cutom_theme_color_bars_based_flag_max_value.png", width = 6.38, height = 5.80)
+ggsave("plots_output/13_Custom_theme_color_bars_based_flag_max_value.png", width = 6.38, height = 5.80)
 
 
-# 4.4 Remove expansion around the whole perimeter
-# Always remove this expansion for geom_col()
-# coord_cartesian(expand = FALSE) +
-
-Plot06 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
-  labs(title = "Unemployment in Greece.2003-2023 period",
-       caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
-  geom_col(show.legend = FALSE) +
-  scale_fill_manual(breaks = c(FALSE,TRUE),
-                    values = c("#BAD1D6","#539CBA")) +
-  coord_cartesian(expand = FALSE) +
-  theme_classic() 
-Plot06
-
-ggsave("plots_output/14_Cutom_theme_color_bars_based_no_gap.png", width = 6.38, height = 5.80)
-
-# 4.5 Include Title and caption
+# 4.4 Include Title and caption
 #theme(
 #  #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
 #  plot.caption.position = "plot", # Caption and title left aligned
@@ -138,14 +149,15 @@ ggsave("plots_output/14_Cutom_theme_color_bars_based_no_gap.png", width = 6.38, 
 library(ggtext)
 
 Plot07 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
+  scale_y_continuous(n.breaks=10) +
   coord_cartesian(expand = FALSE) +
-  theme_classic() +
+  theme_classic()  +
   theme(
   #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
     plot.caption.position = "plot", # Caption and title left aligned
@@ -159,14 +171,15 @@ Plot07
 library(ggtext)
 
 Plot08 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
+  scale_y_continuous(n.breaks=10) +
   coord_cartesian(expand = FALSE) +
-  theme_classic() +
+  theme_classic()  +
   theme(
     plot.title = element_text(face = "bold"),
     #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
@@ -179,7 +192,7 @@ ggsave("plots_output/15_Cutom_plot_bold_title.png", width = 6.38, height = 5.80)
 
 # 4.7 Create annotation bubble
 # Annotation buble position needs to be adjusted for each chart
-library(ggtext)
+
 
 # Format caption
 
@@ -190,38 +203,38 @@ library(ggtext)
 # Introduce rectangle figure with annotate('rect',xmin = 07, xmax = 12,ymin = 25, ymax = 30, 
 #                           alpha = .1 , fill = 'grey',col = 'black')
 
-Plot09 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
-  # annotate('segment',xmin = as.Date("2010-01-01"), xmax = as.Date("2010-01-02"),ymin = 15, ymax = 20) +
- annotate('rect',xmin = 10, xmax = 12,ymin = 25, ymax = 30, 
-           alpha = .1 , fill = 'grey',col = 'black') +
-  
-#  annotate('segment',x = 05, xend =16 ,y = 10, yend =  20, 
-#          alpha = .1 , fill = 'blue',col = 'black') +
+str(unemp_greece_latest)
 
-    labs(title = "Unemployment in Greece.2003-2023 period",
+# Building new plot with annotations: 
+# I need to load ggtext to include tne new annotation bubble: 
+library(ggtext)
+
+Plot09 <-  unemp_greece_latest %>% 
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
+  labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
-  # Include annotation buble 
-  geom_richtext(geom = "textbox", label = "Year 2013<br>highest unemployment rate", 
-                x = 10, y = 26,
-                hjust = 1,  
-                fill = NA,
-                color = "black",
-                label.colour = NA,
-                show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
+  scale_y_continuous(n.breaks=10) +
   coord_cartesian(expand = FALSE) +
-  theme_classic() +
+  theme_classic()  +
   theme(
     plot.title = element_text(face = "bold"),
     #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
     plot.caption.position = "plot", # Caption and title left aligned
     plot.title.position = "plot"
-  )
-Plot09
-
+  ) +
+# Include annotation text 
+# Include now annotation bubble next to the LINE drawn using annotate('curve')
+  geom_richtext(label = "Highest value<br>Year 2013",x = as.Date("2011-11-25"), y = 27,
+                hjust = 1,fill = NA,color = "black",label.colour = NA,show.legend = FALSE) +
+  # Add vertical and horizontal lines to match annotation to reference bar 
+annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2012-06-01"),y = 27,yend = 27,linewidth = 0.9, 
+         curvature = 0.0) +
+  annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2011-12-01"),y = 26,yend = 28,linewidth = 0.9, 
+           curvature = 0.0) 
+  
 ggsave("plots_output/16_Include Annotation buble with geom annotations.png", width = 6.38, height = 5.80)
 
 
