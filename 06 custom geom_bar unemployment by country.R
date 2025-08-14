@@ -95,7 +95,6 @@ Plot03
 
 ggsave("plots_output/11_True_false_colour_defined_by_max_unemp_value.png", width = 6.38, height = 5.80)
 
-# WIP ! 
 
 # 4.2 Introduce custom colour in the plot
 #    geom_col(show.legend = FALSE) +
@@ -105,26 +104,29 @@ ggsave("plots_output/11_True_false_colour_defined_by_max_unemp_value.png", width
 #                   values = c("#BAD1D6","#539CBA"))
   
 Plot04 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
-  coord_cartesian(expand = FALSE) 
+  scale_y_continuous(n.breaks=10) +
+  coord_cartesian(expand = TRUE) 
 Plot04
 
 ggsave("plots_output/12_Cutom_color_bars_based_flag_max_value.png", width = 6.38, height = 5.80)
 
 
 # 4.3 Introduce theme_classic() to the plot 
+# Also include "coord_cartesian(expand = FALSE) to remove gat on the X axis at the bottom of the chart.
 Plot05 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c(FALSE,TRUE),
                     values = c("#BAD1D6","#539CBA")) +
+  scale_y_continuous(n.breaks=10) +
   coord_cartesian(expand = FALSE) +
   theme_classic() 
 Plot05
