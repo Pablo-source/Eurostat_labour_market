@@ -228,38 +228,13 @@ Plot09 <-  unemp_greece_latest %>%
 # Include annotation buble 
   # Include now annotation bubble next to the LINE drawn using annotate('curve')
   geom_richtext(label = "Highest value<br>Year 2013",x = as.Date("2011-11-25"), y = 27,
-                hjust = 1,fill = NA,color = "black",label.colour = NA,show.legend = FALSE) 
-
-
-
-
-Plot09 <-  unemp_greece_latest %>% 
-  ggplot(aes(x = datef, y = unemp_round, fill = Max_unemp_flag)) +
- annotate('rect',xmin = 10, xmax = 12,ymin = 25, ymax = 30, 
-           alpha = .1 , fill = 'grey',col = 'black') +
-    labs(title = "Unemployment in Greece.2003-2023 period",
-       caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
-  geom_col(show.legend = FALSE) +
-  # Include annotation buble 
-  geom_richtext(geom = "textbox", label = "Year 2013<br>highest unemployment rate", 
-                x = 10, y = 26,
-                hjust = 1,  
-                fill = NA,
-                color = "black",
-                label.colour = NA,
-                show.legend = FALSE) +
-  scale_fill_manual(breaks = c(FALSE,TRUE),
-                    values = c("#BAD1D6","#539CBA")) +
-  coord_cartesian(expand = FALSE) +
-  theme_classic() +
-  theme(
-    plot.title = element_text(face = "bold"),
-    #  plot.caption = element_textbox_simple(hjust=0), # Wrap legend text
-    plot.caption.position = "plot", # Caption and title left aligned
-    plot.title.position = "plot"
-  )
-Plot09
-
+                hjust = 1,fill = NA,color = "black",label.colour = NA,show.legend = FALSE) +
+# Add straight lines to flag year with highest unemployment value
+annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2012-06-01"),y = 27,yend = 27,linewidth = 0.9, 
+         curvature = 0.0) +
+  annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2011-12-01"),y = 26,yend = 28,linewidth = 0.9, 
+           curvature = 0.0) 
+  
 ggsave("plots_output/16_Include Annotation buble with geom annotations.png", width = 6.38, height = 5.80)
 
 
