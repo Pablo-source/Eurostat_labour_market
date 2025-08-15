@@ -43,38 +43,26 @@ unemployment_subset <- combined_indic_date_fmtd %>%
   filter(metric_name == 'unemp_rate')
 
 # 2. Subset data for Greece
-unemp_greece <- unemp_data %>% 
-  filter(country %in% c("greece")) %>%  
-  select(-c(X))
-unemp_greece
+unemp_greece <- unemployment_subset %>% 
+  filter(country %in% c("greece")) 
+  # select(-c(X))
 
 str(unemp_greece)
-
-# Turn date as a R standard date format
-unemp_greece <- unemp_data %>% 
-  filter(country %in% c("greece")) %>%  
-  mutate(date = as.Date(date, format = "%Y-%m-%d")) %>% 
-  select(-c(X))
-unemp_greece
-
-str(unemp_greece)
-
 
 # 1. Create flag for max unemp
 # Flag #01 for max Unemployment
 # Flag #02 for latest date 
 unemp_greece_flags <- unemp_greece %>% 
-  filter(country %in% c("greece")) %>%  
   mutate(
-    unemp_round = round(unemp_rate,0),
-    max_unemp = max(unemp_rate, na.rm = TRUE),
-    Max_unemp_flag = ifelse(unemp_rate == max_unemp,TRUE,FALSE) 
+    unemp_round = round(metric_value,0),
+    max_unemp = max(metric_value, na.rm = TRUE),
+    Max_unemp_flag = ifelse(metric_value == max_unemp,TRUE,FALSE) 
   ) %>% 
   mutate(
-    Latest_date = max(date),
-    Max_date_flag = ifelse(date == Latest_date,TRUE,FALSE)
+    Latest_date = max(datef),
+    Max_date_flag = ifelse(datef == Latest_date,TRUE,FALSE)
     ) %>% 
-  select(date,country,unemp_rate,max_unemp,Max_unemp_flag,Max_date_flag)
+  select(datef,country,metric_name,metric_value,unemp_round,Max_unemp_flag,Max_date_flag)
 unemp_greece_flags
 
 # Exclude NA values
