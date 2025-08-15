@@ -29,11 +29,18 @@ library(tidyverse)
 
 # 1. Import unemployment indicator data 
 # Load initial dataset from "data_cleansed" folder:
-combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
-                              header =TRUE, sep =',',stringsAsFactors =TRUE)
-head(combined_indic)
+combined_indic_date_fmtd <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
+                                       header =TRUE, sep =',',stringsAsFactors =TRUE) %>% 
+  mutate(datef = as.Date(date)) %>% 
+  select(datef, country,metric_name,metric_value)
+str(combined_indic_date_fmtd)
+head(combined_indic_date_fmtd)
 
-str(combined_indic)
+metrics_list <- combined_indic_date_fmtd %>% select(metric_name) %>% distinct()
+metrics_list
+
+unemployment_subset <- combined_indic_date_fmtd %>% 
+  filter(metric_name == 'unemp_rate')
 
 # 2. Subset data for Greece
 unemp_greece <- unemp_data %>% 
