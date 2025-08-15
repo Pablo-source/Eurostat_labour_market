@@ -73,13 +73,13 @@ unemp_greece_flags
 # 2. Create a basic bar plot
 str(unemp_greece)
 Plot01 <- unemp_greece_flags %>% 
-  ggplot(aes(x = date, y = unemp_rate)) +
+  ggplot(aes(x = datef, y = metric_value)) +
   geom_col(fill = "#BAD1D6")
 Plot01
 
 
 Plot02 <- unemp_greece_flags %>% 
-  ggplot(aes(x = date, y = unemp_rate)) +
+  ggplot(aes(x = datef, y = metric_value)) +
   geom_col(fill = "#BAD1D6") +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
@@ -91,10 +91,10 @@ Plot02
 # Rotate x axis column date values
 # theme(axis.text.x = element_text(angle = 45, hjust = 1))
 Plot03 <- unemp_greece_flags %>% 
-  ggplot(aes(x = date, y = unemp_rate)) +
+  ggplot(aes(x = datef, y = metric_value)) +
   geom_col(fill = "#BAD1D6") +
-  labs(title = "Unemployment in Greece.2003-2023 period",
-       caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
+labs(title = "Unemployment in Greece.2003-2023 period",
+     caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 Plot03
@@ -112,7 +112,7 @@ head(unemp_greece)
 library(ggtext)
 
 Plot04_segment <- unemp_greece_flags %>% 
-  ggplot(aes(x = date, y = unemp_rate)) +
+  ggplot(aes(x = datef, y = metric_value)) +
   geom_col(fill = "#BAD1D6") +
   labs(title = "Unemployment in Greece.2003-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/") +
@@ -127,13 +127,8 @@ annotate('curve',
          linewidth = 1, 
          curvature = 0.0) +
 # Include now annotation bubble next to the LINE drawn using annotate('curve')
-geom_richtext(geom = "textbox", label = "Year 2013<br>highest value", 
-              x = as.Date("2011-12-01"), y = 27,
-              hjust = 1,  
-              fill = NA,
-              color = "black",
-              label.colour = NA,
-              show.legend = FALSE)
+geom_richtext(label = "Highest value<br>Year 2013",x = as.Date("2011-11-25"), y = 27,
+                hjust = 1,fill = NA,color = "black",label.colour = NA,show.legend = FALSE) 
 Plot04_segment
 ggsave("plots_output/04_Bar_chart_including_annotation_segment_text_bubble.png", width = 6.38, height = 5.80)
 
