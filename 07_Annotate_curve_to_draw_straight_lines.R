@@ -137,7 +137,7 @@ ggsave("plots_output/04_Bar_chart_including_annotation_segment_text_bubble.png",
 library(ggtext)
 
 Plot05_colour <- unemp_greece_flags %>% 
-  ggplot(aes(x = date, y = unemp_rate, fill = Max_unemp_flag)) +
+  ggplot(aes(x = datef, y = metric_value, fill = Max_unemp_flag)) +
   geom_col(show.legend = FALSE) +
   # Apply labels on x and Y axis on specific dates and values
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
@@ -153,7 +153,7 @@ Plot05_colour <- unemp_greece_flags %>%
   coord_cartesian(expand = FALSE) +
   scale_y_continuous(breaks = seq(0,30,by = 1)) +
   # Include labels over bars
-  geom_text(aes(label = unemp_rate), position = position_dodge(width = 0.9),
+  geom_text(aes(label = metric_value), position = position_dodge(width = 0.9),
             vjust = +1.50) +
   # Introduce 45 angle to Y axis labels
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -163,7 +163,7 @@ Plot05_colour <- unemp_greece_flags %>%
   annotate('curve', x = as.Date("2011-12-01"),xend = as.Date("2011-12-01"),y = 26,yend = 28,linewidth = 0.9, 
            curvature = 0.0) +
   # Include now annotation bubble next to the LINE drawn using annotate('curve')
-  geom_richtext(geom = "textbox", label = "Highest value<br>Year 2013",x = as.Date("2011-11-25"), y = 27,
+  geom_richtext(label = "Highest value<br>Year 2013",x = as.Date("2011-11-25"), y = 27,
                 hjust = 1,fill = NA,color = "black",label.colour = NA,show.legend = FALSE) 
 Plot05_colour
 ggsave("plots_output/17_Bar_chart_annotation_segment_text_bubble_colour_highest_value.png", width = 6.38, height = 5.80)
