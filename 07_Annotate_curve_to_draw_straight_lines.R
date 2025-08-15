@@ -18,7 +18,7 @@ line_plot
 line_plot <- line_plot + 
              annotate("segment", x = 1950, xend = 1980, y = -.25, yend = -.25 )
 line_plot
-ggsave("Plots/01_Annotate_segment_example.png", width = 6.38, height = 5.80)
+ggsave("plots_output/01_Annotate_segment_example.png", width = 6.38, height = 5.80)
 
 str(climate)
 
@@ -29,10 +29,11 @@ library(tidyverse)
 
 # 1. Import unemployment indicator data 
 # Load initial dataset from "data_cleansed" folder:
-unemp_data <- read.table(here("data_cleansed", "EU_UNEMP_CLEAN_une_rt_a_LONG.csv"),
-                         header =TRUE, sep =',',stringsAsFactors =TRUE)
-head(unemp_data)
-str(unemp_data)
+combined_indic  <- read.table(here("data_cleansed", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
+                              header =TRUE, sep =',',stringsAsFactors =TRUE)
+head(combined_indic)
+
+str(combined_indic)
 
 # 2. Subset data for Greece
 unemp_greece <- unemp_data %>% 
