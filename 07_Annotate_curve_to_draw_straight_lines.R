@@ -4,8 +4,11 @@
 
 # Replicate this example
 # https://r-graphics.org/recipe-annotate-segment
+install.packages("gcookbook",dependencies = TRUE)
 library(gcookbook)
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(here)
 library(ggtext)
 
 line_plot <- ggplot(filter(climate,Source == "Berkeley"), aes(x = Year, y = Anomaly10y)) +
