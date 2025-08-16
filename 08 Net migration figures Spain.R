@@ -38,38 +38,26 @@ net_migration_spain <-  read_excel(
   clean_names() %>% 
   na.omit()
 
-net_migration_spain
-
 # 03.4 Use col_types function with "guess" option to import cols with right format into R
 # read_excel(col_types = c("guess","guess")
 
-
-# 04 Initial ggplot geom_plot 
+# 04 Initial exploratory ggplot geom_plot 
 # Include geom_col() to create a bar plot
-net_migration_plot <- spain_net_migration %>% 
+net_migration_plot <- net_migration_spain %>% 
                       select(year, net_migration = net_external_migration) %>% 
                       ggplot(aes(x=year, y = net_migration)) +
   geom_col(show.legend = FALSE) 
-net_migration_plot
 
-# Now we start customising this initial bar plot
+# 5. Now we start customizing this initial bar plot
 
-# 04.1 Remove scientific notation for Y axis 
+# 5.1 Remove scientific notation for Y axis 
 # Include also theme_light()
 # Remove scientific notation from Y axis using options(scipen=999)
-options(scipen=999)
-
-net_migration_plot <- spain_net_migration %>% 
-  select(year, net_migration = net_external_migration) %>% 
-  ggplot(aes(x=year, y = net_migration)) +
-  geom_col(show.legend = FALSE) +
-theme_light() 
-net_migration_plot
 
 
 # Include title and subtitles
-
-net_migration_plot <- spain_net_migration %>% 
+options(scipen=999)
+net_migration_plot_incl_titles <- net_migration_spain %>% 
   select(year, net_migration = net_external_migration) %>% 
   ggplot(aes(x=year, y = net_migration)) +
   geom_col(show.legend = FALSE) +
@@ -77,12 +65,12 @@ net_migration_plot <- spain_net_migration %>%
 labs(title = "Spain Net migration. 2014-2023 period",
      subtitle = "Evolution of net external migration in Spain",
      caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") 
-net_migration_plot
+net_migration_plot_incl_titles
 
-# 04.2 Increase year labels displayed on X axis
+# 5.2 Increase year labels displayed on X axis
 # As year is defined as double columns I use a vector c() to populate labels. 
 # I could also have used lubridate library to create a true date variable
-net_migration_plot <- spain_net_migration %>% 
+net_migration_plot_enhanced <- net_migration_spain %>% 
   select(year, net_migration = net_external_migration) %>% 
   ggplot(aes(x=year, y = net_migration)) +
   geom_col(show.legend = FALSE) +
@@ -91,50 +79,33 @@ net_migration_plot <- spain_net_migration %>%
   labs(title = "Spain Net migration. 2014-2023 period",
        subtitle = "Evolution of net external migration in Spain",
        caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") 
-net_migration_plot
+net_migration_plot_enhanced
 
-# 04.3 Remove X and Y axis labels
+# 5.3 Remove X and Y axis labels
 # theme(axis.title.x = element_blank(),
 #      axis.title.y = element_blank())
-# Also add fill colour to bars using fill() parameter inside aes() function  
-net_migration_plot <- spain_net_migration %>% 
+# Also add fill colour to bars using fill(ill = "cornflowerblue") parameter inside geom_col() function  
+# 
+Spain_net_migration_plot01 <-  net_migration_spain %>% 
   select(year, net_migration = net_external_migration) %>% 
-  ggplot(aes(x=year, y = net_migration, fill = "cornflowerblue")) +
-  geom_col(show.legend = FALSE) +
+  ggplot(aes(x=year, y = net_migration)) +
+  geom_col(show.legend = FALSE, fill = "cornflowerblue") +
   theme_light() +
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
   labs(title = "Spain Net migration. 2014-2023 period",
        subtitle = "Evolution of net external migration in Spain",
        caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
   theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank())
-net_migration_plot
+        axis.title.y = element_blank()) 
+Spain_net_migration_plot01
 
 ggsave("plots_output/18_Spain_net_migration_plain.png", width = 6, height = 4)
 
-
-
-# 04.4 Add color to geom_col() function
-# Using fill() function inside the geom_col() function.
-net_migration_plot <- spain_net_migration %>% 
-  select(year, net_migration = net_external_migration) %>% 
-  ggplot(aes(x=year, y = net_migration)) +
-  geom_col(show.legend = FALSE,fill = "cornflowerblue") +
-  theme_light() +
-  scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
-  labs(title = "Spain Net migration. 2014-2023 period",
-       subtitle = "Evolution of net external migration in Spain",
-       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank())
-net_migration_plot
-
-ggsave("plots_output/19_Spain_net_migration_fill_colour.png", width = 6, height = 4)
-
-# 04.5 Create flag for negative values
+# 6. Create flag for negative values
 #   mutate() function to create negative values for Migration figures
 # mutate(neg_values = ifelse(net_external_migration <0, TRUE,FALSE))
-neg_values_flag <- spain_net_migration %>% 
+
+neg_values_flag <- net_migration_spain %>% 
                    select(year, net_migration = net_external_migration) %>% 
                    mutate(neg_values = ifelse(net_migration <0, TRUE,FALSE))
 neg_values_flag
@@ -156,7 +127,7 @@ net_migration_plot_bool <- neg_values_flag %>%
         axis.title.y = element_blank())
 net_migration_plot_bool
 
-ggsave("plots_output/20_Spain_net_migration_boolean_fill_colour.png", width = 6, height = 4)
+ggsave("plots_output/19_Spain_net_migration_boolean_fill_colour.png", width = 6, height = 4)
 
 # 05. geom_col() bar plot in ggplot2 using custom bar colours for negative and positive values
 # Using scale_fill_manual() function:
