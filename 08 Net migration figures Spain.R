@@ -14,8 +14,8 @@ Path
 
 # List excel files on Data sub-directory
 
-# 01 Check files available in the data folder
-list.files (path = "./Demography" ,pattern = "xls$")
+# 01 Check files available in the data_demography sub-folder
+list.files (path = "./data_demography" ,pattern = "xls$")
 
 # [1] "INE Net external migration Spain 2014 2023.xls"
 
