@@ -107,7 +107,7 @@ ggsave("plots_output/18_Spain_net_migration_plain.png", width = 6, height = 4)
 
 neg_values_flag <- net_migration_spain %>% 
                    select(year, net_migration = net_external_migration) %>% 
-                   mutate(neg_values = ifelse(net_migration <0, TRUE,FALSE))
+                   mutate(direction = ifelse(net_migration <0, "negative", "positive"))
 neg_values_flag
 
 # Then I can use this new "neg_values" boolean column to colour negative values
@@ -115,8 +115,8 @@ neg_values_flag
 #   ggplot(aes(x = year, y = net_migration, fill = neg_values)) +
 
 net_migration_plot_bool <- neg_values_flag %>% 
-  select(year, net_migration,neg_values) %>% 
-  ggplot(aes(x=year, y = net_migration, fill = neg_values)) +
+  select(year, net_migration,direction) %>% 
+  ggplot(aes(x=year, y = net_migration, fill = direction)) +
   geom_col(show.legend = FALSE) +
   theme_light() +
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
@@ -133,25 +133,62 @@ ggsave("plots_output/19_Spain_net_migration_boolean_fill_colour.png", width = 6,
 # Using scale_fill_manual() function:
 #   scale_fill_manual(breaks = c(FALSE,TRUE),
 #                     values = c("cornflowerblue","coral")) +
-net_migration_bool_neg_values <- neg_values_flag %>% 
-  select(year, net_migration,neg_values) %>% 
-  ggplot(aes(x=year, y = net_migration, fill = neg_values)) +
+
+# This is the original chart with R colours: 
+net_migration_plot_bool_custom <- neg_values_flag %>% 
+  select(year, net_migration,direction) %>% 
+  ggplot(aes(x=year, y = net_migration, fill = direction,label = net_migration)) +
   geom_col(show.legend = FALSE) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank()) 
+
+# 5.2 then we add custom colours to bars
+net_migration_custom_colors <- neg_values_flag %>% 
+  select(year, net_migration,direction) %>% 
+  ggplot(aes(x=year, y = net_migration, fill = direction,label = net_migration)) +
+  geom_col(show.legend = FALSE) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank()) + 
+  scale_fill_manual(breaks = c("negative", "positive"),
+                  values = c("cornflowerblue","coral")) +
+  scale_color_manual(breaks = c("negative","positive"),   # Add custom colors for outside border bar
+                   values = c("cornflowerblue","coral")) 
+
+  net_migration_custom_colors
+
+
+ggsave("plots_output/20_Spain_net_migration_boolean_custom_colours_initial.png", width = 6, height = 4)
+  
+# 5.3 Then we add 
+# scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) + and 
+#  And title subtitle and caption:
+net_migration_custom_titles <- neg_values_flag %>% 
+  select(year, net_migration,direction) %>% 
+  ggplot(aes(x=year, y = net_migration, fill = direction,label = net_migration)) +
+  geom_col(show.legend = FALSE) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank()) + 
+  scale_fill_manual(breaks = c("negative", "positive"),
+                    values = c("cornflowerblue","coral")) +
+  scale_color_manual(breaks = c("negative","positive"),   # Add custom colors for outside border bar
+                     values = c("cornflowerblue","coral")) +
+  geom_text() +
   theme_light() +
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
-  scale_y_continuous(breaks = seq(-100000,850000,by = 100000)) +
   labs(title = "Spain Net migration. 2014-2023 period",
        subtitle = "Evolution of net external migration in Spain",
-       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank()) +
+       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") 
   # Include different colours for Negative and Positive values
   # Based on neg_values column values (TRUE (coral colour ),FALSE (cornflowerblue colour))   )
-  scale_fill_manual(breaks = c(FALSE,TRUE),
-                       values = c("cornflowerblue","coral")) 
-net_migration_bool_neg_values
+ 
+net_migration_custom_titles
 
 ggsave("plots_output/20_Spain_net_migration_boolean_custom_colours_final.png", width = 6, height = 4)
+
+# Completed above chart !!!
+
+
+
 
 # 06. Include Labels in Net migration chart (WIP)
 # Using geom_text() function
@@ -183,14 +220,18 @@ ggsave("plots_output/21_Spain_net_migration_boolean_custom_colours_new_data_labe
 
 # 6.1 Adjust values adding a new mutate statement
 # I need a nudge parameter to increase or decrease label position of values when they are positive or negative values
-#  geom_text(aes(y = label_y, color = direction)) +  # This colours labels dependening they are negative (red) or positive (green)
+#  1. created nudge value at the top (nudge <- 0.30)
+#  2. created new calculated field using mutate(label_y): 
+# label_y = if_else(net_migration < 0,
+#       net_migration - nudge,net_migration + nudge))
+# 3. Finally we add this new label_y to the geom_text() function below. 
+#  geom_text(aes(y = label_y)) +  # This colours labels dependening they are negative (red) or positive (green)
 
-# WIP !
 
 # Folder: /home/pablo/Documents/Pablo_ubuntu/R_projects/01_ggplot2_gallery/ggplot2_gallery
 # Use Script as a reference: 01 barplot_data_labels.R
 
-nudge <- 0.14
+nudge <-  0.14
 
 neg_values_label <- neg_values_flag %>% 
   select(year, net_migration,neg_values) %>% 
@@ -198,11 +239,16 @@ neg_values_label <- neg_values_flag %>%
                            net_migration - nudge,net_migration + nudge))
 neg_values_label
 
-net_migration_data_labels <- neg_values_label %>% 
-  select(year, net_migration,neg_values,label_y) %>% 
+
+
+net_migration_data_labels <- neg_values_flag %>% 
+  select(year, net_migration,neg_values) %>% 
+  mutate(label_y = if_else(net_migration < 0,
+                           net_migration - nudge,net_migration + nudge)) %>% 
   ggplot(aes(x=year, y = net_migration, fill = neg_values, label = net_migration)) +
   geom_col(show.legend = FALSE) +
-  geom_text(aes(y = label_y)) +
+  # geom_text(aes(y = label_y)) +
+  geom_text(aes(y = label_y )) +
   theme_light() +
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
   scale_y_continuous(breaks = seq(-100000,850000,by = 100000)) +
