@@ -49,15 +49,23 @@
 
 ![17_Bar_chart_annotation_segment_text_bubble_colour_highest_value](https://github.com/user-attachments/assets/6ee84592-5bac-4804-ab5f-68ae3d9b0b27)
 
-## Plot 03. Stacked barplot population by nationality
-- See script "**09 Total population by nationality Spain 2004 2025.R**" for details:
-- Used `geom_bar()` in conjuntion with `position="stack"` to create a stacked bar plot
-- Also used  `scale_fill_discrete(labels=c())` to populate labels with custom text and `scale_fill_manual()` to populate legend with custom colour
+## Plot 03. Net external migration in spain 
+- See script "**08 Net migration figures Spain.R**" for details in this project.
+- Used `geom_text(aes(y = label_y, color = direction)) ` to include data labels to barplots. Using color to highligh **positive** and **negative** values.
+- Also used  ` mutate(direction = ifelse(net_migration <0, "negative", "positive"))` to build the flag variable used to identify color changes in the plot.
 - In a future Quarto document, I will explore the relationship between Immigration and Labour market conditions in some European countries and also in the UK
 
-![23_Spain_population_by_nationality_2005_2025](https://github.com/user-attachments/assets/899f3ef8-bec9-4215-a4ee-6cd587a8fb8c)
+<img width="1800" height="1200" alt="22_Spain_net_migration_boolean_custom_colours_hlines_final_plot" src="https://github.com/user-attachments/assets/1f08a9c4-1327-4221-a18d-5ff7faaca5c7" />
 
+- Really useful and interesting online resources to create ggplot2 charts with flags to highlight changes in data:
+  
+- Riffomonas Project – YouTube channel about R and ggplot2
+- Exploring the volatility of the S&P under Trump using the quantmod and tidyverse R paclages (CC357)
+<https://www.youtube.com/watch?v=-UpqE1ilVuo>
 
+- Riffomonas Project – YouTube channel about R and ggplot2
+- Using ggplot2 to demonstrate the regressive nature of Trump’s spending fill (CC364)
+<https://www.youtube.com/watch?v=-tx7p68I0m4>
 
 
 
