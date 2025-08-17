@@ -187,10 +187,8 @@ ggsave("plots_output/20_Spain_net_migration_boolean_custom_colours_final.png", w
 
 # Completed above chart !!!
 
-# 06. Include Labels in Net migration chart bars (WIP)
-# Using geom_text() function
-# geom_text(aes(label = metric_value), position = position_dodge(width = 0.9),
-#          vjust = +1.50) +
+# 06. Include Labels in Net migration chart bars
+# Using geom_text() function with curstom label_y variable to position the labels appropriatelly
 # We use nudge (2000), so original value for2014 year is -94976 but the label_y defined by nudge is in the -96976 position in the y axis.
 nudge <- 20000
 net_migration_bar_data_labels <- neg_values_flag %>% 
@@ -198,12 +196,11 @@ net_migration_bar_data_labels <- neg_values_flag %>%
   mutate(label_y = if_else(net_migration < 0,
                            net_migration - nudge,net_migration + nudge)) 
   
-Plot <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, fill = direction,label = net_migration)) +
+net_migration_spain_nudge <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, fill = direction,label = net_migration)) +
   # Include this geom_text() code below to plot labels below bars: 
   # geom_text(y = label_y)
   geom_text(aes(y = label_y)) +
-  geom_col(show.legend = FALSE) 
-+
+  geom_col(show.legend = FALSE) +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank()) + 
   scale_fill_manual(breaks = c("negative", "positive"),
@@ -218,84 +215,39 @@ Plot <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, fil
 # Include different colours for Negative and Positive values
 # Based on neg_values column values (TRUE (coral colour ),FALSE (cornflowerblue colour))   )
 
-net_migration_bar_data_labels
+net_migration_spain_nudge
 
 ggsave("plots_output/21_Spain_net_migration_bar_data_labels_nudge.png", width = 6, height = 4)
 
 
 
-
-
-
-
-
-
-
-net_migration_data_labels <- neg_values_flag %>% 
-  select(year, net_migration,neg_values) %>% 
-  ggplot(aes(x=year, y = net_migration, fill = neg_values)) +
+# 07. Include formatting using Hlines 
+#   theme(axis.title.x = element_blank(),
+# axis.title.y = element_blank())  
+# geom_hline(yintercept = 0, linewidth = 0.3)             # Add reference line at 0
+ 
+net_migration_spain_nudge_hlines <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, fill = direction,label = net_migration)) +
+  # Include this geom_text() code below to plot labels below bars: 
+  # geom_text(y = label_y)
+  geom_text(aes(y = label_y)) + # Include this geom_text() code below to plot labels below bars: 
   geom_col(show.legend = FALSE) +
+
+  scale_fill_manual(breaks = c("negative", "positive"),
+                    values = c("coral","cornflowerblue")) +
+  scale_color_manual(breaks = c("negative","positive"),   # Add custom colors for outside border bar
+                     values = c("coral","cornflowerblue")) +
   theme_light() +
+  theme(legend.position =  "none", # Remove legends 
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank()) + 
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
-  scale_y_continuous(breaks = seq(-100000,850000,by = 100000)) +
   labs(title = "Spain Net migration. 2014-2023 period",
        subtitle = "Evolution of net external migration in Spain",
        caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank()) +
-  # Include different colours for Negative and Positive values
-  # Based on neg_values column values (TRUE (coral colour ),FALSE (cornflowerblue colour))   )
-  scale_fill_manual(breaks = c(FALSE,TRUE),
-                    values = c("cornflowerblue","coral")) +
-  # Include data labels
-  geom_text(aes(label = net_migration), position = position_dodge(width = 0.9), yjust = +1.50)
-net_migration_data_labels
+  geom_hline(yintercept = 0, linewidth = 0.3)  +        # Add reference line at 0
+  geom_text(aes(y = label_y, color = direction))   # This colors labels dependent they are negative (red) or positive (green)
+net_migration_spain_nudge_hlines
 
-ggsave("plots_output/21_Spain_net_migration_boolean_custom_colours_new_data_labels.png", width = 6, height = 4)
-
-
-
-# 6.1 Adjust values adding a new mutate statement
-# I need a nudge parameter to increase or decrease label position of values when they are positive or negative values
-#  1. created nudge value at the top (nudge <- 0.30)
-#  2. created new calculated field using mutate(label_y): 
-# label_y = if_else(net_migration < 0,
-#       net_migration - nudge,net_migration + nudge))
-# 3. Finally we add this new label_y to the geom_text() function below. 
-#  geom_text(aes(y = label_y)) +  # This colours labels dependening they are negative (red) or positive (green)
-
-
-# Folder: /home/pablo/Documents/Pablo_ubuntu/R_projects/01_ggplot2_gallery/ggplot2_gallery
-# Use Script as a reference: 01 barplot_data_labels.R
-
-nudge <-  0.14
-
-neg_values_label <- neg_values_flag %>% 
-  select(year, net_migration,neg_values) %>% 
-  mutate(label_y = if_else(net_migration < 0,
-                           net_migration - nudge,net_migration + nudge))
-neg_values_label
-
-
-
-net_migration_data_labels <- neg_values_flag %>% 
-  select(year, net_migration,neg_values) %>% 
-  mutate(label_y = if_else(net_migration < 0,
-                           net_migration - nudge,net_migration + nudge)) %>% 
-  ggplot(aes(x=year, y = net_migration, fill = neg_values, label = net_migration)) +
-  geom_col(show.legend = FALSE) +
-  # geom_text(aes(y = label_y)) +
-  geom_text(aes(y = label_y )) +
-  theme_light() +
-  scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
-  scale_y_continuous(breaks = seq(-100000,850000,by = 100000)) +
-  labs(title = "Spain Net migration. 2014-2023 period",
-       subtitle = "Evolution of net external migration in Spain",
-       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank()) 
-
-# 6.1.1 Now we want adjust those data labels (new section here)
-# geom_text( aes(y = decile_y, label = decile), color = "gray40"
+ggsave("plots_output/22_Spain_net_migration_boolean_custom_colours_hlines_final_plot.png", width = 6, height = 4)
 
 
