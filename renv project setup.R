@@ -33,6 +33,7 @@ renv::install('ggplot2')
  # Script 06 custom_geom_bar_unemployment by country.R
 renv::install('markdown') # Installed Markdown for Formatting unemployment rate bar plot.qmd file
 renv::install('gcookbook') # Used in script 
+renv::install('yaml') # parse dependencies witin Quarto Markdown files
 
 # 3 Check status of your lockfile using renv::status() function:
 ## status() reports issues caused by inconsistencies across the project lockfile
