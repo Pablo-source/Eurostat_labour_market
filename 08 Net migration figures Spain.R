@@ -169,9 +169,9 @@ net_migration_custom_titles <- neg_values_flag %>%
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank()) + 
   scale_fill_manual(breaks = c("negative", "positive"),
-                    values = c("cornflowerblue","coral")) +
+                    values = c("coral","cornflowerblue")) +
   scale_color_manual(breaks = c("negative","positive"),   # Add custom colors for outside border bar
-                     values = c("cornflowerblue","coral")) +
+                     values = c("coral","cornflowerblue")) +
   geom_text() +
   theme_light() +
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
