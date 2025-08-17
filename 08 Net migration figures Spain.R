@@ -187,13 +187,50 @@ ggsave("plots_output/20_Spain_net_migration_boolean_custom_colours_final.png", w
 
 # Completed above chart !!!
 
-
-
-
-# 06. Include Labels in Net migration chart (WIP)
+# 06. Include Labels in Net migration chart bars (WIP)
 # Using geom_text() function
 # geom_text(aes(label = metric_value), position = position_dodge(width = 0.9),
 #          vjust = +1.50) +
+# We use nudge (2000), so original value for2014 year is -94976 but the label_y defined by nudge is in the -96976 position in the y axis.
+nudge <- 20000
+net_migration_bar_data_labels <- neg_values_flag %>% 
+  select(year, net_migration,direction) %>% 
+  mutate(label_y = if_else(net_migration < 0,
+                           net_migration - nudge,net_migration + nudge)) 
+  
+Plot <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, fill = direction,label = net_migration)) +
+  # Include this geom_text() code below to plot labels below bars: 
+  # geom_text(y = label_y)
+  geom_text(aes(y = label_y)) +
+  geom_col(show.legend = FALSE) 
++
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank()) + 
+  scale_fill_manual(breaks = c("negative", "positive"),
+                    values = c("coral","cornflowerblue")) +
+  scale_color_manual(breaks = c("negative","positive"),   # Add custom colors for outside border bar
+                     values = c("coral","cornflowerblue")) +
+  theme_light() +
+  scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
+  labs(title = "Spain Net migration. 2014-2023 period",
+       subtitle = "Evolution of net external migration in Spain",
+       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") 
+# Include different colours for Negative and Positive values
+# Based on neg_values column values (TRUE (coral colour ),FALSE (cornflowerblue colour))   )
+
+net_migration_bar_data_labels
+
+ggsave("plots_output/21_Spain_net_migration_bar_data_labels_nudge.png", width = 6, height = 4)
+
+
+
+
+
+
+
+
+
+
 net_migration_data_labels <- neg_values_flag %>% 
   select(year, net_migration,neg_values) %>% 
   ggplot(aes(x=year, y = net_migration, fill = neg_values)) +
