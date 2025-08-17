@@ -199,9 +199,10 @@ neg_values_label <- neg_values_flag %>%
 neg_values_label
 
 net_migration_data_labels <- neg_values_label %>% 
-  select(year, net_migration,neg_values) %>% 
-  ggplot(aes(x=year, y = net_migration, fill = neg_values)) +
+  select(year, net_migration,neg_values,label_y) %>% 
+  ggplot(aes(x=year, y = net_migration, fill = neg_values, label = net_migration)) +
   geom_col(show.legend = FALSE) +
+  geom_text(aes(y = label_y)) +
   theme_light() +
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
   scale_y_continuous(breaks = seq(-100000,850000,by = 100000)) +
@@ -209,7 +210,7 @@ net_migration_data_labels <- neg_values_label %>%
        subtitle = "Evolution of net external migration in Spain",
        caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
   theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank()) +
+        axis.title.y = element_blank()) 
 
 # 6.1.1 Now we want adjust those data labels (new section here)
 # geom_text( aes(y = decile_y, label = decile), color = "gray40"
