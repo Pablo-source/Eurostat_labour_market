@@ -60,6 +60,8 @@
 - Included thousands separator geom_bar():
 <img width="1060" height="849" alt="image" src="https://github.com/user-attachments/assets/e97d2355-121c-43df-98cd-f21fd92c5910" />
 
+- I will include a chart comparing **net migration** figures across **European countries** and also with the *UK*, Eurostat website for Net migration figures:
+  <https://ec.europa.eu/eurostat/databrowser/view/migr_netmigr/default/table?lang=en>
 
 - Really useful and interesting online resources to create ggplot2 charts with flags to highlight changes in data:
   
