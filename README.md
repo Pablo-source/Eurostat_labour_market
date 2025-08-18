@@ -57,6 +57,10 @@
 
 <img width="1800" height="1200" alt="22_Spain_net_migration_boolean_custom_colours_hlines_final_plot" src="https://github.com/user-attachments/assets/1f08a9c4-1327-4221-a18d-5ff7faaca5c7" />
 
+- Included thousands separator geom_bar():
+<img width="1060" height="849" alt="image" src="https://github.com/user-attachments/assets/e97d2355-121c-43df-98cd-f21fd92c5910" />
+
+
 - Really useful and interesting online resources to create ggplot2 charts with flags to highlight changes in data:
   
 - Riffomonas Project – YouTube channel about R and ggplot2
