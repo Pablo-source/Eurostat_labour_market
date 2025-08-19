@@ -211,7 +211,7 @@ net_migration_spain_nudge <- ggplot(net_migration_bar_data_labels, aes(x=year, y
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
   labs(title = "Spain Net migration. 2014-2023 period",
        subtitle = "Evolution of net external migration in Spain",
-       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") 
+       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. <https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm>") 
 # Include different colours for Negative and Positive values
 # Based on neg_values column values (TRUE (coral colour ),FALSE (cornflowerblue colour))   )
 
@@ -250,4 +250,6 @@ net_migration_spain_nudge_hlines
 
 ggsave("plots_output/22_Spain_net_migration_boolean_custom_colours_hlines_final_plot.png", width = 6, height = 4)
 
+
+# 08 Including Thousands separator in previous new migration chart
 
