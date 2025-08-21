@@ -252,7 +252,10 @@ ggsave("plots_output/22_Spain_net_migration_boolean_custom_colours_hlines_final_
 
 
 # 08 Including Thousands separator in previous new migration chart
-# Thousnad separator piece of code:  fill = direction,label = format(net_migration, big.mark = ","))) 
+# Thousand separator piece of code:  fill = direction,label = format(net_migration, big.mark = ","))) 
+
+# Removed scientific notation as default option when creating bar plot using options(scipen=999):
+options(scipen=999)
 
 net_migration_spain_thousands_sep  <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, 
                                                                                 fill = direction,label = format(net_migration, big.mark = ","))) +
