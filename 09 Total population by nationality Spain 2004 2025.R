@@ -21,7 +21,7 @@ Path
 
 # 01 Check files available in the data folder. This time I want to import an Excel .xlsx file 
 # This code below uses specific pattern to differenciate between .xls and .xlsx file we are interested in the latter
-list.files (path = "./Demography" ,pattern = "xlsx$")
+list.files (path = "./data_demography" ,pattern = "xlsx$")
 
 # [1] "INE total and foreign population figures Spain.xlsx"
 
