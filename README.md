@@ -55,7 +55,8 @@
 - Also used  ` mutate(direction = ifelse(net_migration <0, "negative", "positive"))` to build the flag variable used to identify color changes in the plot.
 - In a future Quarto document, I will explore the relationship between Immigration and Labour market conditions in some European countries and also in the UK
 - Included thousands separator in ggplot(): `fill = direction,label = format(net_migration, big.mark = ",")))`
-
+- Source: Statistics on Migrations and Changes of Residence (SMCR).Source: National Statistics Institute. Spanish Statistical Office. INE.
+- Evolution of net external migration. 2014-2023. INE: <https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm>
 <img width="1197" height="936" alt="image" src="https://github.com/user-attachments/assets/a2bcb3ab-8c4b-4abc-98be-012d1d091fc5" />
 
 
