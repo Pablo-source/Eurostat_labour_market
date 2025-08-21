@@ -252,7 +252,7 @@ ggsave("plots_output/22_Spain_net_migration_boolean_custom_colours_hlines_final_
 
 
 # 08 Including Thousands separator in previous new migration chart
-# WIP
+# Thousnad separator piece of code:  fill = direction,label = format(net_migration, big.mark = ","))) 
 
 net_migration_spain_thousands_sep  <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, 
                                                                                 fill = direction,label = format(net_migration, big.mark = ","))) +
@@ -277,3 +277,4 @@ net_migration_spain_thousands_sep  <- ggplot(net_migration_bar_data_labels, aes(
   geom_text(aes(y = label_y, color = direction))   # This colors labels dependent they are negative (red) or positive (green)
 net_migration_spain_thousands_sep
 
+ggsave("plots_output/23_Spain_net_migration_boolean_custom_colours_thousands_sep.png", width = 6, height = 4)
