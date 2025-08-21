@@ -54,9 +54,10 @@
 - Used `geom_text(aes(y = label_y, color = direction)) ` to include data labels to barplots. Using color to highligh **positive** and **negative** values.
 - Also used  ` mutate(direction = ifelse(net_migration <0, "negative", "positive"))` to build the flag variable used to identify color changes in the plot.
 - In a future Quarto document, I will explore the relationship between Immigration and Labour market conditions in some European countries and also in the UK
+- Included thousands separator in ggplot(): `fill = direction,label = format(net_migration, big.mark = ",")))`
 
-- Included thousands separator in ggplot(): `fill = direction,label = format(net_migration, big.mark = ",")))` 
-<img width="1197" height="936" alt="image" src="https://github.com/user-attachments/assets/c0924ed2-1d87-4598-8c49-7682d85749e7" />
+<img width="1197" height="936" alt="image" src="https://github.com/user-attachments/assets/a2bcb3ab-8c4b-4abc-98be-012d1d091fc5" />
+
 
 
 - I will include a chart comparing **net migration** figures across **European countries** and also with the *UK*, Eurostat website for Net migration figures:
