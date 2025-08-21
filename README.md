@@ -55,8 +55,9 @@
 - Also used  ` mutate(direction = ifelse(net_migration <0, "negative", "positive"))` to build the flag variable used to identify color changes in the plot.
 - In a future Quarto document, I will explore the relationship between Immigration and Labour market conditions in some European countries and also in the UK
 
-- Included thousands separator geom_bar():
-<img width="1060" height="849" alt="image" src="https://github.com/user-attachments/assets/e97d2355-121c-43df-98cd-f21fd92c5910" />
+- Included thousands separator in ggplot(): `fill = direction,label = format(net_migration, big.mark = ",")))` 
+<img width="1197" height="936" alt="image" src="https://github.com/user-attachments/assets/c0924ed2-1d87-4598-8c49-7682d85749e7" />
+
 
 - I will include a chart comparing **net migration** figures across **European countries** and also with the *UK*, Eurostat website for Net migration figures:
   <https://ec.europa.eu/eurostat/databrowser/view/migr_netmigr/default/table?lang=en>
