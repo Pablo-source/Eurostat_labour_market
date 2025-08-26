@@ -17,6 +17,9 @@ Path <- here()
 Path
 # [1] "/home/pablo/Documents/Pablo_ubuntu/Repos/Pablo_source_repo/Eurostat_labour_market"
 
+# Avoid scientific notation when producing charts
+options(scipen=999)
+
 # List excel files on Data sub-directory
 
 # 01 Check files available in the data folder. This time I want to import an Excel .xlsx file 
@@ -59,9 +62,6 @@ foreign_pop <- foreign_pop %>%
                        foreign_population, percent_foreign_population = percent_foreign_nationals_total_population,
                        total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
                        foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
-foreign_pop
-
-foreign_pop
 
 # 06 Subset columns to replicate existing calculations
 # We are going to replicate existing calculations following this script I did in Python (jut to do a small exercise of comparing both coding languages side by side)
@@ -69,19 +69,16 @@ foreign_pop
 # The aim is to obtain the same staked bar plot for Spanish population by nationality 
 
 # I will call this new dataset "INE_population_subset" 
-
 INE_population_subset = foreign_pop %>% select(date,total_population,foreign_population)
-INE_population_subset
 
 # 07 Create new calculated fields
-
 # 7.1 New column for year variable 
 # Using substring() function 
 length(INE_population_subset$date)
 
 INE_population_subset <- INE_population_subset %>% 
                          mutate(Year = substring(date, 15, 25))
-INE_population_subset
+
 
 # 7.2 New Column for Spanish Nationals
 # Substracting foreign population from Total population
@@ -90,7 +87,6 @@ INE_population_nationality <-  INE_population_subset %>%
                             select(Year,total_population, foreign_population) %>% 
                             mutate(Spanish_nationals = total_population - foreign_population) %>% 
                             arrange(Year)
-INE_population_nationality
 
 # 07 Reshape data from wide to long format
 # pivot_longer function from {tidyr}
@@ -98,27 +94,26 @@ library(tidyr)
 INE_pop_nationality_long <- INE_population_nationality %>% 
                             pivot_longer(cols = total_population:Spanish_nationals,
                                          names_to = "nationality", values_to = "population")
-INE_pop_nationality_long
+
 
 # 08 Build stacked barplot using geom_bar(position="stack")
 INE_population_stacked <- INE_pop_nationality_long %>% 
                           select(Year,nationality,population) %>% 
                           filter(nationality == c("foreign_population",
                                                   "Spanish_nationals"))
-INE_population_stacked
+
 # Then plot this subset of data
 Spain_pop_natiolaity <- ggplot(INE_population_stacked, aes(fill = nationality, 
                                                            y = population, x = Year)) +
                         geom_bar(position="stack", stat = "identity")
-Spain_pop_natiolaity
 
 ggsave("plots_output/22_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
 
 # 09 Theme previous chart changing default legend text 
+
 options(scipen=999)
       
-Spain_pop_nationality <- ggplot(INE_population_stacked, aes(fill = nationality, 
-                                                           y = population, x = Year)) +
+Spain_pop_nationality <- ggplot(INE_population_stacked, aes(fill = nationality,y = population, x = Year)) +
                         geom_bar(position="stack", stat = "identity") +
                         labs(title = "Spanish population by nationality",
                            subtitle ="2005-2025 period",
@@ -126,39 +121,13 @@ Spain_pop_nationality <- ggplot(INE_population_stacked, aes(fill = nationality,
                            x = "Period", 
                            y = "Population") +
                         theme_light() +
-  # Change legend default text
-  scale_fill_discrete(labels=c('National', 'Foreign')) +
-  # Place legend at the bottom of the chart
-  theme(plot.title.position = "plot",
-     legend.position = "bottom")  +
+  scale_fill_discrete(labels=c('National', 'Foreign')) +   # Change legend default text
+   theme(plot.title.position = "plot",
+     legend.position = "bottom")  +  # Place legend at the bottom of the chart
   # Change default colour for stacked bars (in both chart and legend)
   scale_fill_manual(values = c("cornflowerblue","coral")) 
 Spain_pop_nationality
 ggsave("plots_output/23_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
-
-# 10 Include labels on "Spanish population by nationality" Stacked bar chart 
-options(scipen=999)
-
-Spain_pop_nationality_data_labels <- ggplot(INE_population_stacked, aes(fill = nationality, 
-                                                            y = population, x = Year)) +
-  geom_bar(position="stack", stat = "identity") +
-  labs(title = "Spanish population by nationality",
-       subtitle ="2005-2025 period",
-       # Change X and Y axis labels
-       x = "Period", 
-       y = "Population") +
-  theme_light() +
-  # Change legend default text
-  scale_fill_discrete(labels=c('National', 'Foreign')) +
-  # Place legend at the bottom of the chart
-  theme(plot.title.position = "plot",
-        legend.position = "bottom")  +
-  # Change default colour for stacked bars (in both chart and legend)
-  scale_fill_manual(values = c("cornflowerblue","coral")) +
-  # Include data labels on bars
-  geom_text(aes(label = population),position = position_dodge(width = 0.1),vjust = +0.20,hjust = 0.25)
-Spain_pop_nationality_data_labels
-ggsave("plots_output/24_Spain_population_by_nationality_2005_2025_data_labels.png", width = 6, height = 4)
 
 # 11 Foreign population Bar chart
 
@@ -167,11 +136,23 @@ Foreign_pop <- INE_population_stacked %>%
 Foreign_pop
 
 # Initial barplot 
-options(scipen=999)
+# Include thousand separator in charts  
+#  fill = direction,label = format(net_migration, big.mark = ","))) 
+
+# WIP 
+## Including Thousands separator:
+# ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, 
+# fill = direction,label = format(net_migration, big.mark = ","))) 
+
+
 
 Foreign_pop_plot <- Foreign_pop %>% 
-                    ggplot(aes(x = Year, y = population)) +  
+                    ggplot(aes(x = Year, y = population,
+                               ,label(population))) +  
   geom_bar(stat = "identity",fill = "cornflowerblue") +
+  
+  
+  
   labs(title = "Foreign population in Spain.2005-2025 period",
        subtitle ="Source: INE Spanish Office for National Statistics") +
   theme_light() +
