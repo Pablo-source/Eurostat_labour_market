@@ -1,5 +1,5 @@
 # 04 GT table from imported file include thousands setp.R
-
+# R Script: "Spain net migration GT table example.R"
 library(readxl)
 library(here)
 library(dplyr)
