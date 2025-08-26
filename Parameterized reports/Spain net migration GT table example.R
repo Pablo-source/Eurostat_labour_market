@@ -86,3 +86,21 @@ gt_table_thousands_separator <- net_migration_table %>%
     source_note = "Source: Satistics on Migrations and Changes of Residence (SMCR). Year 2023"
   )
 gt_table_thousands_separator
+
+# Save gt table as an HTML file: 
+gt_table_thousands_separator <- net_migration_table %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Spain External net migration**"),
+    subtitle = ("2014-2023 period") 
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Net Migration column
+  fmt_number(sep_mark = ",","Net Migration") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm")
+  ) %>%
+  tab_source_note(
+    source_note = "Source: Satistics on Migrations and Changes of Residence (SMCR). Year 2023"
+  ) %>% 
+gtsave(filename = "Parameterized reports/Spain_net_migration_2014_2023.png")  
+
