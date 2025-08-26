@@ -158,20 +158,14 @@ Foreign_pop_labels <- Foreign_pop %>% mutate(label_y = if_else(population < 0,
 
 # Note: we use this new "label_y" column (created in the mutate statement)
 #       just to obtain the text labels position  in the right right above bars.
+# We also include (label = format(population, big.mark = ",")) to include thousands separator in bar labels
 Foreign_pop_plot <- ggplot(Foreign_pop_labels,aes(x = Year, y = population,
                                            label = format(population, big.mark = ","))) +
   geom_text(aes(y = label_y)) +
-  geom_col(show.legend = FALSE)
-
-
-Foreign_pop_plot <- ggplot(Foreign_pop,aes(x = Year, 
-                                           y = population,
-                                           label = format(population, big.mark = ","))) +  
-    geom_bar(stat = "identity", fill = "cornflowerblue") +
-    labs(title = "Foreign population in Spain.2005-2025 period",
+  geom_col(show.legend = FALSE, fill = "cornflowerblue") + # Add geom_col() coplours 
+  labs(title = "Foreign population in Spain.2005-2025 period",
        subtitle ="Source: INE Spanish Office for National Statistics") +
   theme_light() +
-  geom_text(aes(label = population),position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +   # Include data labels on bars
 coord_cartesian( ylim=c(0,7500000), expand = FALSE )   # Remove x axis gap
 Foreign_pop_plot
 
