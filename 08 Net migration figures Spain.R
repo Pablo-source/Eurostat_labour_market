@@ -211,7 +211,7 @@ net_migration_spain_nudge <- ggplot(net_migration_bar_data_labels, aes(x=year, y
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
   labs(title = "Spain Net migration. 2014-2023 period",
        subtitle = "Evolution of net external migration in Spain",
-       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") 
+       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. <https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm>") 
 # Include different colours for Negative and Positive values
 # Based on neg_values column values (TRUE (coral colour ),FALSE (cornflowerblue colour))   )
 
@@ -251,3 +251,33 @@ net_migration_spain_nudge_hlines
 ggsave("plots_output/22_Spain_net_migration_boolean_custom_colours_hlines_final_plot.png", width = 6, height = 4)
 
 
+# 08 Including Thousands separator in previous new migration chart
+# Thousand separator piece of code:  fill = direction,label = format(net_migration, big.mark = ","))) 
+
+# Removed scientific notation as default option when creating bar plot using options(scipen=999):
+options(scipen=999)
+
+net_migration_spain_thousands_sep  <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, 
+                                                                                fill = direction,label = format(net_migration, big.mark = ","))) +
+  # Include this geom_text() code below to plot labels below bars: 
+  # geom_text(y = label_y)
+  geom_text(aes(y = label_y)) + # Include this geom_text() code below to plot labels below bars: 
+  geom_col(show.legend = FALSE) +
+  
+  scale_fill_manual(breaks = c("negative", "positive"),
+                    values = c("coral","cornflowerblue")) +
+  scale_color_manual(breaks = c("negative","positive"),   # Add custom colors for outside border bar
+                     values = c("coral","cornflowerblue")) +
+  theme_light() +
+  theme(legend.position =  "none", # Remove legends 
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank()) + 
+  scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
+  labs(title = "Spain Net migration. 2014-2023 period",
+       subtitle = "Evolution of net external migration in Spain",
+       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
+  geom_hline(yintercept = 0, linewidth = 0.3)  +        # Add reference line at 0
+  geom_text(aes(y = label_y, color = direction))   # This colors labels dependent they are negative (red) or positive (green)
+net_migration_spain_thousands_sep
+
+ggsave("plots_output/23_Spain_net_migration_boolean_custom_colours_thousands_sep.png", width = 6, height = 4)
