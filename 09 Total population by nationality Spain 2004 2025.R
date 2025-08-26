@@ -130,7 +130,6 @@ Spain_pop_nationality
 ggsave("plots_output/23_Spain_population_by_nationality_2005_2025.png", width = 6, height = 4)
 
 # 11 Foreign population Bar chart
-
 Foreign_pop <- INE_population_stacked %>% 
                filter(nationality == 'foreign_population')
 Foreign_pop
@@ -144,22 +143,23 @@ Foreign_pop
 # ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, 
 # fill = direction,label = format(net_migration, big.mark = ","))) 
 
+# Example from Script "09 Total population by nationality.R"
+# net_migration_spain_thousands_sep  <- ggplot(net_migration_bar_data_labels, 
+#   aes(x=year, y = net_migration, 
+#       fill = direction,label = format(net_migration, big.mark = ","))) +
+# Include this geom_text() code below to plot labels below bars: 
+# geom_text(aes(y = label_y)) + # Include this geom_text() code below to plot labels below bars: 
+# geom_col(show.legend = FALSE) +
 
-
-Foreign_pop_plot <- Foreign_pop %>% 
-                    ggplot(aes(x = Year, y = population,
-                               ,label(population))) +  
-  geom_bar(stat = "identity",fill = "cornflowerblue") +
-  
-  
-  
-  labs(title = "Foreign population in Spain.2005-2025 period",
+Foreign_pop_plot <- ggplot(Foreign_pop,aes(x = Year, 
+                                           y = population,
+                                           label = format(population, big.mark = ","))) +  
+    geom_bar(stat = "identity", fill = "cornflowerblue") +
+    labs(title = "Foreign population in Spain.2005-2025 period",
        subtitle ="Source: INE Spanish Office for National Statistics") +
   theme_light() +
-  # Include data labels on bars
-  geom_text(aes(label = population),position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
-  # Remove x axis gap
-coord_cartesian( ylim=c(0,7500000), expand = FALSE )
+  geom_text(aes(label = population),position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +   # Include data labels on bars
+coord_cartesian( ylim=c(0,7500000), expand = FALSE )   # Remove x axis gap
 Foreign_pop_plot
 
 ggsave("plots_output/25_Spain_Foreign_population_2005_2025_data_labels.png", width = 6, height = 4)
