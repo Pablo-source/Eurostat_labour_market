@@ -151,6 +151,19 @@ Foreign_pop
 # geom_text(aes(y = label_y)) + # Include this geom_text() code below to plot labels below bars: 
 # geom_col(show.legend = FALSE) +
 
+nudge <- 100000
+# Create new variable to position net migration labels (based on original population column in Foreign_pop dataset:
+Foreign_pop_labels <- Foreign_pop %>% mutate(label_y = if_else(population < 0,
+                                                               population - nudge,population + nudge))
+
+# Note: we use this new "label_y" column (created in the mutate statement)
+#       just to obtain the text labels position  in the right right above bars.
+Foreign_pop_plot <- ggplot(Foreign_pop_labels,aes(x = Year, y = population,
+                                           label = format(population, big.mark = ","))) +
+  geom_text(aes(y = label_y)) +
+  geom_col(show.legend = FALSE)
+
+
 Foreign_pop_plot <- ggplot(Foreign_pop,aes(x = Year, 
                                            y = population,
                                            label = format(population, big.mark = ","))) +  
