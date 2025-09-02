@@ -21,7 +21,7 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
-## This is a text section
+## This is a code section
 
 We can use parameters as a variable inside code chunks
 
@@ -29,11 +29,11 @@ We can use parameters as a variable inside code chunks
 params$country
 ```
 
-## This is a code space 
+## This is a text space 
 
 We can also use **parameters** inside r executable code. 
 
-In this instance, this text after semicolon is populated by the parameter: `r params$country`
+In this instance, this text after semicolon is populated by the parameter: **`r params$country`**
 
 The end of the above line is populated by the parameter defined in the YAML section contents.
 
