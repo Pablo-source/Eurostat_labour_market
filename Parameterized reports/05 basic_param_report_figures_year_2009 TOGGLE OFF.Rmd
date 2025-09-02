@@ -1,0 +1,46 @@
+---
+title: "Parameterized RMarkdown"
+author: "PLR"
+date: "2025-09-02"
+output: html_document
+params:
+  data: mpg # options: mpg or diamonds
+  toggle: TRUE # options: TRUE or FALSE
+  year: 2009  # Introduced new parameter for year
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# The `r params$data` Data set has been used in the year `r params$year` report:
+
+We use a parameter to specify the **`r params$data`** data set we are currently using. From this **`r params$data`** data we choose to plot count of *manufacturers* as a bar plot in ggplot as shown below:
+
+This time we want to **Hide** the **barplot** below, so we add "include = !parms$toogle" (using a negative statement on the parameter) in the R chunck below, based on the toggle parameter defined in the YAML section.
+
+
+```{r barplot, include=!params$toggle}
+mpg %>% 
+  ggplot() +
+  aes(x = manufacturer) +
+  geom_bar( fill = "#0c4c8a") +
+  theme_minimal()
+
+```
+
+- In the same way we can use the *toggle* parameter to enable or disbale plots, in this instance we are **enabling** the rendering of this heat map below, based on the diamonds dataset. This time we want to **display** the Heatmap plot below, so we add "include = parms$toogle" to the R chunck below, this is based on the toggle parameter defined in the YAML section.
+
+```{r heatmap, include= params$toggle}
+diamonds %>% 
+  ggplot() +
+  aes(x = cut, y = color, fill = clarity) +
+  geom_tile(size = 1L) +
+  scale_fill_hue() +
+  theme_minimal()
+
+```
+
+### Ideas
+

@@ -1,0 +1,8 @@
+- Parameterized reports initial setup
+1. We always start by creating a .Rmd (Markdown file) for our initial Parameterized report
+2. it will include a specific line in the YAML section called params: which list each individual parameter used in the script
+3. Then the Parameter can be used in the R inline code or in the Markdown text
+4. By introducing inline R code using the backtick `r params$`. After the $ sign we introduce the parameter name
+4.1. For example for this initial Parameterized report called "01 basic_param_report.Rmd", we introduce a parameter called "country"
+4.2. By changing the value of country, from initial value of "Pakistan" to "Italy", the params$country value will also change from Pakistan to Italy
+4.3. This allows us to produce a dedicated markdown report for each individual country just by changing the country name value in the params YAML section 

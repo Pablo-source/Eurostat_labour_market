@@ -1,0 +1,64 @@
+---
+title: "Unemployment Trends in selected European countries"
+output: html_document
+date: "2025-09-02"
+params:
+  country: 'italy'
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+```
+
+# The is a report for `r params$country`
+
+Then we can use the parameter to create charts based on the value of the parameter in this instance country defined in the YAML section:
+
+```{r ,Filter data for specific country using parameter}
+library(dplyr)
+
+combined_indic_date_fmtd <- read.table(here("Parameterized reports","data_param_reports", "EU_TEMP_UNEMP_COMBINED_SORTED.csv"),
+                                       header =TRUE, sep =',',stringsAsFactors =TRUE) %>% 
+                            mutate(datef = as.Date(date)) %>% 
+                            select(datef, country,metric_name,metric_value)
+
+unemployment_subset <- combined_indic_date_fmtd %>% 
+                       filter(metric_name == 'unemp_rate')
+
+disintc_countries <- unemployment_subset %>% select(country) %>% distinct()
+
+# 2. Subset data for Greece and Italy
+# greece, italy
+unemp_greece_italy <- unemployment_subset %>% 
+  filter(country %in% c("greece","italy")) 
+
+data_firt_plot <- unemp_greece_italy %>% filter(country == params$country)
+
+head(data_firt_plot)
+tail(data_firt_plot)
+here()
+
+```
+
+# Time series unemployment for `r params$country`
+
+```{r , Bar plot for specific country using parameter,warning=FALSE}
+library(dplyr)
+
+data_firt_plot <- unemp_greece_italy %>% filter(country == params$country)
+
+First_plot <- data_firt_plot %>% 
+  ggplot(aes(x = datef, y = metric_value)) +
+  geom_col(fill = "#539CBA") +
+  labs(title = "Unemployment in Italy.2009-2023 period",
+       caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/",
+       x = "Year", 
+       y = "Unemployment rate %") +
+  theme_classic() 
+First_plot
+
+ggsave("03_Italy_unemployment_2003_2023.png", width = 6.38, height = 5.80)
+
+```
