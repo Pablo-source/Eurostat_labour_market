@@ -1,0 +1,36 @@
+---
+title: "Unemployment Trends in selected European countries"
+output: html_document
+date: "2025-09-02"
+params:
+  country: 'italy'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+# The is a report for `r params$country`
+
+Then we can use the parameter to create charts based on the value of the parameter in this instance country defined in the YAML section:
+
+```{r ,First plot}
+library(dplyr)
+
+data_firt_plot <- unemp_greece_italy %>% filter(country == params$country)
+
+First_plot <- data_firt_plot %>% 
+  ggplot(aes(x = datef, y = metric_value)) +
+  geom_col(fill = "#BAD1D6") +
+labs(title = "Unemployment in Italy.2009-2023 period",
+     caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/",
+     x = "Year", 
+     y = "Unemployment rate %") +
+  theme_classic() 
+Plot_unemp_greece
+
+here()
+ggsave("Parameterized reports/03_Italy_unemployment_2003_2023.png", width = 6.38, height = 5.80)
+```
