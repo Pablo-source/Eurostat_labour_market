@@ -1,5 +1,5 @@
 ---
-title: "basic_param_report"
+title: "basic parameterized report"
 author: "PLR"
 date: "2025-07-25"
 output: html_document
