@@ -3,7 +3,7 @@ title: "Unemployment Trends in selected European countries"
 output: html_document
 date: "2025-09-02"
 params:
-  country: 'italy'
+  country: 'greece'
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
@@ -51,14 +51,14 @@ data_firt_plot <- unemp_greece_italy %>% filter(country == params$country)
 
 First_plot <- data_firt_plot %>% 
   ggplot(aes(x = datef, y = metric_value)) +
-  geom_col(fill = "#539CBA") +
-  labs(title = "Unemployment in Italy.2009-2023 period",
+  geom_col(fill = "#BAD1D6") +
+  labs(title = "Unemployment in Greece.2009-2023 period",
        caption = "Note: Year 2023  latest available data. Source:EUROSTAT https://ec.europa.eu/eurostat/",
        x = "Year", 
        y = "Unemployment rate %") +
   theme_classic() 
 First_plot
 
-ggsave("03_Italy_unemployment_2003_2023.png", width = 6.38, height = 5.80)
+ggsave("04_Greece_unemployment_2003_2023.png", width = 6.38, height = 5.80)
 
 ```
