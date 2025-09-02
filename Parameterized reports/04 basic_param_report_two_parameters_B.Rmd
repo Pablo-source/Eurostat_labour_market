@@ -1,0 +1,36 @@
+---
+title: "basic_param_report"
+author: "PLR"
+date: "2025-07-25"
+output: html_document
+params:
+  country: "Italy"
+  data: "train"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## This is a code space
+
+We can use parameters as a variable inside code chunks
+
+```{r parameters example}
+params$country
+```
+
+## This is a markdown space 
+
+We can also use **parameters** inside r executable code. 
+
+In this instance, this text after semicolon is populated by the parameter: `r params$country`
+
+The end of the above line is populated by the parameter defined in the YAML section contents.
+
+## Using second parameter
+
+In the YAML section we can define as many parameters as we want, for instance, I am using this time two paramters: country and data
+
+- This report is for metrics from : **`r params$country`**
+- Corresponds to **`r params$data`** data. 
