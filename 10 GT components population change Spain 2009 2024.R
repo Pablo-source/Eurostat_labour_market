@@ -42,5 +42,5 @@ comp_pop_change_spain_2009 <-  read_excel(
   here("population_data", "04 Components of population change.xlsx"), 
   sheet = 1, skip =8, n_max = 7) %>% 
   clean_names()
-comp_pop_change_spain_2009
+comp_pop_change_spain_2009 
 
