@@ -19,7 +19,7 @@ Path
 
 # List excel files on Data sub-directory
 
-# 01 Check (.xlsx) files available in "population_data" the data folder
+# 01 Check (.xlsx) files available in "data_demography" the data folder
 list.files (path = "./data_demography" ,pattern = "xlsx$")
 
 # I want to import latest file
