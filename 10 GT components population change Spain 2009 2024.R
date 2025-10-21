@@ -36,11 +36,45 @@ excel_sheets("./data_demography/04 Components of population change.xlsx")
 # 2009
 # 2010
 
-# 03. Read 2009 components of population change in Spain
+# 03. Read components of population change 
+
+# 03.01 Year 2009 data
+# Components of population change in Spain year 2009
 # WIP (to execute this code below next)
+# 03.01.01  Build GT table for 2009 components of population change in Spain 
+here::here()
+
 comp_pop_change_spain_2009 <-  read_excel(
-  here("population_data", "04 Components of population change.xlsx"), 
+  here("data_demography", "04 Components of population change.xlsx"), 
   sheet = 1, skip =8, n_max = 7) %>% 
   clean_names()
-comp_pop_change_spain_2009 
+comp_pop_change_spain_2009
+
+# 03.01.02 rename columns
+comp_pop_spain_2009_fmtd <- comp_pop_change_spain_2009 %>% 
+  select("Spain components of population change Year 2009"= spain_2009_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2009_fmtd
+
+# 03.01.03 Final formatted GT table components of population change in Spain 2019.
+GT_table_2009_fmtd_int <- comp_pop_spain_2009_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2009**"),
+    subtitle = ("2009-2010 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2009,Population Continuous Census. Resident population by date. Year 2009,2010"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2009_fmtd_int
+gtsave(GT_table_2009_fmtd_int,filename = "GT_tables/01 2009 2010 Spain components population change.png")  
 
