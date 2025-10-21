@@ -129,11 +129,11 @@ comp_pop_spain_2011_fmtd <- comp_pop_change_spain_2011 %>%
          Value = x3)
 comp_pop_spain_2011_fmtd
 
-GT_table_2010_fmtd_int <- comp_pop_spain_2010_fmtd %>% 
+GT_table_2011_fmtd_int <- comp_pop_spain_2011_fmtd %>% 
   gt() %>%
   tab_header(
-    title = md("**Components of population change. Spain 2010**"),
-    subtitle = ("2010-2011 period")
+    title = md("**Components of population change. Spain 2011**"),
+    subtitle = ("2011-2012 period")
   ) %>% 
   # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
   fmt_number(sep_mark = ",","Value") %>%
@@ -147,8 +147,8 @@ GT_table_2010_fmtd_int <- comp_pop_spain_2010_fmtd %>%
     source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2010,Population Continuous Census. Resident population by date. Year 2010,2011"
   ) %>% 
   fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
-GT_table_2010_fmtd_int
-gtsave(GT_table_2010_fmtd_int,filename = "GT_tables/02 2010 2011 Spain components population change.png")  
+GT_table_2011_fmtd_int
+gtsave(GT_table_2011_fmtd_int,filename = "GT_tables/03 2011 2012 Spain components population change.png")  
 
 
 # 3.4 Year 2012 data
