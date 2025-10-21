@@ -19,13 +19,13 @@ Path
 
 # List excel files on Data sub-directory
 
-# 01 Check (.xlsx) files available in "data_demography" the data folder
+# 1. Check (.xlsx) files available in "data_demography" the data folder
 list.files (path = "./data_demography" ,pattern = "xlsx$")
 
 # I want to import latest file
 # [6] "04 Components of population change.xlsx"
 
-# 02. List tabs from above Excel file to know which tab to import
+# 2. List tabs from above Excel file to know which tab to import
 excel_sheets("./data_demography/04 Components of population change.xlsx")
 
 # [1] "SPAIN_Components_pop_change" "INE Total Population SPAIN" 
@@ -36,12 +36,12 @@ excel_sheets("./data_demography/04 Components of population change.xlsx")
 # 2009
 # 2010
 
-# 03. Read components of population change 
+# 3. Read components of population change 
 
-# 03.01 Year 2009 data
+# 3.1 Year 2009 data
 # Components of population change in Spain year 2009
 # WIP (to execute this code below next)
-# 03.01.01  Build GT table for 2009 components of population change in Spain 
+# 3.1.1  Build GT table for 2009 components of population change in Spain 
 here::here()
 
 comp_pop_change_spain_2009 <-  read_excel(
@@ -50,13 +50,13 @@ comp_pop_change_spain_2009 <-  read_excel(
   clean_names()
 comp_pop_change_spain_2009
 
-# 03.01.02 rename columns
+# 3.1.2 rename columns
 comp_pop_spain_2009_fmtd <- comp_pop_change_spain_2009 %>% 
   select("Spain components of population change Year 2009"= spain_2009_components_of_population_change,
          Value = x3)
 comp_pop_spain_2009_fmtd
 
-# 03.01.03 Final formatted GT table components of population change in Spain 2009.
+# 3.1.3 Final formatted GT table components of population change in Spain 2009.
 GT_table_2009_fmtd_int <- comp_pop_spain_2009_fmtd %>% 
   gt() %>%
   tab_header(
@@ -78,8 +78,8 @@ GT_table_2009_fmtd_int <- comp_pop_spain_2009_fmtd %>%
 GT_table_2009_fmtd_int
 gtsave(GT_table_2009_fmtd_int,filename = "GT_tables/01 2009 2010 Spain components population change.png")  
 
-# 03.02 Year 2010 data
-# GT table components of population change in Spain 2010
+# 3.2 Year 2010 data
+# 3.2.1 GT table components of population change in Spain 2010
 #  Read 2010 components of population change in Spain
 comp_pop_change_spain_2010 <-  read_excel(
   here("data_demography", "04 Components of population change.xlsx"), 
@@ -92,7 +92,7 @@ comp_pop_spain_2010_fmtd <- comp_pop_change_spain_2010 %>%
          Value = x3)
 comp_pop_spain_2010_fmtd
 
-# 4.2 Format and save GT table as .png output file 
+# 3.2.2 Format and save GT table as .png output file 
 GT_table_2010_fmtd_int <- comp_pop_spain_2010_fmtd %>% 
   gt() %>%
   tab_header(
