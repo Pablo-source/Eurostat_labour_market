@@ -61,12 +61,24 @@
 <img width="1197" height="936" alt="image" src="https://github.com/user-attachments/assets/a2bcb3ab-8c4b-4abc-98be-012d1d091fc5" />
 
 
+## GT table 04.  Components of population change for Spain, output as GT tables 
+- This section describes a method of computing Net migration from Natural Increase and population figures for any consecutive year.
+- We obtain a figure for residual Net migration that will help us to build a time series for Net Migration in Spain from 2009 until 2024
+- This residual net migration will allows us to compare latest Net Migration figures from Spanih Net migration for latest available year (that is 2023)
+
+- Components of Population Change. Spain 2009-2010
+<img width="1788" height="920" alt="02 2010 2011 Spain components population change" src="https://github.com/user-attachments/assets/252a0f51-153b-457d-a464-214068c59518" />
+
+- Components of Population Change. Spain 2011-2012  
+<img width="1788" height="920" alt="03 2011 2012 Spain components population change" src="https://github.com/user-attachments/assets/f2d867e3-ba5e-4e8f-a9c1-bda3e5a131f5" />
 
 - I will include a chart comparing **net migration** figures across **European countries** and also with the *UK*, Eurostat website for Net migration figures:
   <https://ec.europa.eu/eurostat/databrowser/view/migr_netmigr/default/table?lang=en>
 
-- Really useful and interesting online resources to create ggplot2 charts with flags to highlight changes in data:
-  
+### Interesting online resources:
+
+#### Create ggplot2 charts with flags to highlight changes in data
+
 - Riffomonas Project – YouTube channel about R and ggplot2
 - Exploring the volatility of the S&P under Trump using the quantmod and tidyverse R paclages (CC357)
 <https://www.youtube.com/watch?v=-UpqE1ilVuo>
