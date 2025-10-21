@@ -127,6 +127,31 @@ comp_pop_change_spain_2011
 # 3.4 Year 2012 data
 # 3.4.1 GT table components of population change in Spain 2011
 #  Read 2011 components of population change in Spain
+#  read_excel(..skip = 36, n_max =7)
 
+# 3.5 Year 2013 data
+# 3.5.1 GT table components of population change in Spain 2011
+#  Read 2011 components of population change in Spain
+#  read_excel(..skip = 45, n_max =7)
 
+#  read_excel(..skip = 54, n_max =7)
 
+#  read_excel(..skip = 63, n_max =7)
+
+#  read_excel(..skip = 72, n_max =7)
+
+#  read_excel(..skip = 81, n_max =7)
+
+#  read_excel(..skip = 90, n_max =7)
+
+#  read_excel(..skip = 99, n_max =7)
+
+#  read_excel(..skip = 108, n_max =7)
+
+#  read_excel(..skip = 117, n_max =7)
+
+#  read_excel(..skip = 126, n_max =7)
+
+#  read_excel(..skip = 135, n_max =7)
+
+#  read_excel(..skip = 144, n_max =7)
