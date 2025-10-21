@@ -124,6 +124,33 @@ comp_pop_change_spain_2011 <-  read_excel(
   clean_names()
 comp_pop_change_spain_2011
 
+comp_pop_spain_2011_fmtd <- comp_pop_change_spain_2011 %>% 
+  select("Spain components of population change Year 2011"= spain_2011_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2011_fmtd
+
+GT_table_2010_fmtd_int <- comp_pop_spain_2010_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2010**"),
+    subtitle = ("2010-2011 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2010,Population Continuous Census. Resident population by date. Year 2010,2011"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2010_fmtd_int
+gtsave(GT_table_2010_fmtd_int,filename = "GT_tables/02 2010 2011 Spain components population change.png")  
+
+
 # 3.4 Year 2012 data
 # 3.4.1 GT table components of population change in Spain 2011
 #  Read 2011 components of population change in Spain
