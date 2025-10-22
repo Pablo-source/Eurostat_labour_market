@@ -152,27 +152,43 @@ gtsave(GT_table_2011_fmtd_int,filename = "GT_tables/03 2011 2012 Spain component
 
 
 # 3.4 Year 2012 data
-# 3.4.1 GT table components of population change in Spain 2011
-#  Read 2011 components of population change in Spain
+# 3.4.1 GT table components of population change in Spain 2012
+#  Read 2012 components of population change in Spain
 #  read_excel(..skip = 36, n_max =7)
 
 # 3.5 Year 2013 data
-# 3.5.1 GT table components of population change in Spain 2011
-#  Read 2011 components of population change in Spain
+# 3.5.1 GT table components of population change in Spain 2013
+#  Read 2013 components of population change in Spain
 #  read_excel(..skip = 45, n_max =7)
 
+# 3.6 Year 2014 data
+# 3.6.1 GT table components of population change in Spain 2014
+#  Read 2014 components of population change in Spain
 #  read_excel(..skip = 54, n_max =7)
 
+# 3.7 Year 2015 data
+# 3.7.1 GT table components of population change in Spain 2015
+#  Read 2015 components of population change in Spain
 #  read_excel(..skip = 63, n_max =7)
 
+# 3.8 Year 2016 data
+# 3.8.1 GT table components of population change in Spain 2016
 #  read_excel(..skip = 72, n_max =7)
 
+# 3.9 Year 2017 data
+# 3.9.1 GT table components of population change in Spain 2017
 #  read_excel(..skip = 81, n_max =7)
 
+# 3.10 Year 2018 data
+# 3.10.1 GT table components of population change in Spain 2018
 #  read_excel(..skip = 90, n_max =7)
 
+# 3.11 Year 2019 data
+# 3.11.1 GT table components of population change in Spain 2019
 #  read_excel(..skip = 99, n_max =7)
 
+# 3.12 Year 2020 data
+# 3.12.1 GT table components of population change in Spain 2020
 #  read_excel(..skip = 108, n_max =7)
 
 #  read_excel(..skip = 117, n_max =7)
