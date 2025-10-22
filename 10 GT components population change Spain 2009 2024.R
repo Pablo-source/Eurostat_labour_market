@@ -152,33 +152,88 @@ gtsave(GT_table_2011_fmtd_int,filename = "GT_tables/03 2011 2012 Spain component
 
 
 # 3.4 Year 2012 data
-# 3.4.1 GT table components of population change in Spain 2011
-#  Read 2011 components of population change in Spain
+# 3.4.1 GT table components of population change in Spain 2012
+#  Read 2012 components of population change in Spain
 #  read_excel(..skip = 36, n_max =7)
 
 # 3.5 Year 2013 data
-# 3.5.1 GT table components of population change in Spain 2011
-#  Read 2011 components of population change in Spain
+# 3.5.1 GT table components of population change in Spain 2013
+#  Read 2013 components of population change in Spain
 #  read_excel(..skip = 45, n_max =7)
 
+# 3.6 Year 2014 data
+# 3.6.1 GT table components of population change in Spain 2014
+#  Read 2014 components of population change in Spain
 #  read_excel(..skip = 54, n_max =7)
 
+# 3.7 Year 2015 data
+# 3.7.1 GT table components of population change in Spain 2015
+#  Read 2015 components of population change in Spain
 #  read_excel(..skip = 63, n_max =7)
 
+# 3.8 Year 2016 data
+# 3.8.1 GT table components of population change in Spain 2016
 #  read_excel(..skip = 72, n_max =7)
 
+# 3.9 Year 2017 data
+# 3.9.1 GT table components of population change in Spain 2017
 #  read_excel(..skip = 81, n_max =7)
 
+# 3.10 Year 2018 data
+# 3.10.1 GT table components of population change in Spain 2018
 #  read_excel(..skip = 90, n_max =7)
 
+# 3.11 Year 2019 data
+# 3.11.1 GT table components of population change in Spain 2019
 #  read_excel(..skip = 99, n_max =7)
 
+# 3.12 Year 2020 data
+# 3.12.1 GT table components of population change in Spain 2020
 #  read_excel(..skip = 108, n_max =7)
 
+# 3.13 Year 2021 data
+# 3.13.1 GT table components of population change in Spain 2021
 #  read_excel(..skip = 117, n_max =7)
 
+# 3.14 Year 2022 data
+# 3.14.1 GT table components of population change in Spain 2022
 #  read_excel(..skip = 126, n_max =7)
 
+# 3.15 Year 2023 data
+# 3.15.1 GT table components of population change in Spain 2023
 #  read_excel(..skip = 135, n_max =7)
+comp_pop_change_spain_2023 <-  read_excel(
+  here("data_demography", "04 Components of population change.xlsx"), 
+  sheet = 1, skip =135, n_max = 7) %>% 
+  clean_names()
+comp_pop_change_spain_2023
 
+comp_pop_spain_2023_fmtd <- comp_pop_change_spain_2023 %>% 
+  select("Spain components of population change Year 2023"= spain_2023_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2023_fmtd
+
+GT_table_2011_fmtd_int <- comp_pop_spain_2023_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2023**"),
+    subtitle = ("2023-2024 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2010,Population Continuous Census. Resident population by date. Year 2023,2024"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2011_fmtd_int
+gtsave(GT_table_2011_fmtd_int,filename = "GT_tables/16 2023 2024 Spain components population change.png")  
+
+# 3.16 Year 2024 data
+# 3.16.1 GT table components of population change in Spain 2024
 #  read_excel(..skip = 144, n_max =7)
