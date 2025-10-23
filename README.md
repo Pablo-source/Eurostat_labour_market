@@ -66,14 +66,15 @@
 - We obtain a figure for residual Net migration that will help us to build a time series for Net Migration in Spain from 2009 until 2024
 - This residual net migration will allows us to compare latest Net Migration figures from Spanih Net migration for latest available year (that is 2023)
 
-- Components of Population Change. Spain 2009-2010
+- Components of Population Change.Spain 2009-2010
 <img width="1788" height="920" alt="02 2010 2011 Spain components population change" src="https://github.com/user-attachments/assets/252a0f51-153b-457d-a464-214068c59518" />
 
-- Components of Population Change. Spain 2011-2012  
-<img width="1788" height="920" alt="03 2011 2012 Spain components population change" src="https://github.com/user-attachments/assets/f2d867e3-ba5e-4e8f-a9c1-bda3e5a131f5" />
+- Components of Population Change.Spain 2023-2024 (latest available time period) 
+<img width="1788" height="920" alt="16 2023 2024 Spain components population change" src="https://github.com/user-attachments/assets/2963f952-d81e-465a-bf28-b8283e714a6e" />
 
 - I will include a chart comparing **net migration** figures across **European countries** and also with the *UK*, Eurostat website for Net migration figures:
   <https://ec.europa.eu/eurostat/databrowser/view/migr_netmigr/default/table?lang=en>
+
 
 ### Interesting online resources:
 
