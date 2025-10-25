@@ -156,6 +156,18 @@ gtsave(GT_table_2011_fmtd_int,filename = "GT_tables/03 2011 2012 Spain component
 #  Read 2012 components of population change in Spain
 #  read_excel(..skip = 36, n_max =7)
 
+comp_pop_change_spain_2012 <-  read_excel(
+  here("data_demography", "04 Components of population change.xlsx"), 
+  sheet = 1, skip =27, n_max = 7) %>% 
+  clean_names()
+comp_pop_change_spain_2012
+
+comp_pop_spain_2012_fmtd <- comp_pop_change_spain_2012 %>% 
+  select("Spain components of population change Year 2012"= spain_2012_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2012_fmtd
+
+
 # 3.5 Year 2013 data
 # 3.5.1 GT table components of population change in Spain 2013
 #  Read 2013 components of population change in Spain
