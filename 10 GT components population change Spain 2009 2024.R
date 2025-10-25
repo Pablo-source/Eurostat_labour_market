@@ -1,6 +1,6 @@
 # Demography - population change components (Natural increase, New migration
 
-# 10 GT components population change Spain 2009 2024
+# Script: 10 GT components population change Spain 2009 2024.R
 
 # Evolution of net external migration in Spain. 2014-2024
 # Import Excel file into R: "INE Net external migration Spain 2014 2023.xls"
@@ -155,10 +155,10 @@ gtsave(GT_table_2011_fmtd_int,filename = "GT_tables/03 2011 2012 Spain component
 # 3.4.1 GT table components of population change in Spain 2012
 #  Read 2012 components of population change in Spain
 #  read_excel(..skip = 36, n_max =7)
-
+# I need to populate the underlying Excel file with all components for 2012 population growth.
 comp_pop_change_spain_2012 <-  read_excel(
   here("data_demography", "04 Components of population change.xlsx"), 
-  sheet = 1, skip =27, n_max = 7) %>% 
+  sheet = 1, skip =36, n_max = 7) %>% 
   clean_names()
 comp_pop_change_spain_2012
 
