@@ -304,10 +304,74 @@ gtsave(GT_table_2015_fmtd_int,filename = "GT_tables/07 2015 2016 Spain component
 # 3.8 Year 2016 data
 # 3.8.1 GT table components of population change in Spain 2016
 #  read_excel(..skip = 72, n_max =7)
+comp_pop_change_spain_2016 <-  read_excel(
+  here("data_demography", "04 Components of population change.xlsx"), 
+  sheet = 1, skip =72, n_max = 7) %>% 
+  clean_names()
+comp_pop_change_spain_2016
+
+comp_pop_spain_2016_fmtd <- comp_pop_change_spain_2016 %>% 
+  select("Spain components of population change Year 2016"= spain_2016_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2016_fmtd
+
+GT_table_2016_fmtd_int <- comp_pop_spain_2016_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2015**"),
+    subtitle = ("2015-2016 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2016,Population Continuous Census. Resident population by date. Year 2016,2017"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2016_fmtd_int
+gtsave(GT_table_2016_fmtd_int,filename = "GT_tables/08 2016 2017 Spain components population change.png")  
+
+
 
 # 3.9 Year 2017 data
 # 3.9.1 GT table components of population change in Spain 2017
 #  read_excel(..skip = 81, n_max =7)
+comp_pop_change_spain_2017 <-  read_excel(
+  here("data_demography", "04 Components of population change.xlsx"), 
+  sheet = 1, skip =81, n_max = 7) %>% 
+  clean_names()
+comp_pop_change_spain_2017
+
+comp_pop_spain_2017_fmtd <- comp_pop_change_spain_2017 %>% 
+  select("Spain components of population change Year 2017"= spain_2017_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2017_fmtd
+
+GT_table_2017_fmtd_int <- comp_pop_spain_2017_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2015**"),
+    subtitle = ("2017-2018 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2017,Population Continuous Census. Resident population by date. Year 2017,2018"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2017_fmtd_int
+gtsave(GT_table_2017_fmtd_int,filename = "GT_tables/09 2017 2018 Spain components population change.png")  
 
 # 3.10 Year 2018 data
 # 3.10.1 GT table components of population change in Spain 2018
