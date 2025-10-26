@@ -193,6 +193,39 @@ gtsave(GT_table_2012_fmtd_int,filename = "GT_tables/04 2012 2013 Spain component
 #  Read 2013 components of population change in Spain
 #  read_excel(..skip = 45, n_max =7)
 
+comp_pop_change_spain_2013 <-  read_excel(
+  here("data_demography", "04 Components of population change.xlsx"), 
+  sheet = 1, skip =45, n_max = 7) %>% 
+  clean_names()
+comp_pop_change_spain_2013
+
+comp_pop_spain_2013_fmtd <- comp_pop_change_spain_2013 %>% 
+  select("Spain components of population change Year 2013"= spain_2013_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2013_fmtd
+
+GT_table_2013_fmtd_int <- comp_pop_spain_2013_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2013**"),
+    subtitle = ("2013-2014 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2013,Population Continuous Census. Resident population by date. Year 2013,2014"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2013_fmtd_int
+gtsave(GT_table_2013_fmtd_int,filename = "GT_tables/05 2013 2014 Spain components population change.png")  
+
+
 # 3.6 Year 2014 data
 # 3.6.1 GT table components of population change in Spain 2014
 #  Read 2014 components of population change in Spain
