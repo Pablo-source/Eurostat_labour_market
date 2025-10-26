@@ -517,6 +517,38 @@ gtsave(GT_table_2021_fmtd_int,filename = "GT_tables/13 2021 2022 Spain component
 # 3.14 Year 2022 data
 # 3.14.1 GT table components of population change in Spain 2022
 #  read_excel(..skip = 126, n_max =7)
+comp_pop_change_spain_2022 <-  read_excel(
+  here("data_demography", "04 Components of population change.xlsx"), 
+  sheet = 1, skip =126, n_max = 7) %>% 
+  clean_names()
+comp_pop_change_spain_2022
+
+comp_pop_spain_2022_fmtd <- comp_pop_change_spain_2022 %>% 
+  select("Spain components of population change Year 2022"= spain_2022_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2022_fmtd
+
+GT_table_2022_fmtd_int <- comp_pop_spain_2022_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2022**"),
+    subtitle = ("2022-2023 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2021,Population Continuous Census. Resident population by date. Year 2021,2022"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2022_fmtd_int
+gtsave(GT_table_2022_fmtd_int,filename = "GT_tables/14 2022 2023 Spain components population change.png")  
+
 
 # 3.15 Year 2023 data
 # 3.15.1 GT table components of population change in Spain 2023
@@ -532,7 +564,7 @@ comp_pop_spain_2023_fmtd <- comp_pop_change_spain_2023 %>%
          Value = x3)
 comp_pop_spain_2023_fmtd
 
-GT_table_2011_fmtd_int <- comp_pop_spain_2023_fmtd %>% 
+GT_table_2023_fmtd_int <- comp_pop_spain_2023_fmtd %>% 
   gt() %>%
   tab_header(
     title = md("**Components of population change. Spain 2023**"),
@@ -550,8 +582,8 @@ GT_table_2011_fmtd_int <- comp_pop_spain_2023_fmtd %>%
     source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2010,Population Continuous Census. Resident population by date. Year 2023,2024"
   ) %>% 
   fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
-GT_table_2011_fmtd_int
-gtsave(GT_table_2011_fmtd_int,filename = "GT_tables/16 2023 2024 Spain components population change.png")  
+GT_table_2023_fmtd_int
+gtsave(GT_table_2023_fmtd_int,filename = "GT_tables/15 2023 2024 Spain components population change.png")  
 
 # 3.16 Year 2024 data
 # 3.16.1 GT table components of population change in Spain 2024
