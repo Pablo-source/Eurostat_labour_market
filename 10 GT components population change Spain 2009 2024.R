@@ -167,6 +167,26 @@ comp_pop_spain_2012_fmtd <- comp_pop_change_spain_2012 %>%
          Value = x3)
 comp_pop_spain_2012_fmtd
 
+GT_table_2012_fmtd_int <- comp_pop_spain_2012_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2012**"),
+    subtitle = ("2012-2013 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2012,Population Continuous Census. Resident population by date. Year 2012,2013"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2012_fmtd_int
+gtsave(GT_table_2012_fmtd_int,filename = "GT_tables/04 2012 2013 Spain components population change.png")  
 
 # 3.5 Year 2013 data
 # 3.5.1 GT table components of population change in Spain 2013
