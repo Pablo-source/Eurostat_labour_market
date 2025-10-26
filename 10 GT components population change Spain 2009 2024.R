@@ -318,7 +318,7 @@ comp_pop_spain_2016_fmtd
 GT_table_2016_fmtd_int <- comp_pop_spain_2016_fmtd %>% 
   gt() %>%
   tab_header(
-    title = md("**Components of population change. Spain 2015**"),
+    title = md("**Components of population change. Spain 2016**"),
     subtitle = ("2015-2016 period")
   ) %>% 
   # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
@@ -355,7 +355,7 @@ comp_pop_spain_2017_fmtd
 GT_table_2017_fmtd_int <- comp_pop_spain_2017_fmtd %>% 
   gt() %>%
   tab_header(
-    title = md("**Components of population change. Spain 2015**"),
+    title = md("**Components of population change. Spain 2017**"),
     subtitle = ("2017-2018 period")
   ) %>% 
   # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
@@ -390,7 +390,7 @@ comp_pop_spain_2018_fmtd
 GT_table_2018_fmtd_int <- comp_pop_spain_2018_fmtd %>% 
   gt() %>%
   tab_header(
-    title = md("**Components of population change. Spain 2015**"),
+    title = md("**Components of population change. Spain 2018**"),
     subtitle = ("2018-2019 period")
   ) %>% 
   # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
@@ -411,6 +411,38 @@ gtsave(GT_table_2018_fmtd_int,filename = "GT_tables/10 2018 2019 Spain component
 # 3.11 Year 2019 data
 # 3.11.1 GT table components of population change in Spain 2019
 #  read_excel(..skip = 99, n_max =7)
+comp_pop_change_spain_2019 <-  read_excel(
+  here("data_demography", "04 Components of population change.xlsx"), 
+  sheet = 1, skip =99, n_max = 7) %>% 
+  clean_names()
+comp_pop_change_spain_2019
+
+comp_pop_spain_2019_fmtd <- comp_pop_change_spain_2019 %>% 
+  select("Spain components of population change Year 2019"= spain_2019_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2019_fmtd
+
+GT_table_2019_fmtd_int <- comp_pop_spain_2019_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2019**"),
+    subtitle = ("2019-2020 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2019,Population Continuous Census. Resident population by date. Year 2019,2020"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2019_fmtd_int
+gtsave(GT_table_2019_fmtd_int,filename = "GT_tables/11 2019 2020 Spain components population change.png")  
+
 
 # 3.12 Year 2020 data
 # 3.12.1 GT table components of population change in Spain 2020
