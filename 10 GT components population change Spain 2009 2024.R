@@ -447,6 +447,37 @@ gtsave(GT_table_2019_fmtd_int,filename = "GT_tables/11 2019 2020 Spain component
 # 3.12 Year 2020 data
 # 3.12.1 GT table components of population change in Spain 2020
 #  read_excel(..skip = 108, n_max =7)
+comp_pop_change_spain_2020 <-  read_excel(
+  here("data_demography", "04 Components of population change.xlsx"), 
+  sheet = 1, skip =108, n_max = 7) %>% 
+  clean_names()
+comp_pop_change_spain_2020
+
+comp_pop_spain_2020_fmtd <- comp_pop_change_spain_2020 %>% 
+  select("Spain components of population change Year 2020"= spain_2020_components_of_population_change,
+         Value = x3)
+comp_pop_spain_2020_fmtd
+
+GT_table_2020_fmtd_int <- comp_pop_spain_2020_fmtd %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Components of population change. Spain 2020**"),
+    subtitle = ("2020-2021 period")
+  ) %>% 
+  # Add fmt_number(sep_mark= ",") to add thousands separator to Value column
+  fmt_number(sep_mark = ",","Value") %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Population Continuous Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=56934")
+  ) %>%
+  tab_source_note(
+    source_note = md("INE.Spanish Statistical Office. Basic Demographic Indicators.Vital Statistics https://www.ine.es/jaxiT3/Tabla.htm?t=6566")
+  ) %>%
+  tab_source_note(
+    source_note = "Source:Vital Statistics/Basic Demographic Indicators.Year2020,Population Continuous Census. Resident population by date. Year 2020,2021"
+  ) %>% 
+  fmt_number(columns = Value,decimals = 0,use_seps = TRUE)
+GT_table_2020_fmtd_int
+gtsave(GT_table_2020_fmtd_int,filename = "GT_tables/12 2020 2021 Spain components population change.png")  
 
 # 3.13 Year 2021 data
 # 3.13.1 GT table components of population change in Spain 2021
