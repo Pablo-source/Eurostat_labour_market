@@ -26,13 +26,13 @@ We load latest Spanish Population Figures released by the Spanish National Insti
 
 In the third tab from Excel file **"INE total and foreign population figures Spain.xlsx"** we load the table describing Total, foreign and nationals population figures in Spain, based on Spanish nationality for the 2004 2025 period.
 
-```{r Load spanish population data, echo=FALSE}
+```{r Load spanish population data, echo=FALSE,message=FALSE}
 list.files (path = "./data_demography" ,pattern = "xlsx$")
 excel_sheets("./data_demography/INE total and foreign population figures Spain.xlsx")
 ```
 
 
-```{r read Excek into R, echo=TRUE,warning=FALSE,message=FALSE}
+```{r read Excek into R, echo=FALSE,warning=FALSE,message=FALSE}
 population_data <- read_excel(
   here("data_demography", "INE total and foreign population figures Spain.xlsx"), 
   sheet = "INE_Total_foreign_population", skip =2, n_max = 22,
