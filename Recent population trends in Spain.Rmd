@@ -88,10 +88,10 @@ Spanish_population_plot
 
 Then this is the foreign population in Spain for the same time period.
 
-```{r Spain foreign population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+```{r Spain foreign population bar plot, echo=TRUE,warning=FALSE,message=FALSE,fig.width=12,fig.height=9}
 options(scipen=999)
 
-forign_population_plot <- INE_calc_fields %>% 
+Spain_foreign_population <- INE_calc_fields %>% 
                             ggplot(aes(x= Year, y = foreign_population)) +
   geom_bar(stat = "identity", fill = "cornflowerblue") +
   labs(title = "Foreign population in Spain. 2005-2025 period",
@@ -101,10 +101,13 @@ forign_population_plot <- INE_calc_fields %>%
   geom_text(aes(label = foreign_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,7500000), expand = FALSE )
 
-forign_population_plot
+Spain_foreign_population
+
 ```
+
 This last plot displays national population in Spain for the 2005-2025 period
-```{r Spain national population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+
+```{r Spain national population bar plot, echo=TRUE, message=FALSE, warning=FALSE,fig.width=12,fig.height=9}
 options(scipen=999)
 
 national_population_plot <- INE_calc_fields %>% 
