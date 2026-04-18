@@ -26,13 +26,13 @@ We load latest Spanish Population Figures released by the Spanish National Insti
 
 In the third tab from Excel file **"INE total and foreign population figures Spain.xlsx"** we load the table describing Total, foreign and nationals population figures in Spain, based on Spanish nationality for the 2004 2025 period.
 
-```{r Load spanish population data, echo=FALSE}
+```{r Load spanish population data, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 list.files (path = "./data_demography" ,pattern = "xlsx$")
 excel_sheets("./data_demography/INE total and foreign population figures Spain.xlsx")
 ```
 
 
-```{r read Excek into R, echo=TRUE,warning=FALSE,message=FALSE}
+```{r read Excek into R, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 population_data <- read_excel(
   here("data_demography", "INE total and foreign population figures Spain.xlsx"), 
   sheet = "INE_Total_foreign_population", skip =2, n_max = 22,
@@ -49,17 +49,17 @@ names(population_data)
 ```
 
 
-## 2. Cleanse Spain populations figures data
+## 2. Cleanse Spain populations figures data 
 
 From the newly on boarded data, we create a new Year variable from initial date column. As we only want to display Year values.
 
-```{r cleansing_inpported data, echo=TRUE,warning=FALSE,message=FALSE}
+```{r cleansing_inpported data, message=FALSE, warning=FALSE, include=FALSE, paged.print=TRUE}
 INE_population_subset <- population_data %>%
                          select(date,total_population,foreign_population) %>% 
                          mutate(Year = substring(date, 15, 25)) 
 INE_population_subset
 ```
-```{r creating_first_calculations, echo=TRUE,warning=FALSE,message=FALSE}
+```{r creating_first_calculations, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 INE_calc_fields <- INE_population_subset %>%                          
                          select(Year,total_population,foreign_population) %>% 
                          mutate(Spanish_nationals = total_population - foreign_population) %>% 
@@ -70,7 +70,7 @@ INE_calc_fields
 These charts below describe the evolution of Total, foreign and spanish nationals population for the 2005-2025 period:
 
 - Spain total population
-```{r Spain total population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+```{r Spain total population bar plot, message=FALSE, warning=FALSE, include=FALSE}
 options(scipen=999)
 
 Spanish_population_plot <- INE_calc_fields %>% 
@@ -88,10 +88,10 @@ Spanish_population_plot
 
 Then this is the foreign population in Spain for the same time period.
 
-```{r Spain foreign population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+```{r Spain foreign population bar plot, echo=TRUE,warning=FALSE,message=FALSE,fig.width=12,fig.height=9}
 options(scipen=999)
 
-forign_population_plot <- INE_calc_fields %>% 
+Spain_foreign_population <- INE_calc_fields %>% 
                             ggplot(aes(x= Year, y = foreign_population)) +
   geom_bar(stat = "identity", fill = "cornflowerblue") +
   labs(title = "Foreign population in Spain. 2005-2025 period",
@@ -101,10 +101,13 @@ forign_population_plot <- INE_calc_fields %>%
   geom_text(aes(label = foreign_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,7500000), expand = FALSE )
 
-forign_population_plot
+Spain_foreign_population
+
 ```
+
 This last plot displays national population in Spain for the 2005-2025 period
-```{r Spain national population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+
+```{r Spain national population bar plot, echo=TRUE, message=FALSE, warning=FALSE,fig.width=12,fig.height=9}
 options(scipen=999)
 
 national_population_plot <- INE_calc_fields %>% 
