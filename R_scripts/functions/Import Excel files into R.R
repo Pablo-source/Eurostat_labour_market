@@ -4,7 +4,10 @@ library(here)
 
 # Building function to import files:
 
-Import_files <- function(file_name,tab_name = NULL,choose_directory = NULL){
+Import_files <- function(tab_name = NULL,choose_directory = NULL){
+  
+
+# 1. First part of the function, chooses directory to look for Excel files
   
   data_folder = here("data")
   
@@ -28,4 +31,8 @@ Import_files <- function(file_name,tab_name = NULL,choose_directory = NULL){
   } else { stop ("please provide your own directory")}
   
 }
-  
+
+# Use function
+Import_files(choose_directory = "data_folder")
+Import_files(choose_directory = "data_cleansed")
+Import_files(choose_directory = "my directory")
