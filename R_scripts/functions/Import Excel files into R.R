@@ -9,8 +9,6 @@ Import_files <- function(tab_name = NULL,choose_directory = NULL){
 
 # 1. First part of the function, chooses directory to look for Excel files
   
-  data_folder = here("data")
-  
   if(choose_directory == "data_folder") {
     
   data_folder_path = file.path(here("data"))  
