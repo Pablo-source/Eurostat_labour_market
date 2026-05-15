@@ -1,5 +1,9 @@
 # Import Excel files into R
 
+library(here)
+
+# Building function to import files:
+
 Import_files <- function(file_name,tab_name = NULL,choose_directory = NULL){
   
   data_folder = here("data")
@@ -11,31 +15,17 @@ Import_files <- function(file_name,tab_name = NULL,choose_directory = NULL){
   if (dir.exists(data_folder_path)) {
     
     return(data_folder_path)  
-    
   }
-    
-    
-
-    
+  
   } else if (choose_directory == "data_cleansed") {
+  
+  data_cleansed_path = file.path(here("data_cleansed"))
     
-  return()
+  if (dir.exists(data_cleansed_path))  
     
-  }
-  
-  data_folder_path = 
-  
-  data_cleansed_path = 
-  
-  if(dir.exists(data_folder_path){
-    return(data_folder_path)
-  } else if (dir.exists(data_cleances)){
-    return(data_cleansed)
-  } else {
-    stop("Provide your own directory")
-  }
+  return(data_cleansed_path)
     
-  }
+  } else { stop ("please provide your own directory")}
   
-  pa
 }
+  
