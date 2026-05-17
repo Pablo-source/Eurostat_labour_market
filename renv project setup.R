@@ -21,19 +21,9 @@ renv::init()
 # So then I only need to install in this environment the libraries I need; 
 # {here,janitor,readxl,tidyverse}
 # Tidyverse packages: {ggplot2, dplyr,tidyr,readr,purrr,tibble,stringer,forcats}
-renv::install('here')
-renv::install('janitor')
-renv::install('readxl')
-renv::install('dplyr') 
-renv::install('ggplot2') 
-renv::install('lubridate') # create dates in script "01 Eurostat Unemp csv file into R long format.R"
-renv::install('naniar')  # Adhoc package to replace missing values.
-renv::install('ggtext') 
-renv::install('gt') 
- # Script 06 custom_geom_bar_unemployment by country.R
-renv::install('markdown') # Installed Markdown for Formatting unemployment rate bar plot.qmd file
-renv::install('gcookbook') # Used in script 
-renv::install('yaml') # parse dependencies witin Quarto Markdown files
+# lubridate: # create dates in script "01 Eurostat Unemp csv file into R long format.R"
+# naniar:  # Adhoc package to replace missing values.
+renv::install('here','janitor','readxl','dplyr','ggplot2','lubridate','naniar','ggtext','gt','markdown','gcookbook','yaml')
 
 # 3 Check status of your lockfile using renv::status() function:
 ## status() reports issues caused by inconsistencies across the project lockfile

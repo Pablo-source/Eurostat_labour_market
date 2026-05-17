@@ -36,4 +36,20 @@ Import_files(choose_directory = "data_cleansed")
 Import_files(choose_directory = "my directory") # This will trigger error message
 
 # 2. Include read_excel function
-library(readxl)
+
+# data is located in "Sheet 1"
+
+
+library(readxl) # read_excel()
+
+Import_excel_files <- function(tab_name = NULL,choose_directory = NULL){
+  
+  
+}
+
+data_directory = here("data")
+
+EUROSTAT_temp_employment_file <- file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx")
+
+
+read_excel(file.path(data_dir,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"))
