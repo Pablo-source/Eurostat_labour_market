@@ -34,3 +34,6 @@ Import_files <- function(tab_name = NULL,choose_directory = NULL){
 Import_files(choose_directory = "data_folder")
 Import_files(choose_directory = "data_cleansed")
 Import_files(choose_directory = "my directory") # This will trigger error message
+
+# 2. Include read_excel function
+library(readxl)
