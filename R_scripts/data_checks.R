@@ -39,24 +39,47 @@ Excel_tabs_unemp_file  <- excel_sheets(EUROSTAT_temp_employment_file)
 # We will use this function in the "Import Excel files into R.R" script
 data_folder = here("data")
 
+## TESTING FUNCTION TO IMPORT EXCEL DATA INTO R
+
+library(dplyr)
+library(here)
+library(readxl)
 library(tidyr)
 
 # Prepare script inside Import_excel_files() function I am building
 # 1.1 Get Imported unemployment rate column names
 names(read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                  sheet = "Sheet 1" , col_names = TRUE, na = ":", skip = 8,n_max = 23) )
-# 1.2 
+
+# 1.2 Start building function to turn raw data from Wide into Long format
 EUROSTAT_unemployment_file <-file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx")
+
+names(unemp_raw)
 
 unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                         sheet = "Sheet 1" , col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
             rename(Date = "GEO (Labels)") %>% 
-            filter(!is.na(Countries))
-              pivot_longer(!Date, names_to = "Countries", values_to = "unemep") %>% 
-            filter(!is.na(Countries))
+            filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
+            pivot_longer(!Date, names_to = "Countries", values_to = "unemep") 
 
-names(unemp_raw)
-              
-pivot_longer(!religion, names_to = "income", values_to = "count")
 
+# 1.2 Start building function - Initial argument (values_name: Name of the column we pivot long.)
+
+# User will have to enter column_name pivotted from wide to long (as "values_name" argument)
+
+Import_excel_files_test <- function(tab_name = NULL,choose_directory = NULL, values_name){
+
+  data_folder = here("data")
+  
+  unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
+                          sheet = "Sheet 1" , col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
+    rename(Date = "GEO (Labels)") %>% 
+    filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
+    pivot_longer(!Date, names_to = "Countries", values_to = values_name) 
+  
+  return(unemp_raw)
+  
+}
+
+Import_excel_files_test(values_name = "unemployment_rate")
 
