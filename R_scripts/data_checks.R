@@ -22,11 +22,15 @@ Input_xlsx_files  <- list.files (path = data_folder,pattern = ("*.xlsx"))
 # Get Excel input file paths from \data folder
 data_folder = here("data")
 
-EUROSTAT_temp_employment_file <- file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx")
-EUROSTAT_unemployment_file <-file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx")
-
-Excel_tabs <- excel_sheets("./data/Figure_2__Median_income_has_increased_during_the_10_years_leading_up_to_financial_year_ending_2022.xls")
+EUROSTAT_temp_employment_file <- file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx") #     lfsi_pt_a (Part-time employment 
+EUROSTAT_unemployment_file <-file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx") #     une_rt_a (Unemployment 
 
 # Get Excel input file sheets
 Excel_tabs_temp_emp_file <- excel_sheets(EUROSTAT_temp_employment_file)
 # [1] "Summary"   "Structure" "Sheet 1"  
+Excel_tabs_unemp_file  <- excel_sheets(EUROSTAT_temp_employment_file)
+# [1] "Summary"   "Structure" "Sheet 1" 
+
+#     lfsi_pt_a (Part-time employment and temporary contracts-annual data)
+#     une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
+
