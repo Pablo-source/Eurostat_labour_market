@@ -47,9 +47,9 @@ library(readxl) # read_excel()
 Import_excel_files <- function(tab_name = NULL,choose_directory = NULL){
   
   # 1. Read in part time employment
-  data_directory = here("data")
+  data_folder = here("data")
   
-  part_time_raw <- read_excel()
+  part_time_raw <- read_excel(file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"))
   
   
 }
@@ -59,4 +59,4 @@ data_folder = here("data")
 EUROSTAT_temp_employment_file <- file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx")
 
 
-read_excel(file.path(data_dir,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"))
+read_excel(file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"))

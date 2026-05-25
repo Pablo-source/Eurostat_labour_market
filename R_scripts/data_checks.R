@@ -34,3 +34,10 @@ Excel_tabs_unemp_file  <- excel_sheets(EUROSTAT_temp_employment_file)
 #     lfsi_pt_a (Part-time employment and temporary contracts-annual data)
 #     une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
 
+# 1.2 Import Unemployment file into R
+
+data_folder = here("data")
+
+EUROSTAT_temp_employment_file <- file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx")
+
+part_time_raw <- read_excel(file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"))
