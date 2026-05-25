@@ -63,9 +63,10 @@ unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_sp
             pivot_longer(!Date, names_to = "Countries", values_to = "unemep") 
 
 
-# 1.2 Start building function - Initial argument (values_name: Name of the column we pivot long.)
+# Function to import different Excel files with Eurostat data into R 
 
-# User will have to enter column_name pivotted from wide to long (as "values_name" argument)
+# 1.2 Start building function - Initial argument (values_name: Name of the column we pivot long.)
+# User will have to enter column_name pivoted from wide to long (as "values_name" argument)
 
 Import_excel_files_test <- function(tab_name = NULL,choose_directory = NULL, values_name){
 
