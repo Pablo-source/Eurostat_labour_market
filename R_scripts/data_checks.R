@@ -22,8 +22,8 @@ Input_xlsx_files  <- list.files (path = data_folder,pattern = ("*.xlsx"))
 # Get Excel input file paths from \data folder
 data_folder = here("data")
 
-EUROSTAT_temp_employment_file <- file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx") #     lfsi_pt_a (Part-time employment 
 EUROSTAT_unemployment_file <-file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx") #     une_rt_a (Unemployment 
+EUROSTAT_temp_employment_file <- file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx") #     lfsi_pt_a (Part-time employment 
 
 # Get Excel input file sheets
 Excel_tabs_temp_emp_file <- excel_sheets(EUROSTAT_temp_employment_file)
@@ -38,6 +38,8 @@ Excel_tabs_unemp_file  <- excel_sheets(EUROSTAT_temp_employment_file)
 
 data_folder = here("data")
 
-EUROSTAT_temp_employment_file <- file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx")
+EUROSTAT_unemployment_file <-file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx")
 
-part_time_raw <- read_excel(file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"))
+unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
+                        sheet = "Sheet 1" , range = (A10:AL32), col_names = TRUE, na = c(":"))
+
