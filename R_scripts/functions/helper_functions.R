@@ -1,4 +1,6 @@
-# Import Excel files into R
+# AIM: Set of functions to process and format data into Markdown report
+
+# File  name: helper_functions.R
 
 library(here)
 
