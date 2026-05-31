@@ -41,11 +41,6 @@ data_folder = here("data")
 
 ## TESTING FUNCTION TO IMPORT EXCEL DATA INTO R
 
-library(dplyr)
-library(here)
-library(readxl)
-library(tidyr)
-
 # Prepare script inside Import_excel_files() function I am building
 # 1.1 Get Imported unemployment rate column names
 names(read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
@@ -67,6 +62,10 @@ unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_sp
 
 # 1.2 Start building function - Initial argument (values_name: Name of the column we pivot long.)
 # User will have to enter column_name pivoted from wide to long (as "values_name" argument)
+library(dplyr)
+library(here)
+library(readxl)
+library(tidyr)
 
 Import_excel_files_test <- function(tab_name = NULL,choose_directory = NULL, values_name){
 
