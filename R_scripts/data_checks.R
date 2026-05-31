@@ -67,12 +67,12 @@ library(here)
 library(readxl)
 library(tidyr)
 
-Import_excel_files_test <- function(tab_name = NULL,choose_directory = NULL){
+Import_excel_files_test <- function(tab_name,choose_directory = NULL, selected_countries){
 
   data_folder = here("data")
   
   unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
-                          sheet = "Sheet 1" , col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
+                          sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
     rename(Date = "GEO (Labels)") %>% 
     filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
     pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
@@ -87,12 +87,15 @@ Import_excel_files_test <- function(tab_name = NULL,choose_directory = NULL){
                               country = Countries, 
                               metric_value,
                               metric, 
-                              units)
+                              units) %>% 
+                      filter(country %in% c(selected_countries))
     
-    
+  # Filter previous dataset so we can select a handful of countries
+  unem_rate_selected_countries <- 
+  
   return(unemp_rate_metric)
   
 }
-
-Import_excel_files_test()
+# Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
+Import_excel_files_test(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'))
 
