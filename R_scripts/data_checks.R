@@ -67,7 +67,7 @@ library(here)
 library(readxl)
 library(tidyr)
 
-Import_excel_files_test <- function(tab_name = NULL,choose_directory = NULL, values_name){
+Import_excel_files_test <- function(tab_name = NULL,choose_directory = NULL){
 
   data_folder = here("data")
   
@@ -75,11 +75,24 @@ Import_excel_files_test <- function(tab_name = NULL,choose_directory = NULL, val
                           sheet = "Sheet 1" , col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
     rename(Date = "GEO (Labels)") %>% 
     filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
-    pivot_longer(!Date, names_to = "Countries", values_to = values_name) 
+    pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
   
-  return(unemp_raw)
+  # Create new column to state metric_name
+  # Create new column to specify format
+  unem_long <- unemp_raw %>% mutate(
+                                metric = "unemployment_rate",
+                                units = "thousands")
+  # rename column so we can later on union it with other indicators
+  unemp_rate_metric <- unem_long %>% select(date = Date,
+                              country = Countries, 
+                              metric_value,
+                              metric, 
+                              units)
+    
+    
+  return(unemp_rate_metric)
   
 }
 
-Import_excel_files_test(values_name = "unemployment_rate")
+Import_excel_files_test()
 
