@@ -67,7 +67,7 @@ library(here)
 library(readxl)
 library(tidyr)
 
-Import_excel_files_test <- function(tab_name,choose_directory = NULL, selected_countries){
+Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selected_countries){
 
   data_folder = here("data")
   
@@ -82,17 +82,15 @@ Import_excel_files_test <- function(tab_name,choose_directory = NULL, selected_c
                                 metric = "unemployment_rate",
                                 units = "thousands")
   # rename column so we can later on union it with other indicators
-  unemp_rate_metric <- unem_long %>% select(date = Date,
+  # Filter previous dataset so we can select a handful of countries
+  unemp_rate_countries_sel <- unem_long %>% select(date = Date,
                               country = Countries, 
                               metric_value,
                               metric, 
                               units) %>% 
                       filter(country %in% c(selected_countries))
-    
-  # Filter previous dataset so we can select a handful of countries
-  unem_rate_selected_countries <- 
-  
-  return(unemp_rate_metric)
+  # Return final selection of countries unemployment indicator values    
+  return(unemp_rate_countries_sel)
   
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
