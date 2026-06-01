@@ -38,6 +38,12 @@ data_filepath(choose_directory = "my directory") # This will trigger error messa
 #     une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
 
 # data is located in "Sheet 1"
+library(dplyr)
+library(here)
+library(readxl)
+library(tidyr)
+
+
 Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selected_countries,indicator = NULL){
   
   data_folder = here("data")
@@ -66,8 +72,6 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   return(tempcont_rate_countries)
   }
   
-  
-  
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
-Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = NULL)
+Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
