@@ -43,18 +43,14 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
     filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
     pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
   
-  # Create new column to state metric_name, units and also allow to filter initial data by selection of countries
-  unem_long <- unemp_raw %>% mutate(
-    metric = "unemployment_rate",
-    units = "thousands")
-  # rename column so we can later on union it with other indicators
-  # Filter previous dataset so we can select a handful of countries
+  unem_long <- unemp_raw %>% mutate(metric = "unemployment_rate", units = "thousands")
   unemp_rate_countries_sel <- unem_long %>% select(date = Date,
                                                    country = Countries, 
                                                    metric_value,
                                                    metric, 
                                                    units) %>% 
-    filter(country %in% c(selected_countries))
+    filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
+  
   # Return final selection of countries unemployment indicator values    
   return(unemp_rate_countries_sel)
   
