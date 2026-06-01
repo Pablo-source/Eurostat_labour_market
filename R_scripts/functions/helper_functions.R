@@ -66,8 +66,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   return(unemp_rate_countries)
   
   } else if (indicator == "tempcontracts"){
-    
-    
+  
   # Return final selection of countries temporary employment indicator  
   return(tempcont_rate_countries)
   }

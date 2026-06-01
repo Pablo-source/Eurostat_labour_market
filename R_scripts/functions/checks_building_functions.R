@@ -67,32 +67,36 @@ library(here)
 library(readxl)
 library(tidyr)
 
-Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selected_countries){
-
+Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selected_countries,indicator = NULL){
+  
   data_folder = here("data")
   
-  unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
-                          sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
-    rename(Date = "GEO (Labels)") %>% 
-    filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
-    pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
-  
-  # Create new column to state metric_name, units and also allow to filter initial data by selection of countries
-  unem_long <- unemp_raw %>% mutate(
-                                metric = "unemployment_rate",
-                                units = "thousands")
-  # rename column so we can later on union it with other indicators
-  # Filter previous dataset so we can select a handful of countries
-  unemp_rate_countries_sel <- unem_long %>% select(date = Date,
-                              country = Countries, 
-                              metric_value,
-                              metric, 
-                              units) %>% 
-                      filter(country %in% c(selected_countries))
-  # Return final selection of countries unemployment indicator values    
-  return(unemp_rate_countries_sel)
+  if (indicator == "unemp"){
+    
+    unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
+                            sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
+      rename(Date = "GEO (Labels)") %>% 
+      filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
+      pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
+    
+    unem_long <- unemp_raw %>% mutate(metric = "unemployment_rate", units = "thousands")
+    unemp_rate_countries <- unem_long %>% select(date = Date,
+                                                 country = Countries, 
+                                                 metric_value, metric, units) %>% 
+      filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
+    
+    # Return final selection of countries unemployment indicator values    
+    return(unemp_rate_countries)
+    
+  } else if (indicator == "tempcontracts"){
+    
+    # Start testing how to load "temporary rate" contracts data in this section to return it in long format as a dataframe
+    
+    # Return final selection of countries temporary employment indicator  
+    return(tempcont_rate_countries)
+  }
   
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
-Import_excel_files_test(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'))
+Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 
