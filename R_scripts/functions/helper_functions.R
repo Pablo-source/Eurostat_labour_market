@@ -42,20 +42,31 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   data_folder = here("data")
   
+  if (indicator == "unemp"){
+  
   unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                           sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
-    rename(Date = "GEO (Labels)") %>% 
-    filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
-    pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
+              rename(Date = "GEO (Labels)") %>% 
+              filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
+              pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
   
   unem_long <- unemp_raw %>% mutate(metric = "unemployment_rate", units = "thousands")
   unemp_rate_countries <- unem_long %>% select(date = Date,
                                                    country = Countries, 
                                                    metric_value, metric, units) %>% 
-    filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
+                         filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
   
   # Return final selection of countries unemployment indicator values    
   return(unemp_rate_countries)
+  
+  } else if (indicator == "tempcontracts"){
+    
+    
+  # Return final selection of countries temporary employment indicator  
+  return(tempcont_rate_countries)
+  }
+  
+  
   
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
