@@ -32,6 +32,11 @@ data_filepath(choose_directory = "my directory") # This will trigger error messa
 
 # 2. Second helper function - Read in original Eurostat Excel files into R
 
+# Eurostat: 
+# LFS adjusted series:
+#     lfsi_pt_a (Part-time employment and temporary contracts-annual data)
+#     une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
+
 # data is located in "Sheet 1"
 Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selected_countries,indicator = NULL){
   
@@ -44,15 +49,13 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
     pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
   
   unem_long <- unemp_raw %>% mutate(metric = "unemployment_rate", units = "thousands")
-  unemp_rate_countries_sel <- unem_long %>% select(date = Date,
+  unemp_rate_countries <- unem_long %>% select(date = Date,
                                                    country = Countries, 
-                                                   metric_value,
-                                                   metric, 
-                                                   units) %>% 
+                                                   metric_value, metric, units) %>% 
     filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
   
   # Return final selection of countries unemployment indicator values    
-  return(unemp_rate_countries_sel)
+  return(unemp_rate_countries)
   
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
