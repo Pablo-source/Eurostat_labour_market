@@ -1,6 +1,11 @@
 # AIM: Set of functions to process and format data into Markdown report
 
+# Ensure we have pacman installed to load all required packages at once
+installed.packages()
+
 if(!"pacman" %in% installed.packages()) install.packages("pacman")
+## Load required packages now using pacman p_load function: 
+pacman::p_load(here,dplyr,here,readxl,tidyr,ggplot2)
 
 # File  name: helper_functions.R
 
