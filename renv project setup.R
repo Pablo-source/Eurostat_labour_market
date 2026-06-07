@@ -23,7 +23,8 @@ renv::init()
 # Tidyverse packages: {ggplot2, dplyr,tidyr,readr,purrr,tibble,stringer,forcats}
 # lubridate: # create dates in script "01 Eurostat Unemp csv file into R long format.R"
 # naniar:  # Adhoc package to replace missing values.
-renv::install('here','janitor','readxl','dplyr','ggplot2','lubridate','naniar','ggtext','gt','markdown','gcookbook','yaml')
+# pacman: Include {packman} to load several packages simultaneously using "p_load()" function
+renv::install('here','janitor','readxl','dplyr','ggplot2','lubridate','naniar','ggtext','gt','markdown','gcookbook','yaml','pacman')
 
 # 3 Check status of your lockfile using renv::status() function:
 ## status() reports issues caused by inconsistencies across the project lockfile

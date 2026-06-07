@@ -1,5 +1,7 @@
 # AIM: Set of functions to process and format data into Markdown report
 
+if(!"pacman" %in% installed.packages()) install.packages("pacman")
+
 # File  name: helper_functions.R
 
 library(here)
