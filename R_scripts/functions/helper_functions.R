@@ -73,16 +73,15 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
     filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
     pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
   
-  temp_long <- temp_emp_raw %>% mutate(metrc = "temp_employment_rate", units = "percentage") %>% 
+  temp_long <- temp_emp_raw %>% mutate(metric = "temp_employment_rate", units = "percentage") %>% 
                select(date = Date,country = Countries,metric_value, metric, units) %>% 
     filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
   
   # Return final selection of countries temporary employment indicator values  
     return(temp_long)
-  
-    
     }
   
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
+Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "tempcontracts")
