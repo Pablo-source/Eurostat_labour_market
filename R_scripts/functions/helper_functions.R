@@ -56,7 +56,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   data_folder = here("data")
   
   if (indicator == "unemp"){
-  
+    #     une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
   unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                           sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
               rename(Date = "GEO (Labels)") %>% 
@@ -71,10 +71,23 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   return(unemp_rate_countries)
   
   } else if (indicator == "tempcontracts"){
-  
+  #     lfsi_pt_a (Part-time employment and temporary contracts-annual data)
   # Return final selection of countries temporary employment indicator  
-  return(tempcont_rate_countries)
-  }
+  temp_emp_raw <- read_excel(file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"),
+                             sheet = tab_name, col_names = TRUE, na = ":", skip = 10, n_max = 22) %>% 
+    rename(Date = "GEO (Labels)") %>% 
+    filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
+    pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
+  
+  temp_long <- temp_emp_raw %>% mutate(metrc = "temp_employment_rate", units = "percentage") %>% 
+               select(date = Date,country = Countries,metric_value, metric, units) %>% 
+    filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
+  
+    
+    return(tempcont_rate_countries)
+  
+    
+    }
   
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
