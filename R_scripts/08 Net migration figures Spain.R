@@ -20,7 +20,7 @@ list.files (path = "./data_demography" ,pattern = "xls$")
 # [1] "INE Net external migration Spain 2014 2023.xls"
 
 # 02 List tabs from above Excel file to know which tab to import
-excel_sheets("./data_demography/INE Net external migration Spain 2014 2023.xls")
+excel_sheets("./data_demography/INE Net external migration Spain 2014 2024.xls")
 # [1] "Hoja1"
 
 # 03 Import Excel file into R
@@ -285,10 +285,10 @@ ggsave("plots_output/23_Spain_net_migration_boolean_custom_colours_thousands_sep
 # Updated New migration plot to include 2024 figures
 options(scipen=999)
 
-net_migration_2024_spain <- ggplot(net_migration_bar_data_labels, aes(x=year, y = net_migration, 
-                                                                                fill = direction,label = format(net_migration, big.mark = ","))) +
-  # Include this geom_text() code below to plot labels below bars: 
-  # geom_text(y = label_y)
+net_migration_2024_spain <- ggplot(net_migration_bar_data_labels, 
+                                   aes(x=year, y = net_migration, 
+                                       fill = direction,
+                                       label = format(net_migration, big.mark = ","))) +
   geom_text(aes(y = label_y)) + # Include this geom_text() code below to plot labels below bars: 
   geom_col(show.legend = FALSE) +
   
@@ -300,4 +300,8 @@ net_migration_2024_spain <- ggplot(net_migration_bar_data_labels, aes(x=year, y 
   theme(legend.position =  "none", # Remove legends 
         axis.title.x = element_blank(),
         axis.title.y = element_blank()) + 
-  scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023)) +
+  scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024)) +
+  labs(title = "Spain Net migration. 2014-2023 period",
+       subtitle = "Evolution of net external migration in Spain",
+       caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2023. https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm") +
+  geom_hline(yintercept = 0, linewidth = 0.3)
