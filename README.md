@@ -58,7 +58,8 @@
 - Source: Statistics on Migrations and Changes of Residence (SMCR).Source: National Statistics Institute. Spanish Statistical Office. INE.
 - Evolution of net external migration. 2014-2023. INE: <https://www.ine.es/dyngs/Prensa/en/EMCR2023.htm>
 - INE Spanish Office for National Statistics: net external migration (latest available data 2024):<https://www.ine.es/dyngs/Prensa/EMCR2024.htm>
-<img width="1197" height="936" alt="image" src="https://github.com/user-attachments/assets/a2bcb3ab-8c4b-4abc-98be-012d1d091fc5" />
+<img width="703" height="352" alt="Spain net migration updated 2024 2024 period" src="https://github.com/user-attachments/assets/bd788c7a-92df-462f-8909-b3df3e0744a7" />
+
 
 
 ## GT table 04.  Components of population change for Spain, output as GT tables 
