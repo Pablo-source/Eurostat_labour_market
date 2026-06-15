@@ -102,7 +102,7 @@ net_migration_2024_spain <- ggplot(net_migration_bar_data_labels,
                                    aes(x=year, y = net_migration, 
                                        fill = direction,
                                        label = format(net_migration, big.mark = ","))) +
-  geom_text(size=3,aes(y = label_y)) + # Include this geom_text() code below to plot labels below bars: 
+  geom_text(size=3,aes(y = label_y)) + # Plot data labels top bars, included size to reduce default font size.
   geom_col(show.legend = FALSE) +
   scale_fill_manual(breaks = c("negative", "positive"),
                     values = c("coral","cornflowerblue")) +
