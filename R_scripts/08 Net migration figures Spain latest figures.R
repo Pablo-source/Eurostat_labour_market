@@ -102,9 +102,8 @@ net_migration_2024_spain <- ggplot(net_migration_bar_data_labels,
                                    aes(x=year, y = net_migration, 
                                        fill = direction,
                                        label = format(net_migration, big.mark = ","))) +
-  geom_text(aes(y = label_y)) + # Include this geom_text() code below to plot labels below bars: 
+  geom_text(size=3,aes(y = label_y)) + # Include this geom_text() code below to plot labels below bars: 
   geom_col(show.legend = FALSE) +
-  
   scale_fill_manual(breaks = c("negative", "positive"),
                     values = c("coral","cornflowerblue")) +
   scale_color_manual(breaks = c("negative","positive"),   # Add custom colors for outside border bar
@@ -114,7 +113,7 @@ net_migration_2024_spain <- ggplot(net_migration_bar_data_labels,
         axis.title.x = element_blank(),
         axis.title.y = element_blank()) + 
   scale_x_continuous(breaks = c(2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024)) +
-  labs(title = "Spain Net migration. 2014-2023 period",
+  labs(title = "Spain Net migration. 2014-2024 period",
        subtitle = "Evolution of net external migration in Spain",
        caption = "Source: INE.Satistics on Migrations and Changes of Residence (SMCR). Year 2024. https://www.ine.es/dyngs/Prensa/en/EMCR2024.htm") +
   geom_hline(yintercept = 0, linewidth = 0.3)
