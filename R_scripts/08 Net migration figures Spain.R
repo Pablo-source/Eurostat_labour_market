@@ -30,7 +30,7 @@ excel_sheets("./data_demography/INE Net external migration Spain 2014 2024.xls")
 # {dplyr} using na.omit() function
 #  Use col_types function with "guess" option to import cols with right format into R
 # read_excel(col_types = c("guess","guess")
-net_migration_spain <-  read_excel(
+spain_net_migration_data <-  read_excel(
   here("data_demography", "INE Net external migration Spain 2014 2023.xls"), 
   sheet = 1, skip =7, n_max = 10,
   col_types = c("guess","guess")
