@@ -60,9 +60,8 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   unem_long <- unemp_raw %>% mutate(metric = "unemployment_rate", units = "percentage") %>% 
                              select(date = Date,country = Countries,metric_value, metric, units) %>% 
                          filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
-  # Include new variables
+  # Include new variable to display lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
   # date_1y_ago, value_1y_ago, date_5y_ago, value_5y_ago
-  
   unem_long_lags <- unem_long %>% 
                     arrange(country,date) %>% 
                     group_by(country) %>% 
@@ -75,7 +74,18 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                       value_5y_ago = lag(metric_value,5)
                       ) %>% 
                     ungroup()
-                      
+  
+  # Adding finally a new set of columns to display min and max values 
+  unemp_long_min_max <- unem_long_lags %>% 
+                        arrange(country,date) %>% 
+                        group_by(country) %>% 
+                        mutate(
+                          max_value = max(metric_value),
+                          max_date = max(date),
+                          min_value = min(metric_value),
+                          min_date = min(date)
+                        )
+                        ungroup()
                 
   
   # Return final selection of countries unemployment indicator values    
