@@ -137,7 +137,7 @@ fmt_markdown_figures<- function(mydataset
   
   row <- mydataset %>% filter(country == Country &  date == Date) 
   print(row)
-  value <- row %>% pull({column})
+  value <- row %>% pull({{column}})
   print(value)
   
   if (length(value)==0) {return(NA)}
