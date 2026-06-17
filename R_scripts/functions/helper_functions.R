@@ -136,16 +136,13 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 
 fmt_markdown_figures<- function(mydataset
                                 ,country, column,Date,format = NULL){
-  
   row <- mydataset %>% filter({{country}}) 
   print(row)
   value <- row %>% pull({{column}})
   print(value)
-  
   if (length(value)==0) {return(NA)}
   # numeric format (taken from original Markdown report) . see below
   # Example: prettyNum(Min_total_population$total_population, big.mark=",")
-  
   # Start defining required formats for value
   if (format == "Numeric"){
       if(is.na(value)){
@@ -164,13 +161,8 @@ fmt_markdown_figures<- function(mydataset
     # End of numeric format (taken from original Markdown report)
     # Latest return value - always return value as character as faisafe
   return(as.character(value))
-  
 }
-
-# Testing fmt_markdown_figures function
-    # Dataset: unemp_long_min_max_all
-    # Country: Bulgaria
-    # Column: metric_value
-    # Date: 2011
+# Testing fmt_markdown_figures function# Dataset: unemp_long_min_max_all # Country: Bulgaria
+# Column: metric_value# Date: 2011
 fmt_markdown_figures( mydataset = "unemp_long_min_max_all",Country = "Bulgaria",Column = "metric_value",
                       Date = "2011")
