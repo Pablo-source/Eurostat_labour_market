@@ -134,7 +134,7 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 # 3. Format values for markdown
 #    fmt_markdown_figures()
 
-fmt_markdown_figures<- function(mydataset
+fmt_markdown_figures<- function(mydataset 
                                 ,country, column,Date,format = NULL){
   row <- mydataset %>% filter({{country}}) 
   print(row)
