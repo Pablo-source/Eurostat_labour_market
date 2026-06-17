@@ -77,11 +77,13 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                     ungroup()
   
   # Adding finally a new set of columns to display min and max values 
-  unemp_long_max<- unem_long_lags %>%
+  unemp_long_min_max<- unem_long_lags %>%
                    select(country,date,metric_value) %>%
-                   filter(country == "Estonia") %>% 
     group_by(country) %>% 
-  mutate(min_value = min(metric_value, na.rm = TRUE)) %>% 
+  mutate(
+          min_value = min(metric_value, na.rm = TRUE),
+          max_value = max(metric_value, na.rm = TRUE)
+          ) %>% 
     ungroup()
                 
   
