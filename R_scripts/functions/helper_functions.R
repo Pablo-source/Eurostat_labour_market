@@ -132,13 +132,29 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 # 3. Format values for markdown
 #    fmt_markdown_figures()
 
-fmt_markdown_figures(Dataset=NULL,Country=NULL, Column=NULL,Date=NULL){
+fmt_markdown_figures<- function(mydataset
+                                ,Country, Column,Date,format = NULL){
   
-  row <- dataset %>% filter(country == Country &  date == Date) 
+  row <- mydataset %>% filter(country == Country &  date == Date) 
+  print(row)
   value <- row %>% pull({column})
+  print(value)
   
+  if (length(value)==0) {return(NA)}
   
   # Always return value as character as  failsafe
   return(as.character(value))
   
 }
+
+# Testing fmt_markdown_figures function
+# Dataset: unemp_long_min_max_all
+# Country: Bulgaria
+# Column: metric_value
+# Date: 2011
+
+fmt_markdown_figures( Dataset = "unemp_long_min_max_all",
+                      Country = "Bulgaria",
+                      Column = "metric_value",
+                      Date = "2011"
+)
