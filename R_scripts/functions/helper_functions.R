@@ -7,6 +7,15 @@ if(!"pacman" %in% installed.packages()) install.packages("pacman")
 ## Load required packages now using pacman p_load function: 
 pacman::p_load(here,dplyr,here,readxl,tidyr,ggplot2,stats)
 
+
+# Helper Functions
+# 1. First function - Builds path to look for Input (Excel) files
+#    data_filepath()
+# 2. Second helper function - Read in original Eurostat Excel files into R
+#    Import_eurostat_indicators()
+# 3. Format values for markdown
+
+
 # File  name: helper_functions.R
 
 # Building function to import files:
