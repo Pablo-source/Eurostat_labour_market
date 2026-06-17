@@ -45,11 +45,11 @@ data_filepath(choose_directory = "my directory") # This will trigger error messa
 # data is located in "Sheet 1"
 
 Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selected_countries,indicator = NULL){
+
+  # une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
   
   data_folder = here("data")
-  
-  if (indicator == "unemp"){
-    #     une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
+    if (indicator == "unemp"){
     
   unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                           sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
@@ -60,6 +60,16 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   unem_long <- unemp_raw %>% mutate(metric = "unemployment_rate", units = "percentage") %>% 
                              select(date = Date,country = Countries,metric_value, metric, units) %>% 
                          filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
+  # Include new variables
+  # date_1y_ago, value_1y_ago, date_5y_ago, value_5y_ago
+  
+  unem_long_date <- unem_long %>% 
+                    arrange(country,date) %>% 
+                    group_by(country) %>% 
+                    mutate(
+                      date_1y_ago = lag(date,-12))
+                      
+                    )
   
   # Return final selection of countries unemployment indicator values    
   return(unem_long)
