@@ -135,8 +135,8 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 #    fmt_markdown_figures()
 
 fmt_markdown_figures<- function(mydataset 
-                                ,country, column,Date,format = NULL){
-  row <- mydataset %>% filter({{country}}) 
+                                ,countryname, column,Date,format = NULL){
+  row <- mydataset %>% filter(country == countryname) 
   print(row)
   value <- row %>% pull({{column}})
   print(value)
@@ -164,5 +164,5 @@ fmt_markdown_figures<- function(mydataset
 }
 # Testing fmt_markdown_figures function# Dataset: unemp_long_min_max_all # Country: Bulgaria
 # Column: metric_value# Date: 2011
-fmt_markdown_figures( mydataset = "unemp_long_min_max_all",Country = "Bulgaria",Column = "metric_value",
+fmt_markdown_figures( mydataset = "unemp_long_min_max_all",countryname = "Bulgaria",column = "metric_value",
                       Date = "2011")
