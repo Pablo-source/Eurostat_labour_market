@@ -148,26 +148,21 @@ fmt_markdown_figures<- function(mydataset
   
   # Start defining required formats for value
   if (format == "Numeric"){
-    
-  if(is.na(value)){
-    return(NA_character_)
-  } else if (!is.na(value)){
-    value <- as.numeric(value)
-    value <- prettyNum(value, big.mark=",")
-    return(value)
-  } 
+      if(is.na(value)){
+          return(NA_character_)
+      } else if (!is.na(value)){
+          value <- as.numeric(value)
+          value <- prettyNum(value, big.mark=",")
+          return(value)}
     
   } else if (format == "percent") {
-   
-    if(is.na(value)){
+     if(is.na(value)){
       return(NA_character_)
     } else if (!is.na(value)){
-      
     } 
   } else
     # End of numeric format (taken from original Markdown report)
-  
-  # Latest return value - always return value as character as faisafe
+    # Latest return value - always return value as character as faisafe
   return(as.character(value))
   
 }
