@@ -13,7 +13,7 @@ pacman::p_load(here,dplyr,here,readxl,tidyr,ggplot2,stats)
 
 # 1. First function - Builds path to look for Input (Excel) files:
 
-data_filepath  <- function(tab_name = NULL,choose_directory = NULL){
+data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_directory = NULL){
   
   if(choose_directory == "data_folder") {
   data_folder_path = file.path(here("data"))  
