@@ -63,11 +63,17 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   # Include new variables
   # date_1y_ago, value_1y_ago, date_5y_ago, value_5y_ago
   
-  unem_long_date <- unem_long %>% 
+  unem_long_lags <- unem_long %>% 
                     arrange(country,date) %>% 
                     group_by(country) %>% 
                     mutate(
-                      date_1y_ago = lag(date,1)) %>% 
+                      date_1y_ago = lag(date,1),
+                      value_1y_ago = lag(metric_value,1),
+                      date_2y_ago = lag(date,2),
+                      value_2y_ago = lag(metric_value,2),
+                      date_5y_ago = lag(date,5),
+                      value_5y_ago = lag(metric_value,5)
+                      ) %>% 
                     ungroup()
                       
                 
