@@ -5,7 +5,7 @@ installed.packages()
 
 if(!"pacman" %in% installed.packages()) install.packages("pacman")
 ## Load required packages now using pacman p_load function: 
-pacman::p_load(here,dplyr,here,readxl,tidyr,ggplot2)
+pacman::p_load(here,dplyr,here,readxl,tidyr,ggplot2,stats)
 
 # File  name: helper_functions.R
 
@@ -67,9 +67,10 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                     arrange(country,date) %>% 
                     group_by(country) %>% 
                     mutate(
-                      date_1y_ago = lag(date,-12))
+                      date_1y_ago = lag(date,1)) %>% 
+                    ungroup()
                       
-                    )
+                
   
   # Return final selection of countries unemployment indicator values    
   return(unem_long)
