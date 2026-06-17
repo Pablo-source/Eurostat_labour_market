@@ -14,7 +14,7 @@ pacman::p_load(here,dplyr,here,readxl,tidyr,ggplot2,stats)
 # 2. Second helper function - Read in original Eurostat Excel files into R
 #    Import_eurostat_indicators()
 # 3. Format values for markdown
-
+#    fmt_markdown_figures()
 
 # File  name: helper_functions.R
 
@@ -128,3 +128,17 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "tempcontracts")
+
+# 3. Format values for markdown
+#    fmt_markdown_figures()
+
+fmt_markdown_figures(Dataset=NULL,Country=NULL, Column=NULL,Date=NULL){
+  
+  row <- dataset %>% filter(country == Country &  date == Date) 
+  value <- row %>% pull({column})
+  
+  
+  # Always return value as character as  failsafe
+  return(as.character(value))
+  
+}
