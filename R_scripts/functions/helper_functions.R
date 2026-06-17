@@ -153,7 +153,7 @@ fmt_markdown_figures<- function(mydataset
 # Column: metric_value
 # Date: 2011
 
-fmt_markdown_figures( Dataset = "unemp_long_min_max_all",
+fmt_markdown_figures( mydataset = "unemp_long_min_max_all",
                       Country = "Bulgaria",
                       Column = "metric_value",
                       Date = "2011"
