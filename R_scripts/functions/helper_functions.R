@@ -50,7 +50,8 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   data_folder = here("data")
     if (indicator == "unemp"){
-    
+      
+  # 1.1 arange original input data in Long format  
   unemp_raw <- read_excel(file.path(data_folder,"une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                           sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
               rename(Date = "GEO (Labels)") %>% 
@@ -61,7 +62,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                              select(date = Date,country = Countries,metric_value, metric, units) %>% 
                              mutate(metric_value = as.numeric(metric_value)) %>% 
                          filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
-  # Include new variable to display lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
+  # 1.2 Include new variable to display lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
   # date_1y_ago, value_1y_ago, date_5y_ago, value_5y_ago
   unem_long_lags <- unem_long %>% 
                     arrange(country,date) %>% 
@@ -76,19 +77,26 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                       ) %>% 
                     ungroup()
   
-  # Adding finally a new set of columns to display min and max values 
+  # 1.3 Add new set of columns to display min and max values BY COUNTRY
   unemp_long_min_max<- unem_long_lags %>%
                    select(country,date,metric_value) %>%
     group_by(country) %>% 
   mutate(
-          min_value = min(metric_value, na.rm = TRUE),
-          max_value = max(metric_value, na.rm = TRUE)
+          min_value_country = min(metric_value, na.rm = TRUE),
+          max_value_country = max(metric_value, na.rm = TRUE)
           ) %>% 
     ungroup()
                 
+  # 1.5 Finally include min and max values entire unemp dataset
+  unemp_long_min_max_all <- unemp_long_min_max %>% 
+    mutate(
+      min_value_indic = min(metric_value, na.rm = TRUE),
+      max_value_indic = max(metric_value, na.rm = TRUE)
+    )              
+  
   
   # Return final selection of countries unemployment indicator values    
-  return(unem_long)
+  return(unemp_long_min_max_all)
   
   } else if (indicator == "tempcontracts"){
   #     lfsi_pt_a (Part-time employment and temporary contracts-annual data)
