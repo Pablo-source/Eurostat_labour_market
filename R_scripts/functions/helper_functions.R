@@ -69,8 +69,10 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   unem_long <- unemp_raw %>% mutate(metric = "unemployment_rate", units = "percentage") %>% 
                              select(date = Date,country = Countries,metric_value, metric, units) %>% 
-                             mutate(metric_value = as.numeric(metric_value)) %>% 
+                             mutate(metric_value = as.numeric(metric_value)) %>% # TO COMPUTE CALCULATIONS metric_Value must be NUMERIC
                          filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
+  
+  
   # 1.2 Include new variable to display lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
   # date_1y_ago, value_1y_ago, date_5y_ago, value_5y_ago
   unem_long_lags <- unem_long %>% 
@@ -135,26 +137,45 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 fmt_markdown_figures<- function(mydataset
                                 ,Country, Column,Date,format = NULL){
   
-  row <- mydataset %>% filter(country == Country &  date == Date) 
+  row <- mydataset %>% filter({{country}}) 
   print(row)
   value <- row %>% pull({{column}})
   print(value)
   
   if (length(value)==0) {return(NA)}
+  # numeric format (taken from original Markdown report) . see below
+  # Example: prettyNum(Min_total_population$total_population, big.mark=",")
   
-  # Always return value as character as  failsafe
+  # Start defining required formats for value
+  if (format == "Numeric"){
+    
+  if(is.na(value)){
+    return(NA_character_)
+  } else if (!is.na(value)){
+    value <- as.numeric(value)
+    value <- prettyNum(value, big.mark=",")
+    return(value)
+  } 
+    
+  } else if (format == "percent") {
+   
+    if(is.na(value)){
+      return(NA_character_)
+    } else if (!is.na(value)){
+      
+    } 
+  } else
+    # End of numeric format (taken from original Markdown report)
+  
+  # Latest return value - always return value as character as faisafe
   return(as.character(value))
   
 }
 
 # Testing fmt_markdown_figures function
-# Dataset: unemp_long_min_max_all
-# Country: Bulgaria
-# Column: metric_value
-# Date: 2011
-
-fmt_markdown_figures( mydataset = "unemp_long_min_max_all",
-                      Country = "Bulgaria",
-                      Column = "metric_value",
-                      Date = "2011"
-)
+    # Dataset: unemp_long_min_max_all
+    # Country: Bulgaria
+    # Column: metric_value
+    # Date: 2011
+fmt_markdown_figures( mydataset = "unemp_long_min_max_all",Country = "Bulgaria",Column = "metric_value",
+                      Date = "2011")
