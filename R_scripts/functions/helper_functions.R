@@ -123,6 +123,9 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
     filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
   
   # Return final selection of countries temporary employment indicator values  
+  
+    selected_countries <- as.data.frame(temp_long)
+  
     return(temp_long)
     }
   
