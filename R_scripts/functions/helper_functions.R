@@ -90,7 +90,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   # 1.3 Add new set of columns to display min and max values BY COUNTRY
   unemp_long_min_max<- unem_long_lags %>%
-                   select(country,date,metric_value) %>%
+                   select(country,date,metric_value,metric,units) %>%
     group_by(country) %>% 
   mutate(
           min_value_country = min(metric_value, na.rm = TRUE),
@@ -105,7 +105,9 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
       max_value_indic = max(metric_value, na.rm = TRUE)
     )              
   
-  unemp_long_dataframe <- as.data.frame(unempl_all)
+  unemp_all_to_dataframe <- unempl_all
+  
+  unemp_long_dataframe <- data.frame(unemp_all_to_dataframe)
   
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
