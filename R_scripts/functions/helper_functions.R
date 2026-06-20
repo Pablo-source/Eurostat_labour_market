@@ -99,15 +99,16 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
     ungroup()
                 
   # 1.5 Finally include min and max values entire unemp dataset
-  unemp_long_min_max_all <- unemp_long_min_max %>% 
+  unempl_all <- unemp_long_min_max %>% 
     mutate(
       min_value_indic = min(metric_value, na.rm = TRUE),
       max_value_indic = max(metric_value, na.rm = TRUE)
     )              
   
+  unemp_long_dataframe <- as.data.frame(unempl_all)
   
   # Return final selection of countries unemployment indicator values    
-  return(unemp_long_min_max_all)
+  return(unemp_long_dataframe)
   
   } else if (indicator == "tempcontracts"){
   #     lfsi_pt_a (Part-time employment and temporary contracts-annual data)
@@ -124,7 +125,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   # Return final selection of countries temporary employment indicator values  
   
-    selected_countries <- as.data.frame(temp_long)
+
   
     return(temp_long)
     }
