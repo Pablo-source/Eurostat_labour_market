@@ -5,7 +5,7 @@ installed.packages()
 
 if(!"pacman" %in% installed.packages()) install.packages("pacman")
 ## Load required packages now using pacman p_load function: 
-pacman::p_load(here,dplyr,here,readxl,tidyr,ggplot2,stats)
+pacman::p_load(here,dplyr,plyr,here,readxl,tidyr,ggplot2,stats)
 
 
 # Helper Functions
@@ -25,15 +25,15 @@ pacman::p_load(here,dplyr,here,readxl,tidyr,ggplot2,stats)
 data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_directory = NULL){
   
   if(choose_directory == "data_folder") {
-  data_folder_path = file.path(here("data"))  
-  if (dir.exists(data_folder_path)) {
-    return(data_folder_path)  
-  }
-  
+    data_folder_path = file.path(here("data"))  
+    if (dir.exists(data_folder_path)) {
+      return(data_folder_path)  
+    }
+    
   } else if (choose_directory == "data_cleansed") {
-  data_cleansed_path = file.path(here("data_cleansed"))
-  if (dir.exists(data_cleansed_path))  
-  return(data_cleansed_path)
+    data_cleansed_path = file.path(here("data_cleansed"))
+    if (dir.exists(data_cleansed_path))  
+      return(data_cleansed_path)
   } else { stop ("please provide your own directory")}
   
 }
@@ -108,6 +108,9 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   unemp_all_to_dataframe <- unempl_all
   
   unemp_long_dataframe <- data.frame(unemp_all_to_dataframe)
+  
+  # Test return a dataframe from function (below)
+  unemp_long_dataframe <- as.data.frame.function(unemp_all_to_dataframe)
   
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
