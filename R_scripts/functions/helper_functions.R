@@ -59,15 +59,8 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   if (indicator == "unemp"){
       
   # 1.1 arange original input data in Long format  
-      unemp_raw <- read_excel(paste0(
-        data_filepath(choose_directory = "data_folder"),
-                              "une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
+  unemp_raw <- read_excel(file.path(here::here(), "data","une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                               sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
-        
-        
-        
-        
-        rename(Date = "GEO (Labels)") %>%  
               filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
               pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
   
@@ -108,8 +101,6 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
       min_value_indic = min(metric_value, na.rm = TRUE),
       max_value_indic = max(metric_value, na.rm = TRUE)
     )              
-  
-  unemp_all_to_dataframe <- unempl_all
   
   unemp_long_dataframe <- data.frame(unemp_all_to_dataframe)
   
