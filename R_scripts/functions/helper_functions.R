@@ -149,7 +149,7 @@ return(temp_emp_long_dataframe)
     }
   
 }
-# Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
+# Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2","country3"), indicator ="unemp/part_time_persons")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "part_time_persons")
 
