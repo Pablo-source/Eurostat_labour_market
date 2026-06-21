@@ -68,9 +68,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                              select(date = Date,country = Countries,metric_value, metric, units) %>% 
                              mutate(metric_value = as.numeric(metric_value)) %>% # TO COMPUTE CALCULATIONS metric_Value must be NUMERIC
                          filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
-  
-  
-  # 1.2 Include new variable to display lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
+    # 1.2 Include new variable to display lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
   # date_1y_ago, value_1y_ago, date_5y_ago, value_5y_ago
   unem_long_lags <- unem_long %>% 
                     arrange(country,date) %>% 
@@ -102,10 +100,8 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
       max_value_indic = max(metric_value, na.rm = TRUE)
     )              
   
-  unemp_long_dataframe <- data.frame(unemp_all_to_dataframe)
-  
-  # Test return a dataframe from function (below)
-  unemp_long_dataframe <- as.data.frame.function(unemp_all_to_dataframe)
+  # 1.6 Ensure final output from function is a data.frame() object
+  unemp_long_dataframe <- data.frame(unempl_all)
   
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
