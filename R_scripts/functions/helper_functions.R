@@ -102,34 +102,60 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
   
-  } else if (indicator == "tempcontracts"){
+  } else if (indicator == "part_time_persons"){
   # Downloaded table data: lfsi_pt_a (Part-time employment and temporary contracts-annual data)
   # Return final selection of countries temporary employment figures
-  temp_emp_raw <- read_excel(file.path(data_folder,"lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"),
+  part_time_emp_raw <- read_excel(file.path(here::here(),"data","lfsi_pt_a__custom_14828862_page_spreadsheet.xlsx"),
                              sheet = tab_name, col_names = TRUE, na = ":", skip = 10, n_max = 22) %>% 
-    rename(Date = "GEO (Labels)") %>% 
     filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
     pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
   
-  temp_long <- temp_emp_raw %>% mutate(metric = "temp_employment_rate", units = "percentage") %>% 
+  part_time_long <- part_time_emp_raw %>% mutate(metric = "per_persons_working_pat_time", units = "percentage") %>% 
                select(date = Date,country = Countries,metric_value, metric, units) %>% 
     filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
   
   # Return final selection of countries temporary employment indicator values  
-  
+part_time_long_lags <- part_time_long %>% 
+    arrange(country,date) %>% 
+    group_by(country) %>% 
+    mutate(
+      date_1y_ago = lag(date,1),
+      value_1y_ago = lag(metric_value,1),
+      date_2y_ago = lag(date,2),
+      value_2y_ago = lag(metric_value,2),
+      date_5y_ago = lag(date,5),
+      value_5y_ago = lag(metric_value,5)
+    ) %>% 
+    ungroup()
 
-  
-    return(temp_long)
+part_time_long_min_max<- part_time_long_lags %>%
+  select(country,date,metric_value,metric,units) %>%
+  group_by(country) %>% 
+  mutate(
+    min_value_country = min(metric_value, na.rm = TRUE),
+    max_value_country = max(metric_value, na.rm = TRUE)
+  ) %>% 
+  ungroup()
+# 1.5 Finally include min and max values entire unemp dataset
+part_time_all <- part_time_long_min_max %>% 
+  mutate(
+    min_value_indic = min(metric_value, na.rm = TRUE),
+    max_value_indic = max(metric_value, na.rm = TRUE)
+  )              
+# 1.6 Ensure final temp_emp dataframe output from function is a data.frame() object
+temp_emp_long_dataframe <- data.frame(part_time_all)
+
+return(temp_emp_long_dataframe)
     }
   
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
-Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "tempcontracts")
+Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "part_time_persons")
 
 # 3. Format values for markdown
 #    fmt_markdown_figures()
-
+# WIP
 fmt_markdown_figures<- function(mydataset 
                                 ,countryname, column,Date,format = NULL){
   row <- mydataset %>% filter(country == countryname) 
