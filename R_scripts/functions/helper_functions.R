@@ -154,8 +154,9 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "part_time_persons")
 
 # 3. Format values for markdown
+# Building this function to use above figures with the right format on the Markdown document
+# Still WIP
 #    fmt_markdown_figures()
-# WIP
 fmt_markdown_figures<- function(mydataset 
                                 ,countryname, column,Date,format = NULL){
   row <- mydataset %>% filter(country == countryname) 
