@@ -57,18 +57,16 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
 
   # une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
   if (indicator == "unemp"){
-      
   # 1.1 arange original input data in Long format  
   unemp_raw <- read_excel(file.path(here::here(), "data","une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                               sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
               filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
               pivot_longer(!Date, names_to = "Countries", values_to = "metric_value") 
-  
   unem_long <- unemp_raw %>% mutate(metric = "unemployment_rate", units = "percentage") %>% 
                              select(date = Date,country = Countries,metric_value, metric, units) %>% 
                              mutate(metric_value = as.numeric(metric_value)) %>% # TO COMPUTE CALCULATIONS metric_Value must be NUMERIC
                          filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
-    # 1.2 Include new variable to display lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
+  # 1.2 Include new variable to display lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
   # date_1y_ago, value_1y_ago, date_5y_ago, value_5y_ago
   unem_long_lags <- unem_long %>% 
                     arrange(country,date) %>% 
@@ -82,7 +80,6 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                       value_5y_ago = lag(metric_value,5)
                       ) %>% 
                     ungroup()
-  
   # 1.3 Add new set of columns to display min and max values BY COUNTRY
   unemp_long_min_max<- unem_long_lags %>%
                    select(country,date,metric_value,metric,units) %>%
@@ -92,7 +89,6 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
           max_value_country = max(metric_value, na.rm = TRUE)
           ) %>% 
     ungroup()
-                
   # 1.5 Finally include min and max values entire unemp dataset
   unempl_all <- unemp_long_min_max %>% 
     mutate(
