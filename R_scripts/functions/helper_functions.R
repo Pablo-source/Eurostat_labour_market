@@ -57,6 +57,7 @@ data_filepath(choose_directory = ) # This will trigger error message
 
 # data is located in "Sheet 1"
 # Function parameters for a test: tab = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland', indicators = 'unemp')
+
 Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selected_countries,indicator = NULL){
 
   # une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
@@ -104,10 +105,13 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   unemp_long_dataframe <- data.frame(unempl_all)
   
   # 1.7 Write dataframe to "data_cleansed_folder"
-  write.csv(unemp_long_dataframe,
-            "sunemp_long_dataframe.csv",
-            row.names = FALSE)
+  filename <- "sunemp_long_dataframe.csv"
+  output_file <- file.path(getcwd(),"data_cleansed",filename)
   
+  write.csv(unemp_long_dataframe,
+            file = output_file,
+            row.names = FALSE)
+  cat("File saved as:", output_file, "\n")
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
   
