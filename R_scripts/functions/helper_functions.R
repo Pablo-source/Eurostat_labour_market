@@ -106,13 +106,10 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   # 1.7 Write dataframe to "data_cleansed_folder"
   filename <- "sunemp_long_dataframe.csv"
-  # Using file.path() it works on Windows, Linux, and macOS.
-  output_file <- file.path("data_cleansed",filename)
+  output_file <- file.path("data_cleansed",filename)   # Using file.path() to build relative path to data_cleansed sub-folder. works on Windows, Linux, and macOS.
+  write.csv(unemp_long_dataframe,file = output_file,row.names = FALSE)
+  cat("File saved as:", output_file, "\n") # Write  message on Console everytime the output file is written to .csv and saved to "data_cleansed" sub-folder
   
-  write.csv(unemp_long_dataframe,
-            file = output_file,
-            row.names = FALSE)
-  cat("File saved as:", output_file, "\n")
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
   
