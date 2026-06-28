@@ -106,7 +106,8 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   # 1.7 Write dataframe to "data_cleansed_folder"
   filename <- "sunemp_long_dataframe.csv"
-  output_file <- file.path(getcwd(),"data_cleansed",filename)
+  # Using file.path() it works on Windows, Linux, and macOS.
+  output_file <- file.path("data_cleansed",filename)
   
   write.csv(unemp_long_dataframe,
             file = output_file,
