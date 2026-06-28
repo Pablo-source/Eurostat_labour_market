@@ -104,7 +104,6 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   unemp_long_dataframe <- data.frame(unempl_all)
   
   # 1.7 Write dataframe to "data_cleansed_folder"
-  print(here::here())
   write.csv(unemp_long_dataframe,here("data_cleansed","unemp_long_dataframe_selected_countries.csv"), row.names = TRUE)
   
   # Return final selection of countries unemployment indicator values    
