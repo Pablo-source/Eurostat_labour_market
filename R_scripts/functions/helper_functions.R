@@ -36,12 +36,16 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
       return(data_cleansed_path)
   } else { stop ("please provide your own directory")}
   
+  # Include details about user directory
+  if (dir.exists(own_directory)){return(own_directory)}
+  else{stop("Please ensure you provide your own_directory",own_directory)}
+  
 }
 
 # Use function
 data_filepath(choose_directory = "data_folder")
 data_filepath(choose_directory = "data_cleansed")
-data_filepath(choose_directory = "my directory") # This will trigger error message
+data_filepath(choose_directory = ) # This will trigger error message
 
 
 # 2. Second helper function - Read in original Eurostat Excel files into R
