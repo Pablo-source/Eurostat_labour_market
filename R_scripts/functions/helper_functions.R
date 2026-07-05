@@ -195,7 +195,45 @@ fmt_markdown_figures<- function(mydataset
     # Latest return value - always return value as character as faisafe
   return(as.character(value))
 }
+
 # Testing fmt_markdown_figures function# Dataset: unemp_long_min_max_all # Country: Bulgaria
 # Column: metric_value# Date: 2011
-fmt_markdown_figures( mydataset = "unemp_long_min_max_all",countryname = "Bulgaria",column = "metric_value",
-                      Date = "2011")
+
+# Building format function: WIP (05/07/2026)
+fmt_markdown_figures<- function(mydataset 
+                                ,countryname
+                                ,datevalue
+                                ,column,format = NULL){
+  row <- mydataset %>% filter(country == countryname) 
+  row_date <- row %>%  filter(date == datevalue)
+ # print(row_date)
+  value <- row_date %>% pull({{column}})
+  units <- row_date %>% pull(units)
+#  print(value)
+#  print(units)
+  
+  # safe checks
+  if (length(value)==0){return(NA)}
+  if (is.null(format)){format <- units}
+  
+### 1. Section to start applying required formats using format parameter
+  if (format == "numeric"){
+  value_num <- as.numeric(value) # I need to ensure is numeric to multiply it by 100
+  return((prettyNum(value_num*10000,big.mark = ","))) # Just testing mutiplying it by 1000 to see the big mark displayed
+    
+  } else if (format == "percentage"){
+  return(paste0(round(value,1),"%"))  # to be built
+  }
+  # Default value if format is not provided
+  return(as.character(prettyNum(value,big.mark = ",")))
+}
+
+# Using and testing function - I need to provide all required parameters (mydataset,countryname,datevalue,column)
+# Some parameters such as "countryname" and "datevalue" is to isolate a single figure to display in the report.
+# Testing "numeric" format in one cell
+fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
+                     format ="numeric")
+# Testing "percentage" format in one cell
+fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
+                     format ="percentage")
+
