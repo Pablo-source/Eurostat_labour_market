@@ -48,7 +48,7 @@ names(population_data)
 ```
 
 
-## 2. Cleanse Spain populations figures data
+## 2. Exploratory charts Total, Spanish nationals and foreign population in Spain
 
 From the newly on boarded data, we create a new Year variable from initial date column. As we only want to display Year values.
 
