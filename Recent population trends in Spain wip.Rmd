@@ -156,6 +156,9 @@ In this section we will use a set of helper functions to create initial data set
 
 ```{r Create data for selected countries,echo=FALSE,warning=FALSE,message=FALSE}
 # Create new dataset using auxiliary function for three countries (Bulgaria, Estonia, Ireland)
+
+# using function to import data for thse specific countries
+# Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 
 data_cleansed_dir <- data_filepath(choose_directory = "data_cleansed")
