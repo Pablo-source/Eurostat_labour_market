@@ -156,10 +156,16 @@ foreign_pop_last_year <- INE_calc_fields  %>% select (Year,foreign_population) %
 Next, we describe the foreign population percent share of the total population in Spain for the 2004-2025 period.
 
 
-## 4. Year on year increase in total and forein population in Spain
+## 4. Populating report using helper functions
 
-In this section we will include several calculations to describe the year on year change in Total, national and foreign population in Spain. And also we will include population change for the entire period considered 2004-2025.
+In this section we will use a set of helper functions to create initial data sets for selected countries. And also to format each figure used in the Markdwon report. 
 
-- This is a population increase of () from the initial figure of **`r prettyNum(Min_total_population$total_population, big.mark=",")`**, in **`r (Min_total_population$Year)`**.
+```{r Create data for selected countries,echo=FALSE,warning=FALSE,message=FALSE}
+# Create new dataset using auxiliary function for three countries (Bulgaria, Estonia, Ireland)
+Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 
+data_cleansed_dir <- data_filepath(choose_directory = "data_cleansed")
+
+data_sel_unemp <- 
+```
 
