@@ -44,7 +44,7 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
 
 # Use function
 data_filepath(choose_directory = "data_cleansed")
-data_filepath(choose_directory = ) # This will trigger error message
+# data_filepath(choose_directory = "own_directory") # This will trigger error message
 data_filepath(choose_directory = "data_folder")
 
 # 2. Second helper function - Read in original Eurostat Excel files into R

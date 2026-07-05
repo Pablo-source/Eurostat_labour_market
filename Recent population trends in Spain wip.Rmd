@@ -154,21 +154,15 @@ Next, we describe the foreign population percent share of the total population i
 
 In this section we will use a set of helper functions to create initial data sets for selected countries. And also to format each figure used in the Markdwon report. 
 
-```{r Create data for selected countries,echo=FALSE,warning=FALSE,message=FALSE}
-# Create new dataset using auxiliary function for three countries (Bulgaria, Estonia, Ireland)
-
-# using function to import data for thse specific countries
-# Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
+```{r}
+source("~/Documents/popos_pablo/R_github/Eurostat_labour_market/R_scripts/functions/helper_functions.R")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 
-data_cleansed_dir <- data_filepath(choose_directory = "data_cleansed")
+```
 
-library(data.table)
 
-# Load csv. file we just created with "Import_eurostat_indicators" function
-# File: country_sel_unemp_long_dataframe.csv
-dataset_sel_countries <- fread("data_cleansed/country_sel_unemp_long_dataframe.csv")
-head(dataset_sel_countries)
-#data_sel_unemp <- fread(output_file)
+```{r Create data for selected countries,echo=FALSE,warning=FALSE,message=FALSE}
+#dataset_sel_countries <- fread("data_cleansed/country_sel_unemp_long_dataframe.csv")
+#dataset_sel_countries
 ```
 
