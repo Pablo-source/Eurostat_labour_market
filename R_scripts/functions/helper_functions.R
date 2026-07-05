@@ -5,7 +5,7 @@ installed.packages()
 
 if(!"pacman" %in% installed.packages()) install.packages("pacman")
 ## Load required packages now using pacman p_load function: 
-pacman::p_load(here,dplyr,plyr,here,readxl,tidyr,ggplot2,stats)
+pacman::p_load(here,dplyr,plyr,here,readxl,tidyr,ggplot2,stats,data.table)
 
 
 # Helper Functions
@@ -43,10 +43,9 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
 }
 
 # Use function
-data_filepath(choose_directory = "data_folder")
 data_filepath(choose_directory = "data_cleansed")
 data_filepath(choose_directory = ) # This will trigger error message
-
+data_filepath(choose_directory = "data_folder")
 
 # 2. Second helper function - Read in original Eurostat Excel files into R
 
