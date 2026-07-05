@@ -215,9 +215,9 @@ fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = 
   
 ### 1. Section to start applying required formats using format parameter
   if (format == "numeric"){
-      if(is.na(value)){
+      if(is.na(value)){             # Accounting for missing values When there are NA values in original input data
       return(NA_character_)
-    }   else if (!is.na(value)){
+    }   else if (!is.na(value)){   # Ensure value is not missing so it is valied 
   value_num <- as.numeric(value) # I need to ensure is numeric to multiply it by 100
   return((prettyNum(value_num*10000,big.mark = ","))) # Just testing multiplying it by 1000 to see the big mark displayed
   } 
