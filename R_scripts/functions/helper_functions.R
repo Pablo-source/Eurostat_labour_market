@@ -200,10 +200,7 @@ fmt_markdown_figures<- function(mydataset
 # Column: metric_value# Date: 2011
 
 # Building format function: WIP (05/07/2026)
-fmt_markdown_figures<- function(mydataset 
-                                ,countryname
-                                ,datevalue
-                                ,column,format = NULL){
+fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
   row <- mydataset %>% filter(country == countryname) 
   row_date <- row %>%  filter(date == datevalue)
  # print(row_date)
@@ -218,8 +215,12 @@ fmt_markdown_figures<- function(mydataset
   
 ### 1. Section to start applying required formats using format parameter
   if (format == "numeric"){
+      if(is.na(value)){
+      return(NA_character_)
+    }   else if (!is.na(value)){
   value_num <- as.numeric(value) # I need to ensure is numeric to multiply it by 100
-  return((prettyNum(value_num*10000,big.mark = ","))) # Just testing mutiplying it by 1000 to see the big mark displayed
+  return((prettyNum(value_num*10000,big.mark = ","))) # Just testing multiplying it by 1000 to see the big mark displayed
+  } 
     
   } else if (format == "percentage"){
   return(paste0(round(value,1),"%"))  # to be built
