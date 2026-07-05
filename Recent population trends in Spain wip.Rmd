@@ -6,13 +6,15 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-library(readxl)
-library(here)
-library(dplyr)
-library(janitor)
-library(ggplot2)
-library(gt)
-library(lubridate)
+#library(readxl)
+#library(here)
+#library(dplyr)
+#library(janitor)
+#library(ggplot2)
+#library(gt)
+#library(lubridate)
+
+pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table)
 ```
 
 ## Latest date this report was produced
@@ -165,7 +167,9 @@ In this section we will use a set of helper functions to create initial data set
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 
 data_cleansed_dir <- data_filepath(choose_directory = "data_cleansed")
+print(output_file)
+library(data.table)
 
-data_sel_unemp <- 
+data_sel_unemp <- fread(output_file)
 ```
 
