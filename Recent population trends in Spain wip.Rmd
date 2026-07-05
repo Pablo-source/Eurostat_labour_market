@@ -5,15 +5,7 @@ date: "`r Sys.Date()`"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-#library(readxl)
-#library(here)
-#library(dplyr)
-#library(janitor)
-#library(ggplot2)
-#library(gt)
-#library(lubridate)
-
+```{r setup include requried libraries, include=FALSE}
 pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table)
 ```
 
@@ -36,13 +28,13 @@ excel_sheets("./data_demography/INE total and foreign population figures Spain.x
 
 ```{r read Excek into R, echo=TRUE}
 population_data <- read_excel(
-  here("data_demography", "INE total and foreign population figures Spain.xlsx"), 
-  sheet = "INE_Total_foreign_population", skip =2, n_max = 22,
+  "data_demography/INE total and foreign population figures Spain.xlsx",
+  sheet = "INE_Total_foreign_population", skip = 2, n_max = 22,
   col_types = c("guess", "numeric", "numeric", "guess","guess","guess","guess","guess")) %>% 
   clean_names() %>% 
-               select (date = todas_las_edades, total_population = total,
+       select (date = todas_las_edades, total_population = total,
                        foreign_population, percent_foreign_population = percent_foreign_nationals_total_population,
-                       total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
+                      total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
                        foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
 
 head(population_data)
@@ -167,9 +159,13 @@ In this section we will use a set of helper functions to create initial data set
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 
 data_cleansed_dir <- data_filepath(choose_directory = "data_cleansed")
-print(output_file)
+
 library(data.table)
 
-data_sel_unemp <- fread(output_file)
+# Load csv. file we just created with "Import_eurostat_indicators" function
+# File: country_sel_unemp_long_dataframe.csv
+dataset_sel_countries <- fread("data_cleansed/country_sel_unemp_long_dataframe.csv")
+head(dataset_sel_countries)
+#data_sel_unemp <- fread(output_file)
 ```
 
