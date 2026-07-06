@@ -98,3 +98,8 @@ Import_excel_files_test <- function(tab_name,choose_directory = NULL, selected_c
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2"))
 Import_excel_files_test(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'))
 
+## IMOP{RT DATA
+
+population_data <- read_excel(
+  here("data_demography", "INE total and foreign population figures Spain.xlsx"), 
+  sheet = "INE_Total_foreign_population", skip =2, n_max = 22)
