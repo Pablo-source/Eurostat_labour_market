@@ -155,7 +155,7 @@ Next, we describe the foreign population percent share of the total population i
 In this section we will use a set of helper functions to create initial data sets for selected countries. And also to format each figure used in the Markdwon report. 
 
 
-```{r helper functions, echo=FALSE}
+```{r helper functions, echo=TRUE,warning=FALSE,message=FALSE}
 # I need to place all my Functions in this chunck to be used in the report !!! 
 # So I can render the Markdown report !!!
 # FUNCTION 01 02 - Import indicators
@@ -292,7 +292,7 @@ data_filepath(choose_directory = "data_cleansed")
 
 
 
-```{r, echo=FALSE}
+```{r Input previouos into Markdown report, echo=TRUE,warning=FALSE,message=FALSE}
 data_filepath(choose_directory = "data_cleansed")
 
 dataset_sel_countries <- fread("data_cleansed/country_sel_unemp_long_dataframe.csv")

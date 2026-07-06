@@ -480,6 +480,16 @@ the Markdwon report.
     ##     max_value_country min_value_indic max_value_indic
     ##                 <num>           <num>           <num>
 
+Now we use function from previous r code chunch called
+“Import_eurostat_indicators()” to subset unemployment indicator data for
+a selection of countries (“Bulgaria”,“Estonia” and “Ireland”)
+
+Besides, in this section we can see how to populate text using
+“fmt_markdown_figures” function below to apply specific format types
+(numeric values including thousand separators, and percentage values
+displaying the “%” sign) when describing figures in the rendered
+markdown text output file.
+
     ## File saved as: data_cleansed/country_sel_unemp_long_dataframe.csv
 
     ##     country date metric_value            metric      units min_value_country
