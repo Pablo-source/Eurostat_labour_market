@@ -269,16 +269,11 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
   
   if(choose_directory == "data_folder") {
     data_folder_path = file.path(here::here(), "data") 
-    if (dir.exists(data_folder_path)) {
-      return(data_folder_path)  
-    }
-    
+    if (dir.exists(data_folder_path)) {return(data_folder_path)}
   } else if (choose_directory == "data_cleansed") {
     data_cleansed_path = file.path(here::here(),"data_cleansed")
-    if (dir.exists(data_cleansed_path))  
-      return(data_cleansed_path)
+    if (dir.exists(data_cleansed_path)) {return(data_cleansed_path)}
   } else { stop ("please provide your own directory")}
-  
   # Include details about user directory
   if (dir.exists(own_directory)){return(own_directory)}
   else{stop("Please ensure you provide your own_directory",own_directory)}
@@ -342,7 +337,7 @@ fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = 
 ```
 
 
-In 2009 unemployment rate for Bulgaria was 
-
- `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",format ="percentage")`
-
+In 2009 unemployment rate for Bulgaria was `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2010, column = "metric_value",format ="percentage")` compared to 
+ `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",format ="percentage")` one year before in 2009. 
+ 
+ This is an increase of 
