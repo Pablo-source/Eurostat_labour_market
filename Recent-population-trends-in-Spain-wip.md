@@ -343,16 +343,7 @@ the Markdwon report.
 
     ## [1] "/home/pablo-nostromo/Documents/popos_pablo/R_github/Eurostat_labour_market/data_cleansed"
 
-``` r
-data_filepath(choose_directory = "data_cleansed")
-```
-
     ## [1] "/home/pablo-nostromo/Documents/popos_pablo/R_github/Eurostat_labour_market/data_cleansed"
-
-``` r
-dataset_sel_countries <- fread("data_cleansed/country_sel_unemp_long_dataframe.csv")
-dataset_sel_countries
-```
 
     ##      country  date metric_value            metric      units min_value_country
     ##       <char> <int>        <num>            <char>     <char>             <num>
@@ -489,10 +480,6 @@ dataset_sel_countries
     ##     max_value_country min_value_indic max_value_indic
     ##                 <num>           <num>           <num>
 
-``` r
-Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
-```
-
     ## File saved as: data_cleansed/country_sel_unemp_long_dataframe.csv
 
     ##     country date metric_value            metric      units min_value_country
@@ -623,3 +610,12 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
     ## 61              16.6             4.2            16.6
     ## 62              16.6             4.2            16.6
     ## 63              16.6             4.2            16.6
+
+## 4.1 Unemployment rate in 2009
+
+- This section below includes formatted figures using auxiliary function
+  “fmt_markdown_figures()” from helper_functions.R script:
+
+In 2009 unemployment rate for Bulgaria was
+
+7.9%
