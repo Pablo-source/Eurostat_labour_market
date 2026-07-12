@@ -347,149 +347,10 @@ data_filepath(choose_directory = "data_cleansed")
 
 ``` r
 data_filepath(choose_directory = "data_cleansed")
-```
 
-    ## [1] "/home/pablo-nostromo/Documents/popos_pablo/R_github/Eurostat_labour_market/data_cleansed"
-
-``` r
 dataset_sel_countries <- fread("data_cleansed/country_sel_unemp_long_dataframe.csv")
 dataset_sel_countries
 ```
-
-    ##      country  date metric_value            metric      units min_value_country
-    ##       <char> <int>        <num>            <char>     <char>             <num>
-    ##  1: Bulgaria  2003           NA unemployment_rate percentage               4.2
-    ##  2: Bulgaria  2004           NA unemployment_rate percentage               4.2
-    ##  3: Bulgaria  2005           NA unemployment_rate percentage               4.2
-    ##  4: Bulgaria  2006           NA unemployment_rate percentage               4.2
-    ##  5: Bulgaria  2007           NA unemployment_rate percentage               4.2
-    ##  6: Bulgaria  2008           NA unemployment_rate percentage               4.2
-    ##  7: Bulgaria  2009          7.9 unemployment_rate percentage               4.2
-    ##  8: Bulgaria  2010         11.3 unemployment_rate percentage               4.2
-    ##  9: Bulgaria  2011         12.3 unemployment_rate percentage               4.2
-    ## 10: Bulgaria  2012         13.3 unemployment_rate percentage               4.2
-    ## 11: Bulgaria  2013         13.9 unemployment_rate percentage               4.2
-    ## 12: Bulgaria  2014         12.4 unemployment_rate percentage               4.2
-    ## 13: Bulgaria  2015         10.1 unemployment_rate percentage               4.2
-    ## 14: Bulgaria  2016          8.6 unemployment_rate percentage               4.2
-    ## 15: Bulgaria  2017          7.2 unemployment_rate percentage               4.2
-    ## 16: Bulgaria  2018          6.2 unemployment_rate percentage               4.2
-    ## 17: Bulgaria  2019          5.2 unemployment_rate percentage               4.2
-    ## 18: Bulgaria  2020          6.1 unemployment_rate percentage               4.2
-    ## 19: Bulgaria  2021          5.2 unemployment_rate percentage               4.2
-    ## 20: Bulgaria  2022          4.2 unemployment_rate percentage               4.2
-    ## 21: Bulgaria  2023          4.3 unemployment_rate percentage               4.2
-    ## 22:  Estonia  2003           NA unemployment_rate percentage               4.2
-    ## 23:  Estonia  2004           NA unemployment_rate percentage               4.2
-    ## 24:  Estonia  2005           NA unemployment_rate percentage               4.2
-    ## 25:  Estonia  2006           NA unemployment_rate percentage               4.2
-    ## 26:  Estonia  2007           NA unemployment_rate percentage               4.2
-    ## 27:  Estonia  2008           NA unemployment_rate percentage               4.2
-    ## 28:  Estonia  2009         13.5 unemployment_rate percentage               4.2
-    ## 29:  Estonia  2010         16.6 unemployment_rate percentage               4.2
-    ## 30:  Estonia  2011         12.3 unemployment_rate percentage               4.2
-    ## 31:  Estonia  2012          9.9 unemployment_rate percentage               4.2
-    ## 32:  Estonia  2013          8.6 unemployment_rate percentage               4.2
-    ## 33:  Estonia  2014          7.3 unemployment_rate percentage               4.2
-    ## 34:  Estonia  2015          6.4 unemployment_rate percentage               4.2
-    ## 35:  Estonia  2016          6.8 unemployment_rate percentage               4.2
-    ## 36:  Estonia  2017          5.8 unemployment_rate percentage               4.2
-    ## 37:  Estonia  2018          5.4 unemployment_rate percentage               4.2
-    ## 38:  Estonia  2019          4.5 unemployment_rate percentage               4.2
-    ## 39:  Estonia  2020          6.9 unemployment_rate percentage               4.2
-    ## 40:  Estonia  2021          6.2 unemployment_rate percentage               4.2
-    ## 41:  Estonia  2022          5.6 unemployment_rate percentage               4.2
-    ## 42:  Estonia  2023          6.4 unemployment_rate percentage               4.2
-    ## 43:  Ireland  2003           NA unemployment_rate percentage               4.2
-    ## 44:  Ireland  2004           NA unemployment_rate percentage               4.2
-    ## 45:  Ireland  2005           NA unemployment_rate percentage               4.2
-    ## 46:  Ireland  2006           NA unemployment_rate percentage               4.2
-    ## 47:  Ireland  2007           NA unemployment_rate percentage               4.2
-    ## 48:  Ireland  2008           NA unemployment_rate percentage               4.2
-    ## 49:  Ireland  2009         12.6 unemployment_rate percentage               4.2
-    ## 50:  Ireland  2010         14.6 unemployment_rate percentage               4.2
-    ## 51:  Ireland  2011         15.4 unemployment_rate percentage               4.2
-    ## 52:  Ireland  2012         15.5 unemployment_rate percentage               4.2
-    ## 53:  Ireland  2013         13.8 unemployment_rate percentage               4.2
-    ## 54:  Ireland  2014         11.9 unemployment_rate percentage               4.2
-    ## 55:  Ireland  2015          9.9 unemployment_rate percentage               4.2
-    ## 56:  Ireland  2016          8.4 unemployment_rate percentage               4.2
-    ## 57:  Ireland  2017          6.7 unemployment_rate percentage               4.2
-    ## 58:  Ireland  2018          5.8 unemployment_rate percentage               4.2
-    ## 59:  Ireland  2019          5.0 unemployment_rate percentage               4.2
-    ## 60:  Ireland  2020          5.9 unemployment_rate percentage               4.2
-    ## 61:  Ireland  2021          6.2 unemployment_rate percentage               4.2
-    ## 62:  Ireland  2022          4.5 unemployment_rate percentage               4.2
-    ## 63:  Ireland  2023          4.3 unemployment_rate percentage               4.2
-    ##      country  date metric_value            metric      units min_value_country
-    ##       <char> <int>        <num>            <char>     <char>             <num>
-    ##     max_value_country min_value_indic max_value_indic
-    ##                 <num>           <num>           <num>
-    ##  1:              16.6             4.2            16.6
-    ##  2:              16.6             4.2            16.6
-    ##  3:              16.6             4.2            16.6
-    ##  4:              16.6             4.2            16.6
-    ##  5:              16.6             4.2            16.6
-    ##  6:              16.6             4.2            16.6
-    ##  7:              16.6             4.2            16.6
-    ##  8:              16.6             4.2            16.6
-    ##  9:              16.6             4.2            16.6
-    ## 10:              16.6             4.2            16.6
-    ## 11:              16.6             4.2            16.6
-    ## 12:              16.6             4.2            16.6
-    ## 13:              16.6             4.2            16.6
-    ## 14:              16.6             4.2            16.6
-    ## 15:              16.6             4.2            16.6
-    ## 16:              16.6             4.2            16.6
-    ## 17:              16.6             4.2            16.6
-    ## 18:              16.6             4.2            16.6
-    ## 19:              16.6             4.2            16.6
-    ## 20:              16.6             4.2            16.6
-    ## 21:              16.6             4.2            16.6
-    ## 22:              16.6             4.2            16.6
-    ## 23:              16.6             4.2            16.6
-    ## 24:              16.6             4.2            16.6
-    ## 25:              16.6             4.2            16.6
-    ## 26:              16.6             4.2            16.6
-    ## 27:              16.6             4.2            16.6
-    ## 28:              16.6             4.2            16.6
-    ## 29:              16.6             4.2            16.6
-    ## 30:              16.6             4.2            16.6
-    ## 31:              16.6             4.2            16.6
-    ## 32:              16.6             4.2            16.6
-    ## 33:              16.6             4.2            16.6
-    ## 34:              16.6             4.2            16.6
-    ## 35:              16.6             4.2            16.6
-    ## 36:              16.6             4.2            16.6
-    ## 37:              16.6             4.2            16.6
-    ## 38:              16.6             4.2            16.6
-    ## 39:              16.6             4.2            16.6
-    ## 40:              16.6             4.2            16.6
-    ## 41:              16.6             4.2            16.6
-    ## 42:              16.6             4.2            16.6
-    ## 43:              16.6             4.2            16.6
-    ## 44:              16.6             4.2            16.6
-    ## 45:              16.6             4.2            16.6
-    ## 46:              16.6             4.2            16.6
-    ## 47:              16.6             4.2            16.6
-    ## 48:              16.6             4.2            16.6
-    ## 49:              16.6             4.2            16.6
-    ## 50:              16.6             4.2            16.6
-    ## 51:              16.6             4.2            16.6
-    ## 52:              16.6             4.2            16.6
-    ## 53:              16.6             4.2            16.6
-    ## 54:              16.6             4.2            16.6
-    ## 55:              16.6             4.2            16.6
-    ## 56:              16.6             4.2            16.6
-    ## 57:              16.6             4.2            16.6
-    ## 58:              16.6             4.2            16.6
-    ## 59:              16.6             4.2            16.6
-    ## 60:              16.6             4.2            16.6
-    ## 61:              16.6             4.2            16.6
-    ## 62:              16.6             4.2            16.6
-    ## 63:              16.6             4.2            16.6
-    ##     max_value_country min_value_indic max_value_indic
-    ##                 <num>           <num>           <num>
 
 Now we use function from previous r code chunch called
 “Import_eurostat_indicators()” to subset unemployment indicator data for
@@ -632,7 +493,15 @@ markdown text output file.
     ## 62              16.6             4.2            16.6
     ## 63              16.6             4.2            16.6
 
-## 4.1 Unemployment rate in 2009
+- Now I include a new function in the section below to display
+  unemployment figures using inline R code with specific formats.
+
+- This formats are defined in the function below called
+  “fmt_markdown_figures” and it allows us to add thousands separator
+  when the indicator is an integer number and % sign when it displays
+  percentages such as in the unemployment rate example below.
+
+## 5. Unemployment rate in 2009
 
 - This section below includes formatted figures using auxiliary function
   “fmt_markdown_figures()” from helper_functions.R script:
