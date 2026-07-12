@@ -273,7 +273,7 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 ```
 ```{r helper function 02, echo=TRUE, warning = FALSE, message = FALSE}
 
-# 02 Function - declares path to data folder where formatted input data is saved  
+# Function 02 02 - declares path to data folder where formatted input data is saved  
 
 # FUNCTION 02 - Declare filepath to "data_cleansed" folder
 data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_directory = NULL){
