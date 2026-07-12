@@ -155,7 +155,7 @@ Next, we describe the foreign population percent share of the total population i
 In this section we will use a set of helper functions to create initial data sets for selected countries. And also to format each figure used in the Markdwon report. 
 
 
-### 4.1 Ingest raw Eurostat downloaded data into R apply basic data wrangling
+### 4.1 Ingest raw Eurostat downloaded data into R performing data wrangling
 
 This first section takes the raw Excel file just downloaded from Eurostat and applying several formatting options to get it ready for using it as input data for ggplot2 charts: a) renmoves null values, b) pivots data from wide to long format, c) creates required variables (date_1y_ago, value_1y_ago..) for plots, d) Allows users to filters data for selected countries and indicators, among other things. 
 
@@ -320,7 +320,7 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 
 ## 5. Unemployment rate in 2009 
 
-- This section below includes formatted figures using auxiliary function "fmt_markdown_figures()" from helper_functions.R script:
+This section below includes formatted figures using auxiliary function "fmt_markdown_figures()" from helper_functions.R script:
 
 ```{r formatting function, echo=FALSE}
 
@@ -352,7 +352,8 @@ fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = 
 ```
 
 
-In 2009 unemployment rate for Bulgaria was `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2010, column = "metric_value",format ="percentage")` compared to 
+- In 2010 unemployment rate for Bulgaria was `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2010, column = "metric_value",format ="percentage")` compared to 
  `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",format ="percentage")` one year before in 2009. 
  
- This is an increase of 
+- Latest unemployment figures for Bulgaria available are from 2023. It has been on a downward trend since its highest value of `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2013, column = "metric_value",format ="percentage")`back in 2013 . Decreasing almost 9 percentage points to a all time low of `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2023, column = "metric_value",format ="percentage")` in 2023. 
+ 
