@@ -155,7 +155,7 @@ Next, we describe the foreign population percent share of the total population i
 In this section we will use a set of helper functions to create initial data sets for selected countries. And also to format each figure used in the Markdwon report. 
 
 
-```{r helper functions, echo=TRUE,warning=FALSE,message=FALSE}
+```{r helper functions,  include=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
 # I need to place all my Functions in this chunck to be used in the report !!! 
 # So I can render the Markdown report !!!
 # FUNCTION 01 02 - Import indicators
@@ -263,6 +263,11 @@ return(temp_emp_long_dataframe)
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2","country3"), indicator ="unemp/part_time_persons")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
+
+```
+```{r helper function 02, echo=TRUE, warning = FALSE, message = FALSE}
+
+# 02 Function - declares path to data folder where formatted input data is saved  
 
 # FUNCTION 02 - Declare filepath to "data_cleansed" folder
 data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_directory = NULL){

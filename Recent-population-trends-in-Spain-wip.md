@@ -1,12 +1,12 @@
 Recent Spain population trends
 ================
 PLR
-2026-07-06
+2026-07-12
 
 ## Latest date this report was produced
 
-Today’s date is **06 July 2026**. This report was published on the week
-starting on **04 July 2026**.
+Today’s date is **12 July 2026**. This report was published on the week
+starting on **10 July 2026**.
 
 ## 1. Load Spain population data
 
@@ -457,16 +457,11 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
   
   if(choose_directory == "data_folder") {
     data_folder_path = file.path(here::here(), "data") 
-    if (dir.exists(data_folder_path)) {
-      return(data_folder_path)  
-    }
-    
+    if (dir.exists(data_folder_path)) {return(data_folder_path)}
   } else if (choose_directory == "data_cleansed") {
     data_cleansed_path = file.path(here::here(),"data_cleansed")
-    if (dir.exists(data_cleansed_path))  
-      return(data_cleansed_path)
+    if (dir.exists(data_cleansed_path)) {return(data_cleansed_path)}
   } else { stop ("please provide your own directory")}
-  
   # Include details about user directory
   if (dir.exists(own_directory)){return(own_directory)}
   else{stop("Please ensure you provide your own_directory",own_directory)}
@@ -771,7 +766,7 @@ markdown text output file.
 - This section below includes formatted figures using auxiliary function
   “fmt_markdown_figures()” from helper_functions.R script:
 
-In 2009 unemployment rate for Bulgaria was 11.3% compared to 7.9%one
+In 2009 unemployment rate for Bulgaria was 11.3% compared to 7.9% one
 year before in 2009.
 
 This is an increase of
