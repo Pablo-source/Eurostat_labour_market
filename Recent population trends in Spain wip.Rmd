@@ -20,13 +20,13 @@ We load latest Spanish Population Figures released by the Spanish National Insti
 
 In the third tab from Excel file **"INE total and foreign population figures Spain.xlsx"** we load the table describing Total, foreign and nationals population figures in Spain, based on Spanish nationality for the 2004 2025 period.
 
-```{r Load spanish population data, echo=FALSE}
+```{r Load spanish population data, echo=FALSE, message=FALSE, warning = FALSE}
 list.files (path = "./data_demography" ,pattern = "xlsx$")
 excel_sheets("./data_demography/INE total and foreign population figures Spain.xlsx")
 ```
 
 
-```{r read Excek into R, echo=TRUE}
+```{r read Excek into R, echo=TRUE, message=FALSE, warning = FALSE}
 population_data <- read_excel(
   "data_demography/INE total and foreign population figures Spain.xlsx",
   sheet = "INE_Total_foreign_population", skip = 2, n_max = 22,
@@ -46,13 +46,13 @@ names(population_data)
 
 From the newly on boarded data, we create a new Year variable from initial date column. As we only want to display Year values.
 
-```{r cleansing_inpported data, echo=TRUE}
+```{r cleansing_inpported data, echo=TRUE, message=FALSE, warning = FALSE}
 INE_population_subset <- population_data %>%
                          select(date,total_population,foreign_population) %>% 
                          mutate(Year = substring(date, 15, 25)) 
 INE_population_subset
 ```
-```{r creating_first_calculations, echo=TRUE}
+```{r creating_first_calculations, echo=TRUE, message=FALSE, warning = FALSE}
 INE_calc_fields <- INE_population_subset %>%                          
                          select(Year,total_population,foreign_population) %>% 
                          mutate(Spanish_nationals = total_population - foreign_population) %>% 
@@ -155,7 +155,7 @@ Next, we describe the foreign population percent share of the total population i
 In this section we will use a set of helper functions to create initial data sets for selected countries. And also to format each figure used in the Markdwon report. 
 
 
-```{r helper functions,  include=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+```{r helper functions,  include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, results='hide'}
 # I need to place all my Functions in this chunck to be used in the report !!! 
 # So I can render the Markdown report !!!
 # FUNCTION 01 02 - Import indicators
@@ -308,7 +308,11 @@ Besides, in this section we can see how to populate text using "fmt_markdown_fig
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 ```
 
-## 4.1 Unemployment rate in 2009 
+- Now I include a new function in the section below to display unemployment figures using inline R code with specific formats. 
+
+- This formats are defined in the function below called "fmt_markdown_figures" and it allows us to add thousands separator when the indicator is an integer number and % sign when it displays percentages such as in the unemployment rate example below.
+
+## 5. Unemployment rate in 2009 
 
 - This section below includes formatted figures using auxiliary function "fmt_markdown_figures()" from helper_functions.R script:
 
