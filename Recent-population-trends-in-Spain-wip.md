@@ -1,32 +1,34 @@
----
-title: "Recent Spain population trends"
-author: "PLR"
-date: "`r Sys.Date()`"
-output: github_document
----
-
-```{r setup include requried libraries, include=FALSE}
-pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table)
-```
+Recent Spain population trends
+================
+PLR
+2026-07-12
 
 ## Latest date this report was produced
 
-Today's date is **`r format(today(),"%d %B %Y")`**. This report was published on the week starting on  **`r format(today()-2,"%d %B %Y")`**. 
-
+Today’s date is **12 July 2026**. This report was published on the week
+starting on **10 July 2026**.
 
 ## 1. Load Spain population data
 
-We load latest Spanish Population Figures released by the Spanish National Institute: <https://www.ine.es/consul/serie.do?d=true&s=ECP320>
+We load latest Spanish Population Figures released by the Spanish
+National Institute: <https://www.ine.es/consul/serie.do?d=true&s=ECP320>
 
-In the third tab from Excel file **"INE total and foreign population figures Spain.xlsx"** we load the table describing Total, foreign and nationals population figures in Spain, based on Spanish nationality for the 2004 2025 period.
+In the third tab from Excel file **“INE total and foreign population
+figures Spain.xlsx”** we load the table describing Total, foreign and
+nationals population figures in Spain, based on Spanish nationality for
+the 2004 2025 period.
 
-```{r Load spanish population data, echo=FALSE, message=FALSE, warning = FALSE}
-list.files (path = "./data_demography" ,pattern = "xlsx$")
-excel_sheets("./data_demography/INE total and foreign population figures Spain.xlsx")
-```
+    ## [1] "01 Spain components pop change_data_prep.xlsx"                    
+    ## [2] "INE population by nationality Spanish foreign 2002 2025.xlsx"     
+    ## [3] "INE total and foreign population figures Spain.xlsx"              
+    ## [4] "INE_Foreign_Born_Residents_in_Spain_by_Nationality_1998_2022.xlsx"
+    ## [5] "INE_natural_increase_births_deaths_1992_2024.xlsx"                
+    ## [6] "INE_Total_resident_population_by_nationality_1998_2022.xlsx"
 
+    ## [1] "INE_Foreign_population"       "INE_Total_population"        
+    ## [3] "INE_Total_foreign_population"
 
-```{r read Excek into R, echo=TRUE, message=FALSE, warning = FALSE}
+``` r
 population_data <- read_excel(
   "data_demography/INE total and foreign population figures Spain.xlsx",
   sheet = "INE_Total_foreign_population", skip = 2, n_max = 22,
@@ -38,21 +40,59 @@ population_data <- read_excel(
                        foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
 
 head(population_data)
+```
+
+    ## # A tibble: 6 × 8
+    ##   date               total_population foreign_population percent_foreign_popul…¹
+    ##   <chr>                         <dbl>              <dbl>                   <dbl>
+    ## 1 1 de enero de 2025         49077984            6852348                   0.140
+    ## 2 1 de enero de 2024         48619695            6502282                   0.134
+    ## 3 1 de enero de 2023         48085361            6089620                   0.127
+    ## 4 1 de enero de 2022         47486727            5509046                   0.116
+    ## 5 1 de enero de 2021         47400798            5402702                   0.114
+    ## 6 1 de enero de 2020         47318050            5241278                   0.111
+    ## # ℹ abbreviated name: ¹​percent_foreign_population
+    ## # ℹ 4 more variables: total_population_YoY_N <dbl>,
+    ## #   total_population_YoY_perc <dbl>, foreign_population_YoY_N <dbl>,
+    ## #   foreign_population_YoY_perc <dbl>
+
+``` r
 names(population_data)
 ```
 
+    ## [1] "date"                        "total_population"           
+    ## [3] "foreign_population"          "percent_foreign_population" 
+    ## [5] "total_population_YoY_N"      "total_population_YoY_perc"  
+    ## [7] "foreign_population_YoY_N"    "foreign_population_YoY_perc"
 
 ## 2. Exploratory charts Total, Spanish nationals and foreign population in Spain
 
-From the newly on boarded data, we create a new Year variable from initial date column. As we only want to display Year values.
+From the newly on boarded data, we create a new Year variable from
+initial date column. As we only want to display Year values.
 
-```{r cleansing_inpported data, echo=TRUE, message=FALSE, warning = FALSE}
+``` r
 INE_population_subset <- population_data %>%
                          select(date,total_population,foreign_population) %>% 
                          mutate(Year = substring(date, 15, 25)) 
 INE_population_subset
 ```
-```{r creating_first_calculations, echo=TRUE, message=FALSE, warning = FALSE}
+
+    ## # A tibble: 22 × 4
+    ##    date               total_population foreign_population Year 
+    ##    <chr>                         <dbl>              <dbl> <chr>
+    ##  1 1 de enero de 2025         49077984            6852348 2025 
+    ##  2 1 de enero de 2024         48619695            6502282 2024 
+    ##  3 1 de enero de 2023         48085361            6089620 2023 
+    ##  4 1 de enero de 2022         47486727            5509046 2022 
+    ##  5 1 de enero de 2021         47400798            5402702 2021 
+    ##  6 1 de enero de 2020         47318050            5241278 2020 
+    ##  7 1 de enero de 2019         46918951            4850762 2019 
+    ##  8 1 de enero de 2018         46645070            4577322 2018 
+    ##  9 1 de enero de 2017         46497393            4417653 2017 
+    ## 10 1 de enero de 2016         46418884            4419334 2016 
+    ## # ℹ 12 more rows
+
+``` r
 INE_calc_fields <- INE_population_subset %>%                          
                          select(Year,total_population,foreign_population) %>% 
                          mutate(Spanish_nationals = total_population - foreign_population) %>% 
@@ -60,10 +100,27 @@ INE_calc_fields <- INE_population_subset %>%
 INE_calc_fields
 ```
 
-These charts below describe the evolution of Total, foreign and spanish nationals population for the 2005-2025 period:
+    ## # A tibble: 22 × 4
+    ##    Year  total_population foreign_population Spanish_nationals
+    ##    <chr>            <dbl>              <dbl>             <dbl>
+    ##  1 2004          42547454                 NA                NA
+    ##  2 2005          43296335            3430204          39866131
+    ##  3 2006          44009969            3930916          40079053
+    ##  4 2007          44784659            4449434          40335225
+    ##  5 2008          45668938            5086295          40582643
+    ##  6 2009          46239271            5386659          40852612
+    ##  7 2010          46486621            5402579          41084042
+    ##  8 2011          46667175            5312440          41354735
+    ##  9 2012          46818216            5236030          41582186
+    ## 10 2013          46712650            5064584          41648066
+    ## # ℹ 12 more rows
+
+These charts below describe the evolution of Total, foreign and spanish
+nationals population for the 2005-2025 period:
 
 - Spain total population
-```{r Spain total population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+
+``` r
 options(scipen=999)
 
 Spanish_population_plot <- INE_calc_fields %>% 
@@ -79,9 +136,11 @@ Spanish_population_plot <- INE_calc_fields %>%
 Spanish_population_plot
 ```
 
+![](Recent-population-trends-in-Spain-wip_files/figure-gfm/Spain%20total%20population%20bar%20plot-1.png)<!-- -->
+
 Then this is the foreign population in Spain for the same time period.
 
-```{r Spain foreign population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+``` r
 options(scipen=999)
 
 forign_population_plot <- INE_calc_fields %>% 
@@ -97,10 +156,12 @@ forign_population_plot <- INE_calc_fields %>%
 forign_population_plot
 ```
 
+![](Recent-population-trends-in-Spain-wip_files/figure-gfm/Spain%20foreign%20population%20bar%20plot-1.png)<!-- -->
 
-This last plot displays national population in Spain for the 2005-2025 period
+This last plot displays national population in Spain for the 2005-2025
+period
 
-```{r Spain national population bar plot, echo=TRUE, warning=FALSE,message=FALSE}
+``` r
 options(scipen=999)
 
 national_population_plot <- INE_calc_fields %>% 
@@ -116,52 +177,54 @@ national_population_plot <- INE_calc_fields %>%
 national_population_plot
 ```
 
+![](Recent-population-trends-in-Spain-wip_files/figure-gfm/Spain%20national%20population%20bar%20plot-1.png)<!-- -->
 
-## 3.  Spain population figures Overveiw details 
+## 3. Spain population figures Overveiw details
 
-In this section we highlight a couple of trends observed in both Total and foreign population in Spain from 2004 until 2025 period.
+In this section we highlight a couple of trends observed in both Total
+and foreign population in Spain from 2004 until 2025 period.
 
-```{r Population figures overview, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
-# Total population figures overview
+- As of 1st of January **2025**., the year for the latest available
+  population figures, Total population in Spain was **49,077,984**. Up
+  by 458,253 from previous year.
 
-Max_total_population <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == max(INE_calc_fields$Year))
-Max_total_population
+- In contrast, on the year **2004**, the first year on this series,
+  total population in Spain was **42,547,454**.
 
+- In terms of foreign population, on the following year **2005**.there
+  was a foreign population of **3,430,204**
 
-Min_total_population <- INE_calc_fields  %>% select (Year,total_population) %>% filter(Year == min(INE_calc_fields$Year))
-Min_total_population
-
-# Foreign population figures overview
-foreign_pop_first_year <- INE_calc_fields  %>% select (Year,foreign_population) %>% filter(Year == 2005)
-
-foreign_pop_last_year <- INE_calc_fields  %>% select (Year,foreign_population) %>% filter(Year == 2025)
-```
-
-- As of 1st of January **`r (Max_total_population$Year)`**., the year for the latest available population figures, Total population in Spain was  **`r prettyNum(Max_total_population$total_population, big.mark=",")`**. Up by 458,253 from previous year.
-
-- In contrast, on the year **`r (Min_total_population$Year)`**, the first year on this series, total population in Spain was **`r prettyNum(Min_total_population$total_population, big.mark=",")`**. 
-
-- In terms of foreign population, on the following year **`r (foreign_pop_first_year$Year)`**.there was a foreign population of **`r prettyNum(foreign_pop_first_year$foreign_population, big.mark=",")`** 
-
-- At the end of the series on 1st January **`r (foreign_pop_last_year$Year)`**, latest foreign population figures in Spain was **`r prettyNum(foreign_pop_last_year$foreign_population, big.mark=",")`**. We will describe these population changes in absolute figures and percent change in the next section below.
+- At the end of the series on 1st January **2025**, latest foreign
+  population figures in Spain was **6,852,348**. We will describe these
+  population changes in absolute figures and percent change in the next
+  section below.
 
 ### 3.1 Share of foreign population over total population in Spain
 
-Next, we describe the foreign population percent share of the total population in Spain for the 2004-2025 period.
-
+Next, we describe the foreign population percent share of the total
+population in Spain for the 2004-2025 period.
 
 ## 4. Populating report using helper functions
 
-In this section we will use a set of helper functions to create initial data sets for selected countries. And also to format each figure used in the Markdwon report. 
-
+In this section we will use a set of helper functions to create initial
+data sets for selected countries. And also to format each figure used in
+the Markdwon report.
 
 ### 4.1 Ingest raw Eurostat downloaded data into R performing data wrangling
 
-This first section takes the raw Excel file just downloaded from Eurostat and applying several formatting options to get it ready for using it as input data for ggplot2 charts: a) renmoves null values, b) pivots data from wide to long format, c) creates required variables (date_1y_ago, value_1y_ago..) for plots, d) Allows users to filters data for selected countries and indicators, among other things. 
+This first section takes the raw Excel file just downloaded from
+Eurostat and applying several formatting options to get it ready for
+using it as input data for ggplot2 charts: a) renmoves null values, b)
+pivots data from wide to long format, c) creates required variables
+(date_1y_ago, value_1y_ago..) for plots, d) Allows users to filters data
+for selected countries and indicators, among other things.
 
-This function can be modified to include extra arguments, below shows of to format "unemploymen" raw data indicator, and also I applying a similar approach to "part_time_persons" the second indicator downloaded from Eurostat. 
+This function can be modified to include extra arguments, below shows of
+to format “unemploymen” raw data indicator, and also I applying a
+similar approach to “part_time_persons” the second indicator downloaded
+from Eurostat.
 
-```{r helper functions,  include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, results='hide'}
+``` r
 # I need to place all my Functions in this chunck to be used in the report !!! 
 # So I can render the Markdown report !!!
 # FUNCTION 01 02 - Import indicators
@@ -269,11 +332,10 @@ return(temp_emp_long_dataframe)
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2","country3"), indicator ="unemp/part_time_persons")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
-
 ```
-```{r helper function 02, echo=TRUE, warning = FALSE, message = FALSE}
 
-# Function 02 02 - declares path to data folder where formatted input data is saved  
+``` r
+# 02 Function - declares path to data folder where formatted input data is saved  
 
 # FUNCTION 02 - Declare filepath to "data_cleansed" folder
 data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_directory = NULL){
@@ -293,67 +355,44 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
 
 # Use function
 data_filepath(choose_directory = "data_cleansed")
-
 ```
 
+    ## [1] "/home/pablo-nostromo/Documents/popos_pablo/R_github/Eurostat_labour_market/data_cleansed"
 
-
-```{r Input previouos into Markdown report, echo=TRUE,warning=FALSE,message=FALSE, results='hide'}
+``` r
 data_filepath(choose_directory = "data_cleansed")
 
 dataset_sel_countries <- fread("data_cleansed/country_sel_unemp_long_dataframe.csv")
 dataset_sel_countries
 ```
 
+Now we use function from previous r code chunch called
+“Import_eurostat_indicators()” to subset unemployment indicator data for
+a selection of countries (“Bulgaria”,“Estonia” and “Ireland”)
 
-Now we use function from previous r code chunch called "Import_eurostat_indicators()" to subset unemployment indicator data for a selection of countries ("Bulgaria","Estonia" and "Ireland") 
+Besides, in this section we can see how to populate text using
+“fmt_markdown_figures” function below to apply specific format types
+(numeric values including thousand separators, and percentage values
+displaying the “%” sign) when describing figures in the rendered
+markdown text output file.
 
-Besides, in this section we can see how to populate text using "fmt_markdown_figures" function below to apply specific format types (numeric values including thousand separators, and percentage values displaying the "%" sign) when describing figures in the rendered markdown text output file.
+- Now I include a new function in the section below to display
+  unemployment figures using inline R code with specific formats.
 
-```{r Function subset indicators for selected countries, echo=FALSE, results='hide'}
-Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
-```
+- This formats are defined in the function below called
+  “fmt_markdown_figures” and it allows us to add thousands separator
+  when the indicator is an integer number and % sign when it displays
+  percentages such as in the unemployment rate example below.
 
-- Now I include a new function in the section below to display unemployment figures using inline R code with specific formats. 
+## 5. Unemployment rate in 2009
 
-- This formats are defined in the function below called "fmt_markdown_figures" and it allows us to add thousands separator when the indicator is an integer number and % sign when it displays percentages such as in the unemployment rate example below.
+This section below includes formatted figures using auxiliary function
+“fmt_markdown_figures()” from helper_functions.R script:
 
-## 5. Unemployment rate in 2009 
+- In 2010 unemployment rate for Bulgaria was 11.3% compared to 7.9% one
+  year before in 2009.
 
-This section below includes formatted figures using auxiliary function "fmt_markdown_figures()" from helper_functions.R script:
-
-```{r formatting function, echo=FALSE}
-
-fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
-  row <- mydataset %>% filter(country == countryname) 
-  row_date <- row %>%  filter(date == datevalue)
-  value <- row_date %>% pull({{column}})
-  units <- row_date %>% pull(units)
-  # safe checks
-  if (length(value)==0){return(NA)}
-  if (is.null(format)){format <- units}
-  
-  # 1. Section to start applying required formats using format parameter
-  # 1.1 numeric format
-  if (format == "numeric"){
-      if(is.na(value)){             # Accounting for missing values When there are NA values in original input data
-      return(NA_character_)
-    }   else if (!is.na(value)){   # Ensure value is not missing so it is valied 
-  value_num <- as.numeric(value) # I need to ensure is numeric to multiply it by 100
-  return((prettyNum(value_num*10000,big.mark = ","))) # Just testing multiplying it by 1000 to see the big mark displayed
-  } 
-  # 1.2 percentage format  
-  } else if (format == "percentage"){
-  return(paste0(round(value,1),"%"))  # to be built
-  }
-  # Default value if format is not provided
-  return(as.character(prettyNum(value,big.mark = ",")))
-}
-```
-
-
-- In 2010 unemployment rate for Bulgaria was `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2010, column = "metric_value",format ="percentage")` compared to 
- `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",format ="percentage")` one year before in 2009. 
- 
-- Latest unemployment figures for Bulgaria available are from 2023. It has been on a downward trend since its highest value of `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2013, column = "metric_value",format ="percentage")`back in 2013 . Decreasing almost 9 percentage points to a all time low of `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2023, column = "metric_value",format ="percentage")` in 2023. 
- 
+- Latest unemployment figures for Bulgaria available are from 2023. It
+  has been on a downward trend since its highest value of 13.9%back in
+  2013 . Decreasing almost 9 percentage points to a all time low of 4.3%
+  in 2023.

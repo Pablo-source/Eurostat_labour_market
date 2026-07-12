@@ -5,7 +5,7 @@ installed.packages()
 
 if(!"pacman" %in% installed.packages()) install.packages("pacman")
 ## Load required packages now using pacman p_load function: 
-pacman::p_load(here,dplyr,plyr,here,readxl,tidyr,ggplot2,stats)
+pacman::p_load(here,dplyr,plyr,here,readxl,tidyr,ggplot2,stats,data.table)
 
 
 # Helper Functions
@@ -36,13 +36,16 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
       return(data_cleansed_path)
   } else { stop ("please provide your own directory")}
   
+  # Include details about user directory
+  if (dir.exists(own_directory)){return(own_directory)}
+  else{stop("Please ensure you provide your own_directory",own_directory)}
+  
 }
 
 # Use function
-data_filepath(choose_directory = "data_folder")
 data_filepath(choose_directory = "data_cleansed")
-data_filepath(choose_directory = "my directory") # This will trigger error message
-
+# data_filepath(choose_directory = "own_directory") # This will trigger error message
+data_filepath(choose_directory = "data_folder")
 
 # 2. Second helper function - Read in original Eurostat Excel files into R
 
@@ -52,6 +55,7 @@ data_filepath(choose_directory = "my directory") # This will trigger error messa
 #     une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
 
 # data is located in "Sheet 1"
+# Function parameters for a test: tab = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland', indicators = 'unemp')
 
 Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selected_countries,indicator = NULL){
 
@@ -98,6 +102,12 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   # 1.6 Ensure final output from function is a data.frame() object
   unemp_long_dataframe <- data.frame(unempl_all)
+  
+  # 1.7 Write dataframe to "data_cleansed_folder"
+  filename <- "country_sel_unemp_long_dataframe.csv"
+  output_file <- file.path("data_cleansed",filename)   # Using file.path() to build relative path to data_cleansed sub-folder. works on Windows, Linux, and macOS.
+  write.csv(unemp_long_dataframe,file = output_file,row.names = FALSE)
+  cat("File saved as:", output_file, "\n") # Write  message on Console everytime the output file is written to .csv and saved to "data_cleansed" sub-folder
   
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
@@ -185,7 +195,46 @@ fmt_markdown_figures<- function(mydataset
     # Latest return value - always return value as character as faisafe
   return(as.character(value))
 }
+
 # Testing fmt_markdown_figures function# Dataset: unemp_long_min_max_all # Country: Bulgaria
 # Column: metric_value# Date: 2011
-fmt_markdown_figures( mydataset = "unemp_long_min_max_all",countryname = "Bulgaria",column = "metric_value",
-                      Date = "2011")
+
+# Building format function: WIP (05/07/2026)
+fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
+  row <- mydataset %>% filter(country == countryname) 
+  row_date <- row %>%  filter(date == datevalue)
+ # print(row_date)
+  value <- row_date %>% pull({{column}})
+  units <- row_date %>% pull(units)
+#  print(value)
+#  print(units)
+  
+  # safe checks
+  if (length(value)==0){return(NA)}
+  if (is.null(format)){format <- units}
+  
+### 1. Section to start applying required formats using format parameter
+  if (format == "numeric"){
+      if(is.na(value)){             # Accounting for missing values When there are NA values in original input data
+      return(NA_character_)
+    }   else if (!is.na(value)){   # Ensure value is not missing so it is valied 
+  value_num <- as.numeric(value) # I need to ensure is numeric to multiply it by 100
+  return((prettyNum(value_num*10000,big.mark = ","))) # Just testing multiplying it by 1000 to see the big mark displayed
+  } 
+    
+  } else if (format == "percentage"){
+  return(paste0(round(value,1),"%"))  # to be built
+  }
+  # Default value if format is not provided
+  return(as.character(prettyNum(value,big.mark = ",")))
+}
+
+# Using and testing function - I need to provide all required parameters (mydataset,countryname,datevalue,column)
+# Some parameters such as "countryname" and "datevalue" is to isolate a single figure to display in the report.
+# Testing "numeric" format in one cell
+fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
+                     format ="numeric")
+# Testing "percentage" format in one cell
+fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
+                     format ="percentage")
+
