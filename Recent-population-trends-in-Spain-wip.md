@@ -210,6 +210,20 @@ In this section we will use a set of helper functions to create initial
 data sets for selected countries. And also to format each figure used in
 the Markdwon report.
 
+### 4.1 Ingest raw Eurostat downloaded data into R apply basic data wrangling
+
+This first section takes the raw Excel file just downloaded from
+Eurostat and applying several formatting options to get it ready for
+using it as input data for ggplot2 charts: a) renmoves null values, b)
+pivots data from wide to long format, c) creates required variables
+(date_1y_ago, value_1y_ago..) for plots, d) Allows users to filters data
+for selected countries and indicators, among other things.
+
+This function can be modified to include extra arguments, below shows of
+to format “unemploymen” raw data indicator, and also I applying a
+similar approach to “part_time_persons” the second indicator downloaded
+from Eurostat.
+
 ``` r
 # I need to place all my Functions in this chunck to be used in the report !!! 
 # So I can render the Markdown report !!!
