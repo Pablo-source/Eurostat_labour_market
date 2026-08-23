@@ -155,7 +155,7 @@ forign_population_plot
 ```
 
 
-This last plot displays national population in Spain for the 2005-2025 period
+This last plot displays national population in Spain for the 2005-2025 period.
 
 ```{r Spain national population bar plot, echo=TRUE, warning=FALSE,message=FALSE}
 options(scipen=999)
