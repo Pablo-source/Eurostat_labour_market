@@ -5,8 +5,11 @@ date: "`r Sys.Date()`"
 output: github_document
 ---
 
-```{r setup include requried libraries, include=FALSE}
+```{r setup, include=FALSE}
+# Load required libraries
 pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table)
+# Apply consistent height and width ggplot graph across document
+knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
 ```
 
 ## Latest date this report was produced
@@ -42,7 +45,61 @@ names(population_data)
 ```
 
 
-## 2. Exploratory charts Total, Spanish nationals and foreign population in Spain
+# 2. Spanish total population change over time
+
+This sections described total population change in Spain from 
+
+
+```{r Total population, echo=TRUE, message=FALSE, warning = FALSE}
+
+population_change <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
+population_change
+
+```
+```{r}
+library(lubridate)
+population_change_date_creation <- population_change %>% 
+  mutate(date_day = substr(date,1,1),
+         date_month = substr(date,3,13),
+         date_year =  substr(date,15,18))
+
+population_change_fmt <-population_change_date_creation %>% 
+mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
+select(date,total_population,foreign_nationals_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
+mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) 
+
+
+population_change_fmt_date <- population_change_fmt %>% 
+  mutate(date_fmt = dmy(date_to_fmt)) %>% 
+  select(date_fmt,total_population,foreign_nationals_population,percent_foreign_population,total_population_YoY_perc_change = total_population_YoY_perc,foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
+  arrange(date_fmt)
+population_change_fmt_date
+
+min_date <- min(population_change_fmt_date$date_fmt)
+max_date <- max(population_change_fmt_date$date_fmt)
+# (gsub("de enero","january", date),1,6)),
+```
+## 2.1 Spain total population
+
+This first chart displays total population in Spain for 2004-2025 time period. Total resident population in Spain, regardless of their nationality 
+
+```{r Spain total population, echo=TRUE,message=FALSE, warning =FALSE}
+Total_pop_spain <- population_change_fmt_date %>% select(date_fmt,total_population) %>% 
+  ggplot(aes(date_fmt,total_population)) +
+  geom_line(aes(colour = "sienna3")) +
+  geom_point(fill = "sienna3") +
+  labs(title = "Spain total poulation. 2004-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+   theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5)) 
+Total_pop_spain
+
+
+```
+
+
+## 3. Exploratory charts Total, Spanish nationals and foreign population in Spain
 
 From the newly on boarded data, we create a new Year variable from initial date column. As we only want to display Year values.
 
@@ -73,7 +130,7 @@ Spanish_population_plot <- INE_calc_fields %>%
        substile = "Source: INE Spanish Office for National Statistics") +
   theme_light() +
   theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
-  geom_text(aes(label = total_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  geom_text(aes(label = total_population),size = 2.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,55000000), expand = FALSE )
 
 Spanish_population_plot
@@ -110,7 +167,8 @@ national_population_plot <- INE_calc_fields %>%
        substile = "Source: INE Spanish Office for National Statistics") +
   theme_light() +
   theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
-  geom_text(aes(label = Spanish_nationals),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  geom_text(aes(label = format(Spanish_nationals,big.mark = ",",scientific = FALSE))
+            ,size = 4.2,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,46000000), expand = FALSE )
 
 national_population_plot
@@ -292,11 +350,9 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
 }
 
 # Use function
-data_filepath(choose_directory = "data_cleansed")
+data_filepath(choose_directory = "data_cleansed") 
 
 ```
-
-
 
 ```{r Input previouos into Markdown report, echo=TRUE,warning=FALSE,message=FALSE, results='hide'}
 data_filepath(choose_directory = "data_cleansed")
@@ -315,45 +371,3 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 ```
 
 - Now I include a new function in the section below to display unemployment figures using inline R code with specific formats. 
-
-- This formats are defined in the function below called "fmt_markdown_figures" and it allows us to add thousands separator when the indicator is an integer number and % sign when it displays percentages such as in the unemployment rate example below.
-
-## 5. Unemployment rate in 2009 
-
-This section below includes formatted figures using auxiliary function "fmt_markdown_figures()" from helper_functions.R script:
-
-```{r formatting function, echo=FALSE}
-
-fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
-  row <- mydataset %>% filter(country == countryname) 
-  row_date <- row %>%  filter(date == datevalue)
-  value <- row_date %>% pull({{column}})
-  units <- row_date %>% pull(units)
-  # safe checks
-  if (length(value)==0){return(NA)}
-  if (is.null(format)){format <- units}
-  
-  # 1. Section to start applying required formats using format parameter
-  # 1.1 numeric format
-  if (format == "numeric"){
-      if(is.na(value)){             # Accounting for missing values When there are NA values in original input data
-      return(NA_character_)
-    }   else if (!is.na(value)){   # Ensure value is not missing so it is valied 
-  value_num <- as.numeric(value) # I need to ensure is numeric to multiply it by 100
-  return((prettyNum(value_num*10000,big.mark = ","))) # Just testing multiplying it by 1000 to see the big mark displayed
-  } 
-  # 1.2 percentage format  
-  } else if (format == "percentage"){
-  return(paste0(round(value,1),"%"))  # to be built
-  }
-  # Default value if format is not provided
-  return(as.character(prettyNum(value,big.mark = ",")))
-}
-```
-
-
-- In 2010 unemployment rate for Bulgaria was `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2010, column = "metric_value",format ="percentage")` compared to 
- `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",format ="percentage")` one year before in 2009. 
- 
-- Latest unemployment figures for Bulgaria available are from 2023. It has been on a downward trend since its highest value of `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2013, column = "metric_value",format ="percentage")`back in 2013 . Decreasing almost 9 percentage points to a all time low of `r fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2023, column = "metric_value",format ="percentage")` in 2023. 
- 
