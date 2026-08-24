@@ -61,7 +61,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
 
   # une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
   if (indicator == "unemp"){
-  # 1.1 arange original input data in Long format  
+  # 1.1 arrange original unemployment input data in Long format  
   unemp_raw <- read_excel(file.path(here::here(), "data","une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                               sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
               filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
@@ -103,7 +103,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   # 1.6 Ensure final output from function is a data.frame() object
   unemp_long_dataframe <- data.frame(unempl_all)
   
-  # 1.7 Write dataframe to "data_cleansed_folder"
+  # 1.7 Write unemployment indicators selected countries data  - as a data frame - to "data_cleansed_folder"
   filename <- "country_sel_unemp_long_dataframe.csv"
   output_file <- file.path("data_cleansed",filename)   # Using file.path() to build relative path to data_cleansed sub-folder. works on Windows, Linux, and macOS.
   write.csv(unemp_long_dataframe,file = output_file,row.names = FALSE)
@@ -111,7 +111,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
-  
+  # 1.8 arrange original part time input data in Long format  
   } else if (indicator == "part_time_persons"){
   # Downloaded table data: lfsi_pt_a (Part-time employment and temporary contracts-annual data)
   # Return final selection of countries temporary employment figures
@@ -124,8 +124,8 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                select(date = Date,country = Countries,metric_value, metric, units) %>% 
     filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
   
-  # Return final selection of countries temporary employment indicator values  
-part_time_long_lags <- part_time_long %>% 
+  # 1.9  New variables - for part time indicator - lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
+  part_time_long_lags <- part_time_long %>% 
     arrange(country,date) %>% 
     group_by(country) %>% 
     mutate(
@@ -137,24 +137,30 @@ part_time_long_lags <- part_time_long %>%
       value_5y_ago = lag(metric_value,5)
     ) %>% 
     ungroup()
-
-part_time_long_min_max<- part_time_long_lags %>%
-  select(country,date,metric_value,metric,units) %>%
-  group_by(country) %>% 
-  mutate(
-    min_value_country = min(metric_value, na.rm = TRUE),
-    max_value_country = max(metric_value, na.rm = TRUE)
-  ) %>% 
+# 1.10 Add new set of columns - to part time indicator dataset- to display min and max values BY COUNTRY
+  part_time_long_min_max<- part_time_long_lags %>%
+    select(country,date,metric_value,metric,units) %>%
+    group_by(country) %>% 
+    mutate(
+      min_value_country = min(metric_value, na.rm = TRUE),
+      max_value_country = max(metric_value, na.rm = TRUE)
+    ) %>% 
   ungroup()
-# 1.5 Finally include min and max values entire unemp dataset
-part_time_all <- part_time_long_min_max %>% 
-  mutate(
-    min_value_indic = min(metric_value, na.rm = TRUE),
-    max_value_indic = max(metric_value, na.rm = TRUE)
-  )              
-# 1.6 Ensure final temp_emp dataframe output from function is a data.frame() object
-temp_emp_long_dataframe <- data.frame(part_time_all)
+# 1.11 Finally include min and max values entire unemp dataset
+  part_time_all <- part_time_long_min_max %>% 
+    mutate(
+      min_value_indic = min(metric_value, na.rm = TRUE),
+      max_value_indic = max(metric_value, na.rm = TRUE)
+    )              
+# 1.12 Ensure final temp_emp dataframe output from function is a data.frame() object
+  temp_emp_long_dataframe <- data.frame(part_time_all)
 
+# 1.13 WIP Write part-time  indicators selected countries data  - as a data frame - to "data_cleansed_folder"
+  ## WIP 
+  filename <- "country_sel_part_time_long_dataframe.csv"
+  output_file <- file.path("data_cleansed",filename) 
+
+# 1.15  Return final selection of countries unemployment indicator values    
 return(temp_emp_long_dataframe)
     }
   
