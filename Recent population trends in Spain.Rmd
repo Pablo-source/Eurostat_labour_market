@@ -7,6 +7,7 @@ output: github_document
 
 ```{r setup, include=FALSE}
 # Load required libraries
+library(pacman)
 pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table)
 # Apply consistent height and width ggplot graph across document
 knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
