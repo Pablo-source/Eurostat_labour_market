@@ -1,35 +1,34 @@
----
-title: "Eurostat labour market trends"
-author: "PLR"
-date: "`r Sys.Date()`"
-output: github_document
----
-
-```{r setup, include=FALSE}
-# Load required libraries
-library(pacman)
-pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table)
-# Apply consistent height and width ggplot graph across document
-knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
-```
+Eurostat labour market trends
+================
+PLR
+2026-08-28
 
 ## Latest date this report was produced
 
-Today's date is **`r format(today(),"%d %B %Y")`**. This report was published on the week starting on  **`r format(today()-2,"%d %B %Y")`**. 
+Today’s date is **28 August 2026**. This report was published on the
+week starting on **26 August 2026**.
 
 ## Populating report using helper functions
 
-In this report  we will use a set of helper functions to create initial data sets for selected countries. And also to format each figure used in the Markdwon report. 
-
-
+In this report we will use a set of helper functions to create initial
+data sets for selected countries. And also to format each figure used in
+the Markdwon report.
 
 ### 1. Ingest raw Eurostat downloaded data into R performing data wrangling
 
-This first section takes the raw Excel file just downloaded from Eurostat and applying several formatting options to get it ready for using it as input data for ggplot2 charts: a) renmoves null values, b) pivots data from wide to long format, c) creates required variables (date_1y_ago, value_1y_ago..) for plots, d) Allows users to filters data for selected countries and indicators, among other things. 
+This first section takes the raw Excel file just downloaded from
+Eurostat and applying several formatting options to get it ready for
+using it as input data for ggplot2 charts: a) renmoves null values, b)
+pivots data from wide to long format, c) creates required variables
+(date_1y_ago, value_1y_ago..) for plots, d) Allows users to filters data
+for selected countries and indicators, among other things.
 
-This function can be modified to include extra arguments, below shows of to format "unemploymen" raw data indicator, and also I applying a similar approach to "part_time_persons" the second indicator downloaded from Eurostat. 
+This function can be modified to include extra arguments, below shows of
+to format “unemploymen” raw data indicator, and also I applying a
+similar approach to “part_time_persons” the second indicator downloaded
+from Eurostat.
 
-```{r helper functions,  include=TRUE, echo=TRUE, warning=FALSE, message=FALSE, results='hide'}
+``` r
 # I need to place all my Functions in this chunck to be used in the report !!! 
 # So I can render the Markdown report !!!
 # FUNCTION 01 02 - Import indicators
@@ -137,10 +136,9 @@ return(temp_emp_long_dataframe)
 }
 # Parameters (tab_name = "Sheet 1", selcted_countries = c("country1","country2","country3"), indicator ="unemp/part_time_persons")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
-
 ```
-```{r helper function 02, echo=TRUE, warning = FALSE, message = FALSE}
 
+``` r
 # Function 02 02 - declares path to data folder where formatted input data is saved  
 
 # FUNCTION 02 - Declare filepath to "data_cleansed" folder
@@ -161,23 +159,26 @@ data_filepath  <- function(tab_name = NULL,choose_directory = NULL, own_director
 
 # Use function
 data_filepath(choose_directory = "data_cleansed") 
-
 ```
 
-```{r Input previouos into Markdown report, echo=TRUE,warning=FALSE,message=FALSE, results='hide'}
+    ## [1] "/home/pablo-nostromo/Documents/popos_pablo/R_github/Eurostat_labour_market/data_cleansed"
+
+``` r
 data_filepath(choose_directory = "data_cleansed")
 
 dataset_sel_countries <- fread("data_cleansed/country_sel_unemp_long_dataframe.csv")
 dataset_sel_countries
 ```
 
+Now we use function from previous r code chunch called
+“Import_eurostat_indicators()” to subset unemployment indicator data for
+a selection of countries (“Bulgaria”,“Estonia” and “Ireland”)
 
-Now we use function from previous r code chunch called "Import_eurostat_indicators()" to subset unemployment indicator data for a selection of countries ("Bulgaria","Estonia" and "Ireland") 
+Besides, in this section we can see how to populate text using
+“fmt_markdown_figures” function below to apply specific format types
+(numeric values including thousand separators, and percentage values
+displaying the “%” sign) when describing figures in the rendered
+markdown text output file.
 
-Besides, in this section we can see how to populate text using "fmt_markdown_figures" function below to apply specific format types (numeric values including thousand separators, and percentage values displaying the "%" sign) when describing figures in the rendered markdown text output file.
-
-```{r Function subset indicators for selected countries, echo=FALSE, results='hide'}
-Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
-```
-
-- Now I include a new function in the section below to display unemployment figures using inline R code with specific formats. 
+- Now I include a new function in the section below to display
+  unemployment figures using inline R code with specific formats.

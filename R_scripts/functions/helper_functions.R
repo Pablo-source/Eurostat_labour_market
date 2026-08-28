@@ -240,7 +240,9 @@ fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = 
 # Testing "numeric" format in one cell
 fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
                      format ="numeric")
-# Testing "percentage" format in one cell
+# "percentage" format in one cell - Unemployment Rate Bulgaria 2010
+fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2010, column = "metric_value",
+                     format ="percentage")
+# "percentage" format in one cell - Unemployment Rate Bulgaria 2009
 fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
                      format ="percentage")
-
