@@ -243,6 +243,11 @@ fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria"
 # "percentage" format in one cell - Unemployment Rate Bulgaria 2010
 fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2010, column = "metric_value",
                      format ="percentage")
+
+# Using this formula in the markdown report
+fmt_markdown_figures(dataset_sel_countries,"Bulgaria",2010, "metric_value","percentage")
+
+
 # "percentage" format in one cell - Unemployment Rate Bulgaria 2009
 fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
                      format ="percentage")

@@ -181,3 +181,50 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 ```
 
 - Now I include a new function in the section below to display unemployment figures using inline R code with specific formats. 
+
+### 2. Unemployment rate figures across countries in 2009
+
+This section includes formatted figures using auxiliary function *fmt_markdown_figures()* from **helper_functions.R** script:
+
+- In 2010, unemployment rate for Bulgaria was 
+
+```{r format_function_markdown_values, echo=TRUE,warning=FALSE,message=FALSE, results='hide'}
+fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
+  row <- mydataset %>% filter(country == countryname) 
+  row_date <- row %>%  filter(date == datevalue)
+  value <- row_date %>% pull({{column}})
+  units <- row_date %>% pull(units)
+  # safe checks
+  if (length(value)==0){return(NA)}
+  if (is.null(format)){format <- units}
+## 1. Section to start applying required formats using format parameter
+  if (format == "numeric"){
+      if(is.na(value)){             # Accounting for missing values When there are NA values in original input data
+      return(NA_character_)
+    }   else if (!is.na(value)){   # Ensure value is not missing so it is valied 
+  value_num <- as.numeric(value) # I need to ensure is numeric to multiply it by 100
+  return((prettyNum(value_num*10000,big.mark = ","))) # Just testing multiplying it by 1000 to see the big mark displayed
+  } 
+    
+  } else if (format == "percentage"){
+  return(paste0(round(value,1),"%"))  # to be built
+  }
+  # Default value if format is not provided
+  return(as.character(prettyNum(value,big.mark = ",")))
+}
+```
+
+
+`r fmt_markdown_figures(dataset_sel_countries,"Bulgaria",2010, "metric_value","percentage")`
+
+
+
+
+
+
+                     
+                     
+                     
+                     
+
+
