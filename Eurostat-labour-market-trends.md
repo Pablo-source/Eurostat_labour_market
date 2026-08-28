@@ -188,8 +188,6 @@ markdown text output file.
 This section includes formatted figures using auxiliary function
 *fmt_markdown_figures()* from **helper_functions.R** script:
 
-- In 2010, unemployment rate for Bulgaria was
-
 ``` r
 fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
   row <- mydataset %>% filter(country == countryname) 
@@ -216,4 +214,5 @@ fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = 
 }
 ```
 
-11.3%
+- In 2010, unemployment rate for Bulgaria was 11.3% compared to 7.9% one
+  year before in 2009

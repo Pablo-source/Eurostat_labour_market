@@ -186,7 +186,7 @@ Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgari
 
 This section includes formatted figures using auxiliary function *fmt_markdown_figures()* from **helper_functions.R** script:
 
-- In 2010, unemployment rate for Bulgaria was 
+
 
 ```{r format_function_markdown_values, echo=TRUE,warning=FALSE,message=FALSE, results='hide'}
 fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
@@ -214,10 +214,9 @@ fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = 
 }
 ```
 
-
-`r fmt_markdown_figures(dataset_sel_countries,"Bulgaria",2010, "metric_value","percentage")`
-
-
+- In 2010, unemployment rate for Bulgaria was 
+`r fmt_markdown_figures(dataset_sel_countries,"Bulgaria",2010, "metric_value","percentage")` compared to 
+`r fmt_markdown_figures(dataset_sel_countries,"Bulgaria",2009, "metric_value","percentage")` one year before in 2009
 
 
 
