@@ -91,9 +91,11 @@ Total_pop_spain <- population_change_fmt_date %>% select(date_fmt,total_populati
   geom_point(fill = "sienna3") +
   labs(title = "Spain total poulation. 2004-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
+  scale_y_continuous(breaks = seq(40000000, 50000000, by = 200000)) +
   theme_light() +
    theme(legend.position="none") +
-  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5)) 
+  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5),
+        axis.title.y = element_blank() ) 
 Total_pop_spain
 
 
