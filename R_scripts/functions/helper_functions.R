@@ -61,7 +61,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
 
   # une_rt_a (Unemployment by sex and age - annual data). Time 23/23 (2003-2025)
   if (indicator == "unemp"){
-  # 1.1 arange original input data in Long format  
+  # 1.1 arrange original unemployment input data in Long format  
   unemp_raw <- read_excel(file.path(here::here(), "data","une_rt_a__custom_14324113_page_spreadsheet.xlsx"),
                               sheet = tab_name, col_names = TRUE, na = ":", skip = 8,n_max = 23) %>% 
               filter(!is.na(France)) %>%  # France has the highest number of populated rows only 1 NA
@@ -103,7 +103,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   # 1.6 Ensure final output from function is a data.frame() object
   unemp_long_dataframe <- data.frame(unempl_all)
   
-  # 1.7 Write dataframe to "data_cleansed_folder"
+  # 1.7 Write unemployment indicators selected countries data  - as a data frame - to "data_cleansed_folder"
   filename <- "country_sel_unemp_long_dataframe.csv"
   output_file <- file.path("data_cleansed",filename)   # Using file.path() to build relative path to data_cleansed sub-folder. works on Windows, Linux, and macOS.
   write.csv(unemp_long_dataframe,file = output_file,row.names = FALSE)
@@ -111,7 +111,7 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
   
   # Return final selection of countries unemployment indicator values    
   return(unemp_long_dataframe)
-  
+  # 1.8 arrange original part time input data in Long format  
   } else if (indicator == "part_time_persons"){
   # Downloaded table data: lfsi_pt_a (Part-time employment and temporary contracts-annual data)
   # Return final selection of countries temporary employment figures
@@ -124,8 +124,8 @@ Import_eurostat_indicators <- function(tab_name,choose_directory = NULL, selecte
                select(date = Date,country = Countries,metric_value, metric, units) %>% 
     filter(country %in% c(selected_countries))   #  filter initial data by selection of countries
   
-  # Return final selection of countries temporary employment indicator values  
-part_time_long_lags <- part_time_long %>% 
+  # 1.9  New variables - for part time indicator - lagged values (1year ago, 2 years ago, 5 years ago, grouped by country)
+  part_time_long_lags <- part_time_long %>% 
     arrange(country,date) %>% 
     group_by(country) %>% 
     mutate(
@@ -137,24 +137,30 @@ part_time_long_lags <- part_time_long %>%
       value_5y_ago = lag(metric_value,5)
     ) %>% 
     ungroup()
-
-part_time_long_min_max<- part_time_long_lags %>%
-  select(country,date,metric_value,metric,units) %>%
-  group_by(country) %>% 
-  mutate(
-    min_value_country = min(metric_value, na.rm = TRUE),
-    max_value_country = max(metric_value, na.rm = TRUE)
-  ) %>% 
+# 1.10 Add new set of columns - to part time indicator dataset- to display min and max values BY COUNTRY
+  part_time_long_min_max<- part_time_long_lags %>%
+    select(country,date,metric_value,metric,units) %>%
+    group_by(country) %>% 
+    mutate(
+      min_value_country = min(metric_value, na.rm = TRUE),
+      max_value_country = max(metric_value, na.rm = TRUE)
+    ) %>% 
   ungroup()
-# 1.5 Finally include min and max values entire unemp dataset
-part_time_all <- part_time_long_min_max %>% 
-  mutate(
-    min_value_indic = min(metric_value, na.rm = TRUE),
-    max_value_indic = max(metric_value, na.rm = TRUE)
-  )              
-# 1.6 Ensure final temp_emp dataframe output from function is a data.frame() object
-temp_emp_long_dataframe <- data.frame(part_time_all)
+# 1.11 Finally include min and max values entire unemp dataset
+  part_time_all <- part_time_long_min_max %>% 
+    mutate(
+      min_value_indic = min(metric_value, na.rm = TRUE),
+      max_value_indic = max(metric_value, na.rm = TRUE)
+    )              
+# 1.12 Ensure final temp_emp dataframe output from function is a data.frame() object
+  temp_emp_long_dataframe <- data.frame(part_time_all)
 
+# 1.13 WIP Write part-time  indicators selected countries data  - as a data frame - to "data_cleansed_folder"
+  ## WIP 
+  filename <- "country_sel_part_time_long_dataframe.csv"
+  output_file <- file.path("data_cleansed",filename) 
+
+# 1.15  Return final selection of countries unemployment indicator values    
 return(temp_emp_long_dataframe)
     }
   
@@ -163,43 +169,8 @@ return(temp_emp_long_dataframe)
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "part_time_persons")
 
+## Eurostat labour market trends.Rmd (Format values in Markdown file)
 # 3. Format values for markdown
-# Building this function to use above figures with the right format on the Markdown document
-# Still WIP
-#    fmt_markdown_figures()
-fmt_markdown_figures<- function(mydataset 
-                                ,countryname, column,Date,format = NULL){
-  row <- mydataset %>% filter(country == countryname) 
-  print(row)
-  value <- row %>% pull({{column}})
-  print(value)
-  if (length(value)==0) {return(NA)}
-  # numeric format (taken from original Markdown report) . see below
-  # Example: prettyNum(Min_total_population$total_population, big.mark=",")
-  # Start defining required formats for value
-  if (format == "Numeric"){
-      if(is.na(value)){
-          return(NA_character_)
-      } else if (!is.na(value)){
-          value <- as.numeric(value)
-          value <- prettyNum(value, big.mark=",")
-          return(value)}
-    
-  } else if (format == "percent") {
-     if(is.na(value)){
-      return(NA_character_)
-    } else if (!is.na(value)){
-    } 
-  } else
-    # End of numeric format (taken from original Markdown report)
-    # Latest return value - always return value as character as faisafe
-  return(as.character(value))
-}
-
-# Testing fmt_markdown_figures function# Dataset: unemp_long_min_max_all # Country: Bulgaria
-# Column: metric_value# Date: 2011
-
-# Building format function: WIP (05/07/2026)
 fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
   row <- mydataset %>% filter(country == countryname) 
   row_date <- row %>%  filter(date == datevalue)
@@ -234,7 +205,37 @@ fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = 
 # Testing "numeric" format in one cell
 fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
                      format ="numeric")
-# Testing "percentage" format in one cell
+# "percentage" format in one cell - Unemployment Rate Bulgaria 2010
+fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2010, column = "metric_value",
+                     format ="percentage")
+
+# Using this formula in the markdown report
+fmt_markdown_figures(dataset_sel_countries,"Bulgaria",2010, "metric_value","percentage")
+
+
+# "percentage" format in one cell - Unemployment Rate Bulgaria 2009
 fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
                      format ="percentage")
 
+# 4. Format Recent population trends in Spain - Markdown document
+## 4.1 New function format_total_pop_spain
+# Data set: population_change_fmt_date
+# wip
+
+format_total_population_spain <- function(mydataset,my_date,column,format = NULL){
+  row <- mydataset %>% filter(date_fmt == my_date) 
+  print(row)
+  value <- row %>% pull({{column}})
+  print(value)
+  # Default value if format is not provided
+  if (column %in% c("total_population")){
+    return(as.character(prettyNum(value,big.mark = ",")))  
+  } else if (column %in% c("percent_foreign_population")){
+  return(paste0(round(value,1),"%"))  # to be built
+}
+}
+names(population_change_fmt_date)
+# 1. Apply format population for Numeric format metric columns - using big.mark = ","
+format_total_population_spain(mydataset = population_change_fmt_date, my_date = "2007-01-01",column = "total_population")
+# 2. Apply format population for Percentage format metric columns - using round(value,1),"%%) This represent figure as % after rounding value by 1
+format_total_population_spain(mydataset = population_change_fmt_date, my_date = "2007-01-01",column = "percent_foreign_population")
