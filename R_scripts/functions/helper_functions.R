@@ -169,43 +169,8 @@ return(temp_emp_long_dataframe)
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "unemp")
 Import_eurostat_indicators(tab_name = "Sheet 1", selected_countries = c('Bulgaria','Estonia','Ireland'),indicator = "part_time_persons")
 
+## Eurostat labour market trends.Rmd (Format values in Markdown file)
 # 3. Format values for markdown
-# Building this function to use above figures with the right format on the Markdown document
-# Still WIP
-#    fmt_markdown_figures()
-fmt_markdown_figures<- function(mydataset 
-                                ,countryname, column,Date,format = NULL){
-  row <- mydataset %>% filter(country == countryname) 
-  print(row)
-  value <- row %>% pull({{column}})
-  print(value)
-  if (length(value)==0) {return(NA)}
-  # numeric format (taken from original Markdown report) . see below
-  # Example: prettyNum(Min_total_population$total_population, big.mark=",")
-  # Start defining required formats for value
-  if (format == "Numeric"){
-      if(is.na(value)){
-          return(NA_character_)
-      } else if (!is.na(value)){
-          value <- as.numeric(value)
-          value <- prettyNum(value, big.mark=",")
-          return(value)}
-    
-  } else if (format == "percent") {
-     if(is.na(value)){
-      return(NA_character_)
-    } else if (!is.na(value)){
-    } 
-  } else
-    # End of numeric format (taken from original Markdown report)
-    # Latest return value - always return value as character as faisafe
-  return(as.character(value))
-}
-
-# Testing fmt_markdown_figures function# Dataset: unemp_long_min_max_all # Country: Bulgaria
-# Column: metric_value# Date: 2011
-
-# Building format function: WIP (05/07/2026)
 fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
   row <- mydataset %>% filter(country == countryname) 
   row_date <- row %>%  filter(date == datevalue)
@@ -251,3 +216,15 @@ fmt_markdown_figures(dataset_sel_countries,"Bulgaria",2010, "metric_value","perc
 # "percentage" format in one cell - Unemployment Rate Bulgaria 2009
 fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria",datevalue = 2009, column = "metric_value",
                      format ="percentage")
+
+# 4. Format Recent population trends in Spain - Markdown document
+## 4.1 New function format_total_pop_spain
+# Dataset: 
+
+format_total_population_spain <- function(mydataset,countryname,datevalue,column,format = NULL){
+  row <- mydataset %>% filter(country == countryname) 
+  row_date <- row %>%  filter(date == datevalue)
+  # Default value if format is not provided
+  return(as.character(prettyNum(value,big.mark = ",")))
+}
+  
