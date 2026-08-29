@@ -111,7 +111,7 @@ fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = 
 ```
 
 ```{r Spain total population, echo=TRUE,message=FALSE, warning =FALSE}
-Total_pop_spain <- population_change_fmt_date %>% select(date_fmt,total_population) %>% 
+Plot_total_population_spain <- population_change_fmt_date %>% select(date_fmt,total_population) %>% 
   ggplot(aes(date_fmt,total_population)) +
   geom_line(aes(colour = "sienna3")) +
   geom_point(fill = "sienna3") +
@@ -124,7 +124,7 @@ Total_pop_spain <- population_change_fmt_date %>% select(date_fmt,total_populati
   theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5),
         axis.title.y = element_blank(),
         axis.title.x = element_blank()) 
-Total_pop_spain
+Plot_total_population_spain
 
 
 ```

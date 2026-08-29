@@ -219,12 +219,23 @@ fmt_markdown_figures(mydataset = dataset_sel_countries, countryname = "Bulgaria"
 
 # 4. Format Recent population trends in Spain - Markdown document
 ## 4.1 New function format_total_pop_spain
-# Dataset: 
+# Data set: population_change_fmt_date
+# wip
 
-format_total_population_spain <- function(mydataset,countryname,datevalue,column,format = NULL){
-  row <- mydataset %>% filter(country == countryname) 
-  row_date <- row %>%  filter(date == datevalue)
+format_total_population_spain <- function(mydataset,my_date,column,format = NULL){
+  row <- mydataset %>% filter(date_fmt == my_date) 
+  print(row)
+  value <- row %>% pull({{column}})
+  print(value)
   # Default value if format is not provided
-  return(as.character(prettyNum(value,big.mark = ",")))
+  if (column %in% c("total_population")){
+    return(as.character(prettyNum(value,big.mark = ",")))  
+  } else if (column %in% c("percent_foreign_population")){
+  return(paste0(round(value,1),"%"))  # to be built
 }
-  
+}
+names(population_change_fmt_date)
+# 1. Apply format population for Numeric format metric columns - using big.mark = ","
+format_total_population_spain(mydataset = population_change_fmt_date, my_date = "2007-01-01",column = "total_population")
+# 2. Apply format population for Percentage format metric columns - using round(value,1),"%%) This represent figure as % after rounding value by 1
+format_total_population_spain(mydataset = population_change_fmt_date, my_date = "2007-01-01",column = "percent_foreign_population")
