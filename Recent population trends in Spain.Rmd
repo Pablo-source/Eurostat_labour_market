@@ -85,29 +85,20 @@ max_date <- max(population_change_fmt_date$date_fmt)
 This first chart displays total population in Spain for 2004-2025 time period. Total resident population in Spain, regardless of their nationality 
 
 ```{r format_function_markdown_values, echo=TRUE,warning=FALSE,message=FALSE, results='hide'}
-fmt_markdown_figures<- function(mydataset,countryname,datevalue,column,format = NULL){
-  row <- mydataset %>% filter(country == countryname) 
-  row_date <- row %>%  filter(date == datevalue)
-  value <- row_date %>% pull({{column}})
-  units <- row_date %>% pull(units)
-  # safe checks
-  if (length(value)==0){return(NA)}
-  if (is.null(format)){format <- units}
-## 1. Section to start applying required formats using format parameter
-  if (format == "numeric"){
-      if(is.na(value)){             # Accounting for missing values When there are NA values in original input data
-      return(NA_character_)
-    }   else if (!is.na(value)){   # Ensure value is not missing so it is valied 
-  value_num <- as.numeric(value) # I need to ensure is numeric to multiply it by 100
-  return((prettyNum(value_num*10000,big.mark = ","))) # Just testing multiplying it by 1000 to see the big mark displayed
-  } 
-    
-  } else if (format == "percentage"){
-  return(paste0(round(value,1),"%"))  # to be built
-  }
+format_total_population_spain <- function(mydataset,my_date,column,format = NULL){
+  row <- mydataset %>% filter(date_fmt == my_date) 
+  print(row)
+  value <- row %>% pull({{column}})
+  print(value)
   # Default value if format is not provided
-  return(as.character(prettyNum(value,big.mark = ",")))
+  if (column %in% c("total_population")){
+    return(as.character(prettyNum(value,big.mark = ",")))  
+  } else if (column %in% c("percent_foreign_population")){
+  return(paste0(round(value,1),"%"))  # to be built
 }
+}
+# format_total_population_spain(mydataset = population_change_fmt_date, my_date = "2007-01-01",column = "total_population")
+# format_total_population_spain(mydataset = population_change_fmt_date, my_date = "2007-01-01",column = "percent_foreign_population")
 ```
 
 ```{r Spain total population, echo=TRUE,message=FALSE, warning =FALSE}
