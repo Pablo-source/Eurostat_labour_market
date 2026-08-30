@@ -118,11 +118,13 @@ eleven years later, it reached
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2018-01-01",column = "total_population")`.
 After Covid19 Pandemic it grew steadely until 2022, when it reached
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2022-01-01",column = "total_population")`
+
 It is noticeable that since 2022, mainly due to net migration from foreign countries, Spain total population grew with YoY rates above 1%
 In 2023 Spain total population reached 
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2023-01-01",column = "total_population")`
 One year later, it was 
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2024-01-01",column = "total_population")`
+
 The same fast pace of increase has continued in 2025
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2025-01-01",column = "total_population")`
 And in 2026 with the recently released provisional population estimates, the Total population in Spain has reached nearly 50 million
