@@ -114,7 +114,7 @@ Plot_total_population_spain
 
 In 2007 Spain total population was 
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")`
-eleven years later, it reached
+eleven years later, was
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2018-01-01",column = "total_population")`.
 After Covid19 Pandemic it grew steadely until 2022, when it reached
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2022-01-01",column = "total_population")`
