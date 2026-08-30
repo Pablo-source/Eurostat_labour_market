@@ -119,7 +119,7 @@ Eleven years later, in 2018, it was
 After Covid19 Pandemic it grew steadily until 2022, when it reached
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2022-01-01",column = "total_population")`
 
-It is noticeable that since 2022, mainly due to net migration from foreign countries, Spain total population grew with YoY rates above 1% for the following four years.
+It is noticeable that since 2022, mainly due to net international migration from foreign-born residents, Spain total population grew with YoY rates above 1% for the following four years.
 In 2023 Spain total population reached 
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2023-01-01",column = "total_population")`
 One year later, it was 
