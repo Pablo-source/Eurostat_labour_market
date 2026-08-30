@@ -51,21 +51,20 @@ library(lubridate)
 population_change <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
 
 population_change_date_creation <- population_change %>% 
-  mutate(date_day = substr(date,1,1),
-         date_month = substr(date,3,13),
-         date_year =  substr(date,15,18))
+  mutate(date_day = substr(date,1,1),date_month = substr(date,3,13),date_year =  substr(date,15,18))
 
 population_change_fmt <-population_change_date_creation %>% 
-mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
-select(date,total_population,foreign_nationals_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
-mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) 
-
-
-population_change_fmt_date <- population_change_fmt %>% 
+  mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
+  select(date,total_population,foreign_nationals_population,percent_foreign_population,
+         total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
+  mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) %>% 
+# population_change_fmt_date <- population_change_fmt %>% 
   mutate(date_fmt = dmy(date_to_fmt)) %>% 
-  select(date_fmt,total_population,foreign_nationals_population,percent_foreign_population,total_population_YoY_perc_change = total_population_YoY_perc,foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
+  select(date_fmt,total_population,foreign_nationals_population,percent_foreign_population,
+         total_population_YoY_perc_change =  total_population_YoY_perc,
+         foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
   arrange(date_fmt)
-population_change_fmt_date
+population_change_fmt
 ```
 
     ## # A tibble: 22 × 6
@@ -88,8 +87,8 @@ population_change_fmt_date
     ## #   foreign_population_YoY_perc_change <dbl>
 
 ``` r
-min_date <- min(population_change_fmt_date$date_fmt)
-max_date <- max(population_change_fmt_date$date_fmt)
+min_date <- min(population_change_fmt$date_fmt)
+max_date <- max(population_change_fmt$date_fmt)
 # (gsub("de enero","january", date),1,6)),
 ```
 
@@ -112,12 +111,12 @@ format_total_population_spain <- function(mydataset,my_date,column,format = NULL
   return(paste0(round(value,1),"%"))  # to be built
 }
 }
-# format_total_population_spain(mydataset = population_change_fmt_date, my_date = "2007-01-01",column = "total_population")
-# format_total_population_spain(mydataset = population_change_fmt_date, my_date = "2007-01-01",column = "percent_foreign_population")
+# format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")
+# format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "percent_foreign_population")
 ```
 
 ``` r
-Plot_total_population_spain <- population_change_fmt_date %>% select(date_fmt,total_population) %>% 
+Plot_total_population_spain <- population_change_fmt %>% select(date_fmt,total_population) %>% 
   ggplot(aes(date_fmt,total_population)) +
   geom_line(aes(colour = "sienna3")) +
   geom_point(fill = "sienna3") +
@@ -134,6 +133,11 @@ Plot_total_population_spain
 ```
 
 ![](Recent-population-trends-in-Spain_files/figure-gfm/Spain%20total%20population-1.png)<!-- -->
+
+In 2007 Spain total population was44,784,659
+
+format_total_population_spain(mydataset = population_change_fmt_date,
+my_date = “2007-01-01”,column = “total_population”)
 
 ## 3. Exploratory charts Total, Spanish nationals and foreign population in Spain
 
