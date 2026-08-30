@@ -38,63 +38,18 @@ population_data <- read_excel(
                        foreign_population, percent_foreign_population = percent_foreign_nationals_total_population,
                       total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
                        foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
-
-head(population_data)
 ```
-
-    ## # A tibble: 6 × 8
-    ##   date               total_population foreign_population percent_foreign_popul…¹
-    ##   <chr>                         <dbl>              <dbl>                   <dbl>
-    ## 1 1 de enero de 2026         49596376            7256796                   0.146
-    ## 2 1 de enero de 2025         49128297            6911971                   0.141
-    ## 3 1 de enero de 2024         48619695            6502282                   0.134
-    ## 4 1 de enero de 2023         48085361            6089620                   0.127
-    ## 5 1 de enero de 2022         47486727            5509046                   0.116
-    ## 6 1 de enero de 2021         47400798            5402702                   0.114
-    ## # ℹ abbreviated name: ¹​percent_foreign_population
-    ## # ℹ 4 more variables: total_population_YoY_N <dbl>,
-    ## #   total_population_YoY_perc <dbl>, foreign_population_YoY_N <dbl>,
-    ## #   foreign_population_YoY_perc <dbl>
-
-``` r
-names(population_data)
-```
-
-    ## [1] "date"                        "total_population"           
-    ## [3] "foreign_population"          "percent_foreign_population" 
-    ## [5] "total_population_YoY_N"      "total_population_YoY_perc"  
-    ## [7] "foreign_population_YoY_N"    "foreign_population_YoY_perc"
 
 # 2. Spanish total population change over time
 
-This sections described total population change in Spain from
-
-``` r
-population_change <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
-population_change
-```
-
-    ## # A tibble: 22 × 6
-    ##    date           total_population foreign_nationals_po…¹ percent_foreign_popu…²
-    ##    <chr>                     <dbl>                  <dbl>                  <dbl>
-    ##  1 1 de enero de…         49596376                7256796                 0.146 
-    ##  2 1 de enero de…         49128297                6911971                 0.141 
-    ##  3 1 de enero de…         48619695                6502282                 0.134 
-    ##  4 1 de enero de…         48085361                6089620                 0.127 
-    ##  5 1 de enero de…         47486727                5509046                 0.116 
-    ##  6 1 de enero de…         47400798                5402702                 0.114 
-    ##  7 1 de enero de…         47318050                5241278                 0.111 
-    ##  8 1 de enero de…         46918951                4850762                 0.103 
-    ##  9 1 de enero de…         46645070                4577322                 0.0981
-    ## 10 1 de enero de…         46497393                4417653                 0.0950
-    ## # ℹ 12 more rows
-    ## # ℹ abbreviated names: ¹​foreign_nationals_population,
-    ## #   ²​percent_foreign_population
-    ## # ℹ 2 more variables: total_population_YoY_perc <dbl>,
-    ## #   foreign_population_YoY_perc <dbl>
+This sections described total population change in Spain from 2005 to
+2025.
 
 ``` r
 library(lubridate)
+
+population_change <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
+
 population_change_date_creation <- population_change %>% 
   mutate(date_day = substr(date,1,1),
          date_month = substr(date,3,13),

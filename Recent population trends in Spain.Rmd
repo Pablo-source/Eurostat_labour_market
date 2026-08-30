@@ -41,43 +41,35 @@ population_data <- read_excel(
                       total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
                        foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
 
-head(population_data)
-names(population_data)
 ```
-
 
 # 2. Spanish total population change over time
 
-This sections described total population change in Spain from 
+This sections described total population change in Spain from 2005 to 2025. 
 
-
-```{r Total population, echo=TRUE, message=FALSE, warning = FALSE}
+```{r Spain total populatin formatting dates, echo=TRUE, message=FALSE, warning=FALSE}
+library(lubridate)
 
 population_change <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
-population_change
 
-```
-```{r}
-library(lubridate)
 population_change_date_creation <- population_change %>% 
-  mutate(date_day = substr(date,1,1),
-         date_month = substr(date,3,13),
-         date_year =  substr(date,15,18))
+  mutate(date_day = substr(date,1,1),date_month = substr(date,3,13),date_year =  substr(date,15,18))
 
 population_change_fmt <-population_change_date_creation %>% 
-mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
-select(date,total_population,foreign_nationals_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
-mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) 
-
-
-population_change_fmt_date <- population_change_fmt %>% 
+  mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
+  select(date,total_population,foreign_nationals_population,percent_foreign_population,
+         total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
+  mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) %>% 
+# population_change_fmt_date <- population_change_fmt %>% 
   mutate(date_fmt = dmy(date_to_fmt)) %>% 
-  select(date_fmt,total_population,foreign_nationals_population,percent_foreign_population,total_population_YoY_perc_change = total_population_YoY_perc,foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
+  select(date_fmt,total_population,foreign_nationals_population,percent_foreign_population,
+         total_population_YoY_perc_change =  total_population_YoY_perc,
+         foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
   arrange(date_fmt)
-population_change_fmt_date
+population_change_fmt
 
-min_date <- min(population_change_fmt_date$date_fmt)
-max_date <- max(population_change_fmt_date$date_fmt)
+min_date <- min(population_change_fmt$date_fmt)
+max_date <- max(population_change_fmt$date_fmt)
 # (gsub("de enero","january", date),1,6)),
 ```
 ## 2.1 Spain total population
