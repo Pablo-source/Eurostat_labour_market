@@ -134,7 +134,7 @@ Plot_total_population_spain
 
 ![](Recent-population-trends-in-Spain_files/figure-gfm/Spain%20total%20population-1.png)<!-- -->
 
-In 2007 Spain total population was 44,784,659 eleven years later, was
+In 2007 Spain total population was 44,784,659. Eleven years later, was
 46,645,070. After Covid19 Pandemic it grew steadely until 2022, when it
 reached 47,486,727
 
