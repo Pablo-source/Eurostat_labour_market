@@ -131,9 +131,15 @@ And in 2026 with the recently released provisional population estimates, the Tot
 `r format_total_population_spain(mydataset = population_change_fmt, my_date = "2026-01-01",column = "total_population")`
 
 
-## 3. Exploratory charts Total, Spanish nationals and foreign population in Spain
+## 3. Total population in Spain by nationality - 2005-2026 period 
 
-From the newly on boarded data, we create a new Year variable from initial date column. As we only want to display Year values.
+This section describes population figures from the Municipal Census in Spain for the 2005-2026 period. Providing a breakdown of Total population by nationality Spanish and foreign nationals. 
+
+- Total population: Is the combined population figure of Spanish nationals and foreign population.
+
+- Foreign population: Resident population figures for people who do not hold Spanish nationality, classified by the National Statistics Institute INE as foreign nationals.
+
+- Spanish nationals population: Resident population figures in spain for Spanish nationals. 
 
 ```{r cleansing_inpported data, echo=TRUE, message=FALSE, warning = FALSE}
 INE_population_subset <- population_data %>%

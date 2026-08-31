@@ -1,12 +1,12 @@
 Recent Spain population trends
 ================
 PLR
-2026-08-30
+2026-08-31
 
 ## Latest date this report was produced
 
-Today’s date is **30 August 2026**. This report was published on the
-week starting on **28 August 2026**.
+Today’s date is **31 August 2026**. This report was published on the
+week starting on **29 August 2026**.
 
 ## 1. Load Spain population data
 
@@ -138,10 +138,10 @@ In 2007 Spain total population was 44,784,659. Eleven years later, in
 2018, it was 46,645,070. After Covid19 Pandemic it grew steadily until
 2022, when it reached 47,486,727
 
-It is noticeable that since 2022, mainly due to net migration from
-foreign countries, Spain total population grew with YoY rates above 1%
-for the following four years. In 2023 Spain total population reached
-48,085,361 One year later, it was 48,619,695
+It is noticeable that since 2022, mainly due to net international
+migration from foreign-born residents, Spain total population grew with
+YoY rates above 1% for the following four years. In 2023 Spain total
+population reached 48,085,361 One year later, it was 48,619,695
 
 The same fast pace of increase has continued in 2025 49,128,297 And in
 2026 with the recently released provisional population estimates, the
