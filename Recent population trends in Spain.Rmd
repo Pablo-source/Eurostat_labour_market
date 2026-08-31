@@ -142,17 +142,17 @@ This section describes population figures from the Municipal Census in Spain for
 - Spanish nationals population: Resident population figures in spain for Spanish nationals. 
 
 ```{r cleansing_inpported data, echo=TRUE, message=FALSE, warning = FALSE}
-INE_population_subset <- population_data %>%
+Spain_population_nationality <- population_data %>%
                          select(date,total_population,foreign_population) %>% 
                          mutate(Year = substring(date, 15, 25)) 
-INE_population_subset
+
 ```
 ```{r creating_first_calculations, echo=TRUE, message=FALSE, warning = FALSE}
-INE_calc_fields <- INE_population_subset %>%                          
+Spain_population_nationality_fmt <- Spain_population_nationality %>%                          
                          select(Year,total_population,foreign_population) %>% 
                          mutate(Spanish_nationals = total_population - foreign_population) %>% 
                          arrange(Year)
-INE_calc_fields
+Spain_population_nationality_fmt
 ```
 
 These charts below describe the evolution of Total, foreign and spanish nationals population for the 2005-2025 period:

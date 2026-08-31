@@ -147,10 +147,21 @@ The same fast pace of increase has continued in 2025 49,128,297 And in
 2026 with the recently released provisional population estimates, the
 Total population in Spain has reached nearly 50 million 49,596,376
 
-## 3. Exploratory charts Total, Spanish nationals and foreign population in Spain
+## 3. Total population in Spain by nationality - 2005-2026 period
 
-From the newly on boarded data, we create a new Year variable from
-initial date column. As we only want to display Year values.
+This section describes population figures from the Municipal Census in
+Spain for the 2005-2026 period. Providing a breakdown of Total
+population by nationality Spanish and foreign nationals.
+
+- Total population: Is the combined population figure of Spanish
+  nationals and foreign population.
+
+- Foreign population: Resident population figures for people who do not
+  hold Spanish nationality, classified by the National Statistics
+  Institute INE as foreign nationals.
+
+- Spanish nationals population: Resident population figures in spain for
+  Spanish nationals.
 
 ``` r
 INE_population_subset <- population_data %>%
