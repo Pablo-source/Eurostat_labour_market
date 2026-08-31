@@ -164,33 +164,17 @@ population by nationality Spanish and foreign nationals.
   Spanish nationals.
 
 ``` r
-INE_population_subset <- population_data %>%
+Spain_population_nationality <- population_data %>%
                          select(date,total_population,foreign_population) %>% 
                          mutate(Year = substring(date, 15, 25)) 
-INE_population_subset
 ```
 
-    ## # A tibble: 22 × 4
-    ##    date               total_population foreign_population Year 
-    ##    <chr>                         <dbl>              <dbl> <chr>
-    ##  1 1 de enero de 2026         49596376            7256796 2026 
-    ##  2 1 de enero de 2025         49128297            6911971 2025 
-    ##  3 1 de enero de 2024         48619695            6502282 2024 
-    ##  4 1 de enero de 2023         48085361            6089620 2023 
-    ##  5 1 de enero de 2022         47486727            5509046 2022 
-    ##  6 1 de enero de 2021         47400798            5402702 2021 
-    ##  7 1 de enero de 2020         47318050            5241278 2020 
-    ##  8 1 de enero de 2019         46918951            4850762 2019 
-    ##  9 1 de enero de 2018         46645070            4577322 2018 
-    ## 10 1 de enero de 2017         46497393            4417653 2017 
-    ## # ℹ 12 more rows
-
 ``` r
-INE_calc_fields <- INE_population_subset %>%                          
+Spain_population_nationality_fmt <- Spain_population_nationality %>%                          
                          select(Year,total_population,foreign_population) %>% 
                          mutate(Spanish_nationals = total_population - foreign_population) %>% 
                          arrange(Year)
-INE_calc_fields
+Spain_population_nationality_fmt
 ```
 
     ## # A tibble: 22 × 4
@@ -216,7 +200,7 @@ nationals population for the 2005-2025 period:
 ``` r
 options(scipen=999)
 
-Spanish_population_plot <- INE_calc_fields %>% 
+Spain_total_population_plot <- Spain_population_nationality_fmt %>% 
                             ggplot(aes(x= Year, y = total_population)) +
   geom_bar(stat = "identity", fill = "darkolivegreen2") +
   labs(title = "Spain total poulation. 2005-2025 period",
@@ -226,7 +210,7 @@ Spanish_population_plot <- INE_calc_fields %>%
   geom_text(aes(label = total_population),size = 2.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,55000000), expand = FALSE )
 
-Spanish_population_plot
+Spain_total_population_plot
 ```
 
 ![](Recent-population-trends-in-Spain_files/figure-gfm/Spain%20total%20population%20bar%20plot-1.png)<!-- -->
@@ -236,7 +220,7 @@ Then this is the foreign population in Spain for the same time period.
 ``` r
 options(scipen=999)
 
-forign_population_plot <- INE_calc_fields %>% 
+forign_population_plot <- Spain_population_nationality_fmt %>% 
                             ggplot(aes(x= Year, y = foreign_population)) +
   geom_bar(stat = "identity", fill = "cornflowerblue") +
   labs(title = "Foreign population in Spain. 2005-2025 period",
@@ -257,7 +241,7 @@ period.
 ``` r
 options(scipen=999)
 
-national_population_plot <- INE_calc_fields %>% 
+national_population_plot <- Spain_population_nationality_fmt %>% 
                             ggplot(aes(x= Year, y = Spanish_nationals)) +
   geom_bar(stat = "identity", fill = "coral") +
   labs(title = "Spanish nationals population in Spain. 2005-2025 period",
