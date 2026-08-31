@@ -87,7 +87,11 @@ format_total_population_spain <- function(mydataset,my_date,column,format = NULL
     return(as.character(prettyNum(value,big.mark = ",")))  
   } else if (column %in% c("percent_foreign_population")){
   return(paste0(round(value,1),"%"))  # to be built
-}
+  } else if (column %in% c("date_fmt")){
+  return(format(value,"%b %Y"))  # Format dates 
+  }
+  
+  
 }
 # format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")
 # format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "percent_foreign_population")
