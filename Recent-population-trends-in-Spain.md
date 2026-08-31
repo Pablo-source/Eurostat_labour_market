@@ -109,7 +109,11 @@ format_total_population_spain <- function(mydataset,my_date,column,format = NULL
     return(as.character(prettyNum(value,big.mark = ",")))  
   } else if (column %in% c("percent_foreign_population")){
   return(paste0(round(value,1),"%"))  # to be built
-}
+  } else if (column %in% c("date_fmt")){
+  return(format(value,"%b %Y"))  # Format dates 
+  }
+  
+  
 }
 # format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")
 # format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "percent_foreign_population")
@@ -134,9 +138,9 @@ Plot_total_population_spain
 
 ![](Recent-population-trends-in-Spain_files/figure-gfm/Spain%20total%20population-1.png)<!-- -->
 
-In 2007 Spain total population was 44,784,659. Eleven years later, in
-2018, it was 46,645,070. After Covid19 Pandemic it grew steadily until
-2022, when it reached 47,486,727
+In Jan 2007. Spain total population was 44,784,659. Eleven years later,
+in Jan 2018 it was 46,645,070. After Covid19 Pandemic it grew steadily
+until 2022, when it reached 47,486,727 on Jan 2022
 
 It is noticeable that since 2022, mainly due to net international
 migration from foreign-born residents, Spain total population grew with
