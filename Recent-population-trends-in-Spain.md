@@ -145,7 +145,8 @@ until 2022, when it reached 47,486,727 on Jan 2022
 It is noticeable that since 2022, mainly due to net international
 migration from foreign-born residents, Spain total population grew with
 YoY rates above 1% for the following four years. In 2023 Spain total
-population reached 48,085,361 One year later, it was 48,619,695
+population reached 48,085,361 One year later, on Jan 2024 it was
+48,619,695
 
 The same fast pace of increase has continued in 2025 49,128,297 And in
 2026 with the recently released provisional population estimates, the
