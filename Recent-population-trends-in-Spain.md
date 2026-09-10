@@ -1,12 +1,12 @@
 Recent Spain population trends
 ================
 PLR
-2026-08-31
+2026-09-10
 
 ## Latest date this report was produced
 
-Today’s date is **31 August 2026**. This report was published on the
-week starting on **29 August 2026**.
+Today’s date is **10 September 2026**. This report was published on the
+week starting on **08 September 2026**.
 
 ## 1. Load Spain population data
 
