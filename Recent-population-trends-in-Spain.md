@@ -48,12 +48,12 @@ This sections described total population change in Spain from 2005 to
 ``` r
 library(lubridate)
 
-population_change <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
+population_data <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
 
-population_change_date_creation <- population_change %>% 
+population_data <- population_data %>% 
   mutate(date_day = substr(date,1,1),date_month = substr(date,3,13),date_year =  substr(date,15,18))
 
-population_change_fmt <-population_change_date_creation %>% 
+population_data_fmt <-population_data %>% 
   mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
   select(date,total_population,foreign_nationals_population,percent_foreign_population,
          total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
@@ -64,7 +64,7 @@ population_change_fmt <-population_change_date_creation %>%
          total_population_YoY_perc_change =  total_population_YoY_perc,
          foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
   arrange(date_fmt)
-population_change_fmt
+population_data_fmt
 ```
 
     ## # A tibble: 22 × 6
@@ -87,8 +87,8 @@ population_change_fmt
     ## #   foreign_population_YoY_perc_change <dbl>
 
 ``` r
-min_date <- min(population_change_fmt$date_fmt)
-max_date <- max(population_change_fmt$date_fmt)
+min_date <- min(population_data_fmt$date_fmt)
+max_date <- max(population_data_fmt$date_fmt)
 # (gsub("de enero","january", date),1,6)),
 ```
 
@@ -120,7 +120,7 @@ format_total_population_spain <- function(mydataset,my_date,column,format = NULL
 ```
 
 ``` r
-Plot_total_population_spain <- population_change_fmt %>% select(date_fmt,total_population) %>% 
+Plot_total_population_spain <- population_data_fmt %>% select(date_fmt,total_population) %>% 
   ggplot(aes(date_fmt,total_population)) +
   geom_line(aes(colour = "sienna3")) +
   geom_point(fill = "sienna3") +
@@ -194,31 +194,31 @@ population by nationality Spanish and foreign nationals.
 
 ``` r
 Spain_population_nationality <- population_data %>%
-                         select(date,total_population,foreign_population) %>% 
+                         select(date,total_population,foreign_nationals_population) %>% 
                          mutate(Year = substring(date, 15, 25)) 
 ```
 
 ``` r
 Spain_population_nationality_fmt <- Spain_population_nationality %>%                          
-                         select(Year,total_population,foreign_population) %>% 
-                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
+                         select(Year,total_population,foreign_nationals_population) %>% 
+                         mutate(Spanish_nationals = total_population - foreign_nationals_population) %>% 
                          arrange(Year)
 Spain_population_nationality_fmt
 ```
 
     ## # A tibble: 22 × 4
-    ##    Year  total_population foreign_population Spanish_nationals
-    ##    <chr>            <dbl>              <dbl>             <dbl>
-    ##  1 2005          43296335            3430204          39866131
-    ##  2 2006          44009969            3930916          40079053
-    ##  3 2007          44784659            4449434          40335225
-    ##  4 2008          45668938            5086295          40582643
-    ##  5 2009          46239271            5386659          40852612
-    ##  6 2010          46486621            5402579          41084042
-    ##  7 2011          46667175            5312440          41354735
-    ##  8 2012          46818216            5236030          41582186
-    ##  9 2013          46712650            5064584          41648066
-    ## 10 2014          46495744            4676352          41819392
+    ##    Year  total_population foreign_nationals_population Spanish_nationals
+    ##    <chr>            <dbl>                        <dbl>             <dbl>
+    ##  1 2005          43296335                      3430204          39866131
+    ##  2 2006          44009969                      3930916          40079053
+    ##  3 2007          44784659                      4449434          40335225
+    ##  4 2008          45668938                      5086295          40582643
+    ##  5 2009          46239271                      5386659          40852612
+    ##  6 2010          46486621                      5402579          41084042
+    ##  7 2011          46667175                      5312440          41354735
+    ##  8 2012          46818216                      5236030          41582186
+    ##  9 2013          46712650                      5064584          41648066
+    ## 10 2014          46495744                      4676352          41819392
     ## # ℹ 12 more rows
 
 These charts below describe the evolution of Total, foreign and spanish
@@ -250,13 +250,13 @@ Then this is the foreign population in Spain for the same time period.
 options(scipen=999)
 
 forign_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= Year, y = foreign_population)) +
+                            ggplot(aes(x= Year, y = foreign_nationals_population)) +
   geom_bar(stat = "identity", fill = "cornflowerblue") +
   labs(title = "Foreign population in Spain. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
   theme_light() +
   theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
-  geom_text(aes(label = foreign_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  geom_text(aes(label = foreign_nationals_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,7500000), expand = FALSE )
 
 forign_population_plot
@@ -299,10 +299,10 @@ and foreign population in Spain from 2004 until 2025 period.
   total population in Spain was **43,296,335**.
 
 - In terms of foreign population, on the following year **2005**.there
-  was a foreign population of **3,430,204**
+  was a foreign population of \*\*\*\*
 
 - At the end of the series on 1st January **2025**, latest foreign
-  population figures in Spain was **6,911,971**. We will describe these
+  population figures in Spain was \*\*\*\*. We will describe these
   population changes in absolute figures and percent change in the next
   section below.
 

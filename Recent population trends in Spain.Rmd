@@ -256,9 +256,9 @@ Min_total_population <- Spain_population_nationality_fmt  %>% select (Year,total
 Min_total_population
 
 # Foreign population figures overview
-foreign_pop_first_year <- Spain_population_nationality_fmt  %>% select (Year,foreign_population) %>% filter(Year == 2005)
+foreign_pop_first_year <- Spain_population_nationality_fmt  %>% select (Year,foreign_nationals_population) %>% filter(Year == 2005)
 
-foreign_pop_last_year <- Spain_population_nationality_fmt  %>% select (Year,foreign_population) %>% filter(Year == 2025)
+foreign_pop_last_year <- Spain_population_nationality_fmt  %>% select (Year,foreign_nationals_population) %>% filter(Year == 2025)
 ```
 
 - As of 1st of January **`r (Max_total_population$Year)`**., the year for the latest available population figures, Total population in Spain was  **`r prettyNum(Max_total_population$total_population, big.mark=",")`**. Up by 458,253 from previous year.
