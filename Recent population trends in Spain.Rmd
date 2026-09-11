@@ -147,6 +147,10 @@ And in 2026 with the recently released provisional population estimates, the Tot
 
 This sub-section describes how Total population in Spain has changed over time in the 2005-2026 period. Describing population change in absolute numbers and percentage change Year on Year increase.
 
+```{r population change, echo=TRUE,message=FALSE, warning =FALSE}
+
+```
+
 
 ## 2.2 Spain total population change by nationality 
 
@@ -170,16 +174,13 @@ This section describes population figures from the Municipal Census in Spain for
 - Spanish nationals population: Resident population figures in spain for Spanish nationals. 
 
 ```{r cleansing_inpported data, echo=TRUE, message=FALSE, warning = FALSE}
-Spain_population_nationality <- population_data %>%
-                         select(date,total_population,foreign_nationals_population) %>% 
-                         mutate(Year = substring(date, 15, 25)) 
-
+Spain_population_nationality <- population_data_fmt %>%
+                         select(date_fmt,total_population,foreign_nationals_population)
 ```
 ```{r creating_first_calculations, echo=TRUE, message=FALSE, warning = FALSE}
 Spain_population_nationality_fmt <- Spain_population_nationality %>%                          
-                         select(Year,total_population,foreign_nationals_population) %>% 
-                         mutate(Spanish_nationals = total_population - foreign_nationals_population) %>% 
-                         arrange(Year)
+                                    select(date_fmt,total_population,foreign_nationals_population) %>% 
+                         arrange(date_fmt)
 Spain_population_nationality_fmt
 ```
 
@@ -190,7 +191,7 @@ These charts below describe the evolution of Total, foreign and spanish national
 options(scipen=999)
 
 Spain_total_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= Year, y = total_population)) +
+                            ggplot(aes(x= date_fmt, y = total_population)) +
   geom_bar(stat = "identity", fill = "darkolivegreen2") +
   labs(title = "Spain total poulation. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
