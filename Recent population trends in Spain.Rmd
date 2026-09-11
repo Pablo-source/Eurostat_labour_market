@@ -8,7 +8,7 @@ output: github_document
 ```{r setup, include=FALSE}
 # Load required libraries
 library(pacman)
-pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table)
+pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table,tidyr)
 # Apply consistent height and width ggplot graph across document
 knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
 ```
@@ -175,14 +175,33 @@ This section describes population figures from the Municipal Census in Spain for
 
 ```{r cleansing_inpported data, echo=TRUE, message=FALSE, warning = FALSE}
 Spain_population_nationality <- population_data_fmt %>%
-                         select(date_fmt,total_population,foreign_nationals_population)
+                         select(date = date_fmt,total_population,foreign_nationals_population)
 ```
 ```{r creating_first_calculations, echo=TRUE, message=FALSE, warning = FALSE}
 Spain_population_nationality_fmt <- Spain_population_nationality %>%                          
-                                    select(date_fmt,total_population,foreign_nationals_population) %>% 
-                         arrange(date_fmt)
+                                    select(date,total_population,foreign_nationals_population) %>% 
+                         arrange(date)
 Spain_population_nationality_fmt
 ```
+
+```{r Spain population by nationality, echo=TRUE, message=FALSE, warning = FALSE}
+
+nationality_stacked <- Spain_population_nationality_fmt %>% 
+  pivot_longer(!date, names_to = "nationality", values_to = "population")
+
+nationality_stacked_plot <- ggplot(nationality_stacked,
+                                   aes(x = date, y = population, fill = nationality)) +
+                                   geom_bar(stat = "identity") +
+                                   scale_fill_brewer() +
+                                   scale_fill_discrete(labels = c("Foreign nationals", "Spanish nationals")) + theme_light() 
+
+nationality_stacked_plot
+#  geom_bar(stat = "identity", fill = "darkolivegreen2") +
+#  labs(title = "Spain total poulation. 2005-2025 period",
+#       substile = "Source: INE Spanish Office for National Statistics") +
+#  theme_light() +
+```
+
 
 These charts below describe the evolution of Total, foreign and spanish nationals population for the 2005-2025 period:
 
@@ -209,7 +228,7 @@ Then this is the foreign population in Spain for the same time period.
 options(scipen=999)
 
 forign_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= Year, y = foreign_nationals_population)) +
+                            ggplot(aes(x= date_fmt, y = foreign_nationals_population)) +
   geom_bar(stat = "identity", fill = "cornflowerblue") +
   labs(title = "Foreign population in Spain. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
@@ -228,7 +247,7 @@ This last plot displays national population in Spain for the 2005-2025 period.
 options(scipen=999)
 
 national_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= Year, y = Spanish_nationals)) +
+                            ggplot(aes(x= date_fmt, y = Spanish_nationals)) +
   geom_bar(stat = "identity", fill = "coral") +
   labs(title = "Spanish nationals population in Spain. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
