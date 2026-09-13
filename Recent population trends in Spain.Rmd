@@ -287,9 +287,6 @@ Min_total_population
 
 - In contrast, on the year **`r (Min_total_population$date)`**, the first year on this series, total population in Spain was **`r prettyNum(Min_total_population$total_population, big.mark=",")`**. 
 
-In terms of foreign population, on the following year **`r (foreign_pop_first_year$date)`**.there was a foreign population of **`r #prettyNum(foreign_pop_first_year$foreign_population, big.mark=",")`** 
-
-
 
 ### 3.1 Share of foreign population over total population in Spain
 
