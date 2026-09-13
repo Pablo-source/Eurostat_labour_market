@@ -165,7 +165,7 @@ Spain_nationlity_gt<- population_data_fmt %>%
 Spain_nationlity_gt
 ```
 
-This dataset below show population change by year
+This data below shows population change by year for total population, spanish nationals and foreign nationals population
 
 ```{r popualtion change by year, echo=TRUE,message=FALSE, warning =FALSE}
 population_change_data<-  population_data_fmt %>%
