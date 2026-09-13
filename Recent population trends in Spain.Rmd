@@ -8,7 +8,7 @@ output: github_document
 ```{r setup, include=FALSE}
 # Load required libraries
 library(pacman)
-pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table,tidyr)
+pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table,tidyr,gt)
 # Apply consistent height and width ggplot graph across document
 knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
 ```
@@ -153,6 +153,18 @@ population_data_fmt <-  population_data_fmt %>%
                          mutate(spanish_nationals_population = total_population - foreign_nationals_population)
 population_data_fmt
 ```
+We can display the above table using GT package
+
+```{r population_by_nationality_gt,echo=TRUE, message=FALSE, warning = FALSE}
+Spain_nationlity_gt<- population_data_fmt %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Spanish population by nationality**"),
+    subtitle = ("2005-2026 period")
+  ) 
+Spain_nationlity_gt
+```
+
 This dataset below show population change by year
 
 ```{r popualtion change by year, echo=TRUE,message=FALSE, warning =FALSE}
@@ -188,12 +200,15 @@ This section describes population figures from the Municipal Census in Spain for
 - Spanish nationals population: Resident population figures in spain for Spanish nationals. 
 
 
-```{r creating_first_calculations, echo=TRUE, message=FALSE, warning = FALSE}
+```{r population_by_natinality, echo=TRUE, message=FALSE, warning = FALSE}
 Spain_population_nationality_fmt <- population_data_fmt %>%                          
                                     select(date,total_population,foreign_nationals_population) %>% 
                          arrange(date)
 Spain_population_nationality_fmt
 ```
+
+
+
 
 ```{r Spain population by nationality, echo=TRUE, message=FALSE, warning = FALSE}
 
