@@ -149,7 +149,7 @@ This sub-section describes how Total population in Spain has changed over time i
 
 ```{r population change, echo=TRUE,message=FALSE, warning =FALSE}
 population_data_fmt <-  population_data_fmt %>%
-                         select(date,total_population,foreign_nationals_population) %>% 
+                         select(date = date_fmt,total_population,foreign_nationals_population) %>% 
                          mutate(spanish_nationals_population = total_population - foreign_nationals_population)
 population_data_fmt
 ```
@@ -176,12 +176,9 @@ This section describes population figures from the Municipal Census in Spain for
 
 - Spanish nationals population: Resident population figures in spain for Spanish nationals. 
 
-```{r cleansing_inpported data, echo=TRUE, message=FALSE, warning = FALSE}
-Spain_population_nationality <- population_data_fmt %>%
-                         select(date = date_fmt,total_population,foreign_nationals_population)
-```
+
 ```{r creating_first_calculations, echo=TRUE, message=FALSE, warning = FALSE}
-Spain_population_nationality_fmt <- Spain_population_nationality %>%                          
+Spain_population_nationality_fmt <- population_data_fmt %>%                          
                                     select(date,total_population,foreign_nationals_population) %>% 
                          arrange(date)
 Spain_population_nationality_fmt
