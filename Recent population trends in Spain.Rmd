@@ -8,7 +8,7 @@ output: github_document
 ```{r setup, include=FALSE}
 # Load required libraries
 library(pacman)
-pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table)
+pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table,tidyr,gt)
 # Apply consistent height and width ggplot graph across document
 knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
 ```
@@ -50,12 +50,12 @@ This sections described total population change in Spain from 2005 to 2025.
 ```{r Spain total populatin formatting dates, echo=TRUE, message=FALSE, warning=FALSE}
 library(lubridate)
 
-population_change <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
+population_data <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
 
-population_change_date_creation <- population_change %>% 
+population_data <- population_data %>% 
   mutate(date_day = substr(date,1,1),date_month = substr(date,3,13),date_year =  substr(date,15,18))
 
-population_change_fmt <-population_change_date_creation %>% 
+population_data_fmt <-population_data %>% 
   mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
   select(date,total_population,foreign_nationals_population,percent_foreign_population,
          total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
@@ -66,10 +66,10 @@ population_change_fmt <-population_change_date_creation %>%
          total_population_YoY_perc_change =  total_population_YoY_perc,
          foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
   arrange(date_fmt)
-population_change_fmt
+population_data_fmt
 
-min_date <- min(population_change_fmt$date_fmt)
-max_date <- max(population_change_fmt$date_fmt)
+min_date <- min(population_data_fmt$date_fmt)
+max_date <- max(population_data_fmt$date_fmt)
 # (gsub("de enero","january", date),1,6)),
 ```
 ## 2.1 Spain total population
@@ -98,7 +98,7 @@ format_total_population_spain <- function(mydataset,my_date,column,format = NULL
 ```
 
 ```{r Spain total population, echo=TRUE,message=FALSE, warning =FALSE}
-Plot_total_population_spain <- population_change_fmt %>% select(date_fmt,total_population) %>% 
+Plot_total_population_spain <- population_data_fmt %>% select(date_fmt,total_population) %>% 
   ggplot(aes(date_fmt,total_population)) +
   geom_line(aes(colour = "sienna3")) +
   geom_point(fill = "sienna3") +
@@ -117,38 +117,68 @@ Plot_total_population_spain
 ```
 
 In 
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "date_fmt")`. 
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2007-01-01",column = "date_fmt")`. 
 Spain total population was 
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")`.
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2007-01-01",column = "total_population")`.
 Eleven years later, in 
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2018-01-01",column = "date_fmt")` 
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2018-01-01",column = "date_fmt")` 
 it was
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2018-01-01",column = "total_population")`.
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2018-01-01",column = "total_population")`.
 After Covid19 Pandemic it grew steadily until 2022, when it reached
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2022-01-01",column = "total_population")`
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2022-01-01",column = "total_population")`
 on 
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2022-01-01",column = "date_fmt")`
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2022-01-01",column = "date_fmt")`
 
 It is noticeable that since 2022, mainly due to net international migration from foreign-born residents, Spain total population grew with YoY rates above 1% for the following four years.
 In 2023 Spain total population reached 
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2023-01-01",column = "total_population")`
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2023-01-01",column = "total_population")`
 One year later, on
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2024-01-01",column = "date_fmt")`
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2024-01-01",column = "date_fmt")`
 it was 
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2024-01-01",column = "total_population")`
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2024-01-01",column = "total_population")`
 
 The same fast pace of increase has continued in 2025
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2025-01-01",column = "total_population")`
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2025-01-01",column = "total_population")`
 And in 2026 with the recently released provisional population estimates, the Total population in Spain has reached nearly 50 million
-`r format_total_population_spain(mydataset = population_change_fmt, my_date = "2026-01-01",column = "total_population")`
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2026-01-01",column = "total_population")`
 
 
-## 2.1 Spain total population change
+## 2.2 Spain total population change 
 
 This sub-section describes how Total population in Spain has changed over time in the 2005-2026 period. Describing population change in absolute numbers and percentage change Year on Year increase.
 
+```{r population change, echo=TRUE,message=FALSE, warning =FALSE}
+population_data_fmt <-  population_data_fmt %>%
+                         select(date = date_fmt,total_population,foreign_nationals_population) %>% 
+                         mutate(spanish_nationals_population = total_population - foreign_nationals_population)
+population_data_fmt
+```
+We can display the above table using GT package
 
-## 2.2 Spain total population change by nationality 
+```{r population_by_nationality_gt,echo=TRUE, message=FALSE, warning = FALSE}
+Spain_nationlity_gt<- population_data_fmt %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Spanish population by nationality**"),
+    subtitle = ("2005-2026 period")
+  ) 
+Spain_nationlity_gt
+```
+
+This data below shows population change by year for total population, spanish nationals and foreign nationals population
+
+```{r popualtion change by year, echo=TRUE,message=FALSE, warning =FALSE}
+population_change_data<-  population_data_fmt %>%
+                          mutate(total_change = total_population - lag(total_population),
+                                 foreig_nationals_change = foreign_nationals_population - lag(foreign_nationals_population),
+                                 spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
+                                 )
+population_change_data
+```
+
+
+
+### 2.2.1 Spain population change by nationality
 
 For each population by nationality in Spain (Spanish nationals and foreign population), this section describes its year on year change in absolute numbers and year on year percentage change. 
 
@@ -169,19 +199,33 @@ This section describes population figures from the Municipal Census in Spain for
 
 - Spanish nationals population: Resident population figures in spain for Spanish nationals. 
 
-```{r cleansing_inpported data, echo=TRUE, message=FALSE, warning = FALSE}
-Spain_population_nationality <- population_data %>%
-                         select(date,total_population,foreign_population) %>% 
-                         mutate(Year = substring(date, 15, 25)) 
 
-```
-```{r creating_first_calculations, echo=TRUE, message=FALSE, warning = FALSE}
-Spain_population_nationality_fmt <- Spain_population_nationality %>%                          
-                         select(Year,total_population,foreign_population) %>% 
-                         mutate(Spanish_nationals = total_population - foreign_population) %>% 
-                         arrange(Year)
+```{r population_by_natinality, echo=TRUE, message=FALSE, warning = FALSE}
+Spain_population_nationality_fmt <- population_data_fmt %>%                          
+                                    select(date,total_population,foreign_nationals_population) %>% 
+                         arrange(date)
 Spain_population_nationality_fmt
 ```
+
+
+
+
+```{r Spain population by nationality, echo=TRUE, message=FALSE, warning = FALSE}
+
+nationality_stacked <- Spain_population_nationality_fmt %>% 
+  pivot_longer(!date, names_to = "nationality", values_to = "population")
+
+nationality_stacked_plot <- ggplot(nationality_stacked,
+                                   aes(x = date, y = population, fill = nationality)) +
+                                   geom_bar(stat = "identity") +
+                              labs(title = "Spain population by natioanlity. 2005-2025",
+                              substile = "Source: INE Spanish Office for National Statistics") +
+                                   scale_fill_brewer() +
+                                   scale_fill_discrete(labels = c("Foreign nationals", "Spanish nationals")) + theme_light() 
+
+nationality_stacked_plot
+```
+
 
 These charts below describe the evolution of Total, foreign and spanish nationals population for the 2005-2025 period:
 
@@ -190,7 +234,7 @@ These charts below describe the evolution of Total, foreign and spanish national
 options(scipen=999)
 
 Spain_total_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= Year, y = total_population)) +
+                            ggplot(aes(x= date, y = total_population)) +
   geom_bar(stat = "identity", fill = "darkolivegreen2") +
   labs(title = "Spain total poulation. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
@@ -208,13 +252,13 @@ Then this is the foreign population in Spain for the same time period.
 options(scipen=999)
 
 forign_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= Year, y = foreign_population)) +
+                            ggplot(aes(x= date, y = foreign_nationals_population)) +
   geom_bar(stat = "identity", fill = "cornflowerblue") +
   labs(title = "Foreign population in Spain. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
   theme_light() +
   theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
-  geom_text(aes(label = foreign_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  geom_text(aes(label = foreign_nationals_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,7500000), expand = FALSE )
 
 forign_population_plot
@@ -226,8 +270,11 @@ This last plot displays national population in Spain for the 2005-2025 period.
 ```{r Spain national population bar plot, echo=TRUE, warning=FALSE,message=FALSE}
 options(scipen=999)
 
-national_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= Year, y = Spanish_nationals)) +
+national_population_data <- Spain_population_nationality_fmt %>% 
+  mutate(Spanish_nationals = total_population - foreign_nationals_population)
+
+national_population_plot <- national_population_data %>% 
+                            ggplot(aes(x= date, y = Spanish_nationals)) +
   geom_bar(stat = "identity", fill = "coral") +
   labs(title = "Spanish nationals population in Spain. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
@@ -248,26 +295,20 @@ In this section we highlight a couple of trends observed in both Total and forei
 ```{r Population figures overview, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
 # Total population figures overview
 
-Max_total_population <- Spain_population_nationality_fmt  %>% select (Year,total_population) %>% filter(Year == max(Spain_population_nationality_fmt$Year))
+Max_total_population <- Spain_population_nationality_fmt  %>% select (date,total_population) %>% filter(date == max(Spain_population_nationality_fmt$date))
 Max_total_population
 
 
-Min_total_population <- Spain_population_nationality_fmt  %>% select (Year,total_population) %>% filter(Year == min(Spain_population_nationality_fmt$Year))
+Min_total_population <- Spain_population_nationality_fmt  %>% select (date,total_population) %>% filter(date == min(Spain_population_nationality_fmt$date))
 Min_total_population
 
-# Foreign population figures overview
-foreign_pop_first_year <- Spain_population_nationality_fmt  %>% select (Year,foreign_population) %>% filter(Year == 2005)
 
-foreign_pop_last_year <- Spain_population_nationality_fmt  %>% select (Year,foreign_population) %>% filter(Year == 2025)
 ```
 
-- As of 1st of January **`r (Max_total_population$Year)`**., the year for the latest available population figures, Total population in Spain was  **`r prettyNum(Max_total_population$total_population, big.mark=",")`**. Up by 458,253 from previous year.
+- As of 1st of January **`r (Max_total_population$date)`**., the year for the latest available population figures, Total population in Spain was  **`r prettyNum(Max_total_population$total_population, big.mark=",")`**. Up by 458,253 from previous year.
 
-- In contrast, on the year **`r (Min_total_population$Year)`**, the first year on this series, total population in Spain was **`r prettyNum(Min_total_population$total_population, big.mark=",")`**. 
+- In contrast, on the year **`r (Min_total_population$date)`**, the first year on this series, total population in Spain was **`r prettyNum(Min_total_population$total_population, big.mark=",")`**. 
 
-- In terms of foreign population, on the following year **`r (foreign_pop_first_year$Year)`**.there was a foreign population of **`r prettyNum(foreign_pop_first_year$foreign_population, big.mark=",")`** 
-
-- At the end of the series on 1st January **`r (foreign_pop_last_year$Year)`**, latest foreign population figures in Spain was **`r prettyNum(foreign_pop_last_year$foreign_population, big.mark=",")`**. We will describe these population changes in absolute figures and percent change in the next section below.
 
 ### 3.1 Share of foreign population over total population in Spain
 
