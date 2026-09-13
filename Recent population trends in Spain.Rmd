@@ -143,12 +143,15 @@ And in 2026 with the recently released provisional population estimates, the Tot
 `r format_total_population_spain(mydataset = population_data_fmt, my_date = "2026-01-01",column = "total_population")`
 
 
-## 2.1 Spain total population change
+## 2.1 Spain total population change by nationality
 
 This sub-section describes how Total population in Spain has changed over time in the 2005-2026 period. Describing population change in absolute numbers and percentage change Year on Year increase.
 
 ```{r population change, echo=TRUE,message=FALSE, warning =FALSE}
-
+population_data_fmt <-  population_data_fmt %>%
+                         select(date,total_population,foreign_nationals_population) %>% 
+                         mutate(spanish_nationals_population = total_population - foreign_nationals_population)
+population_data_fmt
 ```
 
 
