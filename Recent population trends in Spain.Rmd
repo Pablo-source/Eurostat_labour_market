@@ -277,7 +277,7 @@ Max_total_population <- Spain_population_nationality_fmt  %>% select (date,total
 Max_total_population
 
 
-Min_total_population <- Spain_population_nationality_fmt  %>% select (Year,total_population) %>% filter(date == min(Spain_population_nationality_fmt$date))
+Min_total_population <- Spain_population_nationality_fmt  %>% select (date,total_population) %>% filter(date == min(Spain_population_nationality_fmt$date))
 Min_total_population
 
 
