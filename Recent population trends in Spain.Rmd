@@ -143,7 +143,7 @@ And in 2026 with the recently released provisional population estimates, the Tot
 `r format_total_population_spain(mydataset = population_data_fmt, my_date = "2026-01-01",column = "total_population")`
 
 
-## 2.1 Spain total population change by nationality
+## 2.2 Spain total population change 
 
 This sub-section describes how Total population in Spain has changed over time in the 2005-2026 period. Describing population change in absolute numbers and percentage change Year on Year increase.
 
@@ -153,9 +153,20 @@ population_data_fmt <-  population_data_fmt %>%
                          mutate(spanish_nationals_population = total_population - foreign_nationals_population)
 population_data_fmt
 ```
+This dataset below show population change by year
+
+```{r popualtion change by year, echo=TRUE,message=FALSE, warning =FALSE}
+population_change_data<-  population_data_fmt %>%
+                          mutate(total_change = total_population - lag(total_population),
+                                 foreig_nationals_change = foreign_nationals_population - lag(foreign_nationals_population),
+                                 spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
+                                 )
+population_change_data
+```
 
 
-## 2.2 Spain total population change by nationality 
+
+### 2.2.1 Spain population change by nationality
 
 For each population by nationality in Spain (Spanish nationals and foreign population), this section describes its year on year change in absolute numbers and year on year percentage change. 
 
@@ -198,10 +209,6 @@ nationality_stacked_plot <- ggplot(nationality_stacked,
                                    scale_fill_discrete(labels = c("Foreign nationals", "Spanish nationals")) + theme_light() 
 
 nationality_stacked_plot
-#  geom_bar(stat = "identity", fill = "darkolivegreen2") +
-#  labs(title = "Spain total poulation. 2005-2025 period",
-#       substile = "Source: INE Spanish Office for National Statistics") +
-#  theme_light() +
 ```
 
 
