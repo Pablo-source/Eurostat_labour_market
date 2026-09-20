@@ -1,12 +1,12 @@
 Recent Spain population trends
 ================
 PLR
-2026-09-13
+2026-09-20
 
 ## Latest date this report was produced
 
-Today’s date is **13 September 2026**. This report was published on the
-week starting on **11 September 2026**.
+Today’s date is **20 septiembre 2026**. This report was published on the
+week starting on **18 septiembre 2026**.
 
 ## 1. Load Spain population data
 
@@ -138,14 +138,14 @@ Plot_total_population_spain
 
 ![](Recent-population-trends-in-Spain_files/figure-gfm/Spain%20total%20population-1.png)<!-- -->
 
-In Jan 2007. Spain total population was 44,784,659. Eleven years later,
-in Jan 2018 it was 46,645,070. After Covid19 Pandemic it grew steadily
-until 2022, when it reached 47,486,727 on Jan 2022
+In ene. 2007. Spain total population was 44,784,659. Eleven years later,
+in ene. 2018 it was 46,645,070. After Covid19 Pandemic it grew steadily
+until 2022, when it reached 47,486,727 on ene. 2022
 
 It is noticeable that since 2022, mainly due to net international
 migration from foreign-born residents, Spain total population grew with
 YoY rates above 1% for the following four years. In 2023 Spain total
-population reached 48,085,361 One year later, on Jan 2024 it was
+population reached 48,085,361 One year later, on ene. 2024 it was
 48,619,695
 
 The same fast pace of increase has continued in 2025 49,128,297 And in
@@ -194,20 +194,20 @@ Spain_nationlity_gt<- population_data_fmt %>%
 Spain_nationlity_gt
 ```
 
-<div id="owjroxmeyh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#owjroxmeyh table {
+<div id="wbyvwgxsgd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wbyvwgxsgd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#owjroxmeyh thead, #owjroxmeyh tbody, #owjroxmeyh tfoot, #owjroxmeyh tr, #owjroxmeyh td, #owjroxmeyh th {
+&#10;#wbyvwgxsgd thead, #wbyvwgxsgd tbody, #wbyvwgxsgd tfoot, #wbyvwgxsgd tr, #wbyvwgxsgd td, #wbyvwgxsgd th {
   border-style: none;
 }
-&#10;#owjroxmeyh p {
+&#10;#wbyvwgxsgd p {
   margin: 0;
   padding: 0;
 }
-&#10;#owjroxmeyh .gt_table {
+&#10;#wbyvwgxsgd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -232,11 +232,11 @@ Spain_nationlity_gt
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_caption {
+&#10;#wbyvwgxsgd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#owjroxmeyh .gt_title {
+&#10;#wbyvwgxsgd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -247,7 +247,7 @@ Spain_nationlity_gt
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#owjroxmeyh .gt_subtitle {
+&#10;#wbyvwgxsgd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -258,7 +258,7 @@ Spain_nationlity_gt
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#owjroxmeyh .gt_heading {
+&#10;#wbyvwgxsgd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -269,12 +269,12 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_bottom_border {
+&#10;#wbyvwgxsgd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_col_headings {
+&#10;#wbyvwgxsgd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -288,7 +288,7 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_col_heading {
+&#10;#wbyvwgxsgd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -307,7 +307,7 @@ Spain_nationlity_gt
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#owjroxmeyh .gt_column_spanner_outer {
+&#10;#wbyvwgxsgd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -318,13 +318,13 @@ Spain_nationlity_gt
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#owjroxmeyh .gt_column_spanner_outer:first-child {
+&#10;#wbyvwgxsgd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#owjroxmeyh .gt_column_spanner_outer:last-child {
+&#10;#wbyvwgxsgd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#owjroxmeyh .gt_column_spanner {
+&#10;#wbyvwgxsgd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -335,10 +335,10 @@ Spain_nationlity_gt
   display: inline-block;
   width: 100%;
 }
-&#10;#owjroxmeyh .gt_spanner_row {
+&#10;#wbyvwgxsgd .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#owjroxmeyh .gt_group_heading {
+&#10;#wbyvwgxsgd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -363,7 +363,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   text-align: left;
 }
-&#10;#owjroxmeyh .gt_empty_group_heading {
+&#10;#wbyvwgxsgd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -377,13 +377,13 @@ Spain_nationlity_gt
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#owjroxmeyh .gt_from_md > :first-child {
+&#10;#wbyvwgxsgd .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#owjroxmeyh .gt_from_md > :last-child {
+&#10;#wbyvwgxsgd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#owjroxmeyh .gt_row {
+&#10;#wbyvwgxsgd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -401,7 +401,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#owjroxmeyh .gt_stub {
+&#10;#wbyvwgxsgd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -413,7 +413,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#owjroxmeyh .gt_stub_row_group {
+&#10;#wbyvwgxsgd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -426,13 +426,13 @@ Spain_nationlity_gt
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#owjroxmeyh .gt_row_group_first td {
+&#10;#wbyvwgxsgd .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#owjroxmeyh .gt_row_group_first th {
+&#10;#wbyvwgxsgd .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#owjroxmeyh .gt_summary_row {
+&#10;#wbyvwgxsgd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -441,14 +441,14 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#owjroxmeyh .gt_first_summary_row {
+&#10;#wbyvwgxsgd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_first_summary_row.thick {
+&#10;#wbyvwgxsgd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#owjroxmeyh .gt_last_summary_row {
+&#10;#wbyvwgxsgd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -457,7 +457,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_grand_summary_row {
+&#10;#wbyvwgxsgd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -466,7 +466,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#owjroxmeyh .gt_first_grand_summary_row {
+&#10;#wbyvwgxsgd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -475,7 +475,7 @@ Spain_nationlity_gt
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_last_grand_summary_row_top {
+&#10;#wbyvwgxsgd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -484,10 +484,10 @@ Spain_nationlity_gt
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_striped {
+&#10;#wbyvwgxsgd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#owjroxmeyh .gt_table_body {
+&#10;#wbyvwgxsgd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -495,7 +495,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_footnotes {
+&#10;#wbyvwgxsgd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -508,7 +508,7 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_footnote {
+&#10;#wbyvwgxsgd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -516,7 +516,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#owjroxmeyh .gt_sourcenotes {
+&#10;#wbyvwgxsgd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -529,64 +529,64 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#owjroxmeyh .gt_sourcenote {
+&#10;#wbyvwgxsgd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#owjroxmeyh .gt_left {
+&#10;#wbyvwgxsgd .gt_left {
   text-align: left;
 }
-&#10;#owjroxmeyh .gt_center {
+&#10;#wbyvwgxsgd .gt_center {
   text-align: center;
 }
-&#10;#owjroxmeyh .gt_right {
+&#10;#wbyvwgxsgd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#owjroxmeyh .gt_font_normal {
+&#10;#wbyvwgxsgd .gt_font_normal {
   font-weight: normal;
 }
-&#10;#owjroxmeyh .gt_font_bold {
+&#10;#wbyvwgxsgd .gt_font_bold {
   font-weight: bold;
 }
-&#10;#owjroxmeyh .gt_font_italic {
+&#10;#wbyvwgxsgd .gt_font_italic {
   font-style: italic;
 }
-&#10;#owjroxmeyh .gt_super {
+&#10;#wbyvwgxsgd .gt_super {
   font-size: 65%;
 }
-&#10;#owjroxmeyh .gt_footnote_marks {
+&#10;#wbyvwgxsgd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#owjroxmeyh .gt_asterisk {
+&#10;#wbyvwgxsgd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#owjroxmeyh .gt_indent_1 {
+&#10;#wbyvwgxsgd .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#owjroxmeyh .gt_indent_2 {
+&#10;#wbyvwgxsgd .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#owjroxmeyh .gt_indent_3 {
+&#10;#wbyvwgxsgd .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#owjroxmeyh .gt_indent_4 {
+&#10;#wbyvwgxsgd .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#owjroxmeyh .gt_indent_5 {
+&#10;#wbyvwgxsgd .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#owjroxmeyh .katex-display {
+&#10;#wbyvwgxsgd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#owjroxmeyh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#wbyvwgxsgd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
