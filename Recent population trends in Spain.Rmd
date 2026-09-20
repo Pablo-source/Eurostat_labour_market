@@ -157,11 +157,18 @@ We can display the above table using GT package
 
 ```{r population_by_nationality_gt,echo=TRUE, message=FALSE, warning = FALSE}
 Spain_nationlity_gt<- population_data_fmt %>% 
+  select(date, Total = total_population, 
+         'Foreign nationals'= foreign_nationals_population,
+         'Spanish nationalts'= spanish_nationals_population) %>% 
   gt() %>%
   tab_header(
     title = md("**Spanish population by nationality**"),
-    subtitle = ("2005-2026 period")
-  ) 
+    subtitle = ("2005-2026 period") 
+        ) %>%
+    fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Foreign nationals",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Spanish nationalts",decimals = 0) 
+  
 Spain_nationlity_gt
 ```
 
