@@ -179,7 +179,18 @@ population_change_data<-  population_data_fmt %>%
                           mutate(total_change = total_population - lag(total_population),
                                  foreig_nationals_change = foreign_nationals_population - lag(foreign_nationals_population),
                                  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-                                 )
+                                 ) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population change in Spain**"),
+    subtitle = ("2005-2026 period") 
+        ) %>%
+     fmt_number(sep_mark = ",","total_population",decimals = 0) %>% 
+     fmt_number(sep_mark = ",","foreign_nationals_population",decimals = 0) %>% 
+       fmt_number(sep_mark = ",","spanish_nationals_population",decimals = 0) %>% 
+      fmt_number(sep_mark = ",","total_change",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","foreig_nationals_change",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","spanish_national_change",decimals = 0) 
 population_change_data
 ```
 

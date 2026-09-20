@@ -186,28 +186,35 @@ We can display the above table using GT package
 
 ``` r
 Spain_nationlity_gt<- population_data_fmt %>% 
+  select(date, Total = total_population, 
+         'Foreign nationals'= foreign_nationals_population,
+         'Spanish nationalts'= spanish_nationals_population) %>% 
   gt() %>%
   tab_header(
     title = md("**Spanish population by nationality**"),
-    subtitle = ("2005-2026 period")
-  ) 
+    subtitle = ("2005-2026 period") 
+        ) %>%
+    fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Foreign nationals",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Spanish nationalts",decimals = 0) 
+  
 Spain_nationlity_gt
 ```
 
-<div id="wbyvwgxsgd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wbyvwgxsgd table {
+<div id="ysxjidqhrb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ysxjidqhrb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#wbyvwgxsgd thead, #wbyvwgxsgd tbody, #wbyvwgxsgd tfoot, #wbyvwgxsgd tr, #wbyvwgxsgd td, #wbyvwgxsgd th {
+&#10;#ysxjidqhrb thead, #ysxjidqhrb tbody, #ysxjidqhrb tfoot, #ysxjidqhrb tr, #ysxjidqhrb td, #ysxjidqhrb th {
   border-style: none;
 }
-&#10;#wbyvwgxsgd p {
+&#10;#ysxjidqhrb p {
   margin: 0;
   padding: 0;
 }
-&#10;#wbyvwgxsgd .gt_table {
+&#10;#ysxjidqhrb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -232,11 +239,11 @@ Spain_nationlity_gt
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_caption {
+&#10;#ysxjidqhrb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#wbyvwgxsgd .gt_title {
+&#10;#ysxjidqhrb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -247,7 +254,7 @@ Spain_nationlity_gt
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#wbyvwgxsgd .gt_subtitle {
+&#10;#ysxjidqhrb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -258,7 +265,7 @@ Spain_nationlity_gt
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#wbyvwgxsgd .gt_heading {
+&#10;#ysxjidqhrb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -269,12 +276,12 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_bottom_border {
+&#10;#ysxjidqhrb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_col_headings {
+&#10;#ysxjidqhrb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -288,7 +295,7 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_col_heading {
+&#10;#ysxjidqhrb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -307,7 +314,7 @@ Spain_nationlity_gt
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#wbyvwgxsgd .gt_column_spanner_outer {
+&#10;#ysxjidqhrb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -318,13 +325,13 @@ Spain_nationlity_gt
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#wbyvwgxsgd .gt_column_spanner_outer:first-child {
+&#10;#ysxjidqhrb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#wbyvwgxsgd .gt_column_spanner_outer:last-child {
+&#10;#ysxjidqhrb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#wbyvwgxsgd .gt_column_spanner {
+&#10;#ysxjidqhrb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -335,10 +342,10 @@ Spain_nationlity_gt
   display: inline-block;
   width: 100%;
 }
-&#10;#wbyvwgxsgd .gt_spanner_row {
+&#10;#ysxjidqhrb .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#wbyvwgxsgd .gt_group_heading {
+&#10;#ysxjidqhrb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -363,7 +370,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   text-align: left;
 }
-&#10;#wbyvwgxsgd .gt_empty_group_heading {
+&#10;#ysxjidqhrb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -377,13 +384,13 @@ Spain_nationlity_gt
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#wbyvwgxsgd .gt_from_md > :first-child {
+&#10;#ysxjidqhrb .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#wbyvwgxsgd .gt_from_md > :last-child {
+&#10;#ysxjidqhrb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#wbyvwgxsgd .gt_row {
+&#10;#ysxjidqhrb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -401,7 +408,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#wbyvwgxsgd .gt_stub {
+&#10;#ysxjidqhrb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -413,7 +420,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#wbyvwgxsgd .gt_stub_row_group {
+&#10;#ysxjidqhrb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -426,13 +433,13 @@ Spain_nationlity_gt
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#wbyvwgxsgd .gt_row_group_first td {
+&#10;#ysxjidqhrb .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#wbyvwgxsgd .gt_row_group_first th {
+&#10;#ysxjidqhrb .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#wbyvwgxsgd .gt_summary_row {
+&#10;#ysxjidqhrb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -441,14 +448,14 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#wbyvwgxsgd .gt_first_summary_row {
+&#10;#ysxjidqhrb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_first_summary_row.thick {
+&#10;#ysxjidqhrb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#wbyvwgxsgd .gt_last_summary_row {
+&#10;#ysxjidqhrb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -457,7 +464,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_grand_summary_row {
+&#10;#ysxjidqhrb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -466,7 +473,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#wbyvwgxsgd .gt_first_grand_summary_row {
+&#10;#ysxjidqhrb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -475,7 +482,7 @@ Spain_nationlity_gt
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_last_grand_summary_row_top {
+&#10;#ysxjidqhrb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -484,10 +491,10 @@ Spain_nationlity_gt
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_striped {
+&#10;#ysxjidqhrb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#wbyvwgxsgd .gt_table_body {
+&#10;#ysxjidqhrb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -495,7 +502,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_footnotes {
+&#10;#ysxjidqhrb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -508,7 +515,7 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_footnote {
+&#10;#ysxjidqhrb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -516,7 +523,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#wbyvwgxsgd .gt_sourcenotes {
+&#10;#ysxjidqhrb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -529,64 +536,64 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#wbyvwgxsgd .gt_sourcenote {
+&#10;#ysxjidqhrb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#wbyvwgxsgd .gt_left {
+&#10;#ysxjidqhrb .gt_left {
   text-align: left;
 }
-&#10;#wbyvwgxsgd .gt_center {
+&#10;#ysxjidqhrb .gt_center {
   text-align: center;
 }
-&#10;#wbyvwgxsgd .gt_right {
+&#10;#ysxjidqhrb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#wbyvwgxsgd .gt_font_normal {
+&#10;#ysxjidqhrb .gt_font_normal {
   font-weight: normal;
 }
-&#10;#wbyvwgxsgd .gt_font_bold {
+&#10;#ysxjidqhrb .gt_font_bold {
   font-weight: bold;
 }
-&#10;#wbyvwgxsgd .gt_font_italic {
+&#10;#ysxjidqhrb .gt_font_italic {
   font-style: italic;
 }
-&#10;#wbyvwgxsgd .gt_super {
+&#10;#ysxjidqhrb .gt_super {
   font-size: 65%;
 }
-&#10;#wbyvwgxsgd .gt_footnote_marks {
+&#10;#ysxjidqhrb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#wbyvwgxsgd .gt_asterisk {
+&#10;#ysxjidqhrb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#wbyvwgxsgd .gt_indent_1 {
+&#10;#ysxjidqhrb .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#wbyvwgxsgd .gt_indent_2 {
+&#10;#ysxjidqhrb .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#wbyvwgxsgd .gt_indent_3 {
+&#10;#ysxjidqhrb .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#wbyvwgxsgd .gt_indent_4 {
+&#10;#ysxjidqhrb .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#wbyvwgxsgd .gt_indent_5 {
+&#10;#ysxjidqhrb .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#wbyvwgxsgd .katex-display {
+&#10;#ysxjidqhrb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#wbyvwgxsgd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#ysxjidqhrb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -600,100 +607,100 @@ Spain_nationlity_gt
     </tr>
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="date">date</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="total_population">total_population</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="foreign_nationals_population">foreign_nationals_population</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="spanish_nationals_population">spanish_nationals_population</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Total">Total</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Foreign-nationals">Foreign nationals</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Spanish-nationalts">Spanish nationalts</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="date" class="gt_row gt_right">2005-01-01</td>
-<td headers="total_population" class="gt_row gt_right">43296335</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">3430204</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">39866131</td></tr>
+<td headers="Total" class="gt_row gt_right">43,296,335</td>
+<td headers="Foreign nationals" class="gt_row gt_right">3,430,204</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">39,866,131</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2006-01-01</td>
-<td headers="total_population" class="gt_row gt_right">44009969</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">3930916</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">40079053</td></tr>
+<td headers="Total" class="gt_row gt_right">44,009,969</td>
+<td headers="Foreign nationals" class="gt_row gt_right">3,930,916</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40,079,053</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2007-01-01</td>
-<td headers="total_population" class="gt_row gt_right">44784659</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">4449434</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">40335225</td></tr>
+<td headers="Total" class="gt_row gt_right">44,784,659</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4,449,434</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40,335,225</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2008-01-01</td>
-<td headers="total_population" class="gt_row gt_right">45668938</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5086295</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">40582643</td></tr>
+<td headers="Total" class="gt_row gt_right">45,668,938</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,086,295</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40,582,643</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2009-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46239271</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5386659</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">40852612</td></tr>
+<td headers="Total" class="gt_row gt_right">46,239,271</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,386,659</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40,852,612</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2010-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46486621</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5402579</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41084042</td></tr>
+<td headers="Total" class="gt_row gt_right">46,486,621</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,402,579</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,084,042</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2011-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46667175</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5312440</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41354735</td></tr>
+<td headers="Total" class="gt_row gt_right">46,667,175</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,312,440</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,354,735</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2012-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46818216</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5236030</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41582186</td></tr>
+<td headers="Total" class="gt_row gt_right">46,818,216</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,236,030</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,582,186</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2013-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46712650</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5064584</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41648066</td></tr>
+<td headers="Total" class="gt_row gt_right">46,712,650</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,064,584</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,648,066</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2014-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46495744</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">4676352</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41819392</td></tr>
+<td headers="Total" class="gt_row gt_right">46,495,744</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4,676,352</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,819,392</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2015-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46425722</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">4453985</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41971737</td></tr>
+<td headers="Total" class="gt_row gt_right">46,425,722</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4,453,985</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,971,737</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2016-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46418884</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">4419334</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41999550</td></tr>
+<td headers="Total" class="gt_row gt_right">46,418,884</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4,419,334</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,999,550</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2017-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46497393</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">4417653</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">42079740</td></tr>
+<td headers="Total" class="gt_row gt_right">46,497,393</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4,417,653</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42,079,740</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2018-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46645070</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">4577322</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">42067748</td></tr>
+<td headers="Total" class="gt_row gt_right">46,645,070</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4,577,322</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42,067,748</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2019-01-01</td>
-<td headers="total_population" class="gt_row gt_right">46918951</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">4850762</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">42068189</td></tr>
+<td headers="Total" class="gt_row gt_right">46,918,951</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4,850,762</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42,068,189</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2020-01-01</td>
-<td headers="total_population" class="gt_row gt_right">47318050</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5241278</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">42076772</td></tr>
+<td headers="Total" class="gt_row gt_right">47,318,050</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,241,278</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42,076,772</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2021-01-01</td>
-<td headers="total_population" class="gt_row gt_right">47400798</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5402702</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41998096</td></tr>
+<td headers="Total" class="gt_row gt_right">47,400,798</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,402,702</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,998,096</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2022-01-01</td>
-<td headers="total_population" class="gt_row gt_right">47486727</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">5509046</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41977681</td></tr>
+<td headers="Total" class="gt_row gt_right">47,486,727</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5,509,046</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,977,681</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2023-01-01</td>
-<td headers="total_population" class="gt_row gt_right">48085361</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">6089620</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">41995741</td></tr>
+<td headers="Total" class="gt_row gt_right">48,085,361</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6,089,620</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41,995,741</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2024-01-01</td>
-<td headers="total_population" class="gt_row gt_right">48619695</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">6502282</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">42117413</td></tr>
+<td headers="Total" class="gt_row gt_right">48,619,695</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6,502,282</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42,117,413</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2025-01-01</td>
-<td headers="total_population" class="gt_row gt_right">49128297</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">6911971</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">42216326</td></tr>
+<td headers="Total" class="gt_row gt_right">49,128,297</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6,911,971</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42,216,326</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2026-01-01</td>
-<td headers="total_population" class="gt_row gt_right">49596376</td>
-<td headers="foreign_nationals_population" class="gt_row gt_right">7256796</td>
-<td headers="spanish_nationals_population" class="gt_row gt_right">42339580</td></tr>
+<td headers="Total" class="gt_row gt_right">49,596,376</td>
+<td headers="Foreign nationals" class="gt_row gt_right">7,256,796</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42,339,580</td></tr>
   </tbody>
   &#10;</table>
 </div>
