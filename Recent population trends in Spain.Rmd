@@ -182,7 +182,7 @@ population_change_data<-  population_data_fmt %>%
                                  ) %>% 
     gt() %>%
   tab_header(
-    title = md("**Population change in Spain**"),
+    title = md("**Population change in Spain by nationality**"),
     subtitle = ("2005-2026 period") 
         ) %>%
      fmt_number(sep_mark = ",","total_population",decimals = 0) %>% 
