@@ -178,7 +178,7 @@ This data below shows population change by year for total population, spanish na
 population_change_data<-  population_data_fmt %>%
                           mutate(
                   total_change = total_population - lag(total_population),
-                  foreig_nationals_change = foreign_nationals_population - lag(foreign_nationals_population),
+                  foreign_nationals_change = foreign_nationals_population - lag(foreign_nationals_population),
                   spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
                                  ) %>% 
     select(date, 
@@ -186,7 +186,7 @@ population_change_data<-  population_data_fmt %>%
            'Foreign nationals'= foreign_nationals_population,
            'Spanish nationalts'= spanish_nationals_population,
            'Total change' = total_change,
-           'Foreign nationals change' = foreig_nationals_change,
+           'Foreign nationals change' = foreign_nationals_change,
            'Spanish nationals change' = spanish_national_change
            
            ) %>% 
@@ -199,12 +199,31 @@ population_change_data<-  population_data_fmt %>%
      fmt_number(sep_mark = ",","Foreign nationals",decimals = 0) %>% 
        fmt_number(sep_mark = ",","Spanish nationalts",decimals = 0) %>% 
       fmt_number(sep_mark = ",","Total change",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","foreig_nationals_change",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","spanish_national_change",decimals = 0) 
+    fmt_number(sep_mark = ",","Foreign nationals change",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Spanish nationals change",decimals = 0) 
 population_change_data
 ```
 
-
+```{r popualtion change detail, echo=TRUE,message=FALSE, warning =FALSE}
+population_change_data_table<-  population_change_data %>%
+    select(date, 
+           Total = total_population, 
+           'Total change' = total_change,
+           'Foreign nationals change' = foreign_nationals_change,
+           'Spanish nationals change' = spanish_national_change
+           
+           ) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population change in Spain by nationality**"),
+    subtitle = ("2005-2026 period") 
+        ) %>%
+     fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
+      fmt_number(sep_mark = ",","Total change",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Foreign nationals change",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Spanish nationals change",decimals = 0) 
+population_change_data_table
+```
 
 ### 2.2.1 Spain population change by nationality
 
