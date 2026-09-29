@@ -231,10 +231,10 @@ fmt_number(sep_mark = ",","YoY change",decimals = 0) %>%
 fmt_number(sep_mark = ",","Foreign nationals YoY change",decimals = 0) %>% 
 fmt_number(sep_mark = ",","Spanish nationals YoY change",decimals = 0) %>% 
 fmt_percent("Foreign nationals YoY percentage change",decimals =1,force_sign = TRUE) %>% 
-fmt_percent("Spanish nationals YoY percentage change",decimals =1,force_sign = TRUE) 
-
-
-
+fmt_percent("Spanish nationals YoY percentage change",decimals =1,force_sign = TRUE) %>% 
+  cols_width(
+    date ~ px(100)              # Set specific width for 'item' column in pixels
+  )
 population_change_data_table
 ```
 
