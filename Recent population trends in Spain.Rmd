@@ -200,7 +200,8 @@ population_change_data<-  population_data_fmt %>%
        fmt_number(sep_mark = ",","Spanish nationalts",decimals = 0) %>% 
       fmt_number(sep_mark = ",","Total change",decimals = 0) %>% 
     fmt_number(sep_mark = ",","Foreign nationals change",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","Spanish nationals change",decimals = 0) 
+    fmt_number(sep_mark = ",","Spanish nationals change",decimals = 0) %>% 
+  cols_width(date ~ px(100))
 population_change_data
 ```
 
