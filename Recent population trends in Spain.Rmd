@@ -210,13 +210,17 @@ population_change_data_table<-  population_data_fmt %>%
                   total_change = total_population - lag(total_population),
                   foreign_nationals_change = foreign_nationals_population - lag(foreign_nationals_population),
                   spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-                                 ) %>% 
+                  foreign_nationals_perc_change = (foreign_nationals_population - lag(foreign_nationals_population)/
+                                                     lag(foreign_nationals_population)),
+                  spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population)/
+                    lag(spanish_nationals_population))) %>% 
     select(date, 
            Total = total_population, 
            'YoY change' = total_change,
            'Foreign nationals YoY change' = foreign_nationals_change,
-           'Spanish nationals YoY change' = spanish_national_change
-           
+           'Spanish nationals YoY change' = spanish_national_change,
+           'Foreign nationals YoY percentage change' = foreign_nationals_perc_change,
+           'Spanish nationals YoY percentage change' = spanish_national_perc_change
            ) %>% 
     gt() %>%
   tab_header(
@@ -226,7 +230,12 @@ population_change_data_table<-  population_data_fmt %>%
      fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
       fmt_number(sep_mark = ",","YoY change",decimals = 0) %>% 
     fmt_number(sep_mark = ",","Foreign nationals YoY change",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","Spanish nationals YoY change",decimals = 0) 
+    fmt_number(sep_mark = ",","Spanish nationals YoY change",decimals = 0) %>% 
+    fmt_percent("Foreign nationals YoY percentage change") %>% 
+    fmt_percent("Spanish nationals YoY percentage change",decimals = 0) 
+
+
+
 population_change_data_table
 ```
 
