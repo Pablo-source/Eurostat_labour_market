@@ -207,13 +207,12 @@ population_change_data
 ```{r popualtion change detail, echo=TRUE,message=FALSE, warning =FALSE}
 population_change_data_table<-  population_data_fmt %>%
                           mutate(
-                  total_change = total_population - lag(total_population),
-                  foreign_nationals_change = foreign_nationals_population - lag(foreign_nationals_population),
-                  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-                  foreign_nationals_perc_change = (foreign_nationals_population - lag(foreign_nationals_population)/
-                                                     lag(foreign_nationals_population)),
-                  spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population)/
-                    lag(spanish_nationals_population))) %>% 
+  total_change = total_population - lag(total_population),
+  foreign_nationals_change = foreign_nationals_population -lag(foreign_nationals_population),
+  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
+  foreign_nationals_perc_change = (foreign_nationals_population - lag(foreign_nationals_population))/lag(foreign_nationals_population),
+  spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population))/lag(spanish_nationals_population)
+  ) %>% 
     select(date, 
            Total = total_population, 
            'YoY change' = total_change,
@@ -231,7 +230,7 @@ population_change_data_table<-  population_data_fmt %>%
       fmt_number(sep_mark = ",","YoY change",decimals = 0) %>% 
     fmt_number(sep_mark = ",","Foreign nationals YoY change",decimals = 0) %>% 
     fmt_number(sep_mark = ",","Spanish nationals YoY change",decimals = 0) %>% 
-    fmt_percent("Foreign nationals YoY percentage change") %>% 
+    fmt_percent("Foreign nationals YoY percentage change",decimals =1) %>% 
     fmt_percent("Spanish nationals YoY percentage change",decimals = 0) 
 
 
