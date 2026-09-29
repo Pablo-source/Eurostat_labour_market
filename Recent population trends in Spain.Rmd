@@ -225,8 +225,8 @@ population_change_data_table<-  population_data_fmt %>%
         ) %>%
      fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
       fmt_number(sep_mark = ",","YoY change",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","Foreign nationals change",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","Spanish nationals change",decimals = 0) 
+    fmt_number(sep_mark = ",","Foreign nationals YoY change",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Spanish nationals YoY change",decimals = 0) 
 population_change_data_table
 ```
 
