@@ -213,9 +213,9 @@ population_change_data_table<-  population_data_fmt %>%
                                  ) %>% 
     select(date, 
            Total = total_population, 
-           'Total change' = total_change,
-           'Foreign nationals change' = foreign_nationals_change,
-           'Spanish nationals change' = spanish_national_change
+           'YoY change' = total_change,
+           'Foreign nationals YoY change' = foreign_nationals_change,
+           'Spanish nationals YoY change' = spanish_national_change
            
            ) %>% 
     gt() %>%
