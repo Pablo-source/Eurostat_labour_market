@@ -43,7 +43,7 @@ population_data <- read_excel(
 
 ```
 
-# 2. Spanish total population change over time
+# 2. Spanish total population by nationality 
 
 This sections described total population change in Spain from 2005 to 2025. 
 
