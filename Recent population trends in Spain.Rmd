@@ -18,9 +18,9 @@ knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
 Today's date is **`r format(today(),"%d %B %Y")`**. This report was published on the week starting on  **`r format(today()-2,"%d %B %Y")`**. 
 
 
-## 1. Load Spain population data
+## Obtaining Spain population data from official sources
 
-We load latest Spanish Population Figures released by the Spanish National Institute: <https://www.ine.es/consul/serie.do?d=true&s=ECP320>
+The Spanish National Institute, publishes Spain annual population figures, referred to 1st of January for each year: <https://www.ine.es/consul/serie.do?d=true&s=ECP320>
 
 In the third tab from Excel file **"INE total and foreign population figures Spain.xlsx"** we load the table describing Total, foreign and nationals population figures in Spain, based on Spanish nationality for the 2004 2025 period.
 
