@@ -361,7 +361,7 @@ This last plot displays national population in Spain for the 2005-2025 period.
 options(scipen=999)
 
 national_population_data <- Spain_population_nationality_fmt %>% 
-  mutate(Spanish_nationals = total_population - foreign_nationals_population)
+  mutate(Spanish_nationals = total_population - foreign_population)
 
 national_population_plot <- national_population_data %>% 
                             ggplot(aes(x= date, y = Spanish_nationals)) +
