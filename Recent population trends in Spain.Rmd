@@ -75,15 +75,18 @@ population_data_fmt <-population_data %>%
   mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
   select(date,total_population,foreign_nationals_population,percent_foreign_population,
          total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
-  mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) %>% 
-# population_change_fmt_date <- population_change_fmt %>% 
+  mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) 
+population_data_fmt 
+
+population_change_fmt_date <- population_data_fmt %>% 
   mutate(date_fmt = dmy(date_to_fmt)) %>% 
   select(date_fmt,total_population,foreign_nationals_population,percent_foreign_population,
          total_population_YoY_perc_change =  total_population_YoY_perc,
          foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
   arrange(date_fmt)
 
-Plot_total_population_spain <- population_data_fmt %>% select(date_fmt,total_population) %>% 
+
+Plot_total_population_spain <- population_change_fmt_date %>% select(date_fmt,total_population) %>% 
   ggplot(aes(date_fmt,total_population)) +
   geom_line(aes(colour = "sienna3")) +
   geom_point(fill = "sienna3") +
