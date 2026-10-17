@@ -342,13 +342,13 @@ Then this is the foreign population in Spain for the same time period.
 options(scipen=999)
 
 forign_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= date, y = foreign_nationals_population)) +
+                            ggplot(aes(x= date, y = foreign_population)) +
   geom_bar(stat = "identity", fill = "cornflowerblue") +
   labs(title = "Foreign population in Spain. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
   theme_light() +
   theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
-  geom_text(aes(label = foreign_nationals_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  geom_text(aes(label = foreign_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,7500000), expand = FALSE )
 
 forign_population_plot
