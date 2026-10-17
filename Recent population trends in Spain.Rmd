@@ -243,6 +243,8 @@ population_change_data_table<-  population_data_fmt %>%
   ) %>% 
     select(date, 
            Total = total_population, 
+                    'Foreign nationals'= foreign_population,
+           'Spanish nationalts'= spanish_nationals_population,
            'YoY change' = total_change,
            'Foreign nationals YoY change' = foreign_nationals_change,
            'Spanish nationals YoY change' = spanish_national_change,
