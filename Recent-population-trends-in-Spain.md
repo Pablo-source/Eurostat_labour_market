@@ -225,20 +225,20 @@ Spain_nationlity_gt<- population_data_fmt %>%
 Spain_nationlity_gt
 ```
 
-<div id="zujtdnkdfb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zujtdnkdfb table {
+<div id="xkozcphpdg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xkozcphpdg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#zujtdnkdfb thead, #zujtdnkdfb tbody, #zujtdnkdfb tfoot, #zujtdnkdfb tr, #zujtdnkdfb td, #zujtdnkdfb th {
+&#10;#xkozcphpdg thead, #xkozcphpdg tbody, #xkozcphpdg tfoot, #xkozcphpdg tr, #xkozcphpdg td, #xkozcphpdg th {
   border-style: none;
 }
-&#10;#zujtdnkdfb p {
+&#10;#xkozcphpdg p {
   margin: 0;
   padding: 0;
 }
-&#10;#zujtdnkdfb .gt_table {
+&#10;#xkozcphpdg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -263,11 +263,11 @@ Spain_nationlity_gt
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_caption {
+&#10;#xkozcphpdg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#zujtdnkdfb .gt_title {
+&#10;#xkozcphpdg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -278,7 +278,7 @@ Spain_nationlity_gt
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#zujtdnkdfb .gt_subtitle {
+&#10;#xkozcphpdg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -289,7 +289,7 @@ Spain_nationlity_gt
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#zujtdnkdfb .gt_heading {
+&#10;#xkozcphpdg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -300,12 +300,12 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_bottom_border {
+&#10;#xkozcphpdg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_col_headings {
+&#10;#xkozcphpdg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -319,7 +319,7 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_col_heading {
+&#10;#xkozcphpdg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -338,7 +338,7 @@ Spain_nationlity_gt
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#zujtdnkdfb .gt_column_spanner_outer {
+&#10;#xkozcphpdg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -349,13 +349,13 @@ Spain_nationlity_gt
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#zujtdnkdfb .gt_column_spanner_outer:first-child {
+&#10;#xkozcphpdg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#zujtdnkdfb .gt_column_spanner_outer:last-child {
+&#10;#xkozcphpdg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#zujtdnkdfb .gt_column_spanner {
+&#10;#xkozcphpdg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -366,10 +366,10 @@ Spain_nationlity_gt
   display: inline-block;
   width: 100%;
 }
-&#10;#zujtdnkdfb .gt_spanner_row {
+&#10;#xkozcphpdg .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#zujtdnkdfb .gt_group_heading {
+&#10;#xkozcphpdg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -394,7 +394,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   text-align: left;
 }
-&#10;#zujtdnkdfb .gt_empty_group_heading {
+&#10;#xkozcphpdg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -408,13 +408,13 @@ Spain_nationlity_gt
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#zujtdnkdfb .gt_from_md > :first-child {
+&#10;#xkozcphpdg .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#zujtdnkdfb .gt_from_md > :last-child {
+&#10;#xkozcphpdg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#zujtdnkdfb .gt_row {
+&#10;#xkozcphpdg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -432,7 +432,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#zujtdnkdfb .gt_stub {
+&#10;#xkozcphpdg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -444,7 +444,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#zujtdnkdfb .gt_stub_row_group {
+&#10;#xkozcphpdg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -457,13 +457,13 @@ Spain_nationlity_gt
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#zujtdnkdfb .gt_row_group_first td {
+&#10;#xkozcphpdg .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#zujtdnkdfb .gt_row_group_first th {
+&#10;#xkozcphpdg .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#zujtdnkdfb .gt_summary_row {
+&#10;#xkozcphpdg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -472,14 +472,14 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#zujtdnkdfb .gt_first_summary_row {
+&#10;#xkozcphpdg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_first_summary_row.thick {
+&#10;#xkozcphpdg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#zujtdnkdfb .gt_last_summary_row {
+&#10;#xkozcphpdg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -488,7 +488,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_grand_summary_row {
+&#10;#xkozcphpdg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -497,7 +497,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#zujtdnkdfb .gt_first_grand_summary_row {
+&#10;#xkozcphpdg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -506,7 +506,7 @@ Spain_nationlity_gt
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_last_grand_summary_row_top {
+&#10;#xkozcphpdg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -515,10 +515,10 @@ Spain_nationlity_gt
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_striped {
+&#10;#xkozcphpdg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#zujtdnkdfb .gt_table_body {
+&#10;#xkozcphpdg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -526,7 +526,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_footnotes {
+&#10;#xkozcphpdg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -539,7 +539,7 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_footnote {
+&#10;#xkozcphpdg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -547,7 +547,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#zujtdnkdfb .gt_sourcenotes {
+&#10;#xkozcphpdg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -560,64 +560,64 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#zujtdnkdfb .gt_sourcenote {
+&#10;#xkozcphpdg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#zujtdnkdfb .gt_left {
+&#10;#xkozcphpdg .gt_left {
   text-align: left;
 }
-&#10;#zujtdnkdfb .gt_center {
+&#10;#xkozcphpdg .gt_center {
   text-align: center;
 }
-&#10;#zujtdnkdfb .gt_right {
+&#10;#xkozcphpdg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#zujtdnkdfb .gt_font_normal {
+&#10;#xkozcphpdg .gt_font_normal {
   font-weight: normal;
 }
-&#10;#zujtdnkdfb .gt_font_bold {
+&#10;#xkozcphpdg .gt_font_bold {
   font-weight: bold;
 }
-&#10;#zujtdnkdfb .gt_font_italic {
+&#10;#xkozcphpdg .gt_font_italic {
   font-style: italic;
 }
-&#10;#zujtdnkdfb .gt_super {
+&#10;#xkozcphpdg .gt_super {
   font-size: 65%;
 }
-&#10;#zujtdnkdfb .gt_footnote_marks {
+&#10;#xkozcphpdg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#zujtdnkdfb .gt_asterisk {
+&#10;#xkozcphpdg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#zujtdnkdfb .gt_indent_1 {
+&#10;#xkozcphpdg .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#zujtdnkdfb .gt_indent_2 {
+&#10;#xkozcphpdg .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#zujtdnkdfb .gt_indent_3 {
+&#10;#xkozcphpdg .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#zujtdnkdfb .gt_indent_4 {
+&#10;#xkozcphpdg .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#zujtdnkdfb .gt_indent_5 {
+&#10;#xkozcphpdg .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#zujtdnkdfb .katex-display {
+&#10;#xkozcphpdg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#zujtdnkdfb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#xkozcphpdg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -791,20 +791,20 @@ population_change_data<-  population_data_fmt %>%
 population_change_data
 ```
 
-<div id="vszqkqxfqq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vszqkqxfqq table {
+<div id="wmjvbalhuf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wmjvbalhuf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#vszqkqxfqq thead, #vszqkqxfqq tbody, #vszqkqxfqq tfoot, #vszqkqxfqq tr, #vszqkqxfqq td, #vszqkqxfqq th {
+&#10;#wmjvbalhuf thead, #wmjvbalhuf tbody, #wmjvbalhuf tfoot, #wmjvbalhuf tr, #wmjvbalhuf td, #wmjvbalhuf th {
   border-style: none;
 }
-&#10;#vszqkqxfqq p {
+&#10;#wmjvbalhuf p {
   margin: 0;
   padding: 0;
 }
-&#10;#vszqkqxfqq .gt_table {
+&#10;#wmjvbalhuf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -829,11 +829,11 @@ population_change_data
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_caption {
+&#10;#wmjvbalhuf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#vszqkqxfqq .gt_title {
+&#10;#wmjvbalhuf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -844,7 +844,7 @@ population_change_data
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#vszqkqxfqq .gt_subtitle {
+&#10;#wmjvbalhuf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -855,7 +855,7 @@ population_change_data
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#vszqkqxfqq .gt_heading {
+&#10;#wmjvbalhuf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -866,12 +866,12 @@ population_change_data
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_bottom_border {
+&#10;#wmjvbalhuf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_col_headings {
+&#10;#wmjvbalhuf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -885,7 +885,7 @@ population_change_data
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_col_heading {
+&#10;#wmjvbalhuf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -904,7 +904,7 @@ population_change_data
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#vszqkqxfqq .gt_column_spanner_outer {
+&#10;#wmjvbalhuf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -915,13 +915,13 @@ population_change_data
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#vszqkqxfqq .gt_column_spanner_outer:first-child {
+&#10;#wmjvbalhuf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#vszqkqxfqq .gt_column_spanner_outer:last-child {
+&#10;#wmjvbalhuf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#vszqkqxfqq .gt_column_spanner {
+&#10;#wmjvbalhuf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -932,10 +932,10 @@ population_change_data
   display: inline-block;
   width: 100%;
 }
-&#10;#vszqkqxfqq .gt_spanner_row {
+&#10;#wmjvbalhuf .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#vszqkqxfqq .gt_group_heading {
+&#10;#wmjvbalhuf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -960,7 +960,7 @@ population_change_data
   vertical-align: middle;
   text-align: left;
 }
-&#10;#vszqkqxfqq .gt_empty_group_heading {
+&#10;#wmjvbalhuf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -974,13 +974,13 @@ population_change_data
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#vszqkqxfqq .gt_from_md > :first-child {
+&#10;#wmjvbalhuf .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#vszqkqxfqq .gt_from_md > :last-child {
+&#10;#wmjvbalhuf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#vszqkqxfqq .gt_row {
+&#10;#wmjvbalhuf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -998,7 +998,7 @@ population_change_data
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#vszqkqxfqq .gt_stub {
+&#10;#wmjvbalhuf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1010,7 +1010,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vszqkqxfqq .gt_stub_row_group {
+&#10;#wmjvbalhuf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1023,13 +1023,13 @@ population_change_data
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#vszqkqxfqq .gt_row_group_first td {
+&#10;#wmjvbalhuf .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#vszqkqxfqq .gt_row_group_first th {
+&#10;#wmjvbalhuf .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#vszqkqxfqq .gt_summary_row {
+&#10;#wmjvbalhuf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1038,14 +1038,14 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vszqkqxfqq .gt_first_summary_row {
+&#10;#wmjvbalhuf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_first_summary_row.thick {
+&#10;#wmjvbalhuf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#vszqkqxfqq .gt_last_summary_row {
+&#10;#wmjvbalhuf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1054,7 +1054,7 @@ population_change_data
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_grand_summary_row {
+&#10;#wmjvbalhuf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1063,7 +1063,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vszqkqxfqq .gt_first_grand_summary_row {
+&#10;#wmjvbalhuf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1072,7 +1072,7 @@ population_change_data
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_last_grand_summary_row_top {
+&#10;#wmjvbalhuf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1081,10 +1081,10 @@ population_change_data
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_striped {
+&#10;#wmjvbalhuf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#vszqkqxfqq .gt_table_body {
+&#10;#wmjvbalhuf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1092,7 +1092,7 @@ population_change_data
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_footnotes {
+&#10;#wmjvbalhuf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1105,7 +1105,7 @@ population_change_data
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_footnote {
+&#10;#wmjvbalhuf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1113,7 +1113,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vszqkqxfqq .gt_sourcenotes {
+&#10;#wmjvbalhuf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1126,64 +1126,64 @@ population_change_data
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#vszqkqxfqq .gt_sourcenote {
+&#10;#wmjvbalhuf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#vszqkqxfqq .gt_left {
+&#10;#wmjvbalhuf .gt_left {
   text-align: left;
 }
-&#10;#vszqkqxfqq .gt_center {
+&#10;#wmjvbalhuf .gt_center {
   text-align: center;
 }
-&#10;#vszqkqxfqq .gt_right {
+&#10;#wmjvbalhuf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#vszqkqxfqq .gt_font_normal {
+&#10;#wmjvbalhuf .gt_font_normal {
   font-weight: normal;
 }
-&#10;#vszqkqxfqq .gt_font_bold {
+&#10;#wmjvbalhuf .gt_font_bold {
   font-weight: bold;
 }
-&#10;#vszqkqxfqq .gt_font_italic {
+&#10;#wmjvbalhuf .gt_font_italic {
   font-style: italic;
 }
-&#10;#vszqkqxfqq .gt_super {
+&#10;#wmjvbalhuf .gt_super {
   font-size: 65%;
 }
-&#10;#vszqkqxfqq .gt_footnote_marks {
+&#10;#wmjvbalhuf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#vszqkqxfqq .gt_asterisk {
+&#10;#wmjvbalhuf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#vszqkqxfqq .gt_indent_1 {
+&#10;#wmjvbalhuf .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#vszqkqxfqq .gt_indent_2 {
+&#10;#wmjvbalhuf .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#vszqkqxfqq .gt_indent_3 {
+&#10;#wmjvbalhuf .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#vszqkqxfqq .gt_indent_4 {
+&#10;#wmjvbalhuf .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#vszqkqxfqq .gt_indent_5 {
+&#10;#wmjvbalhuf .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#vszqkqxfqq .katex-display {
+&#10;#wmjvbalhuf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#vszqkqxfqq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#wmjvbalhuf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1384,6 +1384,8 @@ population_change_data_table<-  population_data_fmt %>%
   ) %>% 
     select(date, 
            Total = total_population, 
+                    'Foreign nationals'= foreign_population,
+           'Spanish nationalts'= spanish_nationals_population,
            'YoY change' = total_change,
            'Foreign nationals YoY change' = foreign_nationals_change,
            'Spanish nationals YoY change' = spanish_national_change,
@@ -1407,20 +1409,20 @@ fmt_percent("Spanish nationals YoY percentage change",decimals =1,force_sign = T
 population_change_data_table
 ```
 
-<div id="kuexletoyg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kuexletoyg table {
+<div id="nqjhdtgffj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nqjhdtgffj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#kuexletoyg thead, #kuexletoyg tbody, #kuexletoyg tfoot, #kuexletoyg tr, #kuexletoyg td, #kuexletoyg th {
+&#10;#nqjhdtgffj thead, #nqjhdtgffj tbody, #nqjhdtgffj tfoot, #nqjhdtgffj tr, #nqjhdtgffj td, #nqjhdtgffj th {
   border-style: none;
 }
-&#10;#kuexletoyg p {
+&#10;#nqjhdtgffj p {
   margin: 0;
   padding: 0;
 }
-&#10;#kuexletoyg .gt_table {
+&#10;#nqjhdtgffj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1445,11 +1447,11 @@ population_change_data_table
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_caption {
+&#10;#nqjhdtgffj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#kuexletoyg .gt_title {
+&#10;#nqjhdtgffj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1460,7 +1462,7 @@ population_change_data_table
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#kuexletoyg .gt_subtitle {
+&#10;#nqjhdtgffj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1471,7 +1473,7 @@ population_change_data_table
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#kuexletoyg .gt_heading {
+&#10;#nqjhdtgffj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1482,12 +1484,12 @@ population_change_data_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_bottom_border {
+&#10;#nqjhdtgffj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_col_headings {
+&#10;#nqjhdtgffj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1501,7 +1503,7 @@ population_change_data_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_col_heading {
+&#10;#nqjhdtgffj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1520,7 +1522,7 @@ population_change_data_table
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#kuexletoyg .gt_column_spanner_outer {
+&#10;#nqjhdtgffj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1531,13 +1533,13 @@ population_change_data_table
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#kuexletoyg .gt_column_spanner_outer:first-child {
+&#10;#nqjhdtgffj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#kuexletoyg .gt_column_spanner_outer:last-child {
+&#10;#nqjhdtgffj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#kuexletoyg .gt_column_spanner {
+&#10;#nqjhdtgffj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1548,10 +1550,10 @@ population_change_data_table
   display: inline-block;
   width: 100%;
 }
-&#10;#kuexletoyg .gt_spanner_row {
+&#10;#nqjhdtgffj .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#kuexletoyg .gt_group_heading {
+&#10;#nqjhdtgffj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1576,7 +1578,7 @@ population_change_data_table
   vertical-align: middle;
   text-align: left;
 }
-&#10;#kuexletoyg .gt_empty_group_heading {
+&#10;#nqjhdtgffj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1590,13 +1592,13 @@ population_change_data_table
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#kuexletoyg .gt_from_md > :first-child {
+&#10;#nqjhdtgffj .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#kuexletoyg .gt_from_md > :last-child {
+&#10;#nqjhdtgffj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#kuexletoyg .gt_row {
+&#10;#nqjhdtgffj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1614,7 +1616,7 @@ population_change_data_table
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#kuexletoyg .gt_stub {
+&#10;#nqjhdtgffj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1626,7 +1628,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#kuexletoyg .gt_stub_row_group {
+&#10;#nqjhdtgffj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1639,13 +1641,13 @@ population_change_data_table
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#kuexletoyg .gt_row_group_first td {
+&#10;#nqjhdtgffj .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#kuexletoyg .gt_row_group_first th {
+&#10;#nqjhdtgffj .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#kuexletoyg .gt_summary_row {
+&#10;#nqjhdtgffj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1654,14 +1656,14 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#kuexletoyg .gt_first_summary_row {
+&#10;#nqjhdtgffj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_first_summary_row.thick {
+&#10;#nqjhdtgffj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#kuexletoyg .gt_last_summary_row {
+&#10;#nqjhdtgffj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1670,7 +1672,7 @@ population_change_data_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_grand_summary_row {
+&#10;#nqjhdtgffj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1679,7 +1681,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#kuexletoyg .gt_first_grand_summary_row {
+&#10;#nqjhdtgffj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1688,7 +1690,7 @@ population_change_data_table
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_last_grand_summary_row_top {
+&#10;#nqjhdtgffj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1697,10 +1699,10 @@ population_change_data_table
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_striped {
+&#10;#nqjhdtgffj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#kuexletoyg .gt_table_body {
+&#10;#nqjhdtgffj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1708,7 +1710,7 @@ population_change_data_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_footnotes {
+&#10;#nqjhdtgffj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1721,7 +1723,7 @@ population_change_data_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_footnote {
+&#10;#nqjhdtgffj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1729,7 +1731,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#kuexletoyg .gt_sourcenotes {
+&#10;#nqjhdtgffj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1742,64 +1744,64 @@ population_change_data_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#kuexletoyg .gt_sourcenote {
+&#10;#nqjhdtgffj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#kuexletoyg .gt_left {
+&#10;#nqjhdtgffj .gt_left {
   text-align: left;
 }
-&#10;#kuexletoyg .gt_center {
+&#10;#nqjhdtgffj .gt_center {
   text-align: center;
 }
-&#10;#kuexletoyg .gt_right {
+&#10;#nqjhdtgffj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#kuexletoyg .gt_font_normal {
+&#10;#nqjhdtgffj .gt_font_normal {
   font-weight: normal;
 }
-&#10;#kuexletoyg .gt_font_bold {
+&#10;#nqjhdtgffj .gt_font_bold {
   font-weight: bold;
 }
-&#10;#kuexletoyg .gt_font_italic {
+&#10;#nqjhdtgffj .gt_font_italic {
   font-style: italic;
 }
-&#10;#kuexletoyg .gt_super {
+&#10;#nqjhdtgffj .gt_super {
   font-size: 65%;
 }
-&#10;#kuexletoyg .gt_footnote_marks {
+&#10;#nqjhdtgffj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#kuexletoyg .gt_asterisk {
+&#10;#nqjhdtgffj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#kuexletoyg .gt_indent_1 {
+&#10;#nqjhdtgffj .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#kuexletoyg .gt_indent_2 {
+&#10;#nqjhdtgffj .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#kuexletoyg .gt_indent_3 {
+&#10;#nqjhdtgffj .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#kuexletoyg .gt_indent_4 {
+&#10;#nqjhdtgffj .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#kuexletoyg .gt_indent_5 {
+&#10;#nqjhdtgffj .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#kuexletoyg .katex-display {
+&#10;#nqjhdtgffj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#kuexletoyg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#nqjhdtgffj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1812,17 +1814,21 @@ population_change_data_table
     <col/>
     <col/>
     <col/>
+    <col/>
+    <col/>
   </colgroup>
   <thead>
     <tr class="gt_heading">
-      <td colspan="7" class="gt_heading gt_title gt_font_normal" style><span class='gt_from_md'><strong>Population change in Spain by nationality</strong></span></td>
+      <td colspan="9" class="gt_heading gt_title gt_font_normal" style><span class='gt_from_md'><strong>Population change in Spain by nationality</strong></span></td>
     </tr>
     <tr class="gt_heading">
-      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>2005-2026 period</td>
+      <td colspan="9" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>2005-2026 period</td>
     </tr>
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="date">date</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Total">Total</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Foreign-nationals">Foreign nationals</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Spanish-nationalts">Spanish nationalts</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="YoY-change">YoY change</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Foreign-nationals-YoY-change">Foreign nationals YoY change</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Spanish-nationals-YoY-change">Spanish nationals YoY change</th>
@@ -1833,6 +1839,8 @@ population_change_data_table
   <tbody class="gt_table_body">
     <tr><td headers="date" class="gt_row gt_right">2005-01-01</td>
 <td headers="Total" class="gt_row gt_right">43,296,335</td>
+<td headers="Foreign nationals" class="gt_row gt_right">3430204</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">39866131</td>
 <td headers="YoY change" class="gt_row gt_right">NA</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">NA</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">NA</td>
@@ -1840,6 +1848,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">NA</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2006-01-01</td>
 <td headers="Total" class="gt_row gt_right">44,009,969</td>
+<td headers="Foreign nationals" class="gt_row gt_right">3930916</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40079053</td>
 <td headers="YoY change" class="gt_row gt_right">713,634</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">500,712</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">212,922</td>
@@ -1847,6 +1857,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.5%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2007-01-01</td>
 <td headers="Total" class="gt_row gt_right">44,784,659</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4449434</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40335225</td>
 <td headers="YoY change" class="gt_row gt_right">774,690</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">518,518</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">256,172</td>
@@ -1854,6 +1866,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.6%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2008-01-01</td>
 <td headers="Total" class="gt_row gt_right">45,668,938</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5086295</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40582643</td>
 <td headers="YoY change" class="gt_row gt_right">884,279</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">636,861</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">247,418</td>
@@ -1861,6 +1875,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.6%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2009-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,239,271</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5386659</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40852612</td>
 <td headers="YoY change" class="gt_row gt_right">570,333</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">300,364</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">269,969</td>
@@ -1868,6 +1884,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.7%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2010-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,486,621</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5402579</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41084042</td>
 <td headers="YoY change" class="gt_row gt_right">247,350</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">15,920</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">231,430</td>
@@ -1875,6 +1893,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.6%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2011-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,667,175</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5312440</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41354735</td>
 <td headers="YoY change" class="gt_row gt_right">180,554</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−90,139</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">270,693</td>
@@ -1882,6 +1902,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.7%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2012-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,818,216</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5236030</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41582186</td>
 <td headers="YoY change" class="gt_row gt_right">151,041</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−76,410</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">227,451</td>
@@ -1889,6 +1911,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.5%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2013-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,712,650</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5064584</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41648066</td>
 <td headers="YoY change" class="gt_row gt_right">−105,566</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−171,446</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">65,880</td>
@@ -1896,6 +1920,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.2%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2014-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,495,744</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4676352</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41819392</td>
 <td headers="YoY change" class="gt_row gt_right">−216,906</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−388,232</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">171,326</td>
@@ -1903,6 +1929,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.4%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2015-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,425,722</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4453985</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41971737</td>
 <td headers="YoY change" class="gt_row gt_right">−70,022</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−222,367</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">152,345</td>
@@ -1910,6 +1938,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.4%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2016-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,418,884</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4419334</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41999550</td>
 <td headers="YoY change" class="gt_row gt_right">−6,838</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−34,651</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">27,813</td>
@@ -1917,6 +1947,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.1%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2017-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,497,393</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4417653</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42079740</td>
 <td headers="YoY change" class="gt_row gt_right">78,509</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−1,681</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">80,190</td>
@@ -1924,6 +1956,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.2%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2018-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,645,070</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4577322</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42067748</td>
 <td headers="YoY change" class="gt_row gt_right">147,677</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">159,669</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">−11,992</td>
@@ -1931,6 +1965,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">−0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2019-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,918,951</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4850762</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42068189</td>
 <td headers="YoY change" class="gt_row gt_right">273,881</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">273,440</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">441</td>
@@ -1938,6 +1974,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2020-01-01</td>
 <td headers="Total" class="gt_row gt_right">47,318,050</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5241278</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42076772</td>
 <td headers="YoY change" class="gt_row gt_right">399,099</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">390,516</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">8,583</td>
@@ -1945,6 +1983,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2021-01-01</td>
 <td headers="Total" class="gt_row gt_right">47,400,798</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5402702</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41998096</td>
 <td headers="YoY change" class="gt_row gt_right">82,748</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">161,424</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">−78,676</td>
@@ -1952,6 +1992,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">−0.2%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2022-01-01</td>
 <td headers="Total" class="gt_row gt_right">47,486,727</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5509046</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41977681</td>
 <td headers="YoY change" class="gt_row gt_right">85,929</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">106,344</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">−20,415</td>
@@ -1959,6 +2001,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">−0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2023-01-01</td>
 <td headers="Total" class="gt_row gt_right">48,085,361</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6089620</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41995741</td>
 <td headers="YoY change" class="gt_row gt_right">598,634</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">580,574</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">18,060</td>
@@ -1966,6 +2010,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2024-01-01</td>
 <td headers="Total" class="gt_row gt_right">48,619,695</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6502282</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42117413</td>
 <td headers="YoY change" class="gt_row gt_right">534,334</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">412,662</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">121,672</td>
@@ -1973,6 +2019,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.3%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2025-01-01</td>
 <td headers="Total" class="gt_row gt_right">49,128,297</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6911971</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42216326</td>
 <td headers="YoY change" class="gt_row gt_right">508,602</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">409,689</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">98,913</td>
@@ -1980,6 +2028,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.2%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2026-01-01</td>
 <td headers="Total" class="gt_row gt_right">49,596,376</td>
+<td headers="Foreign nationals" class="gt_row gt_right">7256796</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42339580</td>
 <td headers="YoY change" class="gt_row gt_right">468,079</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">344,825</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">123,254</td>
