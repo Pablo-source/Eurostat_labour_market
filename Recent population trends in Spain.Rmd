@@ -48,7 +48,7 @@ This first chart displays total population in Spain for 2004-2025 time period. T
 
 ```{r format_function_markdown_values, echo=TRUE,warning=FALSE,message=FALSE, results='hide'}
 format_total_population_spain <- function(mydataset,my_date,column,format = NULL){
-  row <- mydataset %>% filter(date_fmt == my_date) 
+  row <- mydataset %>% filter(date == my_date) 
   print(row)
   value <- row %>% pull({{column}})
   print(value)
