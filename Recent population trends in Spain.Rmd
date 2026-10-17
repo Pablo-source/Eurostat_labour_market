@@ -292,7 +292,7 @@ This section describes population figures from the Municipal Census in Spain for
 
 ```{r population_by_natinality, echo=TRUE, message=FALSE, warning = FALSE}
 Spain_population_nationality_fmt <- population_data_fmt %>%                          
-                                    select(date,total_population,foreign_nationals_population) %>% 
+                                    select(date,total_population,foreign_population) %>% 
                          arrange(date)
 Spain_population_nationality_fmt
 ```
