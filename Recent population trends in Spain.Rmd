@@ -238,9 +238,9 @@ population_change_data
 population_change_data_table<-  population_data_fmt %>%
                           mutate(
   total_change = total_population - lag(total_population),
-  foreign_nationals_change = foreign_nationals_population -lag(foreign_nationals_population),
+  foreign_nationals_change = foreign_population -lag(foreign_population),
   spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-  foreign_nationals_perc_change = (foreign_nationals_population - lag(foreign_nationals_population))/lag(foreign_nationals_population),
+  foreign_nationals_perc_change = (foreign_population - lag(foreign_population))/lag(foreign_population),
   spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population))/lag(spanish_nationals_population)
   ) %>% 
     select(date, 
