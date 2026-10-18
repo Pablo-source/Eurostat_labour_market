@@ -93,7 +93,7 @@ Plot_total_population_spain <- population_change_fmt_date %>% select(date,total_
   geom_line(aes(colour = "sienna3")) +
   geom_point(fill = "sienna3") +
   labs(title = "Spain total poulation. 2004-2025 period",
-       substile = "Source: INE Spanish Office for National Statistics") +
+       subtitle = "Source: INE Spanish Office for National Statistics") +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
   theme_light() +
    theme(legend.position="none") +
@@ -277,6 +277,39 @@ For each population by nationality in Spain (Spanish nationals and foreign popul
 - Spanish nationals population: Resident population figures in Spain for Spanish nationals. 
 
 Also, here we describe the share of the Total population change accounted for Spanish and Foreign nationals. This will allow later on, once we account for Natural increase, what percentage of population change is due mainly to migration flows from Foreign nationals in the overall population in Spain for the 2005-2026 period. 
+
+
+
+```{r popualtion nationality base hundred , echo=TRUE,message=FALSE, warning =FALSE}
+head(population_data_fmt)
+
+df_base_hundred <- population_data_fmt %>% 
+ mutate(
+   Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
+   foreign_pop_2008_base =  ((foreign_population / foreign_population[date == '2008-01-01']) * 100), 
+   spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
+)
+
+df_base_hundred_data <- df_base_hundred %>% select(date,Total_pop_2008_base,foreign_pop_2008_base,spanish_pop_2008_base) 
+
+df_base_hundred_data_round <- df_base_hundred_data %>% 
+  mutate(
+  Tot_pop_2008_round =  round(Total_pop_2008_base,0),
+  foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
+  spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
+  )
+
+  
+df_base_hundred_table <- df_base_hundred_data_round %>% 
+  select(date,Tot_pop_2008_round,foreign_pop_2008_round,spanish_pop_2008_round) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population in Spain by nationality base 100 year 2008**"),
+    subtitle = ("2005-2026 period") 
+        ) 
+df_base_hundred_table
+# Year 2008 base population
+```
 
 
 ## 4. Total population in Spain by nationality - 2005-2026 period 
