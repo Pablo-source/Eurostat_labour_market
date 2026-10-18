@@ -187,6 +187,42 @@ Spain_nationlity_gt<- population_data_fmt %>%
 Spain_nationlity_gt
 ```
 
+## 2.1 Spain Total population by nationality Index (Base 100 = 2008) 
+
+Population in Spain by nationality. Index (Base 100 = 2016)
+
+```{r popualtion nationality base hundred , echo=TRUE,message=FALSE, warning =FALSE}
+head(population_data_fmt)
+
+df_base_hundred <- population_data_fmt %>% 
+ mutate(
+   Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
+   foreign_pop_2008_base =  ((foreign_population / foreign_population[date == '2008-01-01']) * 100), 
+   spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
+)
+
+df_base_hundred_data <- df_base_hundred %>% select(date,Total_pop_2008_base,foreign_pop_2008_base,spanish_pop_2008_base) 
+
+df_base_hundred_data_round <- df_base_hundred_data %>% 
+  mutate(
+  Tot_pop_2008_round =  round(Total_pop_2008_base,0),
+  foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
+  spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
+  )
+
+  
+df_base_hundred_table <- df_base_hundred_data_round %>% 
+  select(date,Tot_pop_2008_round,foreign_pop_2008_round,spanish_pop_2008_round) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population in Spain by nationality base 100 year 2008**"),
+    subtitle = ("2005-2026 period") 
+        ) 
+df_base_hundred_table
+# Year 2008 base population
+```
+
+
 ## 3. Spain total population change 
 
 This sub-section describes how Total population in Spain has changed over time in the 2005-2026 period. Describing population change in absolute numbers and percentage change Year on Year increase.
@@ -280,36 +316,6 @@ Also, here we describe the share of the Total population change accounted for Sp
 
 
 
-```{r popualtion nationality base hundred , echo=TRUE,message=FALSE, warning =FALSE}
-head(population_data_fmt)
-
-df_base_hundred <- population_data_fmt %>% 
- mutate(
-   Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
-   foreign_pop_2008_base =  ((foreign_population / foreign_population[date == '2008-01-01']) * 100), 
-   spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
-)
-
-df_base_hundred_data <- df_base_hundred %>% select(date,Total_pop_2008_base,foreign_pop_2008_base,spanish_pop_2008_base) 
-
-df_base_hundred_data_round <- df_base_hundred_data %>% 
-  mutate(
-  Tot_pop_2008_round =  round(Total_pop_2008_base,0),
-  foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
-  spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
-  )
-
-  
-df_base_hundred_table <- df_base_hundred_data_round %>% 
-  select(date,Tot_pop_2008_round,foreign_pop_2008_round,spanish_pop_2008_round) %>% 
-    gt() %>%
-  tab_header(
-    title = md("**Population in Spain by nationality base 100 year 2008**"),
-    subtitle = ("2005-2026 period") 
-        ) 
-df_base_hundred_table
-# Year 2008 base population
-```
 
 
 ## 4. Total population in Spain by nationality - 2005-2026 period 
