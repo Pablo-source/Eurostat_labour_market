@@ -195,9 +195,10 @@ Population in Spain by nationality. Index (Base 100 = 2016)
 head(population_data_fmt)
 
 df_base_hundred <- population_data_fmt %>% 
+    select(date, total_population, foreign_nationals_population,spanish_nationals_population) %>% 
  mutate(
    Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
-   foreign_pop_2008_base =  ((foreign_population / foreign_population[date == '2008-01-01']) * 100), 
+   foreign_pop_2008_base =  ((foreign_nationals_population / foreign_nationals_population[date == '2008-01-01']) * 100), 
    spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
 )
 
