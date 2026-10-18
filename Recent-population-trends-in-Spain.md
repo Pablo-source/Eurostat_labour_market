@@ -1,17 +1,18 @@
 Recent Spain population trends
 ================
 PLR
-2026-09-29
+2026-10-18
 
 ## Latest date this report was produced
 
-Today’s date is **29 septiembre 2026**. This report was published on the
-week starting on **27 septiembre 2026**.
+Today’s date is **18 October 2026**. This report was published on the
+week starting on **16 October 2026**.
 
-## 1. Load Spain population data
+## Obtaining Spain population data from official sources
 
-We load latest Spanish Population Figures released by the Spanish
-National Institute: <https://www.ine.es/consul/serie.do?d=true&s=ECP320>
+The Spanish National Institute, publishes Spain annual population
+figures, referred to 1st of January for each year:
+<https://www.ine.es/consul/serie.do?d=true&s=ECP320>
 
 In the third tab from Excel file **“INE total and foreign population
 figures Spain.xlsx”** we load the table describing Total, foreign and
@@ -40,7 +41,114 @@ population_data <- read_excel(
                        foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
 ```
 
-# 2. Spanish total population change over time
+## 1. Spain total population
+
+This first chart displays total population in Spain for 2004-2025 time
+period. Total resident population in Spain, regardless of their
+nationality
+
+``` r
+format_total_population_spain <- function(mydataset,my_date,column,format = NULL){
+  row <- mydataset %>% filter(date == my_date) 
+  print(row)
+  value <- row %>% pull({{column}})
+  print(value)
+  # Default value if format is not provided
+  if (column %in% c("total_population")){
+    return(as.character(prettyNum(value,big.mark = ",")))  
+  } else if (column %in% c("percent_foreign_population")){
+  return(paste0(round(value,1),"%"))  # to be built
+  } #else if (column %in% c("date")){
+  #return(format(value,"%b %Y"))  # Format dates 
+  #}
+}
+# format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")
+# format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "percent_foreign_population")
+```
+
+``` r
+options(scipen=999)
+population_data_fmt <-population_data %>% 
+  mutate(date_day = substr(date,1,1),
+         date_month = substr(date,3,13),date_year =  substr(date,15,18)) %>% 
+  mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
+  select(date,
+         total_population,
+         foreign_population,
+         percent_foreign_population,
+         total_population_YoY_perc,
+         foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
+  mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) 
+population_data_fmt 
+```
+
+    ## # A tibble: 22 × 10
+    ##    date               total_population foreign_population percent_foreign_popu…¹
+    ##    <chr>                         <dbl>              <dbl>                  <dbl>
+    ##  1 1 de enero de 2026         49596376            7256796                 0.146 
+    ##  2 1 de enero de 2025         49128297            6911971                 0.141 
+    ##  3 1 de enero de 2024         48619695            6502282                 0.134 
+    ##  4 1 de enero de 2023         48085361            6089620                 0.127 
+    ##  5 1 de enero de 2022         47486727            5509046                 0.116 
+    ##  6 1 de enero de 2021         47400798            5402702                 0.114 
+    ##  7 1 de enero de 2020         47318050            5241278                 0.111 
+    ##  8 1 de enero de 2019         46918951            4850762                 0.103 
+    ##  9 1 de enero de 2018         46645070            4577322                 0.0981
+    ## 10 1 de enero de 2017         46497393            4417653                 0.0950
+    ## # ℹ 12 more rows
+    ## # ℹ abbreviated name: ¹​percent_foreign_population
+    ## # ℹ 6 more variables: total_population_YoY_perc <dbl>,
+    ## #   foreign_population_YoY_perc <dbl>, date_day <chr>, date_month_eng <chr>,
+    ## #   date_year <chr>, date_to_fmt <chr>
+
+``` r
+population_change_fmt_date <- population_data_fmt %>% 
+  mutate(date = dmy(date_to_fmt)) %>% 
+  select(date,total_population,foreign_population,percent_foreign_population,
+         total_population_YoY_perc_change =  total_population_YoY_perc,
+         foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
+  arrange(date)
+
+
+Plot_total_population_spain <- population_change_fmt_date %>% select(date,total_population) %>% 
+  ggplot(aes(date,total_population)) +
+  geom_line(aes(colour = "sienna3")) +
+  geom_point(fill = "sienna3") +
+  labs(title = "Spain total poulation. 2004-2025 period",
+       subtitle = "Source: INE Spanish Office for National Statistics") +
+  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+  theme_light() +
+   theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank()) 
+Plot_total_population_spain
+```
+
+![](Recent-population-trends-in-Spain_files/figure-gfm/Spain%20total%20population-1.png)<!-- -->
+
+In . Spain total population was . Eleven years later, in
+
+it was . After Covid19 Pandemic it grew steadily until 2022, when it
+reached
+
+on
+
+It is noticeable that since 2022, mainly due to net international
+migration from foreign-born residents, Spain total population grew with
+YoY rates above 1% for the following four years. In 2023 Spain total
+population reached
+
+One year later, on
+
+it was
+
+The same fast pace of increase has continued in 2025
+
+And in 2026 with the recently released provisional population estimates,
+the Total population in Spain has reached nearly 50 million
+
+# 2. Spain Total population by nationality
 
 This sections described total population change in Spain from 2005 to
 2025.
@@ -59,16 +167,16 @@ population_data_fmt <-population_data %>%
          total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
   mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) %>% 
 # population_change_fmt_date <- population_change_fmt %>% 
-  mutate(date_fmt = dmy(date_to_fmt)) %>% 
-  select(date_fmt,total_population,foreign_nationals_population,percent_foreign_population,
+  mutate(date = dmy(date_to_fmt)) %>% 
+  select(date,total_population,foreign_nationals_population,percent_foreign_population,
          total_population_YoY_perc_change =  total_population_YoY_perc,
          foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
-  arrange(date_fmt)
+  arrange(date)
 population_data_fmt
 ```
 
     ## # A tibble: 22 × 6
-    ##    date_fmt   total_population foreign_nationals_popula…¹ percent_foreign_popu…²
+    ##    date       total_population foreign_nationals_popula…¹ percent_foreign_popu…²
     ##    <date>                <dbl>                      <dbl>                  <dbl>
     ##  1 2005-01-01         43296335                    3430204                 0.0792
     ##  2 2006-01-01         44009969                    3930916                 0.0893
@@ -87,100 +195,16 @@ population_data_fmt
     ## #   foreign_population_YoY_perc_change <dbl>
 
 ``` r
-min_date <- min(population_data_fmt$date_fmt)
-max_date <- max(population_data_fmt$date_fmt)
+min_date <- min(population_data_fmt$date)
+max_date <- max(population_data_fmt$date)
 # (gsub("de enero","january", date),1,6)),
 ```
 
-## 2.1 Spain total population
-
-This first chart displays total population in Spain for 2004-2025 time
-period. Total resident population in Spain, regardless of their
-nationality
-
-``` r
-format_total_population_spain <- function(mydataset,my_date,column,format = NULL){
-  row <- mydataset %>% filter(date_fmt == my_date) 
-  print(row)
-  value <- row %>% pull({{column}})
-  print(value)
-  # Default value if format is not provided
-  if (column %in% c("total_population")){
-    return(as.character(prettyNum(value,big.mark = ",")))  
-  } else if (column %in% c("percent_foreign_population")){
-  return(paste0(round(value,1),"%"))  # to be built
-  } else if (column %in% c("date_fmt")){
-  return(format(value,"%b %Y"))  # Format dates 
-  }
-  
-  
-}
-# format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")
-# format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "percent_foreign_population")
-```
-
-``` r
-Plot_total_population_spain <- population_data_fmt %>% select(date_fmt,total_population) %>% 
-  ggplot(aes(date_fmt,total_population)) +
-  geom_line(aes(colour = "sienna3")) +
-  geom_point(fill = "sienna3") +
-  labs(title = "Spain total poulation. 2004-2025 period",
-       substile = "Source: INE Spanish Office for National Statistics") +
-  scale_y_continuous(breaks = seq(40000000, 50000000, by = 200000)) +
-  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
-  theme_light() +
-   theme(legend.position="none") +
-  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5),
-        axis.title.y = element_blank(),
-        axis.title.x = element_blank()) 
-Plot_total_population_spain
-```
-
-![](Recent-population-trends-in-Spain_files/figure-gfm/Spain%20total%20population-1.png)<!-- -->
-
-In ene. 2007. Spain total population was 44,784,659. Eleven years later,
-in ene. 2018 it was 46,645,070. After Covid19 Pandemic it grew steadily
-until 2022, when it reached 47,486,727 on ene. 2022
-
-It is noticeable that since 2022, mainly due to net international
-migration from foreign-born residents, Spain total population grew with
-YoY rates above 1% for the following four years. In 2023 Spain total
-population reached 48,085,361 One year later, on ene. 2024 it was
-48,619,695
-
-The same fast pace of increase has continued in 2025 49,128,297 And in
-2026 with the recently released provisional population estimates, the
-Total population in Spain has reached nearly 50 million 49,596,376
-
-## 2.2 Spain total population change
-
-This sub-section describes how Total population in Spain has changed
-over time in the 2005-2026 period. Describing population change in
-absolute numbers and percentage change Year on Year increase.
-
 ``` r
 population_data_fmt <-  population_data_fmt %>%
-                         select(date = date_fmt,total_population,foreign_nationals_population) %>% 
+                         select(date = date,total_population,foreign_nationals_population) %>% 
                          mutate(spanish_nationals_population = total_population - foreign_nationals_population)
-population_data_fmt
 ```
-
-    ## # A tibble: 22 × 4
-    ##    date       total_population foreign_nationals_popula…¹ spanish_nationals_po…²
-    ##    <date>                <dbl>                      <dbl>                  <dbl>
-    ##  1 2005-01-01         43296335                    3430204               39866131
-    ##  2 2006-01-01         44009969                    3930916               40079053
-    ##  3 2007-01-01         44784659                    4449434               40335225
-    ##  4 2008-01-01         45668938                    5086295               40582643
-    ##  5 2009-01-01         46239271                    5386659               40852612
-    ##  6 2010-01-01         46486621                    5402579               41084042
-    ##  7 2011-01-01         46667175                    5312440               41354735
-    ##  8 2012-01-01         46818216                    5236030               41582186
-    ##  9 2013-01-01         46712650                    5064584               41648066
-    ## 10 2014-01-01         46495744                    4676352               41819392
-    ## # ℹ 12 more rows
-    ## # ℹ abbreviated names: ¹​foreign_nationals_population,
-    ## #   ²​spanish_nationals_population
 
 We can display the above table using GT package
 
@@ -201,20 +225,20 @@ Spain_nationlity_gt<- population_data_fmt %>%
 Spain_nationlity_gt
 ```
 
-<div id="obiurjgfzp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#obiurjgfzp table {
+<div id="koqelzzppy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#koqelzzppy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#obiurjgfzp thead, #obiurjgfzp tbody, #obiurjgfzp tfoot, #obiurjgfzp tr, #obiurjgfzp td, #obiurjgfzp th {
+&#10;#koqelzzppy thead, #koqelzzppy tbody, #koqelzzppy tfoot, #koqelzzppy tr, #koqelzzppy td, #koqelzzppy th {
   border-style: none;
 }
-&#10;#obiurjgfzp p {
+&#10;#koqelzzppy p {
   margin: 0;
   padding: 0;
 }
-&#10;#obiurjgfzp .gt_table {
+&#10;#koqelzzppy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -239,11 +263,11 @@ Spain_nationlity_gt
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_caption {
+&#10;#koqelzzppy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#obiurjgfzp .gt_title {
+&#10;#koqelzzppy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -254,7 +278,7 @@ Spain_nationlity_gt
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#obiurjgfzp .gt_subtitle {
+&#10;#koqelzzppy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -265,7 +289,7 @@ Spain_nationlity_gt
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#obiurjgfzp .gt_heading {
+&#10;#koqelzzppy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -276,12 +300,12 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_bottom_border {
+&#10;#koqelzzppy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_col_headings {
+&#10;#koqelzzppy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -295,7 +319,7 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_col_heading {
+&#10;#koqelzzppy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -314,7 +338,7 @@ Spain_nationlity_gt
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#obiurjgfzp .gt_column_spanner_outer {
+&#10;#koqelzzppy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -325,13 +349,13 @@ Spain_nationlity_gt
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#obiurjgfzp .gt_column_spanner_outer:first-child {
+&#10;#koqelzzppy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#obiurjgfzp .gt_column_spanner_outer:last-child {
+&#10;#koqelzzppy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#obiurjgfzp .gt_column_spanner {
+&#10;#koqelzzppy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -342,10 +366,10 @@ Spain_nationlity_gt
   display: inline-block;
   width: 100%;
 }
-&#10;#obiurjgfzp .gt_spanner_row {
+&#10;#koqelzzppy .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#obiurjgfzp .gt_group_heading {
+&#10;#koqelzzppy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -370,7 +394,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   text-align: left;
 }
-&#10;#obiurjgfzp .gt_empty_group_heading {
+&#10;#koqelzzppy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -384,13 +408,13 @@ Spain_nationlity_gt
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#obiurjgfzp .gt_from_md > :first-child {
+&#10;#koqelzzppy .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#obiurjgfzp .gt_from_md > :last-child {
+&#10;#koqelzzppy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#obiurjgfzp .gt_row {
+&#10;#koqelzzppy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -408,7 +432,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#obiurjgfzp .gt_stub {
+&#10;#koqelzzppy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -420,7 +444,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#obiurjgfzp .gt_stub_row_group {
+&#10;#koqelzzppy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -433,13 +457,13 @@ Spain_nationlity_gt
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#obiurjgfzp .gt_row_group_first td {
+&#10;#koqelzzppy .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#obiurjgfzp .gt_row_group_first th {
+&#10;#koqelzzppy .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#obiurjgfzp .gt_summary_row {
+&#10;#koqelzzppy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -448,14 +472,14 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#obiurjgfzp .gt_first_summary_row {
+&#10;#koqelzzppy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_first_summary_row.thick {
+&#10;#koqelzzppy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#obiurjgfzp .gt_last_summary_row {
+&#10;#koqelzzppy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -464,7 +488,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_grand_summary_row {
+&#10;#koqelzzppy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -473,7 +497,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#obiurjgfzp .gt_first_grand_summary_row {
+&#10;#koqelzzppy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -482,7 +506,7 @@ Spain_nationlity_gt
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_last_grand_summary_row_top {
+&#10;#koqelzzppy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -491,10 +515,10 @@ Spain_nationlity_gt
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_striped {
+&#10;#koqelzzppy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#obiurjgfzp .gt_table_body {
+&#10;#koqelzzppy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -502,7 +526,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_footnotes {
+&#10;#koqelzzppy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -515,7 +539,7 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_footnote {
+&#10;#koqelzzppy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -523,7 +547,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#obiurjgfzp .gt_sourcenotes {
+&#10;#koqelzzppy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -536,64 +560,64 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#obiurjgfzp .gt_sourcenote {
+&#10;#koqelzzppy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#obiurjgfzp .gt_left {
+&#10;#koqelzzppy .gt_left {
   text-align: left;
 }
-&#10;#obiurjgfzp .gt_center {
+&#10;#koqelzzppy .gt_center {
   text-align: center;
 }
-&#10;#obiurjgfzp .gt_right {
+&#10;#koqelzzppy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#obiurjgfzp .gt_font_normal {
+&#10;#koqelzzppy .gt_font_normal {
   font-weight: normal;
 }
-&#10;#obiurjgfzp .gt_font_bold {
+&#10;#koqelzzppy .gt_font_bold {
   font-weight: bold;
 }
-&#10;#obiurjgfzp .gt_font_italic {
+&#10;#koqelzzppy .gt_font_italic {
   font-style: italic;
 }
-&#10;#obiurjgfzp .gt_super {
+&#10;#koqelzzppy .gt_super {
   font-size: 65%;
 }
-&#10;#obiurjgfzp .gt_footnote_marks {
+&#10;#koqelzzppy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#obiurjgfzp .gt_asterisk {
+&#10;#koqelzzppy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#obiurjgfzp .gt_indent_1 {
+&#10;#koqelzzppy .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#obiurjgfzp .gt_indent_2 {
+&#10;#koqelzzppy .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#obiurjgfzp .gt_indent_3 {
+&#10;#koqelzzppy .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#obiurjgfzp .gt_indent_4 {
+&#10;#koqelzzppy .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#obiurjgfzp .gt_indent_5 {
+&#10;#koqelzzppy .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#obiurjgfzp .katex-display {
+&#10;#koqelzzppy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#obiurjgfzp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#koqelzzppy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -705,6 +729,34 @@ Spain_nationlity_gt
   &#10;</table>
 </div>
 
+## 3. Spain total population change
+
+This sub-section describes how Total population in Spain has changed
+over time in the 2005-2026 period. Describing population change in
+absolute numbers and percentage change Year on Year increase.
+
+``` r
+population_data_fmt <-  population_change_fmt_date %>%
+                         select(date = date,total_population,foreign_population) %>% 
+                         mutate(spanish_nationals_population = total_population - foreign_population)
+population_data_fmt
+```
+
+    ## # A tibble: 22 × 4
+    ##    date       total_population foreign_population spanish_nationals_population
+    ##    <date>                <dbl>              <dbl>                        <dbl>
+    ##  1 2005-01-01         43296335            3430204                     39866131
+    ##  2 2006-01-01         44009969            3930916                     40079053
+    ##  3 2007-01-01         44784659            4449434                     40335225
+    ##  4 2008-01-01         45668938            5086295                     40582643
+    ##  5 2009-01-01         46239271            5386659                     40852612
+    ##  6 2010-01-01         46486621            5402579                     41084042
+    ##  7 2011-01-01         46667175            5312440                     41354735
+    ##  8 2012-01-01         46818216            5236030                     41582186
+    ##  9 2013-01-01         46712650            5064584                     41648066
+    ## 10 2014-01-01         46495744            4676352                     41819392
+    ## # ℹ 12 more rows
+
 This data below shows population change by year for total population,
 spanish nationals and foreign nationals population
 
@@ -712,12 +764,12 @@ spanish nationals and foreign nationals population
 population_change_data<-  population_data_fmt %>%
                           mutate(
                   total_change = total_population - lag(total_population),
-                  foreign_nationals_change = foreign_nationals_population - lag(foreign_nationals_population),
+                  foreign_nationals_change = foreign_population - lag(foreign_population),
                   spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
                                  ) %>% 
     select(date, 
            Total = total_population, 
-           'Foreign nationals'= foreign_nationals_population,
+           'Foreign nationals'= foreign_population,
            'Spanish nationalts'= spanish_nationals_population,
            'Total change' = total_change,
            'Foreign nationals change' = foreign_nationals_change,
@@ -739,20 +791,20 @@ population_change_data<-  population_data_fmt %>%
 population_change_data
 ```
 
-<div id="tflrrrarpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tflrrrarpx table {
+<div id="bwbzqluita" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bwbzqluita table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#tflrrrarpx thead, #tflrrrarpx tbody, #tflrrrarpx tfoot, #tflrrrarpx tr, #tflrrrarpx td, #tflrrrarpx th {
+&#10;#bwbzqluita thead, #bwbzqluita tbody, #bwbzqluita tfoot, #bwbzqluita tr, #bwbzqluita td, #bwbzqluita th {
   border-style: none;
 }
-&#10;#tflrrrarpx p {
+&#10;#bwbzqluita p {
   margin: 0;
   padding: 0;
 }
-&#10;#tflrrrarpx .gt_table {
+&#10;#bwbzqluita .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -777,11 +829,11 @@ population_change_data
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_caption {
+&#10;#bwbzqluita .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#tflrrrarpx .gt_title {
+&#10;#bwbzqluita .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -792,7 +844,7 @@ population_change_data
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#tflrrrarpx .gt_subtitle {
+&#10;#bwbzqluita .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -803,7 +855,7 @@ population_change_data
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#tflrrrarpx .gt_heading {
+&#10;#bwbzqluita .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -814,12 +866,12 @@ population_change_data
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_bottom_border {
+&#10;#bwbzqluita .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_col_headings {
+&#10;#bwbzqluita .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -833,7 +885,7 @@ population_change_data
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_col_heading {
+&#10;#bwbzqluita .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -852,7 +904,7 @@ population_change_data
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#tflrrrarpx .gt_column_spanner_outer {
+&#10;#bwbzqluita .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -863,13 +915,13 @@ population_change_data
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#tflrrrarpx .gt_column_spanner_outer:first-child {
+&#10;#bwbzqluita .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#tflrrrarpx .gt_column_spanner_outer:last-child {
+&#10;#bwbzqluita .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#tflrrrarpx .gt_column_spanner {
+&#10;#bwbzqluita .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -880,10 +932,10 @@ population_change_data
   display: inline-block;
   width: 100%;
 }
-&#10;#tflrrrarpx .gt_spanner_row {
+&#10;#bwbzqluita .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#tflrrrarpx .gt_group_heading {
+&#10;#bwbzqluita .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -908,7 +960,7 @@ population_change_data
   vertical-align: middle;
   text-align: left;
 }
-&#10;#tflrrrarpx .gt_empty_group_heading {
+&#10;#bwbzqluita .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -922,13 +974,13 @@ population_change_data
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#tflrrrarpx .gt_from_md > :first-child {
+&#10;#bwbzqluita .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#tflrrrarpx .gt_from_md > :last-child {
+&#10;#bwbzqluita .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#tflrrrarpx .gt_row {
+&#10;#bwbzqluita .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -946,7 +998,7 @@ population_change_data
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#tflrrrarpx .gt_stub {
+&#10;#bwbzqluita .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -958,7 +1010,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#tflrrrarpx .gt_stub_row_group {
+&#10;#bwbzqluita .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -971,13 +1023,13 @@ population_change_data
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#tflrrrarpx .gt_row_group_first td {
+&#10;#bwbzqluita .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#tflrrrarpx .gt_row_group_first th {
+&#10;#bwbzqluita .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#tflrrrarpx .gt_summary_row {
+&#10;#bwbzqluita .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -986,14 +1038,14 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#tflrrrarpx .gt_first_summary_row {
+&#10;#bwbzqluita .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_first_summary_row.thick {
+&#10;#bwbzqluita .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#tflrrrarpx .gt_last_summary_row {
+&#10;#bwbzqluita .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1002,7 +1054,7 @@ population_change_data
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_grand_summary_row {
+&#10;#bwbzqluita .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1011,7 +1063,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#tflrrrarpx .gt_first_grand_summary_row {
+&#10;#bwbzqluita .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1020,7 +1072,7 @@ population_change_data
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_last_grand_summary_row_top {
+&#10;#bwbzqluita .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1029,10 +1081,10 @@ population_change_data
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_striped {
+&#10;#bwbzqluita .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#tflrrrarpx .gt_table_body {
+&#10;#bwbzqluita .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1040,7 +1092,7 @@ population_change_data
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_footnotes {
+&#10;#bwbzqluita .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1053,7 +1105,7 @@ population_change_data
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_footnote {
+&#10;#bwbzqluita .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1061,7 +1113,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#tflrrrarpx .gt_sourcenotes {
+&#10;#bwbzqluita .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1074,64 +1126,64 @@ population_change_data
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#tflrrrarpx .gt_sourcenote {
+&#10;#bwbzqluita .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#tflrrrarpx .gt_left {
+&#10;#bwbzqluita .gt_left {
   text-align: left;
 }
-&#10;#tflrrrarpx .gt_center {
+&#10;#bwbzqluita .gt_center {
   text-align: center;
 }
-&#10;#tflrrrarpx .gt_right {
+&#10;#bwbzqluita .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#tflrrrarpx .gt_font_normal {
+&#10;#bwbzqluita .gt_font_normal {
   font-weight: normal;
 }
-&#10;#tflrrrarpx .gt_font_bold {
+&#10;#bwbzqluita .gt_font_bold {
   font-weight: bold;
 }
-&#10;#tflrrrarpx .gt_font_italic {
+&#10;#bwbzqluita .gt_font_italic {
   font-style: italic;
 }
-&#10;#tflrrrarpx .gt_super {
+&#10;#bwbzqluita .gt_super {
   font-size: 65%;
 }
-&#10;#tflrrrarpx .gt_footnote_marks {
+&#10;#bwbzqluita .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#tflrrrarpx .gt_asterisk {
+&#10;#bwbzqluita .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#tflrrrarpx .gt_indent_1 {
+&#10;#bwbzqluita .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#tflrrrarpx .gt_indent_2 {
+&#10;#bwbzqluita .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#tflrrrarpx .gt_indent_3 {
+&#10;#bwbzqluita .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#tflrrrarpx .gt_indent_4 {
+&#10;#bwbzqluita .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#tflrrrarpx .gt_indent_5 {
+&#10;#bwbzqluita .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#tflrrrarpx .katex-display {
+&#10;#bwbzqluita .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#tflrrrarpx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#bwbzqluita div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1325,13 +1377,15 @@ population_change_data
 population_change_data_table<-  population_data_fmt %>%
                           mutate(
   total_change = total_population - lag(total_population),
-  foreign_nationals_change = foreign_nationals_population -lag(foreign_nationals_population),
+  foreign_nationals_change = foreign_population -lag(foreign_population),
   spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-  foreign_nationals_perc_change = (foreign_nationals_population - lag(foreign_nationals_population))/lag(foreign_nationals_population),
+  foreign_nationals_perc_change = (foreign_population - lag(foreign_population))/lag(foreign_population),
   spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population))/lag(spanish_nationals_population)
   ) %>% 
     select(date, 
            Total = total_population, 
+                    'Foreign nationals'= foreign_population,
+           'Spanish nationalts'= spanish_nationals_population,
            'YoY change' = total_change,
            'Foreign nationals YoY change' = foreign_nationals_change,
            'Spanish nationals YoY change' = spanish_national_change,
@@ -1355,20 +1409,20 @@ fmt_percent("Spanish nationals YoY percentage change",decimals =1,force_sign = T
 population_change_data_table
 ```
 
-<div id="oirjqmhcaa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oirjqmhcaa table {
+<div id="fuaduxktga" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fuaduxktga table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#oirjqmhcaa thead, #oirjqmhcaa tbody, #oirjqmhcaa tfoot, #oirjqmhcaa tr, #oirjqmhcaa td, #oirjqmhcaa th {
+&#10;#fuaduxktga thead, #fuaduxktga tbody, #fuaduxktga tfoot, #fuaduxktga tr, #fuaduxktga td, #fuaduxktga th {
   border-style: none;
 }
-&#10;#oirjqmhcaa p {
+&#10;#fuaduxktga p {
   margin: 0;
   padding: 0;
 }
-&#10;#oirjqmhcaa .gt_table {
+&#10;#fuaduxktga .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1393,11 +1447,11 @@ population_change_data_table
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_caption {
+&#10;#fuaduxktga .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#oirjqmhcaa .gt_title {
+&#10;#fuaduxktga .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1408,7 +1462,7 @@ population_change_data_table
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#oirjqmhcaa .gt_subtitle {
+&#10;#fuaduxktga .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1419,7 +1473,7 @@ population_change_data_table
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#oirjqmhcaa .gt_heading {
+&#10;#fuaduxktga .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1430,12 +1484,12 @@ population_change_data_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_bottom_border {
+&#10;#fuaduxktga .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_col_headings {
+&#10;#fuaduxktga .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1449,7 +1503,7 @@ population_change_data_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_col_heading {
+&#10;#fuaduxktga .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1468,7 +1522,7 @@ population_change_data_table
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#oirjqmhcaa .gt_column_spanner_outer {
+&#10;#fuaduxktga .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1479,13 +1533,13 @@ population_change_data_table
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#oirjqmhcaa .gt_column_spanner_outer:first-child {
+&#10;#fuaduxktga .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#oirjqmhcaa .gt_column_spanner_outer:last-child {
+&#10;#fuaduxktga .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#oirjqmhcaa .gt_column_spanner {
+&#10;#fuaduxktga .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1496,10 +1550,10 @@ population_change_data_table
   display: inline-block;
   width: 100%;
 }
-&#10;#oirjqmhcaa .gt_spanner_row {
+&#10;#fuaduxktga .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#oirjqmhcaa .gt_group_heading {
+&#10;#fuaduxktga .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1524,7 +1578,7 @@ population_change_data_table
   vertical-align: middle;
   text-align: left;
 }
-&#10;#oirjqmhcaa .gt_empty_group_heading {
+&#10;#fuaduxktga .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1538,13 +1592,13 @@ population_change_data_table
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#oirjqmhcaa .gt_from_md > :first-child {
+&#10;#fuaduxktga .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#oirjqmhcaa .gt_from_md > :last-child {
+&#10;#fuaduxktga .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#oirjqmhcaa .gt_row {
+&#10;#fuaduxktga .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1562,7 +1616,7 @@ population_change_data_table
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#oirjqmhcaa .gt_stub {
+&#10;#fuaduxktga .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1574,7 +1628,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oirjqmhcaa .gt_stub_row_group {
+&#10;#fuaduxktga .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1587,13 +1641,13 @@ population_change_data_table
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#oirjqmhcaa .gt_row_group_first td {
+&#10;#fuaduxktga .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#oirjqmhcaa .gt_row_group_first th {
+&#10;#fuaduxktga .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#oirjqmhcaa .gt_summary_row {
+&#10;#fuaduxktga .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1602,14 +1656,14 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oirjqmhcaa .gt_first_summary_row {
+&#10;#fuaduxktga .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_first_summary_row.thick {
+&#10;#fuaduxktga .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#oirjqmhcaa .gt_last_summary_row {
+&#10;#fuaduxktga .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1618,7 +1672,7 @@ population_change_data_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_grand_summary_row {
+&#10;#fuaduxktga .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1627,7 +1681,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oirjqmhcaa .gt_first_grand_summary_row {
+&#10;#fuaduxktga .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1636,7 +1690,7 @@ population_change_data_table
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_last_grand_summary_row_top {
+&#10;#fuaduxktga .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1645,10 +1699,10 @@ population_change_data_table
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_striped {
+&#10;#fuaduxktga .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#oirjqmhcaa .gt_table_body {
+&#10;#fuaduxktga .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1656,7 +1710,7 @@ population_change_data_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_footnotes {
+&#10;#fuaduxktga .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1669,7 +1723,7 @@ population_change_data_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_footnote {
+&#10;#fuaduxktga .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1677,7 +1731,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oirjqmhcaa .gt_sourcenotes {
+&#10;#fuaduxktga .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1690,64 +1744,64 @@ population_change_data_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#oirjqmhcaa .gt_sourcenote {
+&#10;#fuaduxktga .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#oirjqmhcaa .gt_left {
+&#10;#fuaduxktga .gt_left {
   text-align: left;
 }
-&#10;#oirjqmhcaa .gt_center {
+&#10;#fuaduxktga .gt_center {
   text-align: center;
 }
-&#10;#oirjqmhcaa .gt_right {
+&#10;#fuaduxktga .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#oirjqmhcaa .gt_font_normal {
+&#10;#fuaduxktga .gt_font_normal {
   font-weight: normal;
 }
-&#10;#oirjqmhcaa .gt_font_bold {
+&#10;#fuaduxktga .gt_font_bold {
   font-weight: bold;
 }
-&#10;#oirjqmhcaa .gt_font_italic {
+&#10;#fuaduxktga .gt_font_italic {
   font-style: italic;
 }
-&#10;#oirjqmhcaa .gt_super {
+&#10;#fuaduxktga .gt_super {
   font-size: 65%;
 }
-&#10;#oirjqmhcaa .gt_footnote_marks {
+&#10;#fuaduxktga .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#oirjqmhcaa .gt_asterisk {
+&#10;#fuaduxktga .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#oirjqmhcaa .gt_indent_1 {
+&#10;#fuaduxktga .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#oirjqmhcaa .gt_indent_2 {
+&#10;#fuaduxktga .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#oirjqmhcaa .gt_indent_3 {
+&#10;#fuaduxktga .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#oirjqmhcaa .gt_indent_4 {
+&#10;#fuaduxktga .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#oirjqmhcaa .gt_indent_5 {
+&#10;#fuaduxktga .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#oirjqmhcaa .katex-display {
+&#10;#fuaduxktga .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#oirjqmhcaa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#fuaduxktga div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1760,17 +1814,21 @@ population_change_data_table
     <col/>
     <col/>
     <col/>
+    <col/>
+    <col/>
   </colgroup>
   <thead>
     <tr class="gt_heading">
-      <td colspan="7" class="gt_heading gt_title gt_font_normal" style><span class='gt_from_md'><strong>Population change in Spain by nationality</strong></span></td>
+      <td colspan="9" class="gt_heading gt_title gt_font_normal" style><span class='gt_from_md'><strong>Population change in Spain by nationality</strong></span></td>
     </tr>
     <tr class="gt_heading">
-      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>2005-2026 period</td>
+      <td colspan="9" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>2005-2026 period</td>
     </tr>
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="date">date</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Total">Total</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Foreign-nationals">Foreign nationals</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Spanish-nationalts">Spanish nationalts</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="YoY-change">YoY change</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Foreign-nationals-YoY-change">Foreign nationals YoY change</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Spanish-nationals-YoY-change">Spanish nationals YoY change</th>
@@ -1781,6 +1839,8 @@ population_change_data_table
   <tbody class="gt_table_body">
     <tr><td headers="date" class="gt_row gt_right">2005-01-01</td>
 <td headers="Total" class="gt_row gt_right">43,296,335</td>
+<td headers="Foreign nationals" class="gt_row gt_right">3430204</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">39866131</td>
 <td headers="YoY change" class="gt_row gt_right">NA</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">NA</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">NA</td>
@@ -1788,6 +1848,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">NA</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2006-01-01</td>
 <td headers="Total" class="gt_row gt_right">44,009,969</td>
+<td headers="Foreign nationals" class="gt_row gt_right">3930916</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40079053</td>
 <td headers="YoY change" class="gt_row gt_right">713,634</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">500,712</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">212,922</td>
@@ -1795,6 +1857,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.5%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2007-01-01</td>
 <td headers="Total" class="gt_row gt_right">44,784,659</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4449434</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40335225</td>
 <td headers="YoY change" class="gt_row gt_right">774,690</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">518,518</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">256,172</td>
@@ -1802,6 +1866,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.6%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2008-01-01</td>
 <td headers="Total" class="gt_row gt_right">45,668,938</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5086295</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40582643</td>
 <td headers="YoY change" class="gt_row gt_right">884,279</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">636,861</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">247,418</td>
@@ -1809,6 +1875,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.6%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2009-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,239,271</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5386659</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">40852612</td>
 <td headers="YoY change" class="gt_row gt_right">570,333</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">300,364</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">269,969</td>
@@ -1816,6 +1884,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.7%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2010-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,486,621</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5402579</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41084042</td>
 <td headers="YoY change" class="gt_row gt_right">247,350</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">15,920</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">231,430</td>
@@ -1823,6 +1893,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.6%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2011-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,667,175</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5312440</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41354735</td>
 <td headers="YoY change" class="gt_row gt_right">180,554</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−90,139</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">270,693</td>
@@ -1830,6 +1902,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.7%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2012-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,818,216</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5236030</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41582186</td>
 <td headers="YoY change" class="gt_row gt_right">151,041</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−76,410</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">227,451</td>
@@ -1837,6 +1911,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.5%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2013-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,712,650</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5064584</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41648066</td>
 <td headers="YoY change" class="gt_row gt_right">−105,566</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−171,446</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">65,880</td>
@@ -1844,6 +1920,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.2%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2014-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,495,744</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4676352</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41819392</td>
 <td headers="YoY change" class="gt_row gt_right">−216,906</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−388,232</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">171,326</td>
@@ -1851,6 +1929,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.4%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2015-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,425,722</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4453985</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41971737</td>
 <td headers="YoY change" class="gt_row gt_right">−70,022</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−222,367</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">152,345</td>
@@ -1858,6 +1938,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.4%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2016-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,418,884</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4419334</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41999550</td>
 <td headers="YoY change" class="gt_row gt_right">−6,838</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−34,651</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">27,813</td>
@@ -1865,6 +1947,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.1%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2017-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,497,393</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4417653</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42079740</td>
 <td headers="YoY change" class="gt_row gt_right">78,509</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">−1,681</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">80,190</td>
@@ -1872,6 +1956,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.2%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2018-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,645,070</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4577322</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42067748</td>
 <td headers="YoY change" class="gt_row gt_right">147,677</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">159,669</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">−11,992</td>
@@ -1879,6 +1965,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">−0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2019-01-01</td>
 <td headers="Total" class="gt_row gt_right">46,918,951</td>
+<td headers="Foreign nationals" class="gt_row gt_right">4850762</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42068189</td>
 <td headers="YoY change" class="gt_row gt_right">273,881</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">273,440</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">441</td>
@@ -1886,6 +1974,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2020-01-01</td>
 <td headers="Total" class="gt_row gt_right">47,318,050</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5241278</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42076772</td>
 <td headers="YoY change" class="gt_row gt_right">399,099</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">390,516</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">8,583</td>
@@ -1893,6 +1983,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2021-01-01</td>
 <td headers="Total" class="gt_row gt_right">47,400,798</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5402702</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41998096</td>
 <td headers="YoY change" class="gt_row gt_right">82,748</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">161,424</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">−78,676</td>
@@ -1900,6 +1992,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">−0.2%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2022-01-01</td>
 <td headers="Total" class="gt_row gt_right">47,486,727</td>
+<td headers="Foreign nationals" class="gt_row gt_right">5509046</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41977681</td>
 <td headers="YoY change" class="gt_row gt_right">85,929</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">106,344</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">−20,415</td>
@@ -1907,6 +2001,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">−0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2023-01-01</td>
 <td headers="Total" class="gt_row gt_right">48,085,361</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6089620</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">41995741</td>
 <td headers="YoY change" class="gt_row gt_right">598,634</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">580,574</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">18,060</td>
@@ -1914,6 +2010,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.0%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2024-01-01</td>
 <td headers="Total" class="gt_row gt_right">48,619,695</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6502282</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42117413</td>
 <td headers="YoY change" class="gt_row gt_right">534,334</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">412,662</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">121,672</td>
@@ -1921,6 +2019,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.3%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2025-01-01</td>
 <td headers="Total" class="gt_row gt_right">49,128,297</td>
+<td headers="Foreign nationals" class="gt_row gt_right">6911971</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42216326</td>
 <td headers="YoY change" class="gt_row gt_right">508,602</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">409,689</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">98,913</td>
@@ -1928,6 +2028,8 @@ population_change_data_table
 <td headers="Spanish nationals YoY percentage change" class="gt_row gt_right">+0.2%</td></tr>
     <tr><td headers="date" class="gt_row gt_right">2026-01-01</td>
 <td headers="Total" class="gt_row gt_right">49,596,376</td>
+<td headers="Foreign nationals" class="gt_row gt_right">7256796</td>
+<td headers="Spanish nationalts" class="gt_row gt_right">42339580</td>
 <td headers="YoY change" class="gt_row gt_right">468,079</td>
 <td headers="Foreign nationals YoY change" class="gt_row gt_right">344,825</td>
 <td headers="Spanish nationals YoY change" class="gt_row gt_right">123,254</td>
@@ -1937,7 +2039,7 @@ population_change_data_table
   &#10;</table>
 </div>
 
-### 2.2.1 Spain population change by nationality
+### 3.1 Spain population change by nationality charts
 
 For each population by nationality in Spain (Spanish nationals and
 foreign population), this section describes its year on year change in
@@ -1955,7 +2057,557 @@ once we account for Natural increase, what percentage of population
 change is due mainly to migration flows from Foreign nationals in the
 overall population in Spain for the 2005-2026 period.
 
-## 3. Total population in Spain by nationality - 2005-2026 period
+``` r
+head(population_data_fmt)
+```
+
+    ## # A tibble: 6 × 4
+    ##   date       total_population foreign_population spanish_nationals_population
+    ##   <date>                <dbl>              <dbl>                        <dbl>
+    ## 1 2005-01-01         43296335            3430204                     39866131
+    ## 2 2006-01-01         44009969            3930916                     40079053
+    ## 3 2007-01-01         44784659            4449434                     40335225
+    ## 4 2008-01-01         45668938            5086295                     40582643
+    ## 5 2009-01-01         46239271            5386659                     40852612
+    ## 6 2010-01-01         46486621            5402579                     41084042
+
+``` r
+df_base_hundred <- population_data_fmt %>% 
+ mutate(
+   Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
+   foreign_pop_2008_base =  ((foreign_population / foreign_population[date == '2008-01-01']) * 100), 
+   spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
+)
+
+df_base_hundred_data <- df_base_hundred %>% select(date,Total_pop_2008_base,foreign_pop_2008_base,spanish_pop_2008_base) 
+
+df_base_hundred_data_round <- df_base_hundred_data %>% 
+  mutate(
+  Tot_pop_2008_round =  round(Total_pop_2008_base,0),
+  foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
+  spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
+  )
+
+  
+df_base_hundred_table <- df_base_hundred_data_round %>% 
+  select(date,Tot_pop_2008_round,foreign_pop_2008_round,spanish_pop_2008_round) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population in Spain by nationality base 100 year 2008**"),
+    subtitle = ("2005-2026 period") 
+        ) 
+df_base_hundred_table
+```
+
+<div id="ngfrggnuxc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ngfrggnuxc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+&#10;#ngfrggnuxc thead, #ngfrggnuxc tbody, #ngfrggnuxc tfoot, #ngfrggnuxc tr, #ngfrggnuxc td, #ngfrggnuxc th {
+  border-style: none;
+}
+&#10;#ngfrggnuxc p {
+  margin: 0;
+  padding: 0;
+}
+&#10;#ngfrggnuxc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+&#10;#ngfrggnuxc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+&#10;#ngfrggnuxc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+&#10;#ngfrggnuxc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+&#10;#ngfrggnuxc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+&#10;#ngfrggnuxc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+&#10;#ngfrggnuxc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+&#10;#ngfrggnuxc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+&#10;#ngfrggnuxc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+&#10;#ngfrggnuxc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+&#10;#ngfrggnuxc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+&#10;#ngfrggnuxc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+&#10;#ngfrggnuxc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+&#10;#ngfrggnuxc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+&#10;#ngfrggnuxc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#ngfrggnuxc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+&#10;#ngfrggnuxc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+&#10;#ngfrggnuxc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+&#10;#ngfrggnuxc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#ngfrggnuxc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+&#10;#ngfrggnuxc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#ngfrggnuxc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+&#10;#ngfrggnuxc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#ngfrggnuxc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+&#10;#ngfrggnuxc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#ngfrggnuxc .gt_left {
+  text-align: left;
+}
+&#10;#ngfrggnuxc .gt_center {
+  text-align: center;
+}
+&#10;#ngfrggnuxc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+&#10;#ngfrggnuxc .gt_font_normal {
+  font-weight: normal;
+}
+&#10;#ngfrggnuxc .gt_font_bold {
+  font-weight: bold;
+}
+&#10;#ngfrggnuxc .gt_font_italic {
+  font-style: italic;
+}
+&#10;#ngfrggnuxc .gt_super {
+  font-size: 65%;
+}
+&#10;#ngfrggnuxc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+&#10;#ngfrggnuxc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+&#10;#ngfrggnuxc .gt_indent_1 {
+  text-indent: 5px;
+}
+&#10;#ngfrggnuxc .gt_indent_2 {
+  text-indent: 10px;
+}
+&#10;#ngfrggnuxc .gt_indent_3 {
+  text-indent: 15px;
+}
+&#10;#ngfrggnuxc .gt_indent_4 {
+  text-indent: 20px;
+}
+&#10;#ngfrggnuxc .gt_indent_5 {
+  text-indent: 25px;
+}
+&#10;#ngfrggnuxc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+&#10;#ngfrggnuxc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_title gt_font_normal" style><span class='gt_from_md'><strong>Population in Spain by nationality base 100 year 2008</strong></span></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>2005-2026 period</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="date">date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Tot_pop_2008_round">Tot_pop_2008_round</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="foreign_pop_2008_round">foreign_pop_2008_round</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="spanish_pop_2008_round">spanish_pop_2008_round</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="date" class="gt_row gt_right">2005-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">95</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">67</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">98</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2006-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">96</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">77</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2007-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">98</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2008-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">100</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">100</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2009-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">101</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">101</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2010-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">101</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2011-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">104</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">102</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2012-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">103</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">103</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">102</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2013-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">100</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2014-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">92</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2015-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">88</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2016-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2017-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2018-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">90</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2019-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">103</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">95</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2020-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">103</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2021-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2022-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">108</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2023-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">105</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">120</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2024-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">106</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">128</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2025-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">108</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">136</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2026-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">109</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">143</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+  </tbody>
+  &#10;</table>
+</div>
+
+``` r
+# Year 2008 base population
+```
+
+## 4. Total population in Spain by nationality - 2005-2026 period
 
 This section describes population figures from the Municipal Census in
 Spain for the 2005-2026 period. Providing a breakdown of Total
@@ -1973,24 +2625,24 @@ population by nationality Spanish and foreign nationals.
 
 ``` r
 Spain_population_nationality_fmt <- population_data_fmt %>%                          
-                                    select(date,total_population,foreign_nationals_population) %>% 
+                                    select(date,total_population,foreign_population) %>% 
                          arrange(date)
 Spain_population_nationality_fmt
 ```
 
     ## # A tibble: 22 × 3
-    ##    date       total_population foreign_nationals_population
-    ##    <date>                <dbl>                        <dbl>
-    ##  1 2005-01-01         43296335                      3430204
-    ##  2 2006-01-01         44009969                      3930916
-    ##  3 2007-01-01         44784659                      4449434
-    ##  4 2008-01-01         45668938                      5086295
-    ##  5 2009-01-01         46239271                      5386659
-    ##  6 2010-01-01         46486621                      5402579
-    ##  7 2011-01-01         46667175                      5312440
-    ##  8 2012-01-01         46818216                      5236030
-    ##  9 2013-01-01         46712650                      5064584
-    ## 10 2014-01-01         46495744                      4676352
+    ##    date       total_population foreign_population
+    ##    <date>                <dbl>              <dbl>
+    ##  1 2005-01-01         43296335            3430204
+    ##  2 2006-01-01         44009969            3930916
+    ##  3 2007-01-01         44784659            4449434
+    ##  4 2008-01-01         45668938            5086295
+    ##  5 2009-01-01         46239271            5386659
+    ##  6 2010-01-01         46486621            5402579
+    ##  7 2011-01-01         46667175            5312440
+    ##  8 2012-01-01         46818216            5236030
+    ##  9 2013-01-01         46712650            5064584
+    ## 10 2014-01-01         46495744            4676352
     ## # ℹ 12 more rows
 
 ``` r
@@ -2039,13 +2691,13 @@ Then this is the foreign population in Spain for the same time period.
 options(scipen=999)
 
 forign_population_plot <- Spain_population_nationality_fmt %>% 
-                            ggplot(aes(x= date, y = foreign_nationals_population)) +
+                            ggplot(aes(x= date, y = foreign_population)) +
   geom_bar(stat = "identity", fill = "cornflowerblue") +
   labs(title = "Foreign population in Spain. 2005-2025 period",
        substile = "Source: INE Spanish Office for National Statistics") +
   theme_light() +
   theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
-  geom_text(aes(label = foreign_nationals_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  geom_text(aes(label = foreign_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
   coord_cartesian( ylim=c(0,7500000), expand = FALSE )
 
 forign_population_plot
@@ -2060,7 +2712,7 @@ period.
 options(scipen=999)
 
 national_population_data <- Spain_population_nationality_fmt %>% 
-  mutate(Spanish_nationals = total_population - foreign_nationals_population)
+  mutate(Spanish_nationals = total_population - foreign_population)
 
 national_population_plot <- national_population_data %>% 
                             ggplot(aes(x= date, y = Spanish_nationals)) +
@@ -2078,7 +2730,7 @@ national_population_plot
 
 ![](Recent-population-trends-in-Spain_files/figure-gfm/Spain%20national%20population%20bar%20plot-1.png)<!-- -->
 
-## 3. Spain population figures Overview details
+## 5. Spain population figures Overview details
 
 In this section we highlight a couple of trends observed in both Total
 and foreign population in Spain from 2004 until 2025 period.
@@ -2090,7 +2742,7 @@ and foreign population in Spain from 2004 until 2025 period.
 - In contrast, on the year **2005-01-01**, the first year on this
   series, total population in Spain was **43,296,335**.
 
-### 3.1 Share of foreign population over total population in Spain
+### 5.1 Share of foreign population over total population in Spain
 
 Next, we describe the foreign population percent share of the total
 population in Spain for the 2004-2025 period.
