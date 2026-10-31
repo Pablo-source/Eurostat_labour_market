@@ -245,14 +245,18 @@ my_colours <- paletteer::paletteer_d("lisa::FridaKahlo")
 
 pop_base_100_plot <- pop_base_2008_data_plot %>% 
     ggplot( aes(x=Date, y=population, group=nationality, color=nationality)) +
-    geom_line(linewidth = 1.2) +
+    geom_line(linewidth = 1.5) +
   scale_colour_manual(
     values = my_colours[1:3]
   ) +
   theme_minimal() +
     theme(
       legend.position="bottom",
-      plot.title = element_text(size=24)
+      plot.title = element_text(size=25),
+      axis.title.x = element_text(size = 14),
+      axis.title.y = element_text(size = 14),
+        axis.text.x = element_text(size = 22),
+        axis.text.y = element_text(size = 22)
     ) +
     ggtitle("Spanish population by nationality. Year 2008 base 100") 
 pop_base_100_plot
