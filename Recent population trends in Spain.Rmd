@@ -172,7 +172,7 @@ population_data_all_nationalities
 We can display the above table using GT package
 
 ```{r population_by_nationality_gt,echo=TRUE, message=FALSE, warning = FALSE}
-Spain_nationlity_gt<- population_data_fmt %>% 
+Spain_nationlity_gt<- population_data_all_nationalities %>% 
   select(Date = date, Total = total_population, 
          'Foreign nationals'= foreign_nationals_population,
          'Spanish nationalts'= spanish_nationals_population) %>% 
@@ -195,7 +195,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
 ```{r popualtion nationality base hundred , echo=FALSE,message=FALSE, warning =FALSE}
 head(population_data_fmt)
 
-df_base_hundred <- population_data_fmt %>% 
+df_base_hundred <- population_data_all_nationalities %>% 
     select(date, total_population, foreign_nationals_population,spanish_nationals_population) %>% 
  mutate(
    Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
@@ -210,11 +210,16 @@ df_base_hundred_data_round <- df_base_hundred_data %>%
   Tot_pop_2008_round =  round(Total_pop_2008_base,0),
   foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
   spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
-  )
+  ) %>% 
+  select(Date = date,
+         'Total base 2008' = Tot_pop_2008_round,
+         'Foreign nationals base 2008' = foreign_pop_2008_round,
+         'Spanish nationals base 2008' = spanish_pop_2008_round
+         )# Change Columns haders with meaningful labels
 
   
 df_base_hundred_table <- df_base_hundred_data_round %>% 
-  select(date,Tot_pop_2008_round,foreign_pop_2008_round,spanish_pop_2008_round) %>% 
+  select(Date,  'Total base 2008','Foreign nationals base 2008', 'Spanish nationals base 2008' ) %>% 
     gt() %>%
   tab_header(
     title = md("**Population in Spain by nationality base 100 year 2008**"),
