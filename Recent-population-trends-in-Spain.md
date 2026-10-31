@@ -1,12 +1,12 @@
 Recent Spain population trends
 ================
 PLR
-2026-10-18
+2026-10-31
 
 ## Latest date this report was produced
 
-Today’s date is **18 October 2026**. This report was published on the
-week starting on **16 October 2026**.
+Today’s date is **31 October 2026**. This report was published on the
+week starting on **29 October 2026**.
 
 ## Obtaining Spain population data from official sources
 
@@ -225,20 +225,20 @@ Spain_nationlity_gt<- population_data_fmt %>%
 Spain_nationlity_gt
 ```
 
-<div id="koqelzzppy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#koqelzzppy table {
+<div id="bsfwjoznnf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bsfwjoznnf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#koqelzzppy thead, #koqelzzppy tbody, #koqelzzppy tfoot, #koqelzzppy tr, #koqelzzppy td, #koqelzzppy th {
+&#10;#bsfwjoznnf thead, #bsfwjoznnf tbody, #bsfwjoznnf tfoot, #bsfwjoznnf tr, #bsfwjoznnf td, #bsfwjoznnf th {
   border-style: none;
 }
-&#10;#koqelzzppy p {
+&#10;#bsfwjoznnf p {
   margin: 0;
   padding: 0;
 }
-&#10;#koqelzzppy .gt_table {
+&#10;#bsfwjoznnf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -263,11 +263,11 @@ Spain_nationlity_gt
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_caption {
+&#10;#bsfwjoznnf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#koqelzzppy .gt_title {
+&#10;#bsfwjoznnf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -278,7 +278,7 @@ Spain_nationlity_gt
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#koqelzzppy .gt_subtitle {
+&#10;#bsfwjoznnf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -289,7 +289,7 @@ Spain_nationlity_gt
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#koqelzzppy .gt_heading {
+&#10;#bsfwjoznnf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -300,12 +300,12 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_bottom_border {
+&#10;#bsfwjoznnf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_col_headings {
+&#10;#bsfwjoznnf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -319,7 +319,7 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_col_heading {
+&#10;#bsfwjoznnf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -338,7 +338,7 @@ Spain_nationlity_gt
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#koqelzzppy .gt_column_spanner_outer {
+&#10;#bsfwjoznnf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -349,13 +349,13 @@ Spain_nationlity_gt
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#koqelzzppy .gt_column_spanner_outer:first-child {
+&#10;#bsfwjoznnf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#koqelzzppy .gt_column_spanner_outer:last-child {
+&#10;#bsfwjoznnf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#koqelzzppy .gt_column_spanner {
+&#10;#bsfwjoznnf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -366,10 +366,10 @@ Spain_nationlity_gt
   display: inline-block;
   width: 100%;
 }
-&#10;#koqelzzppy .gt_spanner_row {
+&#10;#bsfwjoznnf .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#koqelzzppy .gt_group_heading {
+&#10;#bsfwjoznnf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -394,7 +394,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   text-align: left;
 }
-&#10;#koqelzzppy .gt_empty_group_heading {
+&#10;#bsfwjoznnf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -408,13 +408,13 @@ Spain_nationlity_gt
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#koqelzzppy .gt_from_md > :first-child {
+&#10;#bsfwjoznnf .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#koqelzzppy .gt_from_md > :last-child {
+&#10;#bsfwjoznnf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#koqelzzppy .gt_row {
+&#10;#bsfwjoznnf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -432,7 +432,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#koqelzzppy .gt_stub {
+&#10;#bsfwjoznnf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -444,7 +444,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#koqelzzppy .gt_stub_row_group {
+&#10;#bsfwjoznnf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -457,13 +457,13 @@ Spain_nationlity_gt
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#koqelzzppy .gt_row_group_first td {
+&#10;#bsfwjoznnf .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#koqelzzppy .gt_row_group_first th {
+&#10;#bsfwjoznnf .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#koqelzzppy .gt_summary_row {
+&#10;#bsfwjoznnf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -472,14 +472,14 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#koqelzzppy .gt_first_summary_row {
+&#10;#bsfwjoznnf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_first_summary_row.thick {
+&#10;#bsfwjoznnf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#koqelzzppy .gt_last_summary_row {
+&#10;#bsfwjoznnf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -488,7 +488,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_grand_summary_row {
+&#10;#bsfwjoznnf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -497,7 +497,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#koqelzzppy .gt_first_grand_summary_row {
+&#10;#bsfwjoznnf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -506,7 +506,7 @@ Spain_nationlity_gt
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_last_grand_summary_row_top {
+&#10;#bsfwjoznnf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -515,10 +515,10 @@ Spain_nationlity_gt
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_striped {
+&#10;#bsfwjoznnf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#koqelzzppy .gt_table_body {
+&#10;#bsfwjoznnf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -526,7 +526,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_footnotes {
+&#10;#bsfwjoznnf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -539,7 +539,7 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_footnote {
+&#10;#bsfwjoznnf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -547,7 +547,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#koqelzzppy .gt_sourcenotes {
+&#10;#bsfwjoznnf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -560,64 +560,64 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#koqelzzppy .gt_sourcenote {
+&#10;#bsfwjoznnf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#koqelzzppy .gt_left {
+&#10;#bsfwjoznnf .gt_left {
   text-align: left;
 }
-&#10;#koqelzzppy .gt_center {
+&#10;#bsfwjoznnf .gt_center {
   text-align: center;
 }
-&#10;#koqelzzppy .gt_right {
+&#10;#bsfwjoznnf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#koqelzzppy .gt_font_normal {
+&#10;#bsfwjoznnf .gt_font_normal {
   font-weight: normal;
 }
-&#10;#koqelzzppy .gt_font_bold {
+&#10;#bsfwjoznnf .gt_font_bold {
   font-weight: bold;
 }
-&#10;#koqelzzppy .gt_font_italic {
+&#10;#bsfwjoznnf .gt_font_italic {
   font-style: italic;
 }
-&#10;#koqelzzppy .gt_super {
+&#10;#bsfwjoznnf .gt_super {
   font-size: 65%;
 }
-&#10;#koqelzzppy .gt_footnote_marks {
+&#10;#bsfwjoznnf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#koqelzzppy .gt_asterisk {
+&#10;#bsfwjoznnf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#koqelzzppy .gt_indent_1 {
+&#10;#bsfwjoznnf .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#koqelzzppy .gt_indent_2 {
+&#10;#bsfwjoznnf .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#koqelzzppy .gt_indent_3 {
+&#10;#bsfwjoznnf .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#koqelzzppy .gt_indent_4 {
+&#10;#bsfwjoznnf .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#koqelzzppy .gt_indent_5 {
+&#10;#bsfwjoznnf .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#koqelzzppy .katex-display {
+&#10;#bsfwjoznnf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#koqelzzppy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#bsfwjoznnf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -729,6 +729,563 @@ Spain_nationlity_gt
   &#10;</table>
 </div>
 
+## 2.1 Spain Total population by nationality Index (Base 100 = 2008)
+
+Population in Spain by nationality. Index (Base 100 = 2016)
+
+``` r
+head(population_data_fmt)
+```
+
+    ## # A tibble: 6 × 4
+    ##   date       total_population foreign_nationals_populat…¹ spanish_nationals_po…²
+    ##   <date>                <dbl>                       <dbl>                  <dbl>
+    ## 1 2005-01-01         43296335                     3430204               39866131
+    ## 2 2006-01-01         44009969                     3930916               40079053
+    ## 3 2007-01-01         44784659                     4449434               40335225
+    ## 4 2008-01-01         45668938                     5086295               40582643
+    ## 5 2009-01-01         46239271                     5386659               40852612
+    ## 6 2010-01-01         46486621                     5402579               41084042
+    ## # ℹ abbreviated names: ¹​foreign_nationals_population,
+    ## #   ²​spanish_nationals_population
+
+``` r
+df_base_hundred <- population_data_fmt %>% 
+    select(date, total_population, foreign_nationals_population,spanish_nationals_population) %>% 
+ mutate(
+   Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
+   foreign_pop_2008_base =  ((foreign_nationals_population / foreign_nationals_population[date == '2008-01-01']) * 100), 
+   spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
+)
+
+df_base_hundred_data <- df_base_hundred %>% select(date,Total_pop_2008_base,foreign_pop_2008_base,spanish_pop_2008_base) 
+
+df_base_hundred_data_round <- df_base_hundred_data %>% 
+  mutate(
+  Tot_pop_2008_round =  round(Total_pop_2008_base,0),
+  foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
+  spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
+  )
+
+  
+df_base_hundred_table <- df_base_hundred_data_round %>% 
+  select(date,Tot_pop_2008_round,foreign_pop_2008_round,spanish_pop_2008_round) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population in Spain by nationality base 100 year 2008**"),
+    subtitle = ("2005-2026 period") 
+        ) 
+df_base_hundred_table
+```
+
+<div id="bndxflinii" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bndxflinii table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+&#10;#bndxflinii thead, #bndxflinii tbody, #bndxflinii tfoot, #bndxflinii tr, #bndxflinii td, #bndxflinii th {
+  border-style: none;
+}
+&#10;#bndxflinii p {
+  margin: 0;
+  padding: 0;
+}
+&#10;#bndxflinii .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+&#10;#bndxflinii .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+&#10;#bndxflinii .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+&#10;#bndxflinii .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+&#10;#bndxflinii .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+&#10;#bndxflinii .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+&#10;#bndxflinii .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+&#10;#bndxflinii .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+&#10;#bndxflinii .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+&#10;#bndxflinii .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+&#10;#bndxflinii .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+&#10;#bndxflinii .gt_from_md > :first-child {
+  margin-top: 0;
+}
+&#10;#bndxflinii .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+&#10;#bndxflinii .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+&#10;#bndxflinii .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#bndxflinii .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+&#10;#bndxflinii .gt_row_group_first td {
+  border-top-width: 2px;
+}
+&#10;#bndxflinii .gt_row_group_first th {
+  border-top-width: 2px;
+}
+&#10;#bndxflinii .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#bndxflinii .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+&#10;#bndxflinii .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#bndxflinii .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+&#10;#bndxflinii .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#bndxflinii .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+&#10;#bndxflinii .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+&#10;#bndxflinii .gt_left {
+  text-align: left;
+}
+&#10;#bndxflinii .gt_center {
+  text-align: center;
+}
+&#10;#bndxflinii .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+&#10;#bndxflinii .gt_font_normal {
+  font-weight: normal;
+}
+&#10;#bndxflinii .gt_font_bold {
+  font-weight: bold;
+}
+&#10;#bndxflinii .gt_font_italic {
+  font-style: italic;
+}
+&#10;#bndxflinii .gt_super {
+  font-size: 65%;
+}
+&#10;#bndxflinii .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+&#10;#bndxflinii .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+&#10;#bndxflinii .gt_indent_1 {
+  text-indent: 5px;
+}
+&#10;#bndxflinii .gt_indent_2 {
+  text-indent: 10px;
+}
+&#10;#bndxflinii .gt_indent_3 {
+  text-indent: 15px;
+}
+&#10;#bndxflinii .gt_indent_4 {
+  text-indent: 20px;
+}
+&#10;#bndxflinii .gt_indent_5 {
+  text-indent: 25px;
+}
+&#10;#bndxflinii .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+&#10;#bndxflinii div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_title gt_font_normal" style><span class='gt_from_md'><strong>Population in Spain by nationality base 100 year 2008</strong></span></td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>2005-2026 period</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="date">date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Tot_pop_2008_round">Tot_pop_2008_round</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="foreign_pop_2008_round">foreign_pop_2008_round</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="spanish_pop_2008_round">spanish_pop_2008_round</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="date" class="gt_row gt_right">2005-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">95</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">67</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">98</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2006-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">96</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">77</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2007-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">98</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2008-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">100</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">100</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2009-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">101</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">101</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2010-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">101</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2011-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">104</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">102</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2012-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">103</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">103</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">102</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2013-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">100</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2014-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">92</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2015-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">88</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2016-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2017-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2018-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">90</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2019-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">103</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">95</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2020-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">103</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2021-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2022-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">108</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2023-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">105</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">120</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2024-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">106</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">128</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2025-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">108</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">136</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">2026-01-01</td>
+<td headers="Tot_pop_2008_round" class="gt_row gt_right">109</td>
+<td headers="foreign_pop_2008_round" class="gt_row gt_right">143</td>
+<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
+  </tbody>
+  &#10;</table>
+</div>
+
+``` r
+# Year 2008 base population
+```
+
 ## 3. Spain total population change
 
 This sub-section describes how Total population in Spain has changed
@@ -791,20 +1348,20 @@ population_change_data<-  population_data_fmt %>%
 population_change_data
 ```
 
-<div id="bwbzqluita" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bwbzqluita table {
+<div id="hxbebnsdic" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hxbebnsdic table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#bwbzqluita thead, #bwbzqluita tbody, #bwbzqluita tfoot, #bwbzqluita tr, #bwbzqluita td, #bwbzqluita th {
+&#10;#hxbebnsdic thead, #hxbebnsdic tbody, #hxbebnsdic tfoot, #hxbebnsdic tr, #hxbebnsdic td, #hxbebnsdic th {
   border-style: none;
 }
-&#10;#bwbzqluita p {
+&#10;#hxbebnsdic p {
   margin: 0;
   padding: 0;
 }
-&#10;#bwbzqluita .gt_table {
+&#10;#hxbebnsdic .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -829,11 +1386,11 @@ population_change_data
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_caption {
+&#10;#hxbebnsdic .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#bwbzqluita .gt_title {
+&#10;#hxbebnsdic .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -844,7 +1401,7 @@ population_change_data
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#bwbzqluita .gt_subtitle {
+&#10;#hxbebnsdic .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -855,7 +1412,7 @@ population_change_data
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#bwbzqluita .gt_heading {
+&#10;#hxbebnsdic .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -866,12 +1423,12 @@ population_change_data
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_bottom_border {
+&#10;#hxbebnsdic .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_col_headings {
+&#10;#hxbebnsdic .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -885,7 +1442,7 @@ population_change_data
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_col_heading {
+&#10;#hxbebnsdic .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -904,7 +1461,7 @@ population_change_data
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#bwbzqluita .gt_column_spanner_outer {
+&#10;#hxbebnsdic .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -915,13 +1472,13 @@ population_change_data
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#bwbzqluita .gt_column_spanner_outer:first-child {
+&#10;#hxbebnsdic .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#bwbzqluita .gt_column_spanner_outer:last-child {
+&#10;#hxbebnsdic .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#bwbzqluita .gt_column_spanner {
+&#10;#hxbebnsdic .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -932,10 +1489,10 @@ population_change_data
   display: inline-block;
   width: 100%;
 }
-&#10;#bwbzqluita .gt_spanner_row {
+&#10;#hxbebnsdic .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#bwbzqluita .gt_group_heading {
+&#10;#hxbebnsdic .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -960,7 +1517,7 @@ population_change_data
   vertical-align: middle;
   text-align: left;
 }
-&#10;#bwbzqluita .gt_empty_group_heading {
+&#10;#hxbebnsdic .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -974,13 +1531,13 @@ population_change_data
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#bwbzqluita .gt_from_md > :first-child {
+&#10;#hxbebnsdic .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#bwbzqluita .gt_from_md > :last-child {
+&#10;#hxbebnsdic .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#bwbzqluita .gt_row {
+&#10;#hxbebnsdic .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -998,7 +1555,7 @@ population_change_data
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#bwbzqluita .gt_stub {
+&#10;#hxbebnsdic .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1010,7 +1567,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#bwbzqluita .gt_stub_row_group {
+&#10;#hxbebnsdic .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1023,13 +1580,13 @@ population_change_data
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#bwbzqluita .gt_row_group_first td {
+&#10;#hxbebnsdic .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#bwbzqluita .gt_row_group_first th {
+&#10;#hxbebnsdic .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#bwbzqluita .gt_summary_row {
+&#10;#hxbebnsdic .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1038,14 +1595,14 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#bwbzqluita .gt_first_summary_row {
+&#10;#hxbebnsdic .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_first_summary_row.thick {
+&#10;#hxbebnsdic .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#bwbzqluita .gt_last_summary_row {
+&#10;#hxbebnsdic .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1054,7 +1611,7 @@ population_change_data
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_grand_summary_row {
+&#10;#hxbebnsdic .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1063,7 +1620,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#bwbzqluita .gt_first_grand_summary_row {
+&#10;#hxbebnsdic .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1072,7 +1629,7 @@ population_change_data
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_last_grand_summary_row_top {
+&#10;#hxbebnsdic .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1081,10 +1638,10 @@ population_change_data
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_striped {
+&#10;#hxbebnsdic .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#bwbzqluita .gt_table_body {
+&#10;#hxbebnsdic .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1092,7 +1649,7 @@ population_change_data
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_footnotes {
+&#10;#hxbebnsdic .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1105,7 +1662,7 @@ population_change_data
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_footnote {
+&#10;#hxbebnsdic .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1113,7 +1670,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#bwbzqluita .gt_sourcenotes {
+&#10;#hxbebnsdic .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1126,64 +1683,64 @@ population_change_data
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#bwbzqluita .gt_sourcenote {
+&#10;#hxbebnsdic .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#bwbzqluita .gt_left {
+&#10;#hxbebnsdic .gt_left {
   text-align: left;
 }
-&#10;#bwbzqluita .gt_center {
+&#10;#hxbebnsdic .gt_center {
   text-align: center;
 }
-&#10;#bwbzqluita .gt_right {
+&#10;#hxbebnsdic .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#bwbzqluita .gt_font_normal {
+&#10;#hxbebnsdic .gt_font_normal {
   font-weight: normal;
 }
-&#10;#bwbzqluita .gt_font_bold {
+&#10;#hxbebnsdic .gt_font_bold {
   font-weight: bold;
 }
-&#10;#bwbzqluita .gt_font_italic {
+&#10;#hxbebnsdic .gt_font_italic {
   font-style: italic;
 }
-&#10;#bwbzqluita .gt_super {
+&#10;#hxbebnsdic .gt_super {
   font-size: 65%;
 }
-&#10;#bwbzqluita .gt_footnote_marks {
+&#10;#hxbebnsdic .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#bwbzqluita .gt_asterisk {
+&#10;#hxbebnsdic .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#bwbzqluita .gt_indent_1 {
+&#10;#hxbebnsdic .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#bwbzqluita .gt_indent_2 {
+&#10;#hxbebnsdic .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#bwbzqluita .gt_indent_3 {
+&#10;#hxbebnsdic .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#bwbzqluita .gt_indent_4 {
+&#10;#hxbebnsdic .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#bwbzqluita .gt_indent_5 {
+&#10;#hxbebnsdic .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#bwbzqluita .katex-display {
+&#10;#hxbebnsdic .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#bwbzqluita div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#hxbebnsdic div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1409,20 +1966,20 @@ fmt_percent("Spanish nationals YoY percentage change",decimals =1,force_sign = T
 population_change_data_table
 ```
 
-<div id="fuaduxktga" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fuaduxktga table {
+<div id="awxyvrlksj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#awxyvrlksj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#fuaduxktga thead, #fuaduxktga tbody, #fuaduxktga tfoot, #fuaduxktga tr, #fuaduxktga td, #fuaduxktga th {
+&#10;#awxyvrlksj thead, #awxyvrlksj tbody, #awxyvrlksj tfoot, #awxyvrlksj tr, #awxyvrlksj td, #awxyvrlksj th {
   border-style: none;
 }
-&#10;#fuaduxktga p {
+&#10;#awxyvrlksj p {
   margin: 0;
   padding: 0;
 }
-&#10;#fuaduxktga .gt_table {
+&#10;#awxyvrlksj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1447,11 +2004,11 @@ population_change_data_table
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_caption {
+&#10;#awxyvrlksj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#fuaduxktga .gt_title {
+&#10;#awxyvrlksj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1462,7 +2019,7 @@ population_change_data_table
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#fuaduxktga .gt_subtitle {
+&#10;#awxyvrlksj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1473,7 +2030,7 @@ population_change_data_table
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#fuaduxktga .gt_heading {
+&#10;#awxyvrlksj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1484,12 +2041,12 @@ population_change_data_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_bottom_border {
+&#10;#awxyvrlksj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_col_headings {
+&#10;#awxyvrlksj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1503,7 +2060,7 @@ population_change_data_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_col_heading {
+&#10;#awxyvrlksj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1522,7 +2079,7 @@ population_change_data_table
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#fuaduxktga .gt_column_spanner_outer {
+&#10;#awxyvrlksj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1533,13 +2090,13 @@ population_change_data_table
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#fuaduxktga .gt_column_spanner_outer:first-child {
+&#10;#awxyvrlksj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#fuaduxktga .gt_column_spanner_outer:last-child {
+&#10;#awxyvrlksj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#fuaduxktga .gt_column_spanner {
+&#10;#awxyvrlksj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1550,10 +2107,10 @@ population_change_data_table
   display: inline-block;
   width: 100%;
 }
-&#10;#fuaduxktga .gt_spanner_row {
+&#10;#awxyvrlksj .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#fuaduxktga .gt_group_heading {
+&#10;#awxyvrlksj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1578,7 +2135,7 @@ population_change_data_table
   vertical-align: middle;
   text-align: left;
 }
-&#10;#fuaduxktga .gt_empty_group_heading {
+&#10;#awxyvrlksj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1592,13 +2149,13 @@ population_change_data_table
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#fuaduxktga .gt_from_md > :first-child {
+&#10;#awxyvrlksj .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#fuaduxktga .gt_from_md > :last-child {
+&#10;#awxyvrlksj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#fuaduxktga .gt_row {
+&#10;#awxyvrlksj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1616,7 +2173,7 @@ population_change_data_table
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#fuaduxktga .gt_stub {
+&#10;#awxyvrlksj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1628,7 +2185,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#fuaduxktga .gt_stub_row_group {
+&#10;#awxyvrlksj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1641,13 +2198,13 @@ population_change_data_table
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#fuaduxktga .gt_row_group_first td {
+&#10;#awxyvrlksj .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#fuaduxktga .gt_row_group_first th {
+&#10;#awxyvrlksj .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#fuaduxktga .gt_summary_row {
+&#10;#awxyvrlksj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1656,14 +2213,14 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#fuaduxktga .gt_first_summary_row {
+&#10;#awxyvrlksj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_first_summary_row.thick {
+&#10;#awxyvrlksj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#fuaduxktga .gt_last_summary_row {
+&#10;#awxyvrlksj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1672,7 +2229,7 @@ population_change_data_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_grand_summary_row {
+&#10;#awxyvrlksj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1681,7 +2238,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#fuaduxktga .gt_first_grand_summary_row {
+&#10;#awxyvrlksj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1690,7 +2247,7 @@ population_change_data_table
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_last_grand_summary_row_top {
+&#10;#awxyvrlksj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1699,10 +2256,10 @@ population_change_data_table
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_striped {
+&#10;#awxyvrlksj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#fuaduxktga .gt_table_body {
+&#10;#awxyvrlksj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1710,7 +2267,7 @@ population_change_data_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_footnotes {
+&#10;#awxyvrlksj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1723,7 +2280,7 @@ population_change_data_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_footnote {
+&#10;#awxyvrlksj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1731,7 +2288,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#fuaduxktga .gt_sourcenotes {
+&#10;#awxyvrlksj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1744,64 +2301,64 @@ population_change_data_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#fuaduxktga .gt_sourcenote {
+&#10;#awxyvrlksj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#fuaduxktga .gt_left {
+&#10;#awxyvrlksj .gt_left {
   text-align: left;
 }
-&#10;#fuaduxktga .gt_center {
+&#10;#awxyvrlksj .gt_center {
   text-align: center;
 }
-&#10;#fuaduxktga .gt_right {
+&#10;#awxyvrlksj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#fuaduxktga .gt_font_normal {
+&#10;#awxyvrlksj .gt_font_normal {
   font-weight: normal;
 }
-&#10;#fuaduxktga .gt_font_bold {
+&#10;#awxyvrlksj .gt_font_bold {
   font-weight: bold;
 }
-&#10;#fuaduxktga .gt_font_italic {
+&#10;#awxyvrlksj .gt_font_italic {
   font-style: italic;
 }
-&#10;#fuaduxktga .gt_super {
+&#10;#awxyvrlksj .gt_super {
   font-size: 65%;
 }
-&#10;#fuaduxktga .gt_footnote_marks {
+&#10;#awxyvrlksj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#fuaduxktga .gt_asterisk {
+&#10;#awxyvrlksj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#fuaduxktga .gt_indent_1 {
+&#10;#awxyvrlksj .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#fuaduxktga .gt_indent_2 {
+&#10;#awxyvrlksj .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#fuaduxktga .gt_indent_3 {
+&#10;#awxyvrlksj .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#fuaduxktga .gt_indent_4 {
+&#10;#awxyvrlksj .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#fuaduxktga .gt_indent_5 {
+&#10;#awxyvrlksj .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#fuaduxktga .katex-display {
+&#10;#awxyvrlksj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#fuaduxktga div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#awxyvrlksj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2056,556 +2613,6 @@ accounted for Spanish and Foreign nationals. This will allow later on,
 once we account for Natural increase, what percentage of population
 change is due mainly to migration flows from Foreign nationals in the
 overall population in Spain for the 2005-2026 period.
-
-``` r
-head(population_data_fmt)
-```
-
-    ## # A tibble: 6 × 4
-    ##   date       total_population foreign_population spanish_nationals_population
-    ##   <date>                <dbl>              <dbl>                        <dbl>
-    ## 1 2005-01-01         43296335            3430204                     39866131
-    ## 2 2006-01-01         44009969            3930916                     40079053
-    ## 3 2007-01-01         44784659            4449434                     40335225
-    ## 4 2008-01-01         45668938            5086295                     40582643
-    ## 5 2009-01-01         46239271            5386659                     40852612
-    ## 6 2010-01-01         46486621            5402579                     41084042
-
-``` r
-df_base_hundred <- population_data_fmt %>% 
- mutate(
-   Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
-   foreign_pop_2008_base =  ((foreign_population / foreign_population[date == '2008-01-01']) * 100), 
-   spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
-)
-
-df_base_hundred_data <- df_base_hundred %>% select(date,Total_pop_2008_base,foreign_pop_2008_base,spanish_pop_2008_base) 
-
-df_base_hundred_data_round <- df_base_hundred_data %>% 
-  mutate(
-  Tot_pop_2008_round =  round(Total_pop_2008_base,0),
-  foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
-  spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
-  )
-
-  
-df_base_hundred_table <- df_base_hundred_data_round %>% 
-  select(date,Tot_pop_2008_round,foreign_pop_2008_round,spanish_pop_2008_round) %>% 
-    gt() %>%
-  tab_header(
-    title = md("**Population in Spain by nationality base 100 year 2008**"),
-    subtitle = ("2005-2026 period") 
-        ) 
-df_base_hundred_table
-```
-
-<div id="ngfrggnuxc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ngfrggnuxc table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-&#10;#ngfrggnuxc thead, #ngfrggnuxc tbody, #ngfrggnuxc tfoot, #ngfrggnuxc tr, #ngfrggnuxc td, #ngfrggnuxc th {
-  border-style: none;
-}
-&#10;#ngfrggnuxc p {
-  margin: 0;
-  padding: 0;
-}
-&#10;#ngfrggnuxc .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-&#10;#ngfrggnuxc .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-&#10;#ngfrggnuxc .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-&#10;#ngfrggnuxc .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-&#10;#ngfrggnuxc .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-&#10;#ngfrggnuxc .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-&#10;#ngfrggnuxc .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-&#10;#ngfrggnuxc .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-&#10;#ngfrggnuxc .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-&#10;#ngfrggnuxc .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-&#10;#ngfrggnuxc .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-&#10;#ngfrggnuxc .gt_from_md > :first-child {
-  margin-top: 0;
-}
-&#10;#ngfrggnuxc .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-&#10;#ngfrggnuxc .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-&#10;#ngfrggnuxc .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#ngfrggnuxc .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-&#10;#ngfrggnuxc .gt_row_group_first td {
-  border-top-width: 2px;
-}
-&#10;#ngfrggnuxc .gt_row_group_first th {
-  border-top-width: 2px;
-}
-&#10;#ngfrggnuxc .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#ngfrggnuxc .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-&#10;#ngfrggnuxc .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#ngfrggnuxc .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-&#10;#ngfrggnuxc .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#ngfrggnuxc .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-&#10;#ngfrggnuxc .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-&#10;#ngfrggnuxc .gt_left {
-  text-align: left;
-}
-&#10;#ngfrggnuxc .gt_center {
-  text-align: center;
-}
-&#10;#ngfrggnuxc .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-&#10;#ngfrggnuxc .gt_font_normal {
-  font-weight: normal;
-}
-&#10;#ngfrggnuxc .gt_font_bold {
-  font-weight: bold;
-}
-&#10;#ngfrggnuxc .gt_font_italic {
-  font-style: italic;
-}
-&#10;#ngfrggnuxc .gt_super {
-  font-size: 65%;
-}
-&#10;#ngfrggnuxc .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-&#10;#ngfrggnuxc .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-&#10;#ngfrggnuxc .gt_indent_1 {
-  text-indent: 5px;
-}
-&#10;#ngfrggnuxc .gt_indent_2 {
-  text-indent: 10px;
-}
-&#10;#ngfrggnuxc .gt_indent_3 {
-  text-indent: 15px;
-}
-&#10;#ngfrggnuxc .gt_indent_4 {
-  text-indent: 20px;
-}
-&#10;#ngfrggnuxc .gt_indent_5 {
-  text-indent: 25px;
-}
-&#10;#ngfrggnuxc .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-&#10;#ngfrggnuxc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="4" class="gt_heading gt_title gt_font_normal" style><span class='gt_from_md'><strong>Population in Spain by nationality base 100 year 2008</strong></span></td>
-    </tr>
-    <tr class="gt_heading">
-      <td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>2005-2026 period</td>
-    </tr>
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="date">date</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Tot_pop_2008_round">Tot_pop_2008_round</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="foreign_pop_2008_round">foreign_pop_2008_round</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="spanish_pop_2008_round">spanish_pop_2008_round</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="date" class="gt_row gt_right">2005-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">95</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">67</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">98</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2006-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">96</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">77</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">99</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2007-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">98</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">99</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2008-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">100</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">100</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">100</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2009-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">101</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">101</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2010-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">101</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2011-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">104</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">102</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2012-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">103</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">103</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">102</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2013-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">100</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2014-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">92</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2015-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">88</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2016-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2017-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">87</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2018-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">102</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">90</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2019-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">103</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">95</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2020-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">103</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2021-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">106</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2022-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">104</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">108</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2023-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">105</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">120</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">103</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2024-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">106</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">128</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2025-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">108</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">136</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
-    <tr><td headers="date" class="gt_row gt_right">2026-01-01</td>
-<td headers="Tot_pop_2008_round" class="gt_row gt_right">109</td>
-<td headers="foreign_pop_2008_round" class="gt_row gt_right">143</td>
-<td headers="spanish_pop_2008_round" class="gt_row gt_right">104</td></tr>
-  </tbody>
-  &#10;</table>
-</div>
-
-``` r
-# Year 2008 base population
-```
 
 ## 4. Total population in Spain by nationality - 2005-2026 period
 
