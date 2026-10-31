@@ -176,7 +176,7 @@ We can display the above table using GT package
 Spain_nationlity_gt<- population_data_all_nationalities %>% 
   select(Date = date, Total = total_population, 
          'Foreign nationals'= foreign_nationals_population,
-         'Spanish nationalts'= spanish_nationals_population) %>% 
+         'Spanish nationals'= spanish_nationals_population) %>% 
   gt() %>%
   tab_header(
     title = md("**Spanish population by nationality**"),
@@ -184,10 +184,12 @@ Spain_nationlity_gt<- population_data_all_nationalities %>%
         ) %>%
     fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
     fmt_number(sep_mark = ",","Foreign nationals",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","Spanish nationalts",decimals = 0) 
+    fmt_number(sep_mark = ",","Spanish nationals",decimals = 0) 
   
 Spain_nationlity_gt
 ```
+
+\newpage
 
 ## 2.1 Spain Total population by nationality Index (Base 100 = 2008) 
 
