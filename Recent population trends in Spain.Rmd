@@ -224,7 +224,8 @@ df_base_hundred_table <- df_base_hundred_data_round %>%
   tab_header(
     title = md("**Population in Spain by nationality base 100 year 2008**"),
     subtitle = ("2005-2026 period") 
-        ) 
+        ) %>% 
+    cols_width(Date ~ px(300)) # This configuration for col_widh makes date to be displayed on a new line on each column - excluding Date
 df_base_hundred_table
 # Year 2008 base population
 ```
