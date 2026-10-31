@@ -235,6 +235,7 @@ We can also display the above table into a chart to display how each population 
 
 ```
 
+\newpage
 
 ## 3. Spain total population change 
 
