@@ -131,6 +131,7 @@ The same fast pace of increase has continued in 2025
 And in 2026 with the recently released provisional population estimates, the Total population in Spain has reached nearly 50 million
 `r format_total_population_spain(mydataset = population_data_fmt, my_date = "2026-01-01",column = "total_population")`
 
+\newpage
 
 # 2. Spain Total population by nationality 
 
