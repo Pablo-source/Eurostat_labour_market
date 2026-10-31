@@ -251,7 +251,7 @@ pop_base_100_plot <- pop_base_2008_data_plot %>%
     ggplot( aes(x=Date, y=population, group=nationality, color=nationality)) +
     geom_line(linewidth = 1.5) +
   scale_colour_manual(
-    values = my_colours[1:3]
+    values = my_colours[2:4]
   ) +
   theme_minimal() +
     theme(
