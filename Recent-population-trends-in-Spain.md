@@ -58,9 +58,9 @@ format_total_population_spain <- function(mydataset,my_date,column,format = NULL
     return(as.character(prettyNum(value,big.mark = ",")))  
   } else if (column %in% c("percent_foreign_population")){
   return(paste0(round(value,1),"%"))  # to be built
-  } #else if (column %in% c("date")){
-  #return(format(value,"%b %Y"))  # Format dates 
-  #}
+  } 
+  # Fallout is format is not provided
+   return(as.character(value))  
 }
 # format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")
 # format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "percent_foreign_population")
@@ -219,20 +219,20 @@ Spain_nationlity_gt<- population_data_fmt %>%
 Spain_nationlity_gt
 ```
 
-<div id="hcyjdggpdh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hcyjdggpdh table {
+<div id="lhribvpcqk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lhribvpcqk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#hcyjdggpdh thead, #hcyjdggpdh tbody, #hcyjdggpdh tfoot, #hcyjdggpdh tr, #hcyjdggpdh td, #hcyjdggpdh th {
+&#10;#lhribvpcqk thead, #lhribvpcqk tbody, #lhribvpcqk tfoot, #lhribvpcqk tr, #lhribvpcqk td, #lhribvpcqk th {
   border-style: none;
 }
-&#10;#hcyjdggpdh p {
+&#10;#lhribvpcqk p {
   margin: 0;
   padding: 0;
 }
-&#10;#hcyjdggpdh .gt_table {
+&#10;#lhribvpcqk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -257,11 +257,11 @@ Spain_nationlity_gt
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_caption {
+&#10;#lhribvpcqk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#hcyjdggpdh .gt_title {
+&#10;#lhribvpcqk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -272,7 +272,7 @@ Spain_nationlity_gt
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#hcyjdggpdh .gt_subtitle {
+&#10;#lhribvpcqk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -283,7 +283,7 @@ Spain_nationlity_gt
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#hcyjdggpdh .gt_heading {
+&#10;#lhribvpcqk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -294,12 +294,12 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_bottom_border {
+&#10;#lhribvpcqk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_col_headings {
+&#10;#lhribvpcqk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -313,7 +313,7 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_col_heading {
+&#10;#lhribvpcqk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -332,7 +332,7 @@ Spain_nationlity_gt
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#hcyjdggpdh .gt_column_spanner_outer {
+&#10;#lhribvpcqk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -343,13 +343,13 @@ Spain_nationlity_gt
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#hcyjdggpdh .gt_column_spanner_outer:first-child {
+&#10;#lhribvpcqk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#hcyjdggpdh .gt_column_spanner_outer:last-child {
+&#10;#lhribvpcqk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#hcyjdggpdh .gt_column_spanner {
+&#10;#lhribvpcqk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -360,10 +360,10 @@ Spain_nationlity_gt
   display: inline-block;
   width: 100%;
 }
-&#10;#hcyjdggpdh .gt_spanner_row {
+&#10;#lhribvpcqk .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#hcyjdggpdh .gt_group_heading {
+&#10;#lhribvpcqk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -388,7 +388,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   text-align: left;
 }
-&#10;#hcyjdggpdh .gt_empty_group_heading {
+&#10;#lhribvpcqk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -402,13 +402,13 @@ Spain_nationlity_gt
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#hcyjdggpdh .gt_from_md > :first-child {
+&#10;#lhribvpcqk .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#hcyjdggpdh .gt_from_md > :last-child {
+&#10;#lhribvpcqk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#hcyjdggpdh .gt_row {
+&#10;#lhribvpcqk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -426,7 +426,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#hcyjdggpdh .gt_stub {
+&#10;#lhribvpcqk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -438,7 +438,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hcyjdggpdh .gt_stub_row_group {
+&#10;#lhribvpcqk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -451,13 +451,13 @@ Spain_nationlity_gt
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#hcyjdggpdh .gt_row_group_first td {
+&#10;#lhribvpcqk .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#hcyjdggpdh .gt_row_group_first th {
+&#10;#lhribvpcqk .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#hcyjdggpdh .gt_summary_row {
+&#10;#lhribvpcqk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -466,14 +466,14 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hcyjdggpdh .gt_first_summary_row {
+&#10;#lhribvpcqk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_first_summary_row.thick {
+&#10;#lhribvpcqk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#hcyjdggpdh .gt_last_summary_row {
+&#10;#lhribvpcqk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -482,7 +482,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_grand_summary_row {
+&#10;#lhribvpcqk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -491,7 +491,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hcyjdggpdh .gt_first_grand_summary_row {
+&#10;#lhribvpcqk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -500,7 +500,7 @@ Spain_nationlity_gt
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_last_grand_summary_row_top {
+&#10;#lhribvpcqk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -509,10 +509,10 @@ Spain_nationlity_gt
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_striped {
+&#10;#lhribvpcqk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#hcyjdggpdh .gt_table_body {
+&#10;#lhribvpcqk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -520,7 +520,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_footnotes {
+&#10;#lhribvpcqk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -533,7 +533,7 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_footnote {
+&#10;#lhribvpcqk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -541,7 +541,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hcyjdggpdh .gt_sourcenotes {
+&#10;#lhribvpcqk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -554,64 +554,64 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hcyjdggpdh .gt_sourcenote {
+&#10;#lhribvpcqk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hcyjdggpdh .gt_left {
+&#10;#lhribvpcqk .gt_left {
   text-align: left;
 }
-&#10;#hcyjdggpdh .gt_center {
+&#10;#lhribvpcqk .gt_center {
   text-align: center;
 }
-&#10;#hcyjdggpdh .gt_right {
+&#10;#lhribvpcqk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#hcyjdggpdh .gt_font_normal {
+&#10;#lhribvpcqk .gt_font_normal {
   font-weight: normal;
 }
-&#10;#hcyjdggpdh .gt_font_bold {
+&#10;#lhribvpcqk .gt_font_bold {
   font-weight: bold;
 }
-&#10;#hcyjdggpdh .gt_font_italic {
+&#10;#lhribvpcqk .gt_font_italic {
   font-style: italic;
 }
-&#10;#hcyjdggpdh .gt_super {
+&#10;#lhribvpcqk .gt_super {
   font-size: 65%;
 }
-&#10;#hcyjdggpdh .gt_footnote_marks {
+&#10;#lhribvpcqk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#hcyjdggpdh .gt_asterisk {
+&#10;#lhribvpcqk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#hcyjdggpdh .gt_indent_1 {
+&#10;#lhribvpcqk .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#hcyjdggpdh .gt_indent_2 {
+&#10;#lhribvpcqk .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#hcyjdggpdh .gt_indent_3 {
+&#10;#lhribvpcqk .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#hcyjdggpdh .gt_indent_4 {
+&#10;#lhribvpcqk .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#hcyjdggpdh .gt_indent_5 {
+&#10;#lhribvpcqk .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#hcyjdggpdh .katex-display {
+&#10;#lhribvpcqk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#hcyjdggpdh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#lhribvpcqk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -739,20 +739,20 @@ Population in Spain by nationality. Index (Base 100 = 2016)
     ## # ℹ abbreviated names: ¹​foreign_nationals_population,
     ## #   ²​spanish_nationals_population
 
-<div id="hxaoanzyje" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hxaoanzyje table {
+<div id="ucxzmibgvf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ucxzmibgvf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#hxaoanzyje thead, #hxaoanzyje tbody, #hxaoanzyje tfoot, #hxaoanzyje tr, #hxaoanzyje td, #hxaoanzyje th {
+&#10;#ucxzmibgvf thead, #ucxzmibgvf tbody, #ucxzmibgvf tfoot, #ucxzmibgvf tr, #ucxzmibgvf td, #ucxzmibgvf th {
   border-style: none;
 }
-&#10;#hxaoanzyje p {
+&#10;#ucxzmibgvf p {
   margin: 0;
   padding: 0;
 }
-&#10;#hxaoanzyje .gt_table {
+&#10;#ucxzmibgvf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -777,11 +777,11 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_caption {
+&#10;#ucxzmibgvf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#hxaoanzyje .gt_title {
+&#10;#ucxzmibgvf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -792,7 +792,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#hxaoanzyje .gt_subtitle {
+&#10;#ucxzmibgvf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -803,7 +803,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#hxaoanzyje .gt_heading {
+&#10;#ucxzmibgvf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -814,12 +814,12 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_bottom_border {
+&#10;#ucxzmibgvf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_col_headings {
+&#10;#ucxzmibgvf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -833,7 +833,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_col_heading {
+&#10;#ucxzmibgvf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -852,7 +852,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#hxaoanzyje .gt_column_spanner_outer {
+&#10;#ucxzmibgvf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -863,13 +863,13 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#hxaoanzyje .gt_column_spanner_outer:first-child {
+&#10;#ucxzmibgvf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#hxaoanzyje .gt_column_spanner_outer:last-child {
+&#10;#ucxzmibgvf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#hxaoanzyje .gt_column_spanner {
+&#10;#ucxzmibgvf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -880,10 +880,10 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   display: inline-block;
   width: 100%;
 }
-&#10;#hxaoanzyje .gt_spanner_row {
+&#10;#ucxzmibgvf .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#hxaoanzyje .gt_group_heading {
+&#10;#ucxzmibgvf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -908,7 +908,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   vertical-align: middle;
   text-align: left;
 }
-&#10;#hxaoanzyje .gt_empty_group_heading {
+&#10;#ucxzmibgvf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -922,13 +922,13 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#hxaoanzyje .gt_from_md > :first-child {
+&#10;#ucxzmibgvf .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#hxaoanzyje .gt_from_md > :last-child {
+&#10;#ucxzmibgvf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#hxaoanzyje .gt_row {
+&#10;#ucxzmibgvf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -946,7 +946,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#hxaoanzyje .gt_stub {
+&#10;#ucxzmibgvf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -958,7 +958,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hxaoanzyje .gt_stub_row_group {
+&#10;#ucxzmibgvf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -971,13 +971,13 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#hxaoanzyje .gt_row_group_first td {
+&#10;#ucxzmibgvf .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#hxaoanzyje .gt_row_group_first th {
+&#10;#ucxzmibgvf .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#hxaoanzyje .gt_summary_row {
+&#10;#ucxzmibgvf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -986,14 +986,14 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hxaoanzyje .gt_first_summary_row {
+&#10;#ucxzmibgvf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_first_summary_row.thick {
+&#10;#ucxzmibgvf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#hxaoanzyje .gt_last_summary_row {
+&#10;#ucxzmibgvf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1002,7 +1002,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_grand_summary_row {
+&#10;#ucxzmibgvf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1011,7 +1011,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hxaoanzyje .gt_first_grand_summary_row {
+&#10;#ucxzmibgvf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1020,7 +1020,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_last_grand_summary_row_top {
+&#10;#ucxzmibgvf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1029,10 +1029,10 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_striped {
+&#10;#ucxzmibgvf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#hxaoanzyje .gt_table_body {
+&#10;#ucxzmibgvf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1040,7 +1040,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_footnotes {
+&#10;#ucxzmibgvf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1053,7 +1053,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_footnote {
+&#10;#ucxzmibgvf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1061,7 +1061,7 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hxaoanzyje .gt_sourcenotes {
+&#10;#ucxzmibgvf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1074,64 +1074,64 @@ Population in Spain by nationality. Index (Base 100 = 2016)
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hxaoanzyje .gt_sourcenote {
+&#10;#ucxzmibgvf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hxaoanzyje .gt_left {
+&#10;#ucxzmibgvf .gt_left {
   text-align: left;
 }
-&#10;#hxaoanzyje .gt_center {
+&#10;#ucxzmibgvf .gt_center {
   text-align: center;
 }
-&#10;#hxaoanzyje .gt_right {
+&#10;#ucxzmibgvf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#hxaoanzyje .gt_font_normal {
+&#10;#ucxzmibgvf .gt_font_normal {
   font-weight: normal;
 }
-&#10;#hxaoanzyje .gt_font_bold {
+&#10;#ucxzmibgvf .gt_font_bold {
   font-weight: bold;
 }
-&#10;#hxaoanzyje .gt_font_italic {
+&#10;#ucxzmibgvf .gt_font_italic {
   font-style: italic;
 }
-&#10;#hxaoanzyje .gt_super {
+&#10;#ucxzmibgvf .gt_super {
   font-size: 65%;
 }
-&#10;#hxaoanzyje .gt_footnote_marks {
+&#10;#ucxzmibgvf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#hxaoanzyje .gt_asterisk {
+&#10;#ucxzmibgvf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#hxaoanzyje .gt_indent_1 {
+&#10;#ucxzmibgvf .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#hxaoanzyje .gt_indent_2 {
+&#10;#ucxzmibgvf .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#hxaoanzyje .gt_indent_3 {
+&#10;#ucxzmibgvf .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#hxaoanzyje .gt_indent_4 {
+&#10;#ucxzmibgvf .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#hxaoanzyje .gt_indent_5 {
+&#10;#ucxzmibgvf .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#hxaoanzyje .katex-display {
+&#10;#ucxzmibgvf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#hxaoanzyje div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#ucxzmibgvf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1274,20 +1274,20 @@ population_data_fmt
 This data below shows population change by year for total population,
 spanish nationals and foreign nationals population
 
-<div id="mjsyavkcna" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mjsyavkcna table {
+<div id="clmtnoohdz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#clmtnoohdz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#mjsyavkcna thead, #mjsyavkcna tbody, #mjsyavkcna tfoot, #mjsyavkcna tr, #mjsyavkcna td, #mjsyavkcna th {
+&#10;#clmtnoohdz thead, #clmtnoohdz tbody, #clmtnoohdz tfoot, #clmtnoohdz tr, #clmtnoohdz td, #clmtnoohdz th {
   border-style: none;
 }
-&#10;#mjsyavkcna p {
+&#10;#clmtnoohdz p {
   margin: 0;
   padding: 0;
 }
-&#10;#mjsyavkcna .gt_table {
+&#10;#clmtnoohdz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1312,11 +1312,11 @@ spanish nationals and foreign nationals population
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_caption {
+&#10;#clmtnoohdz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#mjsyavkcna .gt_title {
+&#10;#clmtnoohdz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1327,7 +1327,7 @@ spanish nationals and foreign nationals population
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#mjsyavkcna .gt_subtitle {
+&#10;#clmtnoohdz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1338,7 +1338,7 @@ spanish nationals and foreign nationals population
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#mjsyavkcna .gt_heading {
+&#10;#clmtnoohdz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1349,12 +1349,12 @@ spanish nationals and foreign nationals population
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_bottom_border {
+&#10;#clmtnoohdz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_col_headings {
+&#10;#clmtnoohdz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1368,7 +1368,7 @@ spanish nationals and foreign nationals population
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_col_heading {
+&#10;#clmtnoohdz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1387,7 +1387,7 @@ spanish nationals and foreign nationals population
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#mjsyavkcna .gt_column_spanner_outer {
+&#10;#clmtnoohdz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1398,13 +1398,13 @@ spanish nationals and foreign nationals population
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#mjsyavkcna .gt_column_spanner_outer:first-child {
+&#10;#clmtnoohdz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#mjsyavkcna .gt_column_spanner_outer:last-child {
+&#10;#clmtnoohdz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#mjsyavkcna .gt_column_spanner {
+&#10;#clmtnoohdz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1415,10 +1415,10 @@ spanish nationals and foreign nationals population
   display: inline-block;
   width: 100%;
 }
-&#10;#mjsyavkcna .gt_spanner_row {
+&#10;#clmtnoohdz .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#mjsyavkcna .gt_group_heading {
+&#10;#clmtnoohdz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1443,7 +1443,7 @@ spanish nationals and foreign nationals population
   vertical-align: middle;
   text-align: left;
 }
-&#10;#mjsyavkcna .gt_empty_group_heading {
+&#10;#clmtnoohdz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1457,13 +1457,13 @@ spanish nationals and foreign nationals population
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#mjsyavkcna .gt_from_md > :first-child {
+&#10;#clmtnoohdz .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#mjsyavkcna .gt_from_md > :last-child {
+&#10;#clmtnoohdz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#mjsyavkcna .gt_row {
+&#10;#clmtnoohdz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1481,7 +1481,7 @@ spanish nationals and foreign nationals population
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#mjsyavkcna .gt_stub {
+&#10;#clmtnoohdz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1493,7 +1493,7 @@ spanish nationals and foreign nationals population
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#mjsyavkcna .gt_stub_row_group {
+&#10;#clmtnoohdz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1506,13 +1506,13 @@ spanish nationals and foreign nationals population
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#mjsyavkcna .gt_row_group_first td {
+&#10;#clmtnoohdz .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#mjsyavkcna .gt_row_group_first th {
+&#10;#clmtnoohdz .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#mjsyavkcna .gt_summary_row {
+&#10;#clmtnoohdz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1521,14 +1521,14 @@ spanish nationals and foreign nationals population
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#mjsyavkcna .gt_first_summary_row {
+&#10;#clmtnoohdz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_first_summary_row.thick {
+&#10;#clmtnoohdz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#mjsyavkcna .gt_last_summary_row {
+&#10;#clmtnoohdz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1537,7 +1537,7 @@ spanish nationals and foreign nationals population
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_grand_summary_row {
+&#10;#clmtnoohdz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1546,7 +1546,7 @@ spanish nationals and foreign nationals population
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#mjsyavkcna .gt_first_grand_summary_row {
+&#10;#clmtnoohdz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1555,7 +1555,7 @@ spanish nationals and foreign nationals population
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_last_grand_summary_row_top {
+&#10;#clmtnoohdz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1564,10 +1564,10 @@ spanish nationals and foreign nationals population
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_striped {
+&#10;#clmtnoohdz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#mjsyavkcna .gt_table_body {
+&#10;#clmtnoohdz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1575,7 +1575,7 @@ spanish nationals and foreign nationals population
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_footnotes {
+&#10;#clmtnoohdz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1588,7 +1588,7 @@ spanish nationals and foreign nationals population
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_footnote {
+&#10;#clmtnoohdz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1596,7 +1596,7 @@ spanish nationals and foreign nationals population
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#mjsyavkcna .gt_sourcenotes {
+&#10;#clmtnoohdz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1609,64 +1609,64 @@ spanish nationals and foreign nationals population
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#mjsyavkcna .gt_sourcenote {
+&#10;#clmtnoohdz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#mjsyavkcna .gt_left {
+&#10;#clmtnoohdz .gt_left {
   text-align: left;
 }
-&#10;#mjsyavkcna .gt_center {
+&#10;#clmtnoohdz .gt_center {
   text-align: center;
 }
-&#10;#mjsyavkcna .gt_right {
+&#10;#clmtnoohdz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#mjsyavkcna .gt_font_normal {
+&#10;#clmtnoohdz .gt_font_normal {
   font-weight: normal;
 }
-&#10;#mjsyavkcna .gt_font_bold {
+&#10;#clmtnoohdz .gt_font_bold {
   font-weight: bold;
 }
-&#10;#mjsyavkcna .gt_font_italic {
+&#10;#clmtnoohdz .gt_font_italic {
   font-style: italic;
 }
-&#10;#mjsyavkcna .gt_super {
+&#10;#clmtnoohdz .gt_super {
   font-size: 65%;
 }
-&#10;#mjsyavkcna .gt_footnote_marks {
+&#10;#clmtnoohdz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#mjsyavkcna .gt_asterisk {
+&#10;#clmtnoohdz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#mjsyavkcna .gt_indent_1 {
+&#10;#clmtnoohdz .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#mjsyavkcna .gt_indent_2 {
+&#10;#clmtnoohdz .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#mjsyavkcna .gt_indent_3 {
+&#10;#clmtnoohdz .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#mjsyavkcna .gt_indent_4 {
+&#10;#clmtnoohdz .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#mjsyavkcna .gt_indent_5 {
+&#10;#clmtnoohdz .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#mjsyavkcna .katex-display {
+&#10;#clmtnoohdz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#mjsyavkcna div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#clmtnoohdz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1856,20 +1856,20 @@ spanish nationals and foreign nationals population
   &#10;</table>
 </div>
 
-<div id="qqmjzpmglk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qqmjzpmglk table {
+<div id="qrorastgpa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qrorastgpa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#qqmjzpmglk thead, #qqmjzpmglk tbody, #qqmjzpmglk tfoot, #qqmjzpmglk tr, #qqmjzpmglk td, #qqmjzpmglk th {
+&#10;#qrorastgpa thead, #qrorastgpa tbody, #qrorastgpa tfoot, #qrorastgpa tr, #qrorastgpa td, #qrorastgpa th {
   border-style: none;
 }
-&#10;#qqmjzpmglk p {
+&#10;#qrorastgpa p {
   margin: 0;
   padding: 0;
 }
-&#10;#qqmjzpmglk .gt_table {
+&#10;#qrorastgpa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1894,11 +1894,11 @@ spanish nationals and foreign nationals population
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_caption {
+&#10;#qrorastgpa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#qqmjzpmglk .gt_title {
+&#10;#qrorastgpa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1909,7 +1909,7 @@ spanish nationals and foreign nationals population
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#qqmjzpmglk .gt_subtitle {
+&#10;#qrorastgpa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1920,7 +1920,7 @@ spanish nationals and foreign nationals population
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#qqmjzpmglk .gt_heading {
+&#10;#qrorastgpa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1931,12 +1931,12 @@ spanish nationals and foreign nationals population
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_bottom_border {
+&#10;#qrorastgpa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_col_headings {
+&#10;#qrorastgpa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1950,7 +1950,7 @@ spanish nationals and foreign nationals population
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_col_heading {
+&#10;#qrorastgpa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1969,7 +1969,7 @@ spanish nationals and foreign nationals population
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#qqmjzpmglk .gt_column_spanner_outer {
+&#10;#qrorastgpa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1980,13 +1980,13 @@ spanish nationals and foreign nationals population
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#qqmjzpmglk .gt_column_spanner_outer:first-child {
+&#10;#qrorastgpa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#qqmjzpmglk .gt_column_spanner_outer:last-child {
+&#10;#qrorastgpa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#qqmjzpmglk .gt_column_spanner {
+&#10;#qrorastgpa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1997,10 +1997,10 @@ spanish nationals and foreign nationals population
   display: inline-block;
   width: 100%;
 }
-&#10;#qqmjzpmglk .gt_spanner_row {
+&#10;#qrorastgpa .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#qqmjzpmglk .gt_group_heading {
+&#10;#qrorastgpa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2025,7 +2025,7 @@ spanish nationals and foreign nationals population
   vertical-align: middle;
   text-align: left;
 }
-&#10;#qqmjzpmglk .gt_empty_group_heading {
+&#10;#qrorastgpa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2039,13 +2039,13 @@ spanish nationals and foreign nationals population
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#qqmjzpmglk .gt_from_md > :first-child {
+&#10;#qrorastgpa .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#qqmjzpmglk .gt_from_md > :last-child {
+&#10;#qrorastgpa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#qqmjzpmglk .gt_row {
+&#10;#qrorastgpa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2063,7 +2063,7 @@ spanish nationals and foreign nationals population
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#qqmjzpmglk .gt_stub {
+&#10;#qrorastgpa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2075,7 +2075,7 @@ spanish nationals and foreign nationals population
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qqmjzpmglk .gt_stub_row_group {
+&#10;#qrorastgpa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2088,13 +2088,13 @@ spanish nationals and foreign nationals population
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#qqmjzpmglk .gt_row_group_first td {
+&#10;#qrorastgpa .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#qqmjzpmglk .gt_row_group_first th {
+&#10;#qrorastgpa .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#qqmjzpmglk .gt_summary_row {
+&#10;#qrorastgpa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2103,14 +2103,14 @@ spanish nationals and foreign nationals population
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qqmjzpmglk .gt_first_summary_row {
+&#10;#qrorastgpa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_first_summary_row.thick {
+&#10;#qrorastgpa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#qqmjzpmglk .gt_last_summary_row {
+&#10;#qrorastgpa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2119,7 +2119,7 @@ spanish nationals and foreign nationals population
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_grand_summary_row {
+&#10;#qrorastgpa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2128,7 +2128,7 @@ spanish nationals and foreign nationals population
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qqmjzpmglk .gt_first_grand_summary_row {
+&#10;#qrorastgpa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2137,7 +2137,7 @@ spanish nationals and foreign nationals population
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_last_grand_summary_row_top {
+&#10;#qrorastgpa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2146,10 +2146,10 @@ spanish nationals and foreign nationals population
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_striped {
+&#10;#qrorastgpa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#qqmjzpmglk .gt_table_body {
+&#10;#qrorastgpa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2157,7 +2157,7 @@ spanish nationals and foreign nationals population
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_footnotes {
+&#10;#qrorastgpa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2170,7 +2170,7 @@ spanish nationals and foreign nationals population
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_footnote {
+&#10;#qrorastgpa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2178,7 +2178,7 @@ spanish nationals and foreign nationals population
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qqmjzpmglk .gt_sourcenotes {
+&#10;#qrorastgpa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2191,64 +2191,64 @@ spanish nationals and foreign nationals population
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#qqmjzpmglk .gt_sourcenote {
+&#10;#qrorastgpa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#qqmjzpmglk .gt_left {
+&#10;#qrorastgpa .gt_left {
   text-align: left;
 }
-&#10;#qqmjzpmglk .gt_center {
+&#10;#qrorastgpa .gt_center {
   text-align: center;
 }
-&#10;#qqmjzpmglk .gt_right {
+&#10;#qrorastgpa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#qqmjzpmglk .gt_font_normal {
+&#10;#qrorastgpa .gt_font_normal {
   font-weight: normal;
 }
-&#10;#qqmjzpmglk .gt_font_bold {
+&#10;#qrorastgpa .gt_font_bold {
   font-weight: bold;
 }
-&#10;#qqmjzpmglk .gt_font_italic {
+&#10;#qrorastgpa .gt_font_italic {
   font-style: italic;
 }
-&#10;#qqmjzpmglk .gt_super {
+&#10;#qrorastgpa .gt_super {
   font-size: 65%;
 }
-&#10;#qqmjzpmglk .gt_footnote_marks {
+&#10;#qrorastgpa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#qqmjzpmglk .gt_asterisk {
+&#10;#qrorastgpa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#qqmjzpmglk .gt_indent_1 {
+&#10;#qrorastgpa .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#qqmjzpmglk .gt_indent_2 {
+&#10;#qrorastgpa .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#qqmjzpmglk .gt_indent_3 {
+&#10;#qrorastgpa .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#qqmjzpmglk .gt_indent_4 {
+&#10;#qrorastgpa .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#qqmjzpmglk .gt_indent_5 {
+&#10;#qrorastgpa .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#qqmjzpmglk .katex-display {
+&#10;#qrorastgpa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#qqmjzpmglk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#qrorastgpa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
