@@ -162,7 +162,7 @@ max_date <- max(population_data_fmt$date)
 # (gsub("de enero","january", date),1,6)),
 ```
 
-```{r population by nationality, echo=TRUE,message=FALSE, warning =FALSE}
+```{r population by nationality, echo=FALSE,message=FALSE, warning =FALSE}
 population_data_fmt <-  population_data_fmt %>%
                          select(date = date,total_population,foreign_nationals_population) %>% 
                          mutate(spanish_nationals_population = total_population - foreign_nationals_population)
@@ -191,7 +191,7 @@ Spain_nationlity_gt
 
 Population in Spain by nationality. Index (Base 100 = 2016)
 
-```{r popualtion nationality base hundred , echo=TRUE,message=FALSE, warning =FALSE}
+```{r popualtion nationality base hundred , echo=FALSE,message=FALSE, warning =FALSE}
 head(population_data_fmt)
 
 df_base_hundred <- population_data_fmt %>% 
@@ -238,7 +238,7 @@ population_data_fmt
 
 This data below shows population change by year for total population, spanish nationals and foreign nationals population
 
-```{r popualtion change by year, echo=TRUE,message=FALSE, warning =FALSE}
+```{r popualtion change by year, echo=FALSE,message=FALSE, warning =FALSE}
 population_change_data<-  population_data_fmt %>%
                           mutate(
                   total_change = total_population - lag(total_population),
@@ -269,7 +269,7 @@ population_change_data<-  population_data_fmt %>%
 population_change_data
 ```
 
-```{r popualtion change detail, echo=TRUE,message=FALSE, warning =FALSE}
+```{r popualtion change detail, echo=FALSE,message=FALSE, warning =FALSE}
 population_change_data_table<-  population_data_fmt %>%
                           mutate(
   total_change = total_population - lag(total_population),
