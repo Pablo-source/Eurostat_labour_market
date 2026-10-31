@@ -200,12 +200,6 @@ max_date <- max(population_data_fmt$date)
 # (gsub("de enero","january", date),1,6)),
 ```
 
-``` r
-population_data_fmt <-  population_data_fmt %>%
-                         select(date = date,total_population,foreign_nationals_population) %>% 
-                         mutate(spanish_nationals_population = total_population - foreign_nationals_population)
-```
-
 We can display the above table using GT package
 
 ``` r
@@ -225,20 +219,20 @@ Spain_nationlity_gt<- population_data_fmt %>%
 Spain_nationlity_gt
 ```
 
-<div id="odzhllyblq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#odzhllyblq table {
+<div id="hcyjdggpdh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hcyjdggpdh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#odzhllyblq thead, #odzhllyblq tbody, #odzhllyblq tfoot, #odzhllyblq tr, #odzhllyblq td, #odzhllyblq th {
+&#10;#hcyjdggpdh thead, #hcyjdggpdh tbody, #hcyjdggpdh tfoot, #hcyjdggpdh tr, #hcyjdggpdh td, #hcyjdggpdh th {
   border-style: none;
 }
-&#10;#odzhllyblq p {
+&#10;#hcyjdggpdh p {
   margin: 0;
   padding: 0;
 }
-&#10;#odzhllyblq .gt_table {
+&#10;#hcyjdggpdh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -263,11 +257,11 @@ Spain_nationlity_gt
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_caption {
+&#10;#hcyjdggpdh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#odzhllyblq .gt_title {
+&#10;#hcyjdggpdh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -278,7 +272,7 @@ Spain_nationlity_gt
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#odzhllyblq .gt_subtitle {
+&#10;#hcyjdggpdh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -289,7 +283,7 @@ Spain_nationlity_gt
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#odzhllyblq .gt_heading {
+&#10;#hcyjdggpdh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -300,12 +294,12 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_bottom_border {
+&#10;#hcyjdggpdh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_col_headings {
+&#10;#hcyjdggpdh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -319,7 +313,7 @@ Spain_nationlity_gt
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_col_heading {
+&#10;#hcyjdggpdh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -338,7 +332,7 @@ Spain_nationlity_gt
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#odzhllyblq .gt_column_spanner_outer {
+&#10;#hcyjdggpdh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -349,13 +343,13 @@ Spain_nationlity_gt
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#odzhllyblq .gt_column_spanner_outer:first-child {
+&#10;#hcyjdggpdh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#odzhllyblq .gt_column_spanner_outer:last-child {
+&#10;#hcyjdggpdh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#odzhllyblq .gt_column_spanner {
+&#10;#hcyjdggpdh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -366,10 +360,10 @@ Spain_nationlity_gt
   display: inline-block;
   width: 100%;
 }
-&#10;#odzhllyblq .gt_spanner_row {
+&#10;#hcyjdggpdh .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#odzhllyblq .gt_group_heading {
+&#10;#hcyjdggpdh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -394,7 +388,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   text-align: left;
 }
-&#10;#odzhllyblq .gt_empty_group_heading {
+&#10;#hcyjdggpdh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -408,13 +402,13 @@ Spain_nationlity_gt
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#odzhllyblq .gt_from_md > :first-child {
+&#10;#hcyjdggpdh .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#odzhllyblq .gt_from_md > :last-child {
+&#10;#hcyjdggpdh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#odzhllyblq .gt_row {
+&#10;#hcyjdggpdh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -432,7 +426,7 @@ Spain_nationlity_gt
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#odzhllyblq .gt_stub {
+&#10;#hcyjdggpdh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -444,7 +438,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#odzhllyblq .gt_stub_row_group {
+&#10;#hcyjdggpdh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -457,13 +451,13 @@ Spain_nationlity_gt
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#odzhllyblq .gt_row_group_first td {
+&#10;#hcyjdggpdh .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#odzhllyblq .gt_row_group_first th {
+&#10;#hcyjdggpdh .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#odzhllyblq .gt_summary_row {
+&#10;#hcyjdggpdh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -472,14 +466,14 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#odzhllyblq .gt_first_summary_row {
+&#10;#hcyjdggpdh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_first_summary_row.thick {
+&#10;#hcyjdggpdh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#odzhllyblq .gt_last_summary_row {
+&#10;#hcyjdggpdh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -488,7 +482,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_grand_summary_row {
+&#10;#hcyjdggpdh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -497,7 +491,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#odzhllyblq .gt_first_grand_summary_row {
+&#10;#hcyjdggpdh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -506,7 +500,7 @@ Spain_nationlity_gt
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_last_grand_summary_row_top {
+&#10;#hcyjdggpdh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -515,10 +509,10 @@ Spain_nationlity_gt
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_striped {
+&#10;#hcyjdggpdh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#odzhllyblq .gt_table_body {
+&#10;#hcyjdggpdh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -526,7 +520,7 @@ Spain_nationlity_gt
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_footnotes {
+&#10;#hcyjdggpdh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -539,7 +533,7 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_footnote {
+&#10;#hcyjdggpdh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -547,7 +541,7 @@ Spain_nationlity_gt
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#odzhllyblq .gt_sourcenotes {
+&#10;#hcyjdggpdh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -560,64 +554,64 @@ Spain_nationlity_gt
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#odzhllyblq .gt_sourcenote {
+&#10;#hcyjdggpdh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#odzhllyblq .gt_left {
+&#10;#hcyjdggpdh .gt_left {
   text-align: left;
 }
-&#10;#odzhllyblq .gt_center {
+&#10;#hcyjdggpdh .gt_center {
   text-align: center;
 }
-&#10;#odzhllyblq .gt_right {
+&#10;#hcyjdggpdh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#odzhllyblq .gt_font_normal {
+&#10;#hcyjdggpdh .gt_font_normal {
   font-weight: normal;
 }
-&#10;#odzhllyblq .gt_font_bold {
+&#10;#hcyjdggpdh .gt_font_bold {
   font-weight: bold;
 }
-&#10;#odzhllyblq .gt_font_italic {
+&#10;#hcyjdggpdh .gt_font_italic {
   font-style: italic;
 }
-&#10;#odzhllyblq .gt_super {
+&#10;#hcyjdggpdh .gt_super {
   font-size: 65%;
 }
-&#10;#odzhllyblq .gt_footnote_marks {
+&#10;#hcyjdggpdh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#odzhllyblq .gt_asterisk {
+&#10;#hcyjdggpdh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#odzhllyblq .gt_indent_1 {
+&#10;#hcyjdggpdh .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#odzhllyblq .gt_indent_2 {
+&#10;#hcyjdggpdh .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#odzhllyblq .gt_indent_3 {
+&#10;#hcyjdggpdh .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#odzhllyblq .gt_indent_4 {
+&#10;#hcyjdggpdh .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#odzhllyblq .gt_indent_5 {
+&#10;#hcyjdggpdh .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#odzhllyblq .katex-display {
+&#10;#hcyjdggpdh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#odzhllyblq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#hcyjdggpdh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -733,10 +727,6 @@ Spain_nationlity_gt
 
 Population in Spain by nationality. Index (Base 100 = 2016)
 
-``` r
-head(population_data_fmt)
-```
-
     ## # A tibble: 6 × 4
     ##   date       total_population foreign_nationals_populat…¹ spanish_nationals_po…²
     ##   <date>                <dbl>                       <dbl>                  <dbl>
@@ -749,49 +739,20 @@ head(population_data_fmt)
     ## # ℹ abbreviated names: ¹​foreign_nationals_population,
     ## #   ²​spanish_nationals_population
 
-``` r
-df_base_hundred <- population_data_fmt %>% 
-    select(date, total_population, foreign_nationals_population,spanish_nationals_population) %>% 
- mutate(
-   Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
-   foreign_pop_2008_base =  ((foreign_nationals_population / foreign_nationals_population[date == '2008-01-01']) * 100), 
-   spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
-)
-
-df_base_hundred_data <- df_base_hundred %>% select(date,Total_pop_2008_base,foreign_pop_2008_base,spanish_pop_2008_base) 
-
-df_base_hundred_data_round <- df_base_hundred_data %>% 
-  mutate(
-  Tot_pop_2008_round =  round(Total_pop_2008_base,0),
-  foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
-  spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
-  )
-
-  
-df_base_hundred_table <- df_base_hundred_data_round %>% 
-  select(date,Tot_pop_2008_round,foreign_pop_2008_round,spanish_pop_2008_round) %>% 
-    gt() %>%
-  tab_header(
-    title = md("**Population in Spain by nationality base 100 year 2008**"),
-    subtitle = ("2005-2026 period") 
-        ) 
-df_base_hundred_table
-```
-
-<div id="knjjlfxxdt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#knjjlfxxdt table {
+<div id="hxaoanzyje" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hxaoanzyje table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#knjjlfxxdt thead, #knjjlfxxdt tbody, #knjjlfxxdt tfoot, #knjjlfxxdt tr, #knjjlfxxdt td, #knjjlfxxdt th {
+&#10;#hxaoanzyje thead, #hxaoanzyje tbody, #hxaoanzyje tfoot, #hxaoanzyje tr, #hxaoanzyje td, #hxaoanzyje th {
   border-style: none;
 }
-&#10;#knjjlfxxdt p {
+&#10;#hxaoanzyje p {
   margin: 0;
   padding: 0;
 }
-&#10;#knjjlfxxdt .gt_table {
+&#10;#hxaoanzyje .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -816,11 +777,11 @@ df_base_hundred_table
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_caption {
+&#10;#hxaoanzyje .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#knjjlfxxdt .gt_title {
+&#10;#hxaoanzyje .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -831,7 +792,7 @@ df_base_hundred_table
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#knjjlfxxdt .gt_subtitle {
+&#10;#hxaoanzyje .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -842,7 +803,7 @@ df_base_hundred_table
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#knjjlfxxdt .gt_heading {
+&#10;#hxaoanzyje .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -853,12 +814,12 @@ df_base_hundred_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_bottom_border {
+&#10;#hxaoanzyje .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_col_headings {
+&#10;#hxaoanzyje .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -872,7 +833,7 @@ df_base_hundred_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_col_heading {
+&#10;#hxaoanzyje .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -891,7 +852,7 @@ df_base_hundred_table
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#knjjlfxxdt .gt_column_spanner_outer {
+&#10;#hxaoanzyje .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -902,13 +863,13 @@ df_base_hundred_table
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#knjjlfxxdt .gt_column_spanner_outer:first-child {
+&#10;#hxaoanzyje .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#knjjlfxxdt .gt_column_spanner_outer:last-child {
+&#10;#hxaoanzyje .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#knjjlfxxdt .gt_column_spanner {
+&#10;#hxaoanzyje .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -919,10 +880,10 @@ df_base_hundred_table
   display: inline-block;
   width: 100%;
 }
-&#10;#knjjlfxxdt .gt_spanner_row {
+&#10;#hxaoanzyje .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#knjjlfxxdt .gt_group_heading {
+&#10;#hxaoanzyje .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -947,7 +908,7 @@ df_base_hundred_table
   vertical-align: middle;
   text-align: left;
 }
-&#10;#knjjlfxxdt .gt_empty_group_heading {
+&#10;#hxaoanzyje .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -961,13 +922,13 @@ df_base_hundred_table
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#knjjlfxxdt .gt_from_md > :first-child {
+&#10;#hxaoanzyje .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#knjjlfxxdt .gt_from_md > :last-child {
+&#10;#hxaoanzyje .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#knjjlfxxdt .gt_row {
+&#10;#hxaoanzyje .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -985,7 +946,7 @@ df_base_hundred_table
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#knjjlfxxdt .gt_stub {
+&#10;#hxaoanzyje .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -997,7 +958,7 @@ df_base_hundred_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#knjjlfxxdt .gt_stub_row_group {
+&#10;#hxaoanzyje .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1010,13 +971,13 @@ df_base_hundred_table
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#knjjlfxxdt .gt_row_group_first td {
+&#10;#hxaoanzyje .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#knjjlfxxdt .gt_row_group_first th {
+&#10;#hxaoanzyje .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#knjjlfxxdt .gt_summary_row {
+&#10;#hxaoanzyje .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1025,14 +986,14 @@ df_base_hundred_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#knjjlfxxdt .gt_first_summary_row {
+&#10;#hxaoanzyje .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_first_summary_row.thick {
+&#10;#hxaoanzyje .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#knjjlfxxdt .gt_last_summary_row {
+&#10;#hxaoanzyje .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1041,7 +1002,7 @@ df_base_hundred_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_grand_summary_row {
+&#10;#hxaoanzyje .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1050,7 +1011,7 @@ df_base_hundred_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#knjjlfxxdt .gt_first_grand_summary_row {
+&#10;#hxaoanzyje .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1059,7 +1020,7 @@ df_base_hundred_table
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_last_grand_summary_row_top {
+&#10;#hxaoanzyje .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1068,10 +1029,10 @@ df_base_hundred_table
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_striped {
+&#10;#hxaoanzyje .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#knjjlfxxdt .gt_table_body {
+&#10;#hxaoanzyje .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1079,7 +1040,7 @@ df_base_hundred_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_footnotes {
+&#10;#hxaoanzyje .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1092,7 +1053,7 @@ df_base_hundred_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_footnote {
+&#10;#hxaoanzyje .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1100,7 +1061,7 @@ df_base_hundred_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#knjjlfxxdt .gt_sourcenotes {
+&#10;#hxaoanzyje .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1113,64 +1074,64 @@ df_base_hundred_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#knjjlfxxdt .gt_sourcenote {
+&#10;#hxaoanzyje .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#knjjlfxxdt .gt_left {
+&#10;#hxaoanzyje .gt_left {
   text-align: left;
 }
-&#10;#knjjlfxxdt .gt_center {
+&#10;#hxaoanzyje .gt_center {
   text-align: center;
 }
-&#10;#knjjlfxxdt .gt_right {
+&#10;#hxaoanzyje .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#knjjlfxxdt .gt_font_normal {
+&#10;#hxaoanzyje .gt_font_normal {
   font-weight: normal;
 }
-&#10;#knjjlfxxdt .gt_font_bold {
+&#10;#hxaoanzyje .gt_font_bold {
   font-weight: bold;
 }
-&#10;#knjjlfxxdt .gt_font_italic {
+&#10;#hxaoanzyje .gt_font_italic {
   font-style: italic;
 }
-&#10;#knjjlfxxdt .gt_super {
+&#10;#hxaoanzyje .gt_super {
   font-size: 65%;
 }
-&#10;#knjjlfxxdt .gt_footnote_marks {
+&#10;#hxaoanzyje .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#knjjlfxxdt .gt_asterisk {
+&#10;#hxaoanzyje .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#knjjlfxxdt .gt_indent_1 {
+&#10;#hxaoanzyje .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#knjjlfxxdt .gt_indent_2 {
+&#10;#hxaoanzyje .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#knjjlfxxdt .gt_indent_3 {
+&#10;#hxaoanzyje .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#knjjlfxxdt .gt_indent_4 {
+&#10;#hxaoanzyje .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#knjjlfxxdt .gt_indent_5 {
+&#10;#hxaoanzyje .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#knjjlfxxdt .katex-display {
+&#10;#hxaoanzyje .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#knjjlfxxdt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#hxaoanzyje div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1282,10 +1243,6 @@ df_base_hundred_table
   &#10;</table>
 </div>
 
-``` r
-# Year 2008 base population
-```
-
 ## 3. Spain total population change
 
 This sub-section describes how Total population in Spain has changed
@@ -1317,51 +1274,20 @@ population_data_fmt
 This data below shows population change by year for total population,
 spanish nationals and foreign nationals population
 
-``` r
-population_change_data<-  population_data_fmt %>%
-                          mutate(
-                  total_change = total_population - lag(total_population),
-                  foreign_nationals_change = foreign_population - lag(foreign_population),
-                  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-                                 ) %>% 
-    select(date, 
-           Total = total_population, 
-           'Foreign nationals'= foreign_population,
-           'Spanish nationalts'= spanish_nationals_population,
-           'Total change' = total_change,
-           'Foreign nationals change' = foreign_nationals_change,
-           'Spanish nationals change' = spanish_national_change
-           
-           ) %>% 
-    gt() %>%
-  tab_header(
-    title = md("**Population change in Spain by nationality**"),
-    subtitle = ("2005-2026 period") 
-        ) %>%
-     fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
-     fmt_number(sep_mark = ",","Foreign nationals",decimals = 0) %>% 
-       fmt_number(sep_mark = ",","Spanish nationalts",decimals = 0) %>% 
-      fmt_number(sep_mark = ",","Total change",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","Foreign nationals change",decimals = 0) %>% 
-    fmt_number(sep_mark = ",","Spanish nationals change",decimals = 0) %>% 
-  cols_width(date ~ px(100))
-population_change_data
-```
-
-<div id="hlgifwrdhx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hlgifwrdhx table {
+<div id="mjsyavkcna" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mjsyavkcna table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#hlgifwrdhx thead, #hlgifwrdhx tbody, #hlgifwrdhx tfoot, #hlgifwrdhx tr, #hlgifwrdhx td, #hlgifwrdhx th {
+&#10;#mjsyavkcna thead, #mjsyavkcna tbody, #mjsyavkcna tfoot, #mjsyavkcna tr, #mjsyavkcna td, #mjsyavkcna th {
   border-style: none;
 }
-&#10;#hlgifwrdhx p {
+&#10;#mjsyavkcna p {
   margin: 0;
   padding: 0;
 }
-&#10;#hlgifwrdhx .gt_table {
+&#10;#mjsyavkcna .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1386,11 +1312,11 @@ population_change_data
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_caption {
+&#10;#mjsyavkcna .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#hlgifwrdhx .gt_title {
+&#10;#mjsyavkcna .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1401,7 +1327,7 @@ population_change_data
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#hlgifwrdhx .gt_subtitle {
+&#10;#mjsyavkcna .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1412,7 +1338,7 @@ population_change_data
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#hlgifwrdhx .gt_heading {
+&#10;#mjsyavkcna .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1423,12 +1349,12 @@ population_change_data
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_bottom_border {
+&#10;#mjsyavkcna .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_col_headings {
+&#10;#mjsyavkcna .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1442,7 +1368,7 @@ population_change_data
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_col_heading {
+&#10;#mjsyavkcna .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1461,7 +1387,7 @@ population_change_data
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#hlgifwrdhx .gt_column_spanner_outer {
+&#10;#mjsyavkcna .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1472,13 +1398,13 @@ population_change_data
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#hlgifwrdhx .gt_column_spanner_outer:first-child {
+&#10;#mjsyavkcna .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#hlgifwrdhx .gt_column_spanner_outer:last-child {
+&#10;#mjsyavkcna .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#hlgifwrdhx .gt_column_spanner {
+&#10;#mjsyavkcna .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1489,10 +1415,10 @@ population_change_data
   display: inline-block;
   width: 100%;
 }
-&#10;#hlgifwrdhx .gt_spanner_row {
+&#10;#mjsyavkcna .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#hlgifwrdhx .gt_group_heading {
+&#10;#mjsyavkcna .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1517,7 +1443,7 @@ population_change_data
   vertical-align: middle;
   text-align: left;
 }
-&#10;#hlgifwrdhx .gt_empty_group_heading {
+&#10;#mjsyavkcna .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1531,13 +1457,13 @@ population_change_data
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#hlgifwrdhx .gt_from_md > :first-child {
+&#10;#mjsyavkcna .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#hlgifwrdhx .gt_from_md > :last-child {
+&#10;#mjsyavkcna .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#hlgifwrdhx .gt_row {
+&#10;#mjsyavkcna .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1555,7 +1481,7 @@ population_change_data
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#hlgifwrdhx .gt_stub {
+&#10;#mjsyavkcna .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1567,7 +1493,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hlgifwrdhx .gt_stub_row_group {
+&#10;#mjsyavkcna .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1580,13 +1506,13 @@ population_change_data
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#hlgifwrdhx .gt_row_group_first td {
+&#10;#mjsyavkcna .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#hlgifwrdhx .gt_row_group_first th {
+&#10;#mjsyavkcna .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#hlgifwrdhx .gt_summary_row {
+&#10;#mjsyavkcna .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1595,14 +1521,14 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hlgifwrdhx .gt_first_summary_row {
+&#10;#mjsyavkcna .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_first_summary_row.thick {
+&#10;#mjsyavkcna .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#hlgifwrdhx .gt_last_summary_row {
+&#10;#mjsyavkcna .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1611,7 +1537,7 @@ population_change_data
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_grand_summary_row {
+&#10;#mjsyavkcna .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1620,7 +1546,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hlgifwrdhx .gt_first_grand_summary_row {
+&#10;#mjsyavkcna .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1629,7 +1555,7 @@ population_change_data
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_last_grand_summary_row_top {
+&#10;#mjsyavkcna .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1638,10 +1564,10 @@ population_change_data
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_striped {
+&#10;#mjsyavkcna .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#hlgifwrdhx .gt_table_body {
+&#10;#mjsyavkcna .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1649,7 +1575,7 @@ population_change_data
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_footnotes {
+&#10;#mjsyavkcna .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1662,7 +1588,7 @@ population_change_data
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_footnote {
+&#10;#mjsyavkcna .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1670,7 +1596,7 @@ population_change_data
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hlgifwrdhx .gt_sourcenotes {
+&#10;#mjsyavkcna .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1683,64 +1609,64 @@ population_change_data
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#hlgifwrdhx .gt_sourcenote {
+&#10;#mjsyavkcna .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#hlgifwrdhx .gt_left {
+&#10;#mjsyavkcna .gt_left {
   text-align: left;
 }
-&#10;#hlgifwrdhx .gt_center {
+&#10;#mjsyavkcna .gt_center {
   text-align: center;
 }
-&#10;#hlgifwrdhx .gt_right {
+&#10;#mjsyavkcna .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#hlgifwrdhx .gt_font_normal {
+&#10;#mjsyavkcna .gt_font_normal {
   font-weight: normal;
 }
-&#10;#hlgifwrdhx .gt_font_bold {
+&#10;#mjsyavkcna .gt_font_bold {
   font-weight: bold;
 }
-&#10;#hlgifwrdhx .gt_font_italic {
+&#10;#mjsyavkcna .gt_font_italic {
   font-style: italic;
 }
-&#10;#hlgifwrdhx .gt_super {
+&#10;#mjsyavkcna .gt_super {
   font-size: 65%;
 }
-&#10;#hlgifwrdhx .gt_footnote_marks {
+&#10;#mjsyavkcna .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#hlgifwrdhx .gt_asterisk {
+&#10;#mjsyavkcna .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#hlgifwrdhx .gt_indent_1 {
+&#10;#mjsyavkcna .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#hlgifwrdhx .gt_indent_2 {
+&#10;#mjsyavkcna .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#hlgifwrdhx .gt_indent_3 {
+&#10;#mjsyavkcna .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#hlgifwrdhx .gt_indent_4 {
+&#10;#mjsyavkcna .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#hlgifwrdhx .gt_indent_5 {
+&#10;#mjsyavkcna .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#hlgifwrdhx .katex-display {
+&#10;#mjsyavkcna .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#hlgifwrdhx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#mjsyavkcna div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1930,56 +1856,20 @@ population_change_data
   &#10;</table>
 </div>
 
-``` r
-population_change_data_table<-  population_data_fmt %>%
-                          mutate(
-  total_change = total_population - lag(total_population),
-  foreign_nationals_change = foreign_population -lag(foreign_population),
-  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-  foreign_nationals_perc_change = (foreign_population - lag(foreign_population))/lag(foreign_population),
-  spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population))/lag(spanish_nationals_population)
-  ) %>% 
-    select(date, 
-           Total = total_population, 
-                    'Foreign nationals'= foreign_population,
-           'Spanish nationalts'= spanish_nationals_population,
-           'YoY change' = total_change,
-           'Foreign nationals YoY change' = foreign_nationals_change,
-           'Spanish nationals YoY change' = spanish_national_change,
-           'Foreign nationals YoY percentage change' = foreign_nationals_perc_change,
-           'Spanish nationals YoY percentage change' = spanish_national_perc_change
-           ) %>% 
-    gt() %>%
-  tab_header(
-    title = md("**Population change in Spain by nationality**"),
-    subtitle = ("2005-2026 period") 
-        ) %>%
-fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
-fmt_number(sep_mark = ",","YoY change",decimals = 0) %>% 
-fmt_number(sep_mark = ",","Foreign nationals YoY change",decimals = 0) %>% 
-fmt_number(sep_mark = ",","Spanish nationals YoY change",decimals = 0) %>% 
-fmt_percent("Foreign nationals YoY percentage change",decimals =1,force_sign = TRUE) %>% 
-fmt_percent("Spanish nationals YoY percentage change",decimals =1,force_sign = TRUE) %>% 
-  cols_width(
-    date ~ px(100)              # Set specific width for 'item' column in pixels
-  )
-population_change_data_table
-```
-
-<div id="ppmflpjbsi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ppmflpjbsi table {
+<div id="qqmjzpmglk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qqmjzpmglk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-&#10;#ppmflpjbsi thead, #ppmflpjbsi tbody, #ppmflpjbsi tfoot, #ppmflpjbsi tr, #ppmflpjbsi td, #ppmflpjbsi th {
+&#10;#qqmjzpmglk thead, #qqmjzpmglk tbody, #qqmjzpmglk tfoot, #qqmjzpmglk tr, #qqmjzpmglk td, #qqmjzpmglk th {
   border-style: none;
 }
-&#10;#ppmflpjbsi p {
+&#10;#qqmjzpmglk p {
   margin: 0;
   padding: 0;
 }
-&#10;#ppmflpjbsi .gt_table {
+&#10;#qqmjzpmglk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2004,11 +1894,11 @@ population_change_data_table
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_caption {
+&#10;#qqmjzpmglk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-&#10;#ppmflpjbsi .gt_title {
+&#10;#qqmjzpmglk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2019,7 +1909,7 @@ population_change_data_table
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-&#10;#ppmflpjbsi .gt_subtitle {
+&#10;#qqmjzpmglk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2030,7 +1920,7 @@ population_change_data_table
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-&#10;#ppmflpjbsi .gt_heading {
+&#10;#qqmjzpmglk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2041,12 +1931,12 @@ population_change_data_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_bottom_border {
+&#10;#qqmjzpmglk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_col_headings {
+&#10;#qqmjzpmglk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2060,7 +1950,7 @@ population_change_data_table
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_col_heading {
+&#10;#qqmjzpmglk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2079,7 +1969,7 @@ population_change_data_table
   padding-right: 5px;
   overflow-x: hidden;
 }
-&#10;#ppmflpjbsi .gt_column_spanner_outer {
+&#10;#qqmjzpmglk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2090,13 +1980,13 @@ population_change_data_table
   padding-left: 4px;
   padding-right: 4px;
 }
-&#10;#ppmflpjbsi .gt_column_spanner_outer:first-child {
+&#10;#qqmjzpmglk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-&#10;#ppmflpjbsi .gt_column_spanner_outer:last-child {
+&#10;#qqmjzpmglk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-&#10;#ppmflpjbsi .gt_column_spanner {
+&#10;#qqmjzpmglk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2107,10 +1997,10 @@ population_change_data_table
   display: inline-block;
   width: 100%;
 }
-&#10;#ppmflpjbsi .gt_spanner_row {
+&#10;#qqmjzpmglk .gt_spanner_row {
   border-bottom-style: hidden;
 }
-&#10;#ppmflpjbsi .gt_group_heading {
+&#10;#qqmjzpmglk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2135,7 +2025,7 @@ population_change_data_table
   vertical-align: middle;
   text-align: left;
 }
-&#10;#ppmflpjbsi .gt_empty_group_heading {
+&#10;#qqmjzpmglk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2149,13 +2039,13 @@ population_change_data_table
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-&#10;#ppmflpjbsi .gt_from_md > :first-child {
+&#10;#qqmjzpmglk .gt_from_md > :first-child {
   margin-top: 0;
 }
-&#10;#ppmflpjbsi .gt_from_md > :last-child {
+&#10;#qqmjzpmglk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-&#10;#ppmflpjbsi .gt_row {
+&#10;#qqmjzpmglk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2173,7 +2063,7 @@ population_change_data_table
   vertical-align: middle;
   overflow-x: hidden;
 }
-&#10;#ppmflpjbsi .gt_stub {
+&#10;#qqmjzpmglk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2185,7 +2075,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#ppmflpjbsi .gt_stub_row_group {
+&#10;#qqmjzpmglk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2198,13 +2088,13 @@ population_change_data_table
   padding-right: 5px;
   vertical-align: top;
 }
-&#10;#ppmflpjbsi .gt_row_group_first td {
+&#10;#qqmjzpmglk .gt_row_group_first td {
   border-top-width: 2px;
 }
-&#10;#ppmflpjbsi .gt_row_group_first th {
+&#10;#qqmjzpmglk .gt_row_group_first th {
   border-top-width: 2px;
 }
-&#10;#ppmflpjbsi .gt_summary_row {
+&#10;#qqmjzpmglk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2213,14 +2103,14 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#ppmflpjbsi .gt_first_summary_row {
+&#10;#qqmjzpmglk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_first_summary_row.thick {
+&#10;#qqmjzpmglk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-&#10;#ppmflpjbsi .gt_last_summary_row {
+&#10;#qqmjzpmglk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2229,7 +2119,7 @@ population_change_data_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_grand_summary_row {
+&#10;#qqmjzpmglk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2238,7 +2128,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#ppmflpjbsi .gt_first_grand_summary_row {
+&#10;#qqmjzpmglk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2247,7 +2137,7 @@ population_change_data_table
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_last_grand_summary_row_top {
+&#10;#qqmjzpmglk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2256,10 +2146,10 @@ population_change_data_table
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_striped {
+&#10;#qqmjzpmglk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-&#10;#ppmflpjbsi .gt_table_body {
+&#10;#qqmjzpmglk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2267,7 +2157,7 @@ population_change_data_table
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_footnotes {
+&#10;#qqmjzpmglk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2280,7 +2170,7 @@ population_change_data_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_footnote {
+&#10;#qqmjzpmglk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2288,7 +2178,7 @@ population_change_data_table
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#ppmflpjbsi .gt_sourcenotes {
+&#10;#qqmjzpmglk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2301,64 +2191,64 @@ population_change_data_table
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-&#10;#ppmflpjbsi .gt_sourcenote {
+&#10;#qqmjzpmglk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-&#10;#ppmflpjbsi .gt_left {
+&#10;#qqmjzpmglk .gt_left {
   text-align: left;
 }
-&#10;#ppmflpjbsi .gt_center {
+&#10;#qqmjzpmglk .gt_center {
   text-align: center;
 }
-&#10;#ppmflpjbsi .gt_right {
+&#10;#qqmjzpmglk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-&#10;#ppmflpjbsi .gt_font_normal {
+&#10;#qqmjzpmglk .gt_font_normal {
   font-weight: normal;
 }
-&#10;#ppmflpjbsi .gt_font_bold {
+&#10;#qqmjzpmglk .gt_font_bold {
   font-weight: bold;
 }
-&#10;#ppmflpjbsi .gt_font_italic {
+&#10;#qqmjzpmglk .gt_font_italic {
   font-style: italic;
 }
-&#10;#ppmflpjbsi .gt_super {
+&#10;#qqmjzpmglk .gt_super {
   font-size: 65%;
 }
-&#10;#ppmflpjbsi .gt_footnote_marks {
+&#10;#qqmjzpmglk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-&#10;#ppmflpjbsi .gt_asterisk {
+&#10;#qqmjzpmglk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-&#10;#ppmflpjbsi .gt_indent_1 {
+&#10;#qqmjzpmglk .gt_indent_1 {
   text-indent: 5px;
 }
-&#10;#ppmflpjbsi .gt_indent_2 {
+&#10;#qqmjzpmglk .gt_indent_2 {
   text-indent: 10px;
 }
-&#10;#ppmflpjbsi .gt_indent_3 {
+&#10;#qqmjzpmglk .gt_indent_3 {
   text-indent: 15px;
 }
-&#10;#ppmflpjbsi .gt_indent_4 {
+&#10;#qqmjzpmglk .gt_indent_4 {
   text-indent: 20px;
 }
-&#10;#ppmflpjbsi .gt_indent_5 {
+&#10;#qqmjzpmglk .gt_indent_5 {
   text-indent: 25px;
 }
-&#10;#ppmflpjbsi .katex-display {
+&#10;#qqmjzpmglk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
-&#10;#ppmflpjbsi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+&#10;#qqmjzpmglk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
