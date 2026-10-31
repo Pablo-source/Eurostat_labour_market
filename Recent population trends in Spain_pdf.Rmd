@@ -1,0 +1,457 @@
+---
+title: "Recent Spain population trends"
+author: "PLR"
+date: "`r Sys.Date()`"
+output: pdf
+---
+
+```{r setup, include=FALSE}
+# Load required libraries
+library(pacman)
+pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table,tidyr,gt)
+# Apply consistent height and width ggplot graph across document
+knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
+```
+
+## Latest date this report was produced
+
+Today's date is **`r format(today(),"%d %B %Y")`**. This report was published on the week starting on  **`r format(today()-2,"%d %B %Y")`**. 
+
+## Obtaining Spain population data from official sources
+
+The Spanish National Institute, publishes Spain annual population figures, referred to 1st of January for each year: <https://www.ine.es/consul/serie.do?d=true&s=ECP320>
+
+In the third tab from Excel file **"INE total and foreign population figures Spain.xlsx"** we load the table describing Total, foreign and nationals population figures in Spain, based on Spanish nationality for the 2004 2025 period.
+
+```{r Load spanish population data, echo=FALSE, message=FALSE, warning = FALSE}
+list.files (path = "./data_demography" ,pattern = "xlsx$")
+excel_sheets("./data_demography/INE total and foreign population figures Spain.xlsx")
+```
+
+```{r read Excek into R, echo=TRUE, message=FALSE, warning = FALSE}
+population_data <- read_excel(
+  "data_demography/INE total and foreign population figures Spain.xlsx",
+  sheet = "INE_Total_foreign_population", skip = 2, n_max = 22,
+  col_types = c("guess", "numeric", "numeric", "guess","guess","guess","guess","guess")) %>% 
+  clean_names() %>% 
+       select (date = todas_las_edades, total_population = total,
+                       foreign_population, percent_foreign_population = percent_foreign_nationals_total_population,
+                      total_population_YoY_N = total_yo_y_n, total_population_YoY_perc = total_yo_y_percent,
+                       foreign_population_YoY_N = foreign_nationals_yo_y_n, foreign_population_YoY_perc= foreign_total_yo_y_percent)
+
+```
+
+
+## 1. Spain total population
+
+This first chart displays total population in Spain for 2004-2025 time period. Total resident population in Spain, regardless of their nationality 
+
+```{r format_function_markdown_values, echo=TRUE,warning=FALSE,message=FALSE, results='hide'}
+format_total_population_spain <- function(mydataset,my_date,column,format = NULL){
+  row <- mydataset %>% filter(date == my_date) 
+  print(row)
+  value <- row %>% pull({{column}})
+  print(value)
+  # Default value if format is not provided
+  if (column %in% c("total_population")){
+    return(as.character(prettyNum(value,big.mark = ",")))  
+  } else if (column %in% c("percent_foreign_population")){
+  return(paste0(round(value,1),"%"))  # to be built
+  } 
+  # Fallout is format is not provided
+   return(as.character(value))  
+}
+# format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "total_population")
+# format_total_population_spain(mydataset = population_change_fmt, my_date = "2007-01-01",column = "percent_foreign_population")
+```
+
+```{r Spain total population, echo=TRUE,message=FALSE, warning =FALSE}
+options(scipen=999)
+population_data_fmt <-population_data %>% 
+  mutate(date_day = substr(date,1,1),
+         date_month = substr(date,3,13),date_year =  substr(date,15,18)) %>% 
+  mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
+  select(date,
+         total_population,
+         foreign_population,
+         percent_foreign_population,
+         total_population_YoY_perc,
+         foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
+  mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) 
+population_data_fmt 
+
+population_change_fmt_date <- population_data_fmt %>% 
+  mutate(date = dmy(date_to_fmt)) %>% 
+  select(date,total_population,foreign_population,percent_foreign_population,
+         total_population_YoY_perc_change =  total_population_YoY_perc,
+         foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
+  arrange(date)
+
+
+Plot_total_population_spain <- population_change_fmt_date %>% select(date,total_population) %>% 
+  ggplot(aes(date,total_population)) +
+  geom_line(aes(colour = "sienna3")) +
+  geom_point(fill = "sienna3") +
+  labs(title = "Spain total poulation. 2004-2025 period",
+       subtitle = "Source: INE Spanish Office for National Statistics") +
+  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+  theme_light() +
+   theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank()) 
+Plot_total_population_spain
+
+
+```
+
+In 
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2007-01-01",column = "date")`. 
+Spain total population was 
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2007-01-01",column = "total_population")`.
+Eleven years later, in 
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2018-01-01",column = "date")` 
+it was
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2018-01-01",column = "total_population")`.
+After Covid19 Pandemic it grew steadily until 2022, when it reached
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2022-01-01",column = "total_population")`
+on 
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2022-01-01",column = "date")`
+
+It is noticeable that since 2022, mainly due to net international migration from foreign-born residents, Spain total population grew with YoY rates above 1% for the following four years.
+In 2023 Spain total population reached 
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2023-01-01",column = "total_population")`
+One year later, on
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2024-01-01",column = "date")`
+it was 
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2024-01-01",column = "total_population")`
+
+The same fast pace of increase has continued in 2025
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2025-01-01",column = "total_population")`
+And in 2026 with the recently released provisional population estimates, the Total population in Spain has reached nearly 50 million
+`r format_total_population_spain(mydataset = population_data_fmt, my_date = "2026-01-01",column = "total_population")`
+
+
+# 2. Spain Total population by nationality 
+
+This sections described total population change in Spain from 2005 to 2025. 
+
+```{r Spain total populatin formatting dates, echo=TRUE, message=FALSE, warning=FALSE}
+library(lubridate)
+
+population_data_sel <- population_data %>% select(date,total_population,foreign_nationals_population = foreign_population,percent_foreign_population,total_population_YoY_perc,foreign_population_YoY_perc)
+
+population_data_sel_daet <- population_data_sel %>% 
+  mutate(date_day = substr(date,1,1),date_month = substr(date,3,13),date_year =  substr(date,15,18))
+
+population_data_fmt_date <-population_data_sel_daet %>% 
+  mutate(date_month_eng = gsub("de enero de","january",date_month)) %>% 
+  select(date,total_population,foreign_nationals_population,percent_foreign_population,
+         total_population_YoY_perc,foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
+  mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) %>% 
+# population_change_fmt_date <- population_change_fmt %>% 
+  mutate(date = dmy(date_to_fmt)) %>% 
+  select(date,total_population,foreign_nationals_population,percent_foreign_population,
+         total_population_YoY_perc_change =  total_population_YoY_perc,
+         foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
+  arrange(date)
+population_data_fmt_date
+
+min_date <- min(population_data_fmt_date$date)
+max_date <- max(population_data_fmt_date$date)
+# (gsub("de enero","january", date),1,6)),
+```
+
+```{r population by nationality, echo=FALSE,message=FALSE, warning =FALSE}
+population_data_all_nationalities <-  population_data_fmt_date %>%
+                         select(date = date,total_population,foreign_nationals_population) %>% 
+                         mutate(spanish_nationals_population = total_population - foreign_nationals_population)
+population_data_all_nationalities
+```
+
+We can display the above table using GT package
+
+```{r population_by_nationality_gt,echo=TRUE, message=FALSE, warning = FALSE}
+Spain_nationlity_gt<- population_data_all_nationalities %>% 
+  select(Date = date, Total = total_population, 
+         'Foreign nationals'= foreign_nationals_population,
+         'Spanish nationalts'= spanish_nationals_population) %>% 
+  gt() %>%
+  tab_header(
+    title = md("**Spanish population by nationality**"),
+    subtitle = ("2005-2026 period") 
+        ) %>%
+    fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Foreign nationals",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Spanish nationalts",decimals = 0) 
+  
+Spain_nationlity_gt
+```
+
+## 2.1 Spain Total population by nationality Index (Base 100 = 2008) 
+
+Population in Spain by nationality. Index (Base 100 = 2016)
+
+```{r popualtion nationality base hundred , echo=FALSE,message=FALSE, warning =FALSE}
+head(population_data_fmt)
+
+df_base_hundred <- population_data_all_nationalities %>% 
+    select(date, total_population, foreign_nationals_population,spanish_nationals_population) %>% 
+ mutate(
+   Total_pop_2008_base = ((total_population / total_population[date == '2008-01-01']) * 100),
+   foreign_pop_2008_base =  ((foreign_nationals_population / foreign_nationals_population[date == '2008-01-01']) * 100), 
+   spanish_pop_2008_base =  ((spanish_nationals_population / spanish_nationals_population[date == '2008-01-01']) * 100)
+)
+
+df_base_hundred_data <- df_base_hundred %>% select(date,Total_pop_2008_base,foreign_pop_2008_base,spanish_pop_2008_base) 
+
+df_base_hundred_data_round <- df_base_hundred_data %>% 
+  mutate(
+  Tot_pop_2008_round =  round(Total_pop_2008_base,0),
+  foreign_pop_2008_round =  round(foreign_pop_2008_base,0),
+  spanish_pop_2008_round =  round(spanish_pop_2008_base,0)
+  ) %>% 
+  select(Date = date,
+         'Total base 2008' = Tot_pop_2008_round,
+         'Foreign nationals base 2008' = foreign_pop_2008_round,
+         'Spanish nationals base 2008' = spanish_pop_2008_round
+         )# Change Columns haders with meaningful labels
+
+  
+df_base_hundred_table <- df_base_hundred_data_round %>% 
+  select(Date,  'Total base 2008','Foreign nationals base 2008', 'Spanish nationals base 2008' ) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population in Spain by nationality base 100 year 2008**"),
+    subtitle = ("2005-2026 period") 
+        ) %>% 
+    cols_width(Date ~ px(300)) # This configuration for col_widh makes date to be displayed on a new line on each column - excluding Date
+df_base_hundred_table
+# Year 2008 base population
+```
+We can also display the above table into a chart to display how each population in Spain by nationality has changed since the 2008 reference year used as a baseline in the above table.
+
+```{r population base 100 line chart, echo=TRUE,message=FALSE, warning =FALSE}
+
+```
+
+
+## 3. Spain total population change 
+
+This sub-section describes how Total population in Spain has changed over time in the 2005-2026 period. Describing population change in absolute numbers and percentage change Year on Year increase.
+
+```{r population change, echo=TRUE,message=FALSE, warning =FALSE}
+population_data_fmt <-  population_change_fmt_date %>%
+                         select(date = date,total_population,foreign_population) %>% 
+                         mutate(spanish_nationals_population = total_population - foreign_population)
+population_data_fmt
+```
+
+
+This data below shows population change by year for total population, spanish nationals and foreign nationals population
+
+```{r popualtion change by year, echo=FALSE,message=FALSE, warning =FALSE}
+population_change_data<-  population_data_fmt %>%
+                          mutate(
+                  total_change = total_population - lag(total_population),
+                  foreign_nationals_change = foreign_population - lag(foreign_population),
+                  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
+                                 ) %>% 
+    select(date, 
+           Total = total_population, 
+           'Foreign nationals'= foreign_population,
+           'Spanish nationalts'= spanish_nationals_population,
+           'Total change' = total_change,
+           'Foreign nationals change' = foreign_nationals_change,
+           'Spanish nationals change' = spanish_national_change
+           
+           ) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population change in Spain by nationality**"),
+    subtitle = ("2005-2026 period") 
+        ) %>%
+     fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
+     fmt_number(sep_mark = ",","Foreign nationals",decimals = 0) %>% 
+       fmt_number(sep_mark = ",","Spanish nationalts",decimals = 0) %>% 
+      fmt_number(sep_mark = ",","Total change",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Foreign nationals change",decimals = 0) %>% 
+    fmt_number(sep_mark = ",","Spanish nationals change",decimals = 0) %>% 
+  cols_width(date ~ px(100))
+population_change_data
+```
+
+```{r popualtion change detail, echo=FALSE,message=FALSE, warning =FALSE}
+population_change_data_table<-  population_data_fmt %>%
+                          mutate(
+  total_change = total_population - lag(total_population),
+  foreign_nationals_change = foreign_population -lag(foreign_population),
+  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
+  foreign_nationals_perc_change = (foreign_population - lag(foreign_population))/lag(foreign_population),
+  spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population))/lag(spanish_nationals_population)
+  ) %>% 
+    select(date, 
+           Total = total_population, 
+                    'Foreign nationals'= foreign_population,
+           'Spanish nationalts'= spanish_nationals_population,
+           'YoY change' = total_change,
+           'Foreign nationals YoY change' = foreign_nationals_change,
+           'Spanish nationals YoY change' = spanish_national_change,
+           'Foreign nationals YoY percentage change' = foreign_nationals_perc_change,
+           'Spanish nationals YoY percentage change' = spanish_national_perc_change
+           ) %>% 
+    gt() %>%
+  tab_header(
+    title = md("**Population change in Spain by nationality**"),
+    subtitle = ("2005-2026 period") 
+        ) %>%
+fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
+fmt_number(sep_mark = ",","YoY change",decimals = 0) %>% 
+fmt_number(sep_mark = ",","Foreign nationals YoY change",decimals = 0) %>% 
+fmt_number(sep_mark = ",","Spanish nationals YoY change",decimals = 0) %>% 
+fmt_percent("Foreign nationals YoY percentage change",decimals =1,force_sign = TRUE) %>% 
+fmt_percent("Spanish nationals YoY percentage change",decimals =1,force_sign = TRUE) %>% 
+  cols_width(
+    date ~ px(100)              # Set specific width for 'item' column in pixels
+  )
+population_change_data_table
+```
+
+### 3.1 Spain population change by nationality charts
+
+For each population by nationality in Spain (Spanish nationals and foreign population), this section describes its year on year change in absolute numbers and year on year percentage change. 
+
+- Foreign population: Resident population figures for people who do not hold Spanish nationality.
+
+- Spanish nationals population: Resident population figures in Spain for Spanish nationals. 
+
+Also, here we describe the share of the Total population change accounted for Spanish and Foreign nationals. This will allow later on, once we account for Natural increase, what percentage of population change is due mainly to migration flows from Foreign nationals in the overall population in Spain for the 2005-2026 period. 
+
+
+
+
+
+## 4. Total population in Spain by nationality - 2005-2026 period 
+
+This section describes population figures from the Municipal Census in Spain for the 2005-2026 period. Providing a breakdown of Total population by nationality Spanish and foreign nationals. 
+
+- Total population: Is the combined population figure of Spanish nationals and foreign population.
+
+- Foreign population: Resident population figures for people who do not hold Spanish nationality, classified by the National Statistics Institute INE as foreign nationals.
+
+- Spanish nationals population: Resident population figures in spain for Spanish nationals. 
+
+
+```{r population_by_natinality, echo=TRUE, message=FALSE, warning = FALSE}
+Spain_population_nationality_fmt <- population_data_fmt %>%                          
+                                    select(date,total_population,foreign_population) %>% 
+                         arrange(date)
+Spain_population_nationality_fmt
+```
+
+
+
+
+```{r Spain population by nationality, echo=TRUE, message=FALSE, warning = FALSE}
+
+nationality_stacked <- Spain_population_nationality_fmt %>% 
+  pivot_longer(!date, names_to = "nationality", values_to = "population")
+
+nationality_stacked_plot <- ggplot(nationality_stacked,
+                                   aes(x = date, y = population, fill = nationality)) +
+                                   geom_bar(stat = "identity") +
+                              labs(title = "Spain population by natioanlity. 2005-2025",
+                              substile = "Source: INE Spanish Office for National Statistics") +
+                                   scale_fill_brewer() +
+                                   scale_fill_discrete(labels = c("Foreign nationals", "Spanish nationals")) + theme_light() 
+
+nationality_stacked_plot
+```
+
+
+These charts below describe the evolution of Total, foreign and spanish nationals population for the 2005-2025 period:
+
+- Spain total population
+```{r Spain total population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+options(scipen=999)
+
+Spain_total_population_plot <- Spain_population_nationality_fmt %>% 
+                            ggplot(aes(x= date, y = total_population)) +
+  geom_bar(stat = "identity", fill = "darkolivegreen2") +
+  labs(title = "Spain total poulation. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
+  geom_text(aes(label = total_population),size = 2.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,55000000), expand = FALSE )
+
+Spain_total_population_plot
+```
+
+Then this is the foreign population in Spain for the same time period.
+
+```{r Spain foreign population bar plot, echo=TRUE,warning=FALSE,message=FALSE}
+options(scipen=999)
+
+forign_population_plot <- Spain_population_nationality_fmt %>% 
+                            ggplot(aes(x= date, y = foreign_population)) +
+  geom_bar(stat = "identity", fill = "cornflowerblue") +
+  labs(title = "Foreign population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
+  geom_text(aes(label = foreign_population),size = 1.8,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,7500000), expand = FALSE )
+
+forign_population_plot
+```
+
+
+This last plot displays national population in Spain for the 2005-2025 period.
+
+```{r Spain national population bar plot, echo=TRUE, warning=FALSE,message=FALSE}
+options(scipen=999)
+
+national_population_data <- Spain_population_nationality_fmt %>% 
+  mutate(Spanish_nationals = total_population - foreign_population)
+
+national_population_plot <- national_population_data %>% 
+                            ggplot(aes(x= date, y = Spanish_nationals)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "Spanish nationals population in Spain. 2005-2025 period",
+       substile = "Source: INE Spanish Office for National Statistics") +
+  theme_light() +
+  theme(axis.text.x = element_text(angle = + 90, hjust = 0.5, vjust = 0.5)) +
+  geom_text(aes(label = format(Spanish_nationals,big.mark = ",",scientific = FALSE))
+            ,size = 4.2,position = position_dodge(width = 0.2),vjust = -0.30,hjust = 0.50) +
+  coord_cartesian( ylim=c(0,46000000), expand = FALSE )
+
+national_population_plot
+```
+
+
+## 5.  Spain population figures Overview details 
+
+In this section we highlight a couple of trends observed in both Total and foreign population in Spain from 2004 until 2025 period.
+
+```{r Population figures overview, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
+# Total population figures overview
+
+Max_total_population <- Spain_population_nationality_fmt  %>% select (date,total_population) %>% filter(date == max(Spain_population_nationality_fmt$date))
+Max_total_population
+
+
+Min_total_population <- Spain_population_nationality_fmt  %>% select (date,total_population) %>% filter(date == min(Spain_population_nationality_fmt$date))
+Min_total_population
+
+
+```
+
+- As of 1st of January **`r (Max_total_population$date)`**., the year for the latest available population figures, Total population in Spain was  **`r prettyNum(Max_total_population$total_population, big.mark=",")`**. Up by 458,253 from previous year.
+
+- In contrast, on the year **`r (Min_total_population$date)`**, the first year on this series, total population in Spain was **`r prettyNum(Min_total_population$total_population, big.mark=",")`**. 
+
+
+### 5.1 Share of foreign population over total population in Spain
+
+Next, we describe the foreign population percent share of the total population in Spain for the 2004-2025 period.
