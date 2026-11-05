@@ -235,38 +235,10 @@ df_base_hundred_table
 We can also display the above table into a chart to display how each population in Spain by nationality has changed since the 2008 reference year used as a baseline in the above table.
 
 ```{r population base 100 line chart, echo=TRUE,message=FALSE, warning =FALSE}
-library(paletteer)
-library(here)
-
-pop_base_2008_data_plot <- df_base_hundred_data_round %>% 
-    pivot_longer(!Date, names_to = "nationality", values_to = "population")
-
-# Write this dataset to a csv.file
-write.csv(pop_base_2008_data_plot,"./data/popul_nation_base_2008_data_plot.csv", row.names = TRUE)
-
-# Using {paletter} package for custom colour with fr colour palettes
-my_colours <- paletteer::paletteer_d("lisa::FridaKahlo")
-
-pop_base_100_plot <- pop_base_2008_data_plot %>% 
-    ggplot( aes(x=Date, y=population, group=nationality, color=nationality)) +
-    geom_line(linewidth = 1.5) +
-  scale_colour_manual(
-    values = my_colours[2:4]
-  ) +
-  theme_minimal() +
-    theme(
-      legend.position="bottom",
-      plot.title = element_text(size=25),
-      axis.title.x = element_text(size = 14),
-      axis.title.y = element_text(size = 14),
-        axis.text.x = element_text(size = 22),
-        axis.text.y = element_text(size = 22),
-          legend.title = element_text(size = 22),
-    legend.text = element_text(size = 22),
-     legend.key.size = unit(1.2, "cm")
-    ) +
-    ggtitle("Spanish population by nationality. Year 2008 base 100") 
-pop_base_100_plot
+data_plot <- df_base_hundred_data_round %>% 
+   pivot_longer(!date, names_to = "nationality_base_2008", values_to = "population")
+data_plot %>% 
+  
 ```
 
 \newpage
