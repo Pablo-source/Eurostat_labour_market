@@ -236,8 +236,8 @@ We can also display the above table into a chart to display how each population 
 
 ```{r population base 100 line chart, echo=TRUE,message=FALSE, warning =FALSE}
 data_plot <- df_base_hundred_data_round %>% 
-   pivot_longer(!date, names_to = "nationality_base_2008", values_to = "population")
-data_plot %>% 
+   pivot_longer(!Date, names_to = "nationality_base_2008", values_to = "population")
+data_plot 
   
 ```
 
