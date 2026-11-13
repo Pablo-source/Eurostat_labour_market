@@ -78,7 +78,6 @@ population_data_fmt <-population_data %>%
          total_population_YoY_perc,
          foreign_population_YoY_perc,date_day,date_month_eng,date_year) %>% 
   mutate(date_to_fmt = paste0(date_day," ",date_month_eng," ",date_year)) 
-population_data_fmt 
 
 population_change_fmt_date <- population_data_fmt %>% 
   mutate(date = dmy(date_to_fmt)) %>% 
@@ -86,6 +85,7 @@ population_change_fmt_date <- population_data_fmt %>%
          total_population_YoY_perc_change =  total_population_YoY_perc,
          foreign_population_YoY_perc_change = foreign_population_YoY_perc) %>% 
   arrange(date)
+population_change_fmt_date
 ```
 Then we can plot Spain total population figures from 2004 to 2025:
 
@@ -164,17 +164,13 @@ min_date <- min(population_data_fmt_date$date)
 max_date <- max(population_data_fmt_date$date)
 # (gsub("de enero","january", date),1,6)),
 ```
-
-```{r population by nationality, echo=FALSE,message=FALSE, warning =FALSE}
-population_data_all_nationalities <-  population_data_fmt_date %>%
-                         select(date = date,total_population,foreign_nationals_population) %>% 
-                         mutate(spanish_nationals_population = total_population - foreign_nationals_population)
-population_data_all_nationalities
-```
-
 We can display the above table using GT package
 
 ```{r population_by_nationality_gt,echo=TRUE, message=FALSE, warning = FALSE}
+population_data_all_nationalities <-  population_data_fmt_date %>%
+                         select(date = date,total_population,foreign_nationals_population) %>% 
+                         mutate(spanish_nationals_population = total_population - foreign_nationals_population)
+
 Spain_nationlity_gt<- population_data_all_nationalities %>% 
   select(Date = date, Total = total_population, 
          'Foreign nationals'= foreign_nationals_population,
