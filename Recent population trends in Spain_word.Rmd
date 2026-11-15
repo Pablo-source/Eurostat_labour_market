@@ -271,24 +271,27 @@ This sub-section describes how Total population in Spain has changed over time i
 
 Table below display population figures for total population in Spain by nationality (Foreign nationals,Spanish nationals). Also it includes population change by year for each nationality and total population.
 
-```{r popualtion change by year, echo=FALSE,message=FALSE, warning =FALSE}
-population_change_data<-  population_data_fmt %>%
+```{r popualtion change by year data, echo=FALSE,message=FALSE, warning =FALSE}
+population_change_data <-  population_data_fmt %>%
                   mutate(spanish_nationals_population = total_population - foreign_population) |> 
   # Compute population change by nationalities in Spain
                   mutate(
                   total_change = total_population - lag(total_population),
                   foreign_nationals_change = foreign_population - lag(foreign_population),
-                  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
+                  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population)
                                  ) %>% 
-    select(date, 
-           Total = total_population, 
-           'Foreign nationals'= foreign_population,
-           'Spanish nationalts'= spanish_nationals_population,
-           'Total change' = total_change,
-           'Foreign nationals change' = foreign_nationals_change,
-           'Spanish nationals change' = spanish_national_change
-           
-           ) %>% 
+                select(date, 
+                       Total = total_population, 
+                       'Foreign nationals'= foreign_population,
+                       'Spanish nationalts'= spanish_nationals_population,
+                       'Total change' = total_change,
+                       'Foreign nationals change' = foreign_nationals_change,
+                       'Spanish nationals change' = spanish_national_change)
+population_change_data   
+
+```
+```{r popualtion change by year table, echo=FALSE,message=FALSE, warning =FALSE}
+ population_change_gt_table <-    population_change_data %>% 
     gt() %>%
   tab_header(
     title = md("**Population change in Spain by nationality**"),
@@ -301,20 +304,21 @@ population_change_data<-  population_data_fmt %>%
     fmt_number(sep_mark = ",","Foreign nationals change",decimals = 0) %>% 
     fmt_number(sep_mark = ",","Spanish nationals change",decimals = 0) %>% 
   cols_width(date ~ px(100))
-population_change_data
+population_change_gt_table
 ```
 
+
 ```{r popualtion change detail, echo=FALSE,message=FALSE, warning =FALSE}
-population_change_data_table<-  population_data_fmt %>%
+population_change_data_table<-  population_change_data %>%
                           mutate(
-  total_change = total_population - lag(total_population),
-  foreign_nationals_change = foreign_population -lag(foreign_population),
+  total_change = Total - lag(Total),
+  foreign_nationals_change = "Foreign nationals" -lag("Foreign nationals"),
   spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-  foreign_nationals_perc_change = (foreign_population - lag(foreign_population))/lag(foreign_population),
+  foreign_nationals_perc_change = ("Foreign nationals" - lag("Foreign nationals"))/lag("Foreign nationals"),
   spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population))/lag(spanish_nationals_population)
   ) %>% 
     select(date, 
-           Total = total_population, 
+           'Total population change' = total_change, 
                     'Foreign nationals'= foreign_population,
            'Spanish nationalts'= spanish_nationals_population,
            'YoY change' = total_change,
