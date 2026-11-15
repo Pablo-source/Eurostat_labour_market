@@ -90,6 +90,9 @@ population_change_fmt_date
 Then we can plot Spain total population figures from 2004 to 2025:
 
 ```{r Plot Spain total population, echo=TRUE,message=FALSE, warning =FALSE}
+
+my_colours <- paletteer::paletteer_d("lisa::FridaKahlo")
+
 Plot_total_population_spain <- population_change_fmt_date %>% select(date,total_population) %>% 
   ggplot(aes(date,total_population)) +
   geom_line(aes(colour = "sienna3")) +
