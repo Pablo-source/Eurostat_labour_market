@@ -100,7 +100,9 @@ Plot_total_population_spain <- population_change_fmt_date %>% select(date,total_
       scale_colour_manual(values = my_colours[1]) +
  labs(title = "Spain total poulation. 2004-2025 period",
        subtitle = "Source: INE Spanish Office for National Statistics") +
-  scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
+  scale_x_date(date_labels="%Y",date_breaks  ="2 year",
+               limits = as.Date(c("2005-01-01", "2026-01-01"))) +
+  coord_cartesian(xlim = as.Date(c("2005-01-01","2026-01-01"))) +
    theme(legend.position="none") +
   theme_minimal() +
     theme(
@@ -108,10 +110,11 @@ Plot_total_population_spain <- population_change_fmt_date %>% select(date,total_
       plot.title = element_text(size=22),
       plot.subtitle = element_text(size=12),
       axis.title.x = element_blank(),
-      axis.text.x = element_text(size = 18),
+      axis.text.x = element_text(size = 18, angle = 45),
       axis.title.y=element_blank(),
       axis.text.y = element_text(size = 18),
-     legend.key.size = unit(1.2, "cm")
+     legend.key.size = unit(1.2, "cm"),
+       plot.margin = margin(t = 10,r = 20,b = 25,l = 30)
     )
 Plot_total_population_spain
 ```
