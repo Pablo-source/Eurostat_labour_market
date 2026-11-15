@@ -250,13 +250,13 @@ pop_base_100_plot <- pop_base_2008_data_plot_raw %>%
   theme_minimal() +
     theme(
       legend.position="bottom",
-      plot.title = element_text(size=25),
-      axis.title.x = element_text(size = 14),
-      axis.title.y = element_text(size = 14),
-        axis.text.x = element_text(size = 22),
-        axis.text.y = element_text(size = 22),
-          legend.title = element_text(size = 22),
-    legend.text = element_text(size = 22),
+      plot.title = element_text(size=22),
+      axis.title.x = element_text(size = 20),
+      axis.title.y = element_text(size = 20),
+        axis.text.x = element_text(size = 18),
+        axis.text.y = element_text(size = 18),
+          legend.title = element_text(size = 18),
+    legend.text = element_text(size = 18),
      legend.key.size = unit(1.2, "cm")
     ) +
     ggtitle("Spanish population by nationality. Year 2008 base 100") 
