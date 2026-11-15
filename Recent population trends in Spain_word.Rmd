@@ -94,17 +94,25 @@ Then we can plot Spain total population figures from 2004 to 2025:
 my_colours <- paletteer::paletteer_d("lisa::FridaKahlo")
 
 Plot_total_population_spain <- population_change_fmt_date %>% select(date,total_population) %>% 
-  ggplot(aes(date,total_population)) +
-  geom_line(aes(colour = "sienna3")) +
-  geom_point(fill = "sienna3") +
-  labs(title = "Spain total poulation. 2004-2025 period",
+  ggplot(aes(x=date,y=total_population)) +
+  geom_line(linewidth = 1.5) +
+    geom_point(fill = my_colours[1],size = 2.5) +
+      scale_colour_manual(values = my_colours[1]) +
+ labs(title = "Spain total poulation. 2004-2025 period",
        subtitle = "Source: INE Spanish Office for National Statistics") +
   scale_x_date(date_labels="%Y",date_breaks  ="1 year") +
-  theme_light() +
    theme(legend.position="none") +
-  theme(axis.text.x = element_text(angle = + 45, hjust = 0.5, vjust = 0.5),
-        axis.title.y = element_blank(),
-        axis.title.x = element_blank()) 
+  theme_minimal() +
+    theme(
+      legend.position="bottom",
+      plot.title = element_text(size=22),
+      plot.subtitle = element_text(size=12),
+      axis.title.x = element_blank(),
+      axis.text.x = element_text(size = 18),
+      axis.title.y=element_blank(),
+      axis.text.y = element_text(size = 18),
+     legend.key.size = unit(1.2, "cm")
+    )
 Plot_total_population_spain
 ```
 
