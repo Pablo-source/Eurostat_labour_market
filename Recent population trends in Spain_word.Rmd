@@ -309,39 +309,7 @@ population_change_gt_table
 
 
 ```{r popualtion change detail, echo=FALSE,message=FALSE, warning =FALSE}
-population_change_data_table<-  population_change_data %>%
-                          mutate(
-  total_change = Total - lag(Total),
-  foreign_nationals_change = "Foreign nationals" -lag("Foreign nationals"),
-  spanish_national_change = spanish_nationals_population - lag(spanish_nationals_population),
-  foreign_nationals_perc_change = ("Foreign nationals" - lag("Foreign nationals"))/lag("Foreign nationals"),
-  spanish_national_perc_change = (spanish_nationals_population - lag(spanish_nationals_population))/lag(spanish_nationals_population)
-  ) %>% 
-    select(date, 
-           'Total population change' = total_change, 
-                    'Foreign nationals'= foreign_population,
-           'Spanish nationalts'= spanish_nationals_population,
-           'YoY change' = total_change,
-           'Foreign nationals YoY change' = foreign_nationals_change,
-           'Spanish nationals YoY change' = spanish_national_change,
-           'Foreign nationals YoY percentage change' = foreign_nationals_perc_change,
-           'Spanish nationals YoY percentage change' = spanish_national_perc_change
-           ) %>% 
-    gt() %>%
-  tab_header(
-    title = md("**Population change in Spain by nationality**"),
-    subtitle = ("2005-2026 period") 
-        ) %>%
-fmt_number(sep_mark = ",","Total",decimals = 0) %>% 
-fmt_number(sep_mark = ",","YoY change",decimals = 0) %>% 
-fmt_number(sep_mark = ",","Foreign nationals YoY change",decimals = 0) %>% 
-fmt_number(sep_mark = ",","Spanish nationals YoY change",decimals = 0) %>% 
-fmt_percent("Foreign nationals YoY percentage change",decimals =1,force_sign = TRUE) %>% 
-fmt_percent("Spanish nationals YoY percentage change",decimals =1,force_sign = TRUE) %>% 
-  cols_width(
-    date ~ px(100)              # Set specific width for 'item' column in pixels
-  )
-population_change_data_table
+## Population change table (placeholder)
 ```
 
 ### 3.1 Spain population change by nationality charts
