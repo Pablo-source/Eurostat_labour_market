@@ -17,7 +17,7 @@ renv::init()
 # naniar:  # package to replace missing values.
 # pacman: Include {packman} to load several packages simultaneously using "p_load()" function
 renv::install('here','janitor','readxl','dplyr','ggplot2','lubridate','naniar','ggtext','gt','markdown','gcookbook','yaml','pacman','data.table',
-              'tidyr',"paletteer")
+              'tidyr',"paletteer","scales")
 
 # 3 Check status of your lockfile using renv::status() function:
 ## status() reports issues caused by inconsistencies across the project lockfile

@@ -8,7 +8,7 @@ output: word_document
 ```{r setup, include=FALSE}
 # Load required libraries
 library(pacman)
-pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table,tidyr,gt)
+pacman::p_load(readxl,here,dplyr,janitor,ggplot2,gt,lubridate,plyr,tidyr,stats,data.table,tidyr,gt,scales)
 # Apply consistent height and width ggplot graph across document
 knitr::opts_chunk$set(echo = TRUE, fig.width = 20, fig.height = 10)
 ```
@@ -102,6 +102,7 @@ Plot_total_population_spain <- population_change_fmt_date %>% select(date,total_
        subtitle = "Source: INE Spanish Office for National Statistics") +
   scale_x_date(date_labels="%Y",date_breaks  ="2 year",
                limits = as.Date(c("2005-01-01", "2026-01-01"))) +
+  scale_y_continuous( breaks = seq(40000000, 50000000, by = 400000))+
   coord_cartesian(xlim = as.Date(c("2005-01-01","2026-01-01"))) +
    theme(legend.position="none") +
   theme_minimal() +
